@@ -1,3 +1,6 @@
 README.md
+node_modules/**
+package.json
+package-lock.json
 .clasprc.json
 creds.json

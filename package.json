@@ -1,0 +1,22 @@
+{
+  "name": "google-spreadsheet-addon",
+  "version": "0.0.1",
+  "description": "Google spreadsheet add-on for consuming Santiment data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santiment/google-spreadsheet-addon.git"
+  },
+  "author": "Santiment",
+  "bugs": {
+    "url": "https://github.com/santiment/google-spreadsheet-addon/issues"
+  },
+  "homepage": "https://github.com/santiment/google-spreadsheet-addon#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@google/clasp": "^2.0.1"
+  }
+}
