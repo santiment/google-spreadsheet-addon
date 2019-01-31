@@ -11,12 +11,18 @@ google spreadsheet add-on.
 
 ### Installation
 
-1. Install [clasp](https://github.com/google/clasp):
+1. Install dependencies:
 
-    sudo npm i @google/clasp -g
+    npm install
 
 2. Login into Google with the add-on email.
 
 3. Login clasp:
 
     clasp login
+
+### Testing
+
+Run:
+
+    npm test

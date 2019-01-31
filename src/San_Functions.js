@@ -8,7 +8,7 @@
  */
 function SAN_DAILY_PRICES(project_slug, from, to) {
   checkForHistoricData_(from)
-  
+
   var query = {
     'query': '{\
       historyPrice(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
@@ -18,13 +18,13 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'historyPrice', ['priceUsd', 'volume']);
 }
 
 /**
  * Gets an array of all assets for which Santiment has data. Each asset record includes: slug, name, price in USD, market cap in USD, volume in USD, USD balance, ETH balance, ETH spent in the last 30 days, ETH spent in the last 7 days, ETH spent in the last day, and ticker.
- * 
+ *
  * @customfunction
  */
 function SAN_ALL_PROJECTS() {
@@ -45,7 +45,7 @@ function SAN_ALL_PROJECTS() {
       }\
      }'
   };
-  
+
   var headers = [
     "slug",
     "name",
@@ -60,7 +60,7 @@ function SAN_ALL_PROJECTS() {
     "ticker"
   ];
   var result = graphQLQuery_(query, 'allProjects');
-  
+
   return [headers].concat(result.map(function(project) {
     return [
       project['slug'],
@@ -80,7 +80,7 @@ function SAN_ALL_PROJECTS() {
 
 /**
  * Gets an array of all ERC20 assets for which Santiment has data. Each asset record includes: slug, name, price in USD, market cap in USD, volume in USD, USD balance, ETH balance, ETH spent in the last 30 days, ETH spent in the last 7 days, ETH spent in the last day, ticker and main contract address.
- * 
+ *
  * @customfunction
  */
 function SAN_ERC20_PROJECTS() {
@@ -102,7 +102,7 @@ function SAN_ERC20_PROJECTS() {
       }\
      }'
   };
-  
+
   var headers = [
     "slug",
     "name",
@@ -118,7 +118,7 @@ function SAN_ERC20_PROJECTS() {
     "mainContractAddress"
   ];
   var result = graphQLQuery_(query, 'allErc20Projects');
-  
+
   return [headers].concat(result.map(function(project) {
     return [
       project['slug'],
@@ -156,7 +156,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'dailyActiveAddresses', ['activeAddresses']);
 }
 
@@ -179,7 +179,7 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'transactionVolume', ['transactionVolume']);
 };
 
@@ -205,7 +205,7 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'ohlc', ['closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']);
 };
 
@@ -231,22 +231,22 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'priceVolumeDiff', ['priceChange', 'priceVolumeDiff', 'volumeChange']);
 };
 
 /**
  * Returns a list of project slugs for which there is social volume data.
- * 
+ *
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS() {
   var query = {
     'query': '{ socialVolumeProjects }'
   };
-  
+
   var result = graphQLQuery_(query, 'socialVolumeProjects');
-  return ['SV Projects'].concat(result);  
+  return ['SV Projects'].concat(result);
 };
 
 /**
@@ -257,8 +257,8 @@ function SAN_SOCIAL_VOLUME_PROJECTS() {
  */
 
 /**
- * Returns a list of mentions count for a given project and time 
- * 
+ * Returns a list of mentions count for a given project and time
+ *
  * @param {"santiment"} project_slug Name of the asset at coinmarketcap.com, which can be found at the end of the URL (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the project_slug would be santiment).
  * @param {DATE(2018, 9, 21)} from The starting date to fetch the data.
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
@@ -277,6 +277,6 @@ socialVolume(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + 
       }\
      }'
   };
-  
+
   return graphQLTimeseriesQuery_(query, 'socialVolume', ['mentionsCount']);
 }

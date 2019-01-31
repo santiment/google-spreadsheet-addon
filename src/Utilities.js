@@ -54,11 +54,13 @@ function graphQLQuery_(query, query_name) {
     'contentType': 'application/json',
     'payload' : JSON.stringify(query)
   });
+
+
   if (response.getResponseCode() != 200) {
     throw new Error(JSON.parse(response)["errors"]["detail"]);
   }
 
-  return JSON.parse(response)["data"][query_name];
+  return JSON.parse(response.getContentText())["data"][query_name];
 }
 
 function checkForHistoricData_(from) {

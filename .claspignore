@@ -4,3 +4,6 @@ package.json
 package-lock.json
 .clasprc.json
 creds.json
+index.js
+test/**
+gas_mock/**
