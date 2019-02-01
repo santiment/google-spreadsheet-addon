@@ -1,32 +1,16 @@
-var iconv = require('iconv-lite');
-
-var HTTPResponse = function(body) {
-  var content_ = body;
-  var response = {};
-  var code_ = -1
-
-  response.setContentText = function(content) {
-    content_ = content;
-  }
-  
-  response.getContentText = function(charset) {
-    if(charset == null) charset = 'utf8';
-    return iconv.decode(content_, charset);
+class HTTPResponse {
+  constructor(body) {
+    this.content = body
+    this.code = -1
   }
 
-  response.setResponseCode = function(code) {
-    code_ = code;
-  }
+  setContentText(content) { this.content = content }
+  getContentText() { return this.content }
 
-  response.getResponseCode = function() {
-    return code_;
-  }
-
-  return response;
+  setResponseCode(code) { this.code = code }
+  getResponseCode() { return this.code }
 }
 
-function getMock(body) {
-  return new HTTPResponse(body);
-}
+const getMock = body => new HTTPResponse(body)
 
-module.exports = {getMock};
+module.exports = { getMock }

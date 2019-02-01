@@ -1,32 +1,30 @@
-var request = require('sync-request');
+const request = require('sync-request')
 
-var UrlFetchApp = function(response) {
-  response_ = response;
-  fetchapp = {};
-
-  fetchapp.fetch = function(url, params) {
-    var method = 'GET';
-    if(params == null) params = {};
-    if(params['method'] != null) {
-      method = params['method'].toUpperCase();
-    }
-    var res;
-    if(method == 'POST') {
-      res = request(method, url, {json: JSON.parse(params['payload'])});
-    } else {
-      res = request(method, url);
-    }
-
-    response_.setContentText(res.body);
-    response_.setResponseCode(res.statusCode);
-    return response_;
+class UrlFetchApp {
+  constructor(response) {
+    this.response = response
   }
 
-  return fetchapp;
+  fetch(url, params) {
+    let method = 'GET'
+    params = params || {}
+
+    if(params['method'] != null) { method = params['method'].toUpperCase() }
+
+    let response
+    if(method == 'POST') {
+      response = request(method, url, {json: JSON.parse(params['payload'])})
+    } else {
+      response = request(method, url)
+    }
+
+    this.response.setContentText(response.body)
+    this.response.setResponseCode(response.statusCode)
+
+    return this.response
+  }
 }
 
-function getMock(response) {
-  return new UrlFetchApp(response);
-}
+const getMock = response => new UrlFetchApp(response)
 
-module.exports = {getMock};
+module.exports = { getMock }

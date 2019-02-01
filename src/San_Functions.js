@@ -11,7 +11,10 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      historyPrice(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
+      historyPrice(slug: "' + project_slug + '",\
+                   from: "' + toUTC_(from) + '",\
+                   to: "' + toUTC_(to) + '",\
+                   interval: "1d") {\
         datetime\
         priceUsd\
         volume\
@@ -150,7 +153,10 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      dailyActiveAddresses(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
+      dailyActiveAddresses(slug: "' + project_slug + '",\
+                           from: "' + toUTC_(from) + '",\
+                           to: "' + toUTC_(to) + '",\
+                           interval: "1d") {\
         activeAddresses\
         datetime\
       }\
@@ -173,7 +179,10 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      transactionVolume(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
+      transactionVolume(slug: "' + project_slug + '",\
+                        from: "' + toUTC_(from) + '",\
+                        to: "' + toUTC_(to) + '",\
+                        interval: "1d") {\
         transactionVolume\
         datetime\
       }\
@@ -196,7 +205,10 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      ohlc(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
+      ohlc(slug: "' + project_slug + '",\
+           from: "' + toUTC_(from) + '",\
+           to: "' + toUTC_(to) + '",\
+           interval: "1d") {\
         datetime\
         closePriceUsd\
         highPriceUsd\
@@ -223,7 +235,11 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
 
   var query = {
     'query': '{\
-      priceVolumeDiff(currency: "' + currency + '",ticker: "' + project_ticker + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",interval: "1d") {\
+      priceVolumeDiff(currency: "' + currency + '",\
+                      ticker: "' + project_ticker + '",\
+                      from: "' + toUTC_(from) + '",\
+                      to: "' + toUTC_(to) + '",\
+                      interval: "1d") {\
         datetime\
         priceChange\
         priceVolumeDiff\
@@ -250,13 +266,6 @@ function SAN_SOCIAL_VOLUME_PROJECTS() {
 };
 
 /**
- * @typedef source
- * @enum
- * @value {"youtube"} youtube.com
- * @value {"vimeo"} vimeo.com
- */
-
-/**
  * Returns a list of mentions count for a given project and time
  *
  * @param {"santiment"} project_slug Name of the asset at coinmarketcap.com, which can be found at the end of the URL (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the project_slug would be santiment).
@@ -271,7 +280,11 @@ function SAN_DAILY_SOCIAL_VOLUME(project_slug, from, to, social_volume_type) {
 
   var query = {
     'query': '{\
-socialVolume(slug: "' + project_slug + '",from: "' + toUTC_(from) + '",to: "' + toUTC_(to) + '",socialVolumeType: ' + social_volume_type + ',interval: "1d") {\
+socialVolume(slug: "' + project_slug + '",\
+             from: "' + toUTC_(from) + '",\
+             to: "' + toUTC_(to) + '",\
+             socialVolumeType: ' + social_volume_type + ',\
+             interval: "1d") {\
         mentionsCount\
         datetime\
       }\
