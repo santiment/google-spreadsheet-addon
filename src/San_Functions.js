@@ -62,20 +62,21 @@ function SAN_ALL_PROJECTS() {
     'ethSpent1d',
     'ticker'
   ];
+
   var result = graphQLQuery_(query, 'allProjects');
 
   return [headers].concat(result.map(function(project) {
     return [
       project['slug'],
       project['name'],
-      parseFloat(project['priceUsd'] || 0),
-      parseFloat(project['marketcapUsd'] || 0),
-      parseFloat(project['volumeUsd'] || 0),
-      parseFloat(project['usdBalance'] || 0),
-      parseFloat(project['ethBalance'] || 0),
-      parseFloat(project['ethSpent30d'] || 0),
-      parseFloat(project['ethSpent7d'] || 0),
-      parseFloat(project['ethSpent1d'] || 0),
+      formatNumber_(project['priceUsd']),
+      formatNumber_(project['marketcapUsd']),
+      formatNumber_(project['volumeUsd']),
+      formatNumber_(project['usdBalance']),
+      formatNumber_(project['ethBalance']),
+      formatNumber_(project['ethSpent30d']),
+      formatNumber_(project['ethSpent7d']),
+      formatNumber_(project['ethSpent1d']),
       project['ticker']
     ];
   }));
@@ -126,14 +127,14 @@ function SAN_ERC20_PROJECTS() {
     return [
       project['slug'],
       project['name'],
-      parseFloat(project['priceUsd'] || 0),
-      parseFloat(project['marketcapUsd'] || 0),
-      parseFloat(project['volumeUsd'] || 0),
-      parseFloat(project['usdBalance'] || 0),
-      parseFloat(project['ethBalance'] || 0),
-      parseFloat(project['ethSpent30d'] || 0),
-      parseFloat(project['ethSpent7d'] || 0),
-      parseFloat(project['ethSpent1d'] || 0),
+      formatNumber_(project['priceUsd']),
+      formatNumber_(project['marketcapUsd']),
+      formatNumber_(project['volumeUsd']),
+      formatNumber_(project['usdBalance']),
+      formatNumber_(project['ethBalance']),
+      formatNumber_(project['ethSpent30d']),
+      formatNumber_(project['ethSpent7d']),
+      formatNumber_(project['ethSpent1d']),
       project['ticker'],
       project['mainContractAddress']
     ];
