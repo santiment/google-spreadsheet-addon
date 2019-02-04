@@ -248,7 +248,23 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
      }'
   };
 
-  return graphQLTimeseriesQuery_(query, 'priceVolumeDiff', ['priceChange', 'priceVolumeDiff', 'volumeChange']);
+  var headers = [
+    'date',
+    'priceChange',
+    'priceVolumeDiff',
+    'volumeChange'
+  ]
+
+  var results = graphQLQuery_(query, 'priceVolumeDiff');
+
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['priceChange']),
+      formatNumber_(result['priceVolumeDiff']),
+      formatNumber_(result['volumeChange']),
+    ];
+  }));
 };
 
 /**

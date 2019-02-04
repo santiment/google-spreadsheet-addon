@@ -29,12 +29,23 @@ function enable_() {
 
 function graphQLTimeseriesQuery_(query, query_name, fields) {
   var data = graphQLQuery_(query, query_name)
+  var headers = [["date"].concat(fields)]
 
-  return [["date"].concat(fields)].concat(data.map(function(data_point) {
+  var values = data.map(function(data_point) {
     return [
-      new Date(data_point['datetime']).toISOString().slice(0,10)
+      formatDatetimeField_(data_point['datetime'])
     ].concat(fields.map(function(field) { return data_point[field]; }))
-  }));
+  })
+
+  return headers.concat(values)
+}
+
+function formatDatetimeField_(field) {
+  return new Date(field).toISOString().slice(0,10)
+}
+
+function formatNumber_(field) {
+  return parseFloat(field || 0)
 }
 
 function graphQLQuery_(query, query_name) {

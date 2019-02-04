@@ -176,7 +176,6 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   const headers = response[0]
   const volumes = response[1]
 
-  // FIXME: priceChange and volumeChange can be null
   testFieldTypes(volumes, expected)
   testHeaders(headers, expected)
 
