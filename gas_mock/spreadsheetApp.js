@@ -1,6 +1,6 @@
 const spreadsheetApp = () => ({
   getActive: () => ({
-    getSpreadsheetTimeZone: () => "Etc/GMT"
+    getSpreadsheetTimeZone: () => 'Etc/GMT'
   })
 })
 

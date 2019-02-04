@@ -1,19 +1,19 @@
 const request = require('sync-request')
 
 class UrlFetchApp {
-  constructor(response) {
+  constructor (response) {
     this.response = response
   }
 
-  fetch(url, params) {
+  fetch (url, params) {
     let method = 'GET'
     params = params || {}
 
-    if(params['method'] != null) { method = params['method'].toUpperCase() }
+    if (params['method'] != null) { method = params['method'].toUpperCase() }
 
     let response
-    if(method == 'POST') {
-      response = request(method, url, {json: JSON.parse(params['payload'])})
+    if (method === 'POST') {
+      response = request(method, url, { json: JSON.parse(params['payload']) })
     } else {
       response = request(method, url)
     }

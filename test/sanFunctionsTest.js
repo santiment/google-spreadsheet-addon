@@ -46,7 +46,7 @@ describe('SAN_ALL_PROJECTS', () => {
 
   testFieldTypes(projects, expected)
   testHeaders(headers, expected)
-});
+})
 
 describe('SAN_DAILY_PRICES', () => {
   const expected = {
