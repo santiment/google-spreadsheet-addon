@@ -11,14 +11,14 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      historyPrice(slug: "' + project_slug + '",\
-                   from: "' + toUTC_(from) + '",\
-                   to: "' + toUTC_(to) + '",\
-                   interval: "1d") {\
-        datetime\
-        priceUsd\
-        volume\
-      }\
+       historyPrice(slug: "' + project_slug + '",\
+                    from: "' + toUTC_(from) + '",\
+                    to: "' + toUTC_(to) + '",\
+                    interval: "1d") {\
+         datetime\
+         priceUsd\
+         volume\
+       }\
      }'
   };
 
@@ -33,34 +33,34 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
 function SAN_ALL_PROJECTS() {
   var query = {
     'query': '{\
-      allProjects {\
-        slug\
-        name\
-        ticker\
-        marketcapUsd\
-        priceUsd\
-        volumeUsd\
-        ethBalance\
-        usdBalance\
-        ethSpent30d: ethSpent(days:30)\
-        ethSpent7d: ethSpent(days:7)\
-        ethSpent1d: ethSpent(days:1)\
-      }\
+       allProjects {\
+         slug\
+         name\
+         ticker\
+         marketcapUsd\
+         priceUsd\
+         volumeUsd\
+         ethBalance\
+         usdBalance\
+         ethSpent30d: ethSpent(days:30)\
+         ethSpent7d: ethSpent(days:7)\
+         ethSpent1d: ethSpent(days:1)\
+       }\
      }'
   };
 
   var headers = [
-    "slug",
-    "name",
-    "priceUsd",
-    "marketcapUsd",
-    "volumeUsd",
-    "usdBalance",
-    "ethBalance",
-    "ethSpent30d",
-    "ethSpent7d",
-    "ethSpent1d",
-    "ticker"
+    'slug',
+    'name',
+    'priceUsd',
+    'marketcapUsd',
+    'volumeUsd',
+    'usdBalance',
+    'ethBalance',
+    'ethSpent30d',
+    'ethSpent7d',
+    'ethSpent1d',
+    'ticker'
   ];
   var result = graphQLQuery_(query, 'allProjects');
 
@@ -89,36 +89,36 @@ function SAN_ALL_PROJECTS() {
 function SAN_ERC20_PROJECTS() {
   var query = {
     'query': '{\
-      allErc20Projects {\
-        slug\
-        name\
-        ticker\
-        mainContractAddress\
-        marketcapUsd\
-        priceUsd\
-        volumeUsd\
-        ethBalance\
-        usdBalance\
-        ethSpent30d: ethSpent(days:30)\
-        ethSpent7d: ethSpent(days:7)\
-        ethSpent1d: ethSpent(days:1)\
-      }\
+       allErc20Projects {\
+         slug\
+         name\
+         ticker\
+         mainContractAddress\
+         marketcapUsd\
+         priceUsd\
+         volumeUsd\
+         ethBalance\
+         usdBalance\
+         ethSpent30d: ethSpent(days:30)\
+         ethSpent7d: ethSpent(days:7)\
+         ethSpent1d: ethSpent(days:1)\
+       }\
      }'
   };
 
   var headers = [
-    "slug",
-    "name",
-    "priceUsd",
-    "marketcapUsd",
-    "volumeUsd",
-    "usdBalance",
-    "ethBalance",
-    "ethSpent30d",
-    "ethSpent7d",
-    "ethSpent1d",
-    "ticker",
-    "mainContractAddress"
+    'slug',
+    'name',
+    'priceUsd',
+    'marketcapUsd',
+    'volumeUsd',
+    'usdBalance',
+    'ethBalance',
+    'ethSpent30d',
+    'ethSpent7d',
+    'ethSpent1d',
+    'ticker',
+    'mainContractAddress'
   ];
   var result = graphQLQuery_(query, 'allErc20Projects');
 
@@ -153,13 +153,13 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      dailyActiveAddresses(slug: "' + project_slug + '",\
-                           from: "' + toUTC_(from) + '",\
-                           to: "' + toUTC_(to) + '",\
-                           interval: "1d") {\
-        activeAddresses\
-        datetime\
-      }\
+       dailyActiveAddresses(slug: "' + project_slug + '",\
+                            from: "' + toUTC_(from) + '",\
+                            to: "' + toUTC_(to) + '",\
+                            interval: "1d") {\
+         activeAddresses\
+         datetime\
+       }\
      }'
   };
 
@@ -179,13 +179,13 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      transactionVolume(slug: "' + project_slug + '",\
-                        from: "' + toUTC_(from) + '",\
-                        to: "' + toUTC_(to) + '",\
-                        interval: "1d") {\
-        transactionVolume\
-        datetime\
-      }\
+       transactionVolume(slug: "' + project_slug + '",\
+                         from: "' + toUTC_(from) + '",\
+                         to: "' + toUTC_(to) + '",\
+                         interval: "1d") {\
+         transactionVolume\
+         datetime\
+       }\
      }'
   };
 
@@ -205,17 +205,17 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
 
   var query = {
     'query': '{\
-      ohlc(slug: "' + project_slug + '",\
-           from: "' + toUTC_(from) + '",\
-           to: "' + toUTC_(to) + '",\
-           interval: "1d") {\
-        datetime\
-        closePriceUsd\
-        highPriceUsd\
-        lowPriceUsd\
-        openPriceUsd\
-      }\
-     }'
+       ohlc(slug: "' + project_slug + '",\
+            from: "' + toUTC_(from) + '",\
+            to: "' + toUTC_(to) + '",\
+            interval: "1d") {\
+         datetime\
+         closePriceUsd\
+         highPriceUsd\
+         lowPriceUsd\
+         openPriceUsd\
+       }\
+    }'
   };
 
   return graphQLTimeseriesQuery_(query, 'ohlc', ['closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']);
@@ -235,16 +235,16 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
 
   var query = {
     'query': '{\
-      priceVolumeDiff(currency: "' + currency + '",\
-                      ticker: "' + project_ticker + '",\
-                      from: "' + toUTC_(from) + '",\
-                      to: "' + toUTC_(to) + '",\
-                      interval: "1d") {\
-        datetime\
-        priceChange\
-        priceVolumeDiff\
-        volumeChange\
-      }\
+       priceVolumeDiff(currency: "' + currency + '",\
+                       ticker: "' + project_ticker + '",\
+                       from: "' + toUTC_(from) + '",\
+                       to: "' + toUTC_(to) + '",\
+                       interval: "1d") {\
+         datetime\
+         priceChange\
+         priceVolumeDiff\
+         volumeChange\
+       }\
      }'
   };
 
@@ -257,10 +257,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS() {
-  var query = {
-    'query': '{ socialVolumeProjects }'
-  };
-
+  var query = { 'query': '{ socialVolumeProjects }' };
   var result = graphQLQuery_(query, 'socialVolumeProjects');
   return ['SV Projects'].concat(result);
 };
@@ -280,15 +277,15 @@ function SAN_DAILY_SOCIAL_VOLUME(project_slug, from, to, social_volume_type) {
 
   var query = {
     'query': '{\
-socialVolume(slug: "' + project_slug + '",\
-             from: "' + toUTC_(from) + '",\
-             to: "' + toUTC_(to) + '",\
-             socialVolumeType: ' + social_volume_type + ',\
-             interval: "1d") {\
-        mentionsCount\
-        datetime\
-      }\
-     }'
+       socialVolume(slug: "' + project_slug + '",\
+                   from: "' + toUTC_(from) + '",\
+                   to: "' + toUTC_(to) + '",\
+                   socialVolumeType: ' + social_volume_type + ',\
+                   interval: "1d") {\
+         mentionsCount\
+         datetime\
+       }\
+    }'
   };
 
   return graphQLTimeseriesQuery_(query, 'socialVolume', ['mentionsCount']);
