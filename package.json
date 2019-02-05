@@ -4,6 +4,7 @@
   "description": "Google spreadsheet add-on for consuming Santiment data",
   "main": "index.js",
   "scripts": {
+    "push": "clasp push -f",
     "pretest": "standard",
     "test": "mocha --timeout 20000 --reporter spec"
   },
