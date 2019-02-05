@@ -218,7 +218,6 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
     const from = formatDate(subDays(now, numberOfDays))
     const volumes = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
-    console.log(volumes)
     expect(volumes.length).to.equal(numberOfDays + 1) // first row is headers
   })
 })
