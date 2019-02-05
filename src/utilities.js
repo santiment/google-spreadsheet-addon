@@ -28,23 +28,24 @@ function enable_() {
 }
 
 function graphQLTimeseriesQuery_(query, query_name, fields) {
-  var response = UrlFetchApp.fetch("https://api.santiment.net/graphql", {
-    'muteHttpExceptions': true,
-    'method' : 'post',
-    'contentType': 'application/json',
-    'payload' : JSON.stringify(query)
-  });
-  if (response.getResponseCode() != 200) {
-    throw new Error(JSON.parse(response)["errors"]["detail"]);
-  }
+  var data = graphQLQuery_(query, query_name)
+  var headers = [["date"].concat(fields)]
 
-  var data = JSON.parse(response)["data"][query_name];
-
-  return [["date"].concat(fields)].concat(data.map(function(data_point) {
+  var values = data.map(function(data_point) {
     return [
-      new Date(data_point['datetime']).toISOString().slice(0,10)
+      formatDatetimeField_(data_point['datetime'])
     ].concat(fields.map(function(field) { return data_point[field]; }))
-  }));
+  })
+
+  return headers.concat(values)
+}
+
+function formatDatetimeField_(field) {
+  return new Date(field).toISOString().slice(0,10)
+}
+
+function formatNumber_(field) {
+  return parseFloat(field || 0)
 }
 
 function graphQLQuery_(query, query_name) {
@@ -54,11 +55,12 @@ function graphQLQuery_(query, query_name) {
     'contentType': 'application/json',
     'payload' : JSON.stringify(query)
   });
+
   if (response.getResponseCode() != 200) {
-    throw new Error(JSON.parse(response)["errors"]["detail"]);
+    throw new Error(JSON.parse(response.getContentText())["errors"]["detail"]);
   }
 
-  return JSON.parse(response)["data"][query_name];
+  return JSON.parse(response.getContentText())["data"][query_name];
 }
 
 function checkForHistoricData_(from) {
@@ -72,8 +74,4 @@ function checkForHistoricData_(from) {
 function toUTC_(date) {
   var timezone = SpreadsheetApp.getActive().getSpreadsheetTimeZone();
   return Utilities.formatDate(new Date(date), timezone, "yyyy-MM-dd'T'HH:mm:ss'Z'");
-}
-
-function test_() {
-  Logger.log(SAN_DAILY_SOCIAL_VOLUME("santiment", "2018-10-04", "2018-10-14", "TELEGRAM_CHATS_OVERVIEW"));
 }

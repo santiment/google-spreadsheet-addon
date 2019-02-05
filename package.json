@@ -1,0 +1,35 @@
+{
+  "name": "google-spreadsheet-addon",
+  "version": "0.0.1",
+  "description": "Google spreadsheet add-on for consuming Santiment data",
+  "main": "index.js",
+  "scripts": {
+    "push": "clasp push -f",
+    "pretest": "standard",
+    "test": "mocha --timeout 20000 --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santiment/google-spreadsheet-addon.git"
+  },
+  "author": "Santiment",
+  "bugs": {
+    "url": "https://github.com/santiment/google-spreadsheet-addon/issues"
+  },
+  "homepage": "https://github.com/santiment/google-spreadsheet-addon#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@google/clasp": "^2.0.1",
+    "chai": "^4.2",
+    "date-fns": "^1.30.1",
+    "gas-local": "^1.3.1",
+    "mocha": "^5.2",
+    "standard": "^12.0.1",
+    "sugar": "^2.0.4",
+    "sync-request": "^4.0.1"
+  },
+  "standard": {
+    "global": [ "describe", "it", "expect", "san"],
+    "ignore": ["src/*"]
+  }
+}
