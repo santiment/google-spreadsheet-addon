@@ -1,4 +1,5 @@
 var API_KEY = "API_KEY";
+var HISTORIC_DATA_THRESHOLD = 90
 
 /**
  * Runs when the add-on is installed.
@@ -56,6 +57,10 @@ function getUserProperty_(key) {
   return PropertiesService.getUserProperties().getProperty(key);
 }
 
+function hasApiKey_() {
+  return !!getUserProperty_(API_KEY)
+}
+
 function graphQLTimeseriesQuery_(query, query_name, fields) {
   var data = graphQLQuery_(query, query_name)
   var headers = [["date"].concat(fields)]
@@ -93,11 +98,15 @@ function graphQLQuery_(query, query_name) {
 }
 
 function checkForHistoricData_(from) {
-  var oneDay = 24 * 60 * 60 * 1000;
-  var timeSpan = ((new Date()) - from) / oneDay;
-  if (timeSpan > 90) {
+  if (dataIsHistoric_(from) && !hasApiKey_()) {
     throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
   }
+}
+
+function dataIsHistoric_(from) {
+  var oneDay = 24 * 60 * 60 * 1000;
+  var timeSpan = ((new Date()) - from) / oneDay;
+  return timeSpan > HISTORIC_DATA_THRESHOLD;
 }
 
 function toUTC_(date) {
