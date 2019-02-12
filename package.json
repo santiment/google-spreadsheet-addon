@@ -29,7 +29,7 @@
     "sync-request": "^4.0.1"
   },
   "standard": {
-    "global": [ "describe", "it", "expect", "san"],
+    "global": [ "describe", "it", "expect", "beforeEach", "san"],
     "ignore": ["src/*"]
   }
 }

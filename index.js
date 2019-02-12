@@ -4,6 +4,7 @@ const path = require('path')
 
 const UrlFetchApp = require('./gas_mock/UrlFetchApp')
 const HTTPResponse = require('./gas_mock/HTTPResponse')
+const PropertiesService = require('./gas_mock/PropertiesService')
 const spreadsheetApp = require('./gas_mock/spreadsheetApp')
 const utilities = require('./gas_mock/utilities')
 
@@ -14,6 +15,7 @@ function gasMock () {
     Utilities: utilities.getMock(),
     HTTPResponse: HTTPResponse.getMock(),
     SpreadsheetApp: spreadsheetApp.getMock(),
+    PropertiesService: PropertiesService.getMock(),
     __proto__: defaultMock
   }
 
