@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 require('./helper.js')
 
 const dateFnsFormat = require('date-fns/format')
@@ -69,6 +71,16 @@ describe('SAN_DAILY_PRICES', () => {
 
     expect(prices.length).to.equal(numberOfDays + 1) // first array is headers
   })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_PRICES(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
+  })
 })
 
 describe('SAN_ERC20_PROJECTS', () => {
@@ -115,6 +127,16 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
 
     expect(addresses.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
   })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
+  })
 })
 
 describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
@@ -136,6 +158,16 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
     const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
 
     expect(transcationVolumes.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
   })
 })
 
@@ -162,6 +194,16 @@ describe('SAN_DAILY_OHLC', () => {
 
     expect(ohlc.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
   })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_OHLC(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
+  })
 })
 
 describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
@@ -185,6 +227,16 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
     const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
 
     expect(volumes.length).to.equal(numberOfDays)
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
   })
 })
 
@@ -219,5 +271,15 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
     const volumes = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
     expect(volumes.length).to.equal(numberOfDays + 1) // first row is headers
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+    checkForHistoricDataMock.restore()
   })
 })
