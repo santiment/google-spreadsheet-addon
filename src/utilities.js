@@ -20,7 +20,6 @@ function onInstall() {
        .addToUi();
  }
 
-
 /**
  * Enables the add-on on for the current spreadsheet (simply by running) and
  * shows a popup informing the user of the new functions that are available.
@@ -61,40 +60,12 @@ function hasApiKey_() {
   return !!getUserProperty_(API_KEY)
 }
 
-function graphQLTimeseriesQuery_(query, query_name, fields) {
-  var data = graphQLQuery_(query, query_name)
-  var headers = [["date"].concat(fields)]
-
-  var values = data.map(function(data_point) {
-    return [
-      formatDatetimeField_(data_point['datetime'])
-    ].concat(fields.map(function(field) { return data_point[field]; }))
-  })
-
-  return headers.concat(values)
-}
-
 function formatDatetimeField_(field) {
   return new Date(field).toISOString().slice(0,10)
 }
 
 function formatNumber_(field) {
   return parseFloat(field || 0)
-}
-
-function graphQLQuery_(query, query_name) {
-  var response = UrlFetchApp.fetch("https://api.santiment.net/graphql", {
-    'muteHttpExceptions': true,
-    'method' : 'post',
-    'contentType': 'application/json',
-    'payload' : JSON.stringify(query)
-  });
-
-  if (response.getResponseCode() != 200) {
-    throw new Error(JSON.parse(response.getContentText())["errors"]["detail"]);
-  }
-
-  return JSON.parse(response.getContentText())["data"][query_name];
 }
 
 function checkForHistoricData_(from) {
