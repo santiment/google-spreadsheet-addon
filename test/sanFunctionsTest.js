@@ -277,6 +277,8 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
 })
 
 describe('SAN_DAILY_SOCIAL_VOLUME', () => {
+  const token = 'bitcoin'
+
   const expected = {
     date: 'string',
     mentionsCount: 'number'
