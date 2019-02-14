@@ -12,3 +12,5 @@ global.expect = expect
 global.gas = gas
 global.san = san
 global.sinon = sinon
+
+beforeEach(() => san.PropertiesService.init())
