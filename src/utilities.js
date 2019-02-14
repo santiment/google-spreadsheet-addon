@@ -1,6 +1,3 @@
-var API_KEY = "API_KEY";
-var HISTORIC_DATA_THRESHOLD = 90
-
 /**
  * Runs when the add-on is installed.
  */
@@ -56,32 +53,12 @@ function getUserProperty_(key) {
   return PropertiesService.getUserProperties().getProperty(key);
 }
 
-function apiKey_() {
-  return getUserProperty_(API_KEY)
-}
-
-function hasApiKey_() {
-  return !!apiKey_()
-}
-
 function formatDatetimeField_(field) {
   return new Date(field).toISOString().slice(0,10)
 }
 
 function formatNumber_(field) {
   return parseFloat(field || 0)
-}
-
-function checkForHistoricData_(from) {
-  if (dataIsHistoric_(from) && !hasApiKey_()) {
-    throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
-  }
-}
-
-function dataIsHistoric_(from) {
-  var oneDay = 24 * 60 * 60 * 1000;
-  var timeSpan = ((new Date()) - from) / oneDay;
-  return timeSpan > HISTORIC_DATA_THRESHOLD;
 }
 
 function toUTC_(date) {

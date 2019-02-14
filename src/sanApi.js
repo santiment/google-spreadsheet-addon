@@ -1,4 +1,21 @@
 var SANTIMENT_GRAPHQL_ENDPOINT = "https://api.santiment.net/graphql"
+var API_KEY = "API_KEY";
+var HISTORIC_DATA_THRESHOLD = 90
+
+function apiKey_() { return getUserProperty_(API_KEY) }
+function hasApiKey_() { return !!apiKey_() }
+
+function checkForHistoricData_(from) {
+  if (dataIsHistoric_(from) && !hasApiKey_()) {
+    throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
+  }
+}
+
+function dataIsHistoric_(from) {
+  var oneDay = 24 * 60 * 60 * 1000;
+  var timeSpan = ((new Date()) - from) / oneDay;
+  return timeSpan > HISTORIC_DATA_THRESHOLD;
+}
 
 function buildRequestOptions_(query) {
   var requestOptions = {
