@@ -1,15 +1,26 @@
 var SANTIMENT_GRAPHQL_ENDPOINT = "https://api.santiment.net/graphql"
 
-function graphQLQuery_(query, query_name) {
-  var response = UrlFetchApp.fetch(SANTIMENT_GRAPHQL_ENDPOINT, {
+function buildRequestOptions_(query) {
+  var requestOptions = {
     'muteHttpExceptions': true,
     'method' : 'post',
     'contentType': 'application/json',
     'payload' : JSON.stringify(query)
-  });
+  }
+
+  if (hasApiKey_()) {
+    requestOptions['headers'] = { Authorization: 'Apikey ' + apiKey_() }
+  }
+
+  return requestOptions
+}
+
+function graphQLQuery_(query, query_name) {
+  var response = UrlFetchApp.fetch(SANTIMENT_GRAPHQL_ENDPOINT, buildRequestOptions_(query));
 
   if (response.getResponseCode() != 200) {
-    throw new Error(JSON.parse(response.getContentText())["errors"]["detail"]);
+    var errorMessage = JSON.stringify(JSON.parse(response.getContentText())["errors"][0]["message"]);
+    throw new Error("Code: " + response.getResponseCode() + ", Message: " + errorMessage);
   }
 
   return JSON.parse(response.getContentText())["data"][query_name];

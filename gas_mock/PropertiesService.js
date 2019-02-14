@@ -58,6 +58,8 @@ class PropertiesService {
   }
 }
 
+PropertiesService.init()
+
 const getMock = () => PropertiesService
 
 module.exports = { getMock }

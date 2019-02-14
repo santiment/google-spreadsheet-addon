@@ -56,8 +56,12 @@ function getUserProperty_(key) {
   return PropertiesService.getUserProperties().getProperty(key);
 }
 
+function apiKey_() {
+  return getUserProperty_(API_KEY)
+}
+
 function hasApiKey_() {
-  return !!getUserProperty_(API_KEY)
+  return !!apiKey_()
 }
 
 function formatDatetimeField_(field) {
