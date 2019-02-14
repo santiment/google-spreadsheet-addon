@@ -5,6 +5,11 @@ var HISTORIC_DATA_THRESHOLD = 90
 function apiKey_() { return getUserProperty_(API_KEY) }
 function hasApiKey_() { return !!apiKey_() }
 
+function canAccessHistoricData_() {
+  var response = fetchCurrentUserPermissions_()
+  return ((response || {}).permissions || {}).spreadsheet === true
+}
+
 function checkForHistoricData_(from) {
   if (dataIsHistoric_(from) && !hasApiKey_()) {
     throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
@@ -41,6 +46,11 @@ function graphQLQuery_(query, query_name) {
   }
 
   return JSON.parse(response.getContentText())["data"][query_name];
+}
+
+function fetchCurrentUserPermissions_() {
+  var query = { 'query': '{currentUser {permissions {spreadsheet}}}' }
+  return graphQLQuery_(query, 'currentUser');
 }
 
 function fetchDailyPrices_(slug, from, to) {

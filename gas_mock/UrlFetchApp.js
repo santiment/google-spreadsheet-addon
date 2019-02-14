@@ -5,6 +5,10 @@ class UrlFetchApp {
     this.response = response
   }
 
+  _request () {
+    return request.apply(null, arguments)
+  }
+
   fetch (url, params) {
     let method = 'GET'
     params = params || {}
@@ -14,9 +18,9 @@ class UrlFetchApp {
 
     let response
     if (method === 'POST') {
-      response = request(method, url, { json: JSON.parse(params['payload']), headers: headers })
+      response = this._request(method, url, { json: JSON.parse(params['payload']), headers: headers })
     } else {
-      response = request(method, url)
+      response = this._request(method, url)
     }
 
     this.response.setContentText(response.body)
