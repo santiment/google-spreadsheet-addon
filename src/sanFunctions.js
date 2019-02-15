@@ -9,7 +9,7 @@
 function SAN_DAILY_PRICES(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var results = fetchDailyPrices_(project_slug, from, to)
+  var results = new ApiClient_(new Connection_()).fetchDailyPrices(project_slug, from, to)
   var headers = ['date', 'priceUsd', 'volume']
 
   return [headers].concat(results.map(function(result) {
@@ -27,7 +27,7 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
  * @customfunction
  */
 function SAN_ALL_PROJECTS() {
-  var results = fetchAllProjects_()
+  var results = new ApiClient_(new Connection_()).fetchAllProjects()
   var headers = [
     'slug',
     'name',
@@ -65,7 +65,7 @@ function SAN_ALL_PROJECTS() {
  * @customfunction
  */
 function SAN_ERC20_PROJECTS() {
-  var results = fetchErc20Projects_();
+  var results = new ApiClient_(new Connection_()).fetchErc20Projects()
 
   var headers = [
     'slug',
@@ -111,7 +111,7 @@ function SAN_ERC20_PROJECTS() {
 function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var results = fetchDailyActiveAddresses_(project_slug, from, to);
+  var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(project_slug, from, to)
   var headers = ['date', 'activeAddresses']
 
   return [headers].concat(results.map(function(result) {
@@ -133,7 +133,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
 function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var results = fetchDailyTransactionVolume_(project_slug, from, to);
+  var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(project_slug, from, to)
   var headers = ['date', 'transactionVolume']
 
   return [headers].concat(results.map(function(result) {
@@ -155,7 +155,7 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
 function SAN_DAILY_OHLC(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var results = fetchDailyOhlc_(project_slug, from, to);
+  var results = new ApiClient_(new Connection_()).fetchDailyOhlc(project_slug, from, to)
   var headers = ['date', 'closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']
 
   return [headers].concat(results.map(function(result) {
@@ -181,7 +181,7 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
 function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
   checkForHistoricData_(from)
 
-  var results = fetchDailyPriceVolumeDiff_(currency, project_ticker, from, to)
+  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, project_ticker, from, to)
   var headers = ['date', 'priceChange', 'priceVolumeDiff', 'volumeChange']
 
   return [headers].concat(results.map(function(result) {
@@ -200,7 +200,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS() {
-  var results = fetchSocialVolumeProjects_();
+  var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
   var headers = ['SV Projects'];
   return headers.concat(results);
 };
@@ -218,7 +218,7 @@ function SAN_SOCIAL_VOLUME_PROJECTS() {
 function SAN_DAILY_SOCIAL_VOLUME(project_slug, from, to, social_volume_type) {
   checkForHistoricData_(from)
 
-  var results = fetchDailySocialVolume_(project_slug, from, to, social_volume_type);
+  var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(project_slug, from, to, social_volume_type)
   var headers = ['date', 'mentionsCount']
 
   return [headers].concat(results.map(function(result) {

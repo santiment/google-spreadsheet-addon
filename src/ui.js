@@ -34,13 +34,18 @@ function addApiKeyDialog_() {
   var title = 'Add an API key';
   var inputCaption = 'Please enter your API key:';
 
-  var result = ui.prompt(title. inputCaption, ui.ButtonSet.OK_CANCEL);
+  var result = ui.prompt(title, inputCaption, ui.ButtonSet.OK_CANCEL);
   var button = result.getSelectedButton();
   var input = result.getResponseText();
 
   if (button == ui.Button.OK) {
-    setUserProperty_(API_KEY, input);
+    var apiClient = new ApiClient_(new Connection_(input))
+    if (apiClient.hasValidApiKey() === true) {
+      setUserProperty_(API_KEY, input);
 
-    ui.alert('Your API key is ' + getUserProperty_(API_KEY));
+      ui.alert('Your API key is valid and has been saved');
+    } else {
+      ui.alert('Your API key is not valid and has not been saved!');
+    }
   }
 }

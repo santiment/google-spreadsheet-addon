@@ -1,59 +1,18 @@
-var SANTIMENT_GRAPHQL_ENDPOINT = "https://api.santiment.net/graphql"
-var API_KEY = "API_KEY";
-var HISTORIC_DATA_THRESHOLD = 90
+function ApiClient_ (conn) {
+  this.conn = conn
+}
 
-function apiKey_() { return getUserProperty_(API_KEY) }
-function hasApiKey_() { return !!apiKey_() }
-
-function canAccessHistoricData_() {
-  var response = fetchCurrentUserPermissions_()
+ApiClient_.prototype.hasValidApiKey = function () {
+  var response = this.fetchCurrentUserPermissions()
   return ((response || {}).permissions || {}).spreadsheet === true
 }
 
-function checkForHistoricData_(from) {
-  if (dataIsHistoric_(from) && !hasApiKey_()) {
-    throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
-  }
-}
-
-function dataIsHistoric_(from) {
-  var oneDay = 24 * 60 * 60 * 1000;
-  var timeSpan = ((new Date()) - from) / oneDay;
-  return timeSpan > HISTORIC_DATA_THRESHOLD;
-}
-
-function buildRequestOptions_(query) {
-  var requestOptions = {
-    'muteHttpExceptions': true,
-    'method' : 'post',
-    'contentType': 'application/json',
-    'payload' : JSON.stringify(query)
-  }
-
-  if (hasApiKey_()) {
-    requestOptions['headers'] = { Authorization: 'Apikey ' + apiKey_() }
-  }
-
-  return requestOptions
-}
-
-function graphQLQuery_(query, query_name) {
-  var response = UrlFetchApp.fetch(SANTIMENT_GRAPHQL_ENDPOINT, buildRequestOptions_(query));
-
-  if (response.getResponseCode() != 200) {
-    var errorMessage = JSON.stringify(JSON.parse(response.getContentText())["errors"][0]["message"]);
-    throw new Error("Code: " + response.getResponseCode() + ", Message: " + errorMessage);
-  }
-
-  return JSON.parse(response.getContentText())["data"][query_name];
-}
-
-function fetchCurrentUserPermissions_() {
+ApiClient_.prototype.fetchCurrentUserPermissions = function () {
   var query = { 'query': '{currentUser {permissions {spreadsheet}}}' }
-  return graphQLQuery_(query, 'currentUser');
+  return this.conn.graphQLQuery(query, 'currentUser')
 }
 
-function fetchDailyPrices_(slug, from, to) {
+ApiClient_.prototype.fetchDailyPrices = function (slug, from, to) {
   var query = {
     'query': '{\
        historyPrice(slug: "' + slug + '",\
@@ -67,10 +26,10 @@ function fetchDailyPrices_(slug, from, to) {
      }'
   };
 
-  return graphQLQuery_(query, 'historyPrice');
+  return this.conn.graphQLQuery(query, 'historyPrice')
 }
 
-function fetchAllProjects_() {
+ApiClient_.prototype.fetchAllProjects = function () {
   var query = {
     'query': '{\
        allProjects {\
@@ -89,10 +48,10 @@ function fetchAllProjects_() {
      }'
   };
 
-  return graphQLQuery_(query, 'allProjects');
+  return this.conn.graphQLQuery(query, 'allProjects')
 }
 
-function fetchErc20Projects_() {
+ApiClient_.prototype.fetchErc20Projects = function () {
   var query = {
     'query': '{\
        allErc20Projects {\
@@ -112,10 +71,10 @@ function fetchErc20Projects_() {
      }'
   };
 
-  return graphQLQuery_(query, 'allErc20Projects');
+  return this.conn.graphQLQuery(query, 'allErc20Projects');
 }
 
-function fetchDailyActiveAddresses_(slug, from, to) {
+ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
   var query = {
     'query': '{\
        dailyActiveAddresses(slug: "' + slug + '",\
@@ -128,10 +87,10 @@ function fetchDailyActiveAddresses_(slug, from, to) {
      }'
   };
 
-  return graphQLQuery_(query, 'dailyActiveAddresses');
+  return this.conn.graphQLQuery(query, 'dailyActiveAddresses');
 }
 
-function fetchDailyTransactionVolume_(slug, from, to) {
+ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
   var query = {
     'query': '{\
        transactionVolume(slug: "' + slug + '",\
@@ -144,10 +103,10 @@ function fetchDailyTransactionVolume_(slug, from, to) {
      }'
   };
 
-  return graphQLQuery_(query, 'transactionVolume');
+  return this.conn.graphQLQuery(query, 'transactionVolume');
 }
 
-function fetchDailyOhlc_(slug, from, to) {
+ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
   var query = {
     'query': '{\
        ohlc(slug: "' + slug + '",\
@@ -163,10 +122,10 @@ function fetchDailyOhlc_(slug, from, to) {
     }'
   };
 
-  return graphQLQuery_(query, 'ohlc');
+  return this.conn.graphQLQuery(query, 'ohlc');
 }
 
-function fetchDailyPriceVolumeDiff_(currency, ticker, from, to) {
+ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, ticker, from, to) {
   var query = {
     'query': '{\
        priceVolumeDiff(currency: "' + currency + '",\
@@ -182,15 +141,15 @@ function fetchDailyPriceVolumeDiff_(currency, ticker, from, to) {
      }'
   };
 
-  return graphQLQuery_(query, 'priceVolumeDiff');
+  return this.conn.graphQLQuery(query, 'priceVolumeDiff');
 }
 
-function fetchSocialVolumeProjects_() {
+ApiClient_.prototype.fetchSocialVolumeProjects = function () {
   var query = { 'query': '{ socialVolumeProjects }' };
-  return graphQLQuery_(query, 'socialVolumeProjects');
+  return this.conn.graphQLQuery(query, 'socialVolumeProjects');
 }
 
-function fetchDailySocialVolume_(slug, from, to, socialVolumeType) {
+ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVolumeType) {
   var query = {
     'query': '{\
        socialVolume(slug: "' + slug + '",\
@@ -204,5 +163,5 @@ function fetchDailySocialVolume_(slug, from, to, socialVolumeType) {
     }'
   };
 
-  return graphQLQuery_(query, 'socialVolume');
+  return this.conn.graphQLQuery(query, 'socialVolume');
 }

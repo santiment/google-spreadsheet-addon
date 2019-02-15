@@ -1,9 +1,27 @@
+var API_KEY = "API_KEY";
+var HISTORIC_DATA_THRESHOLD = 90
+
 function setUserProperty_(key, value) {
   PropertiesService.getUserProperties().setProperty(key, value);
 }
 
 function getUserProperty_(key) {
   return PropertiesService.getUserProperties().getProperty(key);
+}
+
+function apiKeyProperty_() { return getUserProperty_(API_KEY) }
+function hasApiKeyProperty_() { return !!apiKeyProperty_() }
+
+function checkForHistoricData_(from) {
+  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) {
+    throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
+  }
+}
+
+function requestedDataIsHistoric_(from) {
+  var oneDay = 24 * 60 * 60 * 1000;
+  var timeSpan = ((new Date()) - from) / oneDay;
+  return timeSpan > HISTORIC_DATA_THRESHOLD;
 }
 
 function formatDatetimeField_(field) {
