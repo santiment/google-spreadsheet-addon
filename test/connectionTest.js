@@ -40,3 +40,42 @@ describe('headers', () => {
     expect(requestOptions['headers']).to.not.exist
   })
 })
+
+describe('parsing of response', () => {
+  it('returns errors when there are any', () => {
+    const stub = sinon.stub(san.UrlFetchApp, '_request')
+
+    stub.returns(
+      { body: JSON.stringify({
+        'errors': [
+          {
+            'locations': [
+              {
+                'column': 0,
+                'line': 3
+              }
+            ],
+            'message': 'Cannot query field "marketcapppp" on type "PricePoint". Did you mean "marketcap"?'
+          },
+          {
+            'locations': [
+              {
+                'column': 0,
+                'line': 1
+              }
+            ],
+            'message': 'Argument "from" has invalid value "2018-06-01".'
+          }
+        ]
+      }),
+      statusCode: 400 })
+
+    const conn = new san.Connection_()
+
+    const expectedError = 'code: 400, messages: Cannot query field "marketcapppp" on type "PricePoint".' +
+                          ' Did you mean "marketcap"?,Argument "from" has invalid value "2018-06-01".'
+    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+
+    stub.restore()
+  })
+})

@@ -6,7 +6,7 @@ function Connection_(apiKey, url) {
   this.url = url || SANTIMENT_GRAPHQL_URL
 }
 
-Connection_.prototype.buildRequestOptions = function buildRequestOptions(query) {
+Connection_.prototype.buildRequestOptions = function (query) {
   var requestOptions = {
     'muteHttpExceptions': true,
     'method' : 'post',
@@ -27,8 +27,8 @@ Connection_.prototype.fetchQuery = function (query) {
 
 Connection_.prototype.parseResponse = function (response, queryName) {
   if (response.getResponseCode() != 200) {
-    var errorMessage = JSON.stringify(JSON.parse(response.getContentText())["errors"][0]["message"]);
-    throw new Error("Code: " + response.getResponseCode() + ", Message: " + errorMessage);
+    var errorMessage = JSON.parse(response.getContentText())["errors"].map(function(error) { return error["message"]});
+    throw new Error("code: " + response.getResponseCode() + ", messages: " + errorMessage);
   }
 
   return JSON.parse(response.getContentText())["data"][queryName]
