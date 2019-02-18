@@ -79,13 +79,12 @@ describe('SAN_DAILY_PRICES', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_PRICES(token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })
 
@@ -140,13 +139,12 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })
 
@@ -177,13 +175,12 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })
 
@@ -217,13 +214,12 @@ describe('SAN_DAILY_OHLC', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_OHLC(token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })
 
@@ -254,13 +250,12 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })
 
@@ -304,12 +299,11 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   })
 
   it('checks for historic data', () => {
-    const checkForHistoricDataMock = sinon.mock(san).expects('checkForHistoricData_')
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
-    checkForHistoricDataMock.restore()
   })
 })

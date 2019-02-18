@@ -36,8 +36,10 @@
       "it",
       "expect",
       "beforeEach",
+      "afterEach",
       "san",
-      "sinon"
+      "sinon",
+      "sandbox"
     ],
     "ignore": [
       "src/*"

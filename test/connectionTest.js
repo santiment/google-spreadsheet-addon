@@ -43,7 +43,7 @@ describe('headers', () => {
 
 describe('parsing of response', () => {
   it('returns errors when there are any', () => {
-    const stub = sinon.stub(san.UrlFetchApp, '_request')
+    const stub = sandbox.stub(san.UrlFetchApp, '_request')
 
     stub.returns(
       { body: JSON.stringify({
@@ -75,7 +75,5 @@ describe('parsing of response', () => {
     const expectedError = 'code: 400, messages: Cannot query field "marketcapppp" on type "PricePoint".' +
                           ' Did you mean "marketcap"?,Argument "from" has invalid value "2018-06-01".'
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
-
-    stub.restore()
   })
 })
