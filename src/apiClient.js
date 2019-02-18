@@ -4,7 +4,7 @@ function ApiClient_ (conn) {
 
 ApiClient_.prototype.hasValidApiKey = function () {
   var response = this.fetchCurrentUserPermissions()
-  return ((response || {}).permissions || {}).spreadsheet === true
+  return (response && response.permissions && response.permissions.spreadsheet) === true
 }
 
 ApiClient_.prototype.fetchCurrentUserPermissions = function () {
