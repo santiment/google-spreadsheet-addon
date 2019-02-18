@@ -46,7 +46,7 @@ describe('requestedDataIsHistoric_', () => {
 describe('checkForHistoricData_', () => {
   it('throws an error when historic data is requested and api key is not present', () => {
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
-    expect(() => san.checkForHistoricData_(from)).to.throw("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.")
+    expect(() => san.checkForHistoricData_(from)).to.throw('Full historical data is only accessible to premium users. Add your API key to use it.')
   })
 
   it("doesn't throw an error when requested data is not historic", () => {

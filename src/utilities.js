@@ -14,7 +14,7 @@ function hasApiKeyProperty_() { return !!apiKeyProperty_() }
 
 function checkForHistoricData_(from) {
   if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) {
-    throw new Error("You can't use the add-on for historic data at the moment. Please select a starting date within three months in the past.");
+    throw new Error('Full historical data is only accessible to premium users. Add your API key to use it.');
   }
 }
 
