@@ -36,7 +36,7 @@ function addApiKeyDialog_() {
 
   var result = ui.prompt(title, inputCaption, ui.ButtonSet.OK_CANCEL);
   var button = result.getSelectedButton();
-  var input = result.getResponseText();
+  var input = result.getResponseText().trim();
 
   if (button == ui.Button.OK) {
     var apiClient = new ApiClient_(new Connection_(input))
