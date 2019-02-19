@@ -6,19 +6,19 @@
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
  * @customfunction
  */
-function SAN_DAILY_PRICES(project_slug, from, to) {
+function SAN_DAILY_PRICES (project_slug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPrices(project_slug, from, to)
   var headers = ['date', 'priceUsd', 'volume']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['priceUsd']),
-      formatNumber_(result['volume'])
-    ];
-  }));
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.priceUsd),
+      formatNumber_(result.volume)
+    ]
+  }))
 }
 
 /**
@@ -26,7 +26,7 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
  *
  * @customfunction
  */
-function SAN_ALL_PROJECTS() {
+function SAN_ALL_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchAllProjects()
   var headers = [
     'slug',
@@ -40,23 +40,23 @@ function SAN_ALL_PROJECTS() {
     'ethSpent7d',
     'ethSpent1d',
     'ticker'
-  ];
+  ]
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      result['slug'],
-      result['name'],
-      formatNumber_(result['priceUsd']),
-      formatNumber_(result['marketcapUsd']),
-      formatNumber_(result['volumeUsd']),
-      formatNumber_(result['usdBalance']),
-      formatNumber_(result['ethBalance']),
-      formatNumber_(result['ethSpent30d']),
-      formatNumber_(result['ethSpent7d']),
-      formatNumber_(result['ethSpent1d']),
-      result['ticker']
-    ];
-  }));
+      result.slug,
+      result.name,
+      formatNumber_(result.priceUsd),
+      formatNumber_(result.marketcapUsd),
+      formatNumber_(result.volumeUsd),
+      formatNumber_(result.usdBalance),
+      formatNumber_(result.ethBalance),
+      formatNumber_(result.ethSpent30d),
+      formatNumber_(result.ethSpent7d),
+      formatNumber_(result.ethSpent1d),
+      result.ticker
+    ]
+  }))
 }
 
 /**
@@ -64,7 +64,7 @@ function SAN_ALL_PROJECTS() {
  *
  * @customfunction
  */
-function SAN_ERC20_PROJECTS() {
+function SAN_ERC20_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchErc20Projects()
 
   var headers = [
@@ -80,24 +80,24 @@ function SAN_ERC20_PROJECTS() {
     'ethSpent1d',
     'ticker',
     'mainContractAddress'
-  ];
+  ]
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      result['slug'],
-      result['name'],
-      formatNumber_(result['priceUsd']),
-      formatNumber_(result['marketcapUsd']),
-      formatNumber_(result['volumeUsd']),
-      formatNumber_(result['usdBalance']),
-      formatNumber_(result['ethBalance']),
-      formatNumber_(result['ethSpent30d']),
-      formatNumber_(result['ethSpent7d']),
-      formatNumber_(result['ethSpent1d']),
-      result['ticker'],
-      result['mainContractAddress']
-    ];
-  }));
+      result.slug,
+      result.name,
+      formatNumber_(result.priceUsd),
+      formatNumber_(result.marketcapUsd),
+      formatNumber_(result.volumeUsd),
+      formatNumber_(result.usdBalance),
+      formatNumber_(result.ethBalance),
+      formatNumber_(result.ethSpent30d),
+      formatNumber_(result.ethSpent7d),
+      formatNumber_(result.ethSpent1d),
+      result.ticker,
+      result.mainContractAddress
+    ]
+  }))
 }
 
 /**
@@ -108,18 +108,18 @@ function SAN_ERC20_PROJECTS() {
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
  * @customfunction
  */
-function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
+function SAN_DAILY_ACTIVE_ADDRESSES (project_slug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(project_slug, from, to)
   var headers = ['date', 'activeAddresses']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['activeAddresses']),
-    ];
-  }));
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.activeAddresses)
+    ]
+  }))
 }
 
 /**
@@ -130,19 +130,19 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
  * @customfunction
  */
-function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
+function SAN_DAILY_TRANSACTION_VOLUME (project_slug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(project_slug, from, to)
   var headers = ['date', 'transactionVolume']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['transactionVolume']),
-    ];
-  }));
-};
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.transactionVolume)
+    ]
+  }))
+}
 
 /**
  * Gets the daily open, high, low, and close price values for an asset during a given time frame.
@@ -152,22 +152,22 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
  * @customfunction
  */
-function SAN_DAILY_OHLC(project_slug, from, to) {
+function SAN_DAILY_OHLC (project_slug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyOhlc(project_slug, from, to)
   var headers = ['date', 'closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['closePriceUsd']),
-      formatNumber_(result['highPriceUsd']),
-      formatNumber_(result['lowPriceUsd']),
-      formatNumber_(result['openPriceUsd'])
-    ];
-  }));
-};
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.closePriceUsd),
+      formatNumber_(result.highPriceUsd),
+      formatNumber_(result.lowPriceUsd),
+      formatNumber_(result.openPriceUsd)
+    ]
+  }))
+}
 
 /**
  * Gets the daily price-volume difference technical indicator for a given asset, currency and time period. This indicator measures the difference in trend between price and volume, specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
@@ -178,32 +178,32 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
  * @param {DATE(2018, 10, 10)} to The ending date to fetch the data.
  * @customfunction
  */
-function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
+function SAN_DAILY_PRICE_VOLUME_DIFF (currency, project_ticker, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, project_ticker, from, to)
   var headers = ['date', 'priceChange', 'priceVolumeDiff', 'volumeChange']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['priceChange']),
-      formatNumber_(result['priceVolumeDiff']),
-      formatNumber_(result['volumeChange']),
-    ];
-  }));
-};
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.priceChange),
+      formatNumber_(result.priceVolumeDiff),
+      formatNumber_(result.volumeChange)
+    ]
+  }))
+}
 
 /**
  * Returns a list of project slugs for which there is social volume data.
  *
  * @customfunction
  */
-function SAN_SOCIAL_VOLUME_PROJECTS() {
+function SAN_SOCIAL_VOLUME_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
-  var headers = ['SV Projects'];
-  return headers.concat(results);
-};
+  var headers = ['SV Projects']
+  return headers.concat(results)
+}
 
 /**
  * Returns a list of mentions count for a given project and time
@@ -215,16 +215,16 @@ function SAN_SOCIAL_VOLUME_PROJECTS() {
  *
  * @customfunction
  */
-function SAN_DAILY_SOCIAL_VOLUME(project_slug, from, to, social_volume_type) {
+function SAN_DAILY_SOCIAL_VOLUME (project_slug, from, to, social_volume_type) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(project_slug, from, to, social_volume_type)
   var headers = ['date', 'mentionsCount']
 
-  return [headers].concat(results.map(function(result) {
+  return [headers].concat(results.map(function (result) {
     return [
-      formatDatetimeField_(result['datetime']),
-      formatNumber_(result['mentionsCount'])
-    ];
-  }));
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.mentionsCount)
+    ]
+  }))
 }

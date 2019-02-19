@@ -24,7 +24,7 @@ ApiClient_.prototype.fetchDailyPrices = function (slug, from, to) {
          volume\
        }\
      }'
-  };
+  }
 
   return this.conn.graphQLQuery(query, 'historyPrice')
 }
@@ -46,7 +46,7 @@ ApiClient_.prototype.fetchAllProjects = function () {
          ethSpent1d: ethSpent(days:1)\
        }\
      }'
-  };
+  }
 
   return this.conn.graphQLQuery(query, 'allProjects')
 }
@@ -69,9 +69,9 @@ ApiClient_.prototype.fetchErc20Projects = function () {
          ethSpent1d: ethSpent(days:1)\
        }\
      }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'allErc20Projects');
+  return this.conn.graphQLQuery(query, 'allErc20Projects')
 }
 
 ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
@@ -85,9 +85,9 @@ ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
          datetime\
        }\
      }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'dailyActiveAddresses');
+  return this.conn.graphQLQuery(query, 'dailyActiveAddresses')
 }
 
 ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
@@ -101,9 +101,9 @@ ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
          datetime\
        }\
      }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'transactionVolume');
+  return this.conn.graphQLQuery(query, 'transactionVolume')
 }
 
 ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
@@ -120,9 +120,9 @@ ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
          openPriceUsd\
        }\
     }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'ohlc');
+  return this.conn.graphQLQuery(query, 'ohlc')
 }
 
 ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, ticker, from, to) {
@@ -139,14 +139,14 @@ ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, ticker, fro
          volumeChange\
        }\
      }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'priceVolumeDiff');
+  return this.conn.graphQLQuery(query, 'priceVolumeDiff')
 }
 
 ApiClient_.prototype.fetchSocialVolumeProjects = function () {
-  var query = { 'query': '{ socialVolumeProjects }' };
-  return this.conn.graphQLQuery(query, 'socialVolumeProjects');
+  var query = { 'query': '{ socialVolumeProjects }' }
+  return this.conn.graphQLQuery(query, 'socialVolumeProjects')
 }
 
 ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVolumeType) {
@@ -161,7 +161,7 @@ ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVo
          datetime\
        }\
     }'
-  };
+  }
 
-  return this.conn.graphQLQuery(query, 'socialVolume');
+  return this.conn.graphQLQuery(query, 'socialVolume')
 }
