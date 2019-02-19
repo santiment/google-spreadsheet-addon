@@ -9,20 +9,16 @@
 function SAN_DAILY_PRICES(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       historyPrice(slug: "' + project_slug + '",\
-                    from: "' + toUTC_(from) + '",\
-                    to: "' + toUTC_(to) + '",\
-                    interval: "1d") {\
-         datetime\
-         priceUsd\
-         volume\
-       }\
-     }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchDailyPrices(project_slug, from, to)
+  var headers = ['date', 'priceUsd', 'volume']
 
-  return graphQLTimeseriesQuery_(query, 'historyPrice', ['priceUsd', 'volume']);
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['priceUsd']),
+      formatNumber_(result['volume'])
+    ];
+  }));
 }
 
 /**
@@ -31,24 +27,7 @@ function SAN_DAILY_PRICES(project_slug, from, to) {
  * @customfunction
  */
 function SAN_ALL_PROJECTS() {
-  var query = {
-    'query': '{\
-       allProjects {\
-         slug\
-         name\
-         ticker\
-         marketcapUsd\
-         priceUsd\
-         volumeUsd\
-         ethBalance\
-         usdBalance\
-         ethSpent30d: ethSpent(days:30)\
-         ethSpent7d: ethSpent(days:7)\
-         ethSpent1d: ethSpent(days:1)\
-       }\
-     }'
-  };
-
+  var results = new ApiClient_(new Connection_()).fetchAllProjects()
   var headers = [
     'slug',
     'name',
@@ -63,21 +42,19 @@ function SAN_ALL_PROJECTS() {
     'ticker'
   ];
 
-  var result = graphQLQuery_(query, 'allProjects');
-
-  return [headers].concat(result.map(function(project) {
+  return [headers].concat(results.map(function(result) {
     return [
-      project['slug'],
-      project['name'],
-      formatNumber_(project['priceUsd']),
-      formatNumber_(project['marketcapUsd']),
-      formatNumber_(project['volumeUsd']),
-      formatNumber_(project['usdBalance']),
-      formatNumber_(project['ethBalance']),
-      formatNumber_(project['ethSpent30d']),
-      formatNumber_(project['ethSpent7d']),
-      formatNumber_(project['ethSpent1d']),
-      project['ticker']
+      result['slug'],
+      result['name'],
+      formatNumber_(result['priceUsd']),
+      formatNumber_(result['marketcapUsd']),
+      formatNumber_(result['volumeUsd']),
+      formatNumber_(result['usdBalance']),
+      formatNumber_(result['ethBalance']),
+      formatNumber_(result['ethSpent30d']),
+      formatNumber_(result['ethSpent7d']),
+      formatNumber_(result['ethSpent1d']),
+      result['ticker']
     ];
   }));
 }
@@ -88,24 +65,7 @@ function SAN_ALL_PROJECTS() {
  * @customfunction
  */
 function SAN_ERC20_PROJECTS() {
-  var query = {
-    'query': '{\
-       allErc20Projects {\
-         slug\
-         name\
-         ticker\
-         mainContractAddress\
-         marketcapUsd\
-         priceUsd\
-         volumeUsd\
-         ethBalance\
-         usdBalance\
-         ethSpent30d: ethSpent(days:30)\
-         ethSpent7d: ethSpent(days:7)\
-         ethSpent1d: ethSpent(days:1)\
-       }\
-     }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchErc20Projects()
 
   var headers = [
     'slug',
@@ -121,22 +81,21 @@ function SAN_ERC20_PROJECTS() {
     'ticker',
     'mainContractAddress'
   ];
-  var result = graphQLQuery_(query, 'allErc20Projects');
 
-  return [headers].concat(result.map(function(project) {
+  return [headers].concat(results.map(function(result) {
     return [
-      project['slug'],
-      project['name'],
-      formatNumber_(project['priceUsd']),
-      formatNumber_(project['marketcapUsd']),
-      formatNumber_(project['volumeUsd']),
-      formatNumber_(project['usdBalance']),
-      formatNumber_(project['ethBalance']),
-      formatNumber_(project['ethSpent30d']),
-      formatNumber_(project['ethSpent7d']),
-      formatNumber_(project['ethSpent1d']),
-      project['ticker'],
-      project['mainContractAddress']
+      result['slug'],
+      result['name'],
+      formatNumber_(result['priceUsd']),
+      formatNumber_(result['marketcapUsd']),
+      formatNumber_(result['volumeUsd']),
+      formatNumber_(result['usdBalance']),
+      formatNumber_(result['ethBalance']),
+      formatNumber_(result['ethSpent30d']),
+      formatNumber_(result['ethSpent7d']),
+      formatNumber_(result['ethSpent1d']),
+      result['ticker'],
+      result['mainContractAddress']
     ];
   }));
 }
@@ -152,19 +111,15 @@ function SAN_ERC20_PROJECTS() {
 function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       dailyActiveAddresses(slug: "' + project_slug + '",\
-                            from: "' + toUTC_(from) + '",\
-                            to: "' + toUTC_(to) + '",\
-                            interval: "1d") {\
-         activeAddresses\
-         datetime\
-       }\
-     }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(project_slug, from, to)
+  var headers = ['date', 'activeAddresses']
 
-  return graphQLTimeseriesQuery_(query, 'dailyActiveAddresses', ['activeAddresses']);
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['activeAddresses']),
+    ];
+  }));
 }
 
 /**
@@ -178,19 +133,15 @@ function SAN_DAILY_ACTIVE_ADDRESSES(project_slug, from, to) {
 function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       transactionVolume(slug: "' + project_slug + '",\
-                         from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
-                         interval: "1d") {\
-         transactionVolume\
-         datetime\
-       }\
-     }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(project_slug, from, to)
+  var headers = ['date', 'transactionVolume']
 
-  return graphQLTimeseriesQuery_(query, 'transactionVolume', ['transactionVolume']);
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['transactionVolume']),
+    ];
+  }));
 };
 
 /**
@@ -204,22 +155,18 @@ function SAN_DAILY_TRANSACTION_VOLUME(project_slug, from, to) {
 function SAN_DAILY_OHLC(project_slug, from, to) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       ohlc(slug: "' + project_slug + '",\
-            from: "' + toUTC_(from) + '",\
-            to: "' + toUTC_(to) + '",\
-            interval: "1d") {\
-         datetime\
-         closePriceUsd\
-         highPriceUsd\
-         lowPriceUsd\
-         openPriceUsd\
-       }\
-    }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchDailyOhlc(project_slug, from, to)
+  var headers = ['date', 'closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']
 
-  return graphQLTimeseriesQuery_(query, 'ohlc', ['closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']);
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['closePriceUsd']),
+      formatNumber_(result['highPriceUsd']),
+      formatNumber_(result['lowPriceUsd']),
+      formatNumber_(result['openPriceUsd'])
+    ];
+  }));
 };
 
 /**
@@ -234,29 +181,8 @@ function SAN_DAILY_OHLC(project_slug, from, to) {
 function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       priceVolumeDiff(currency: "' + currency + '",\
-                       ticker: "' + project_ticker + '",\
-                       from: "' + toUTC_(from) + '",\
-                       to: "' + toUTC_(to) + '",\
-                       interval: "1d") {\
-         datetime\
-         priceChange\
-         priceVolumeDiff\
-         volumeChange\
-       }\
-     }'
-  };
-
-  var headers = [
-    'date',
-    'priceChange',
-    'priceVolumeDiff',
-    'volumeChange'
-  ]
-
-  var results = graphQLQuery_(query, 'priceVolumeDiff');
+  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, project_ticker, from, to)
+  var headers = ['date', 'priceChange', 'priceVolumeDiff', 'volumeChange']
 
   return [headers].concat(results.map(function(result) {
     return [
@@ -274,9 +200,9 @@ function SAN_DAILY_PRICE_VOLUME_DIFF(currency, project_ticker, from, to) {
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS() {
-  var query = { 'query': '{ socialVolumeProjects }' };
-  var result = graphQLQuery_(query, 'socialVolumeProjects');
-  return ['SV Projects'].concat(result);
+  var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
+  var headers = ['SV Projects'];
+  return headers.concat(results);
 };
 
 /**
@@ -292,18 +218,13 @@ function SAN_SOCIAL_VOLUME_PROJECTS() {
 function SAN_DAILY_SOCIAL_VOLUME(project_slug, from, to, social_volume_type) {
   checkForHistoricData_(from)
 
-  var query = {
-    'query': '{\
-       socialVolume(slug: "' + project_slug + '",\
-                   from: "' + toUTC_(from) + '",\
-                   to: "' + toUTC_(to) + '",\
-                   socialVolumeType: ' + social_volume_type + ',\
-                   interval: "1d") {\
-         mentionsCount\
-         datetime\
-       }\
-    }'
-  };
+  var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(project_slug, from, to, social_volume_type)
+  var headers = ['date', 'mentionsCount']
 
-  return graphQLTimeseriesQuery_(query, 'socialVolume', ['mentionsCount']);
+  return [headers].concat(results.map(function(result) {
+    return [
+      formatDatetimeField_(result['datetime']),
+      formatNumber_(result['mentionsCount'])
+    ];
+  }));
 }

@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-expressions */
+
 require('./helper.js')
 
 const dateFnsFormat = require('date-fns/format')
 const subDays = require('date-fns/sub_days')
-const DEFAULT_DATE_FORMAT = 'YYYY, MM, DD'
+const eachDay = require('date-fns/each_day')
+const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
 
 const testFieldTypes = (resources, expected) => {
@@ -19,8 +22,8 @@ const testHeaders = (headers, expected) => {
 }
 
 const now = new Date()
-const from = formatDate(subDays(now, 2))
-const to = formatDate(now)
+const to = subDays(now, 1)
+const from = subDays(to, 3)
 const token = 'santiment'
 const ticker = 'SAN'
 const fiatCurrency = 'USD'
@@ -63,11 +66,25 @@ describe('SAN_DAILY_PRICES', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const prices = san.SAN_DAILY_PRICES(token, from, to)
 
-    expect(prices.length).to.equal(numberOfDays + 1) // first array is headers
+    expect(prices.length).to.equal(numberOfDays + 2) // headers + last day
+
+    for (let [index, day] of days.entries()) {
+      expect(prices[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_PRICES(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 
@@ -109,11 +126,25 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
 
-    expect(addresses.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
+    expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
+
+    for (let [index, day] of days.entries()) {
+      expect(addresses[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 
@@ -131,11 +162,25 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
 
-    expect(transcationVolumes.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
+    expect(transcationVolumes.length).to.equal(numberOfDays + 2) // headers + last day
+
+    for (let [index, day] of days.entries()) {
+      expect(transcationVolumes[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 
@@ -156,11 +201,25 @@ describe('SAN_DAILY_OHLC', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const ohlc = san.SAN_DAILY_OHLC(token, from, to)
 
-    expect(ohlc.length).to.equal(numberOfDays + 2) // first array is headers, also the current day is included
+    expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
+
+    for (let [index, day] of days.entries()) {
+      expect(ohlc[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_OHLC(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 
@@ -180,11 +239,23 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
 
     expect(volumes.length).to.equal(numberOfDays)
+    expect(volumes[1][0]).to.equal(formatDate(days[1]))
+    expect(volumes[2][0]).to.equal(formatDate(days[2]))
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 
@@ -201,6 +272,8 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
 })
 
 describe('SAN_DAILY_SOCIAL_VOLUME', () => {
+  const token = 'bitcoin'
+
   const expected = {
     date: 'string',
     mentionsCount: 'number'
@@ -214,10 +287,23 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 5
-    const from = formatDate(subDays(now, numberOfDays))
+    const token = 'bitcoin'
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
     const volumes = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
-    expect(volumes.length).to.equal(numberOfDays + 1) // first row is headers
+    expect(volumes.length).to.equal(numberOfDays)
+    expect(volumes[1][0]).to.equal(formatDate(days[1]))
+    expect(volumes[2][0]).to.equal(formatDate(days[2]))
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
