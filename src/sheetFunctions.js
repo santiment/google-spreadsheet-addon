@@ -261,3 +261,28 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
     ]
   }))
 }
+
+/**
+ * Returns a list of github activity for a given slug and time interval.
+ *
+ * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
+ * which can be found at the end of the URL
+ * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of github activity.
+ * @customfunction
+ */
+function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchDailyGithubActivity(projectSlug, from, to)
+  var headers = ['date', 'activity']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.activity)
+    ]
+  }))
+}

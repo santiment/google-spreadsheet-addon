@@ -165,3 +165,19 @@ ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVo
 
   return this.conn.graphQLQuery(query, 'socialVolume')
 }
+
+ApiClient_.prototype.fetchDailyGithubActivity = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       githubActivity(slug: "' + slug + '",\
+                    from: "' + toUTC_(from) + '",\
+                    to: "' + toUTC_(to) + '",\
+                    interval: "1d") {\
+         activity\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'githubActivity')
+}

@@ -307,3 +307,38 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
+  const expected = {
+    date: 'string',
+    activity: 'number'
+  }
+
+  const response = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+  const headers = response[0]
+  const activities = response[1]
+
+  testFieldTypes(activities, expected)
+  testHeaders(headers, expected)
+
+  it('returns a record per every day', () => {
+    const numberOfDays = 3
+    const from = subDays(to, numberOfDays)
+    const days = eachDay(from, to)
+    const activities = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+
+    expect(activities.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(activities[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
