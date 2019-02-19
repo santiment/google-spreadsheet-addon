@@ -7,9 +7,11 @@
   "rules": {
     "semi": ["error", "never"],
     "space-before-function-paren": ["error", "always"],
-    "no-multi-str": ["off"],
-    "no-unused-vars": ["off"],
-    "func-names": ["warn", "never"]
+    "no-multi-str": "off",
+    "no-unused-vars": "off",
+    "func-names": ["warn", "never"],
+    "no-eq-null": "off",
+    "eqeqeq": ["error", "smart"]
   },
   "globals": {
     "ApiClient_": "readonly",
