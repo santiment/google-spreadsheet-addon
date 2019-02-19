@@ -1,8 +1,3 @@
-/**
- * Runs when the document is opened, creating the add-on's menu. Custom function
- * add-ons need at least one menu item, since the add-on is only enabled in the
- * current spreadsheet when a function is run.
- */
 function onOpen () {
   SpreadsheetApp
     .getUi()
@@ -12,17 +7,10 @@ function onOpen () {
     .addToUi()
 }
 
-/**
- * Runs when the add-on is installed.
- */
 function onInstall () {
   onOpen()
 }
 
-/**
- * Enables the add-on on for the current spreadsheet (simply by running) and
- * shows a popup informing the user of the new functions that are available.
- */
 function enable_ () {
   var title = 'Santiment Data'
   var message = 'This add-on gives you access to cryptocurrency data through various custom functions. Every function starts with =SAN.'
