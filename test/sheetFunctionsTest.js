@@ -376,7 +376,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   it('returns a record per every day', () => {
     const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
 
-    expect(networkGrowths.length).to.equal(numberOfDays + 2) // headers + last day
+    expect(networkGrowths.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(networkGrowths[index + 1][0]).to.equal(formatDate(day))
     }
@@ -386,6 +386,38 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
+
+describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
+  const expected = {
+    date: 'string',
+    inOutDifference: 'number'
+  }
+
+  const response = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+  testHeaders(headers, expected)
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
