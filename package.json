@@ -6,7 +6,7 @@
   "scripts": {
     "push": "clasp push -f",
     "pretest": "eslint .",
-    "test": "mocha --timeout 20000 --reporter spec"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
