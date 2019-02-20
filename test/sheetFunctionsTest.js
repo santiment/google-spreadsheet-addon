@@ -5,6 +5,7 @@ require('./helper.js')
 const dateFnsFormat = require('date-fns/format')
 const subDays = require('date-fns/sub_days')
 const eachDay = require('date-fns/each_day')
+const startOfYesterday = require('date-fns/start_of_yesterday')
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
 
@@ -21,9 +22,11 @@ const testHeaders = (headers, expected) => {
   expect(headers).to.deep.equal(expectedHeaders)
 }
 
-const now = new Date()
-const to = subDays(now, 1)
-const from = subDays(to, 3)
+const numberOfDays = 3
+const to = startOfYesterday()
+const from = subDays(to, numberOfDays)
+const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
+
 const token = 'santiment'
 const ticker = 'SAN'
 const fiatCurrency = 'USD'
@@ -66,13 +69,9 @@ describe('SAN_DAILY_PRICES', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const prices = san.SAN_DAILY_PRICES(token, from, to)
 
-    expect(prices.length).to.equal(numberOfDays + 2) // headers + last day
-
+    expect(prices.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
@@ -126,9 +125,6 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
 
     expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
@@ -162,9 +158,6 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
 
     expect(transcationVolumes.length).to.equal(numberOfDays + 2) // headers + last day
@@ -201,9 +194,6 @@ describe('SAN_DAILY_OHLC', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const ohlc = san.SAN_DAILY_OHLC(token, from, to)
 
     expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
@@ -239,14 +229,13 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
 
-    expect(volumes.length).to.equal(numberOfDays)
-    expect(volumes[1][0]).to.equal(formatDate(days[1]))
-    expect(volumes[2][0]).to.equal(formatDate(days[2]))
+    expect(volumes.length).to.equal(numberOfDays + 1) // headers
+
+    for (let [index, day] of days.entries()) {
+      expect(volumes[index + 1][0]).to.equal(formatDate(day))
+    }
   })
 
   it('checks for historic data', () => {
@@ -288,14 +277,13 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
 
   it('returns a record per every day', () => {
     const token = 'bitcoin'
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const volumes = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
-    expect(volumes.length).to.equal(numberOfDays)
-    expect(volumes[1][0]).to.equal(formatDate(days[1]))
-    expect(volumes[2][0]).to.equal(formatDate(days[2]))
+    expect(volumes.length).to.equal(numberOfDays + 1) // headers
+
+    for (let [index, day] of days.entries()) {
+      expect(volumes[index + 1][0]).to.equal(formatDate(day))
+    }
   })
 
   it('checks for historic data', () => {
@@ -322,12 +310,9 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const activities = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
 
-    expect(activities.length).to.equal(numberOfDays + 2) // headers + last day
+    expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
@@ -357,12 +342,9 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   testHeaders(headers, expected)
 
   it('returns a record per every day', () => {
-    const numberOfDays = 3
-    const from = subDays(to, numberOfDays)
-    const days = eachDay(from, to)
     const activities = san.SAN_DAILY_DEV_ACTIVITY(token, from, to)
 
-    expect(activities.length).to.equal(numberOfDays + 2) // headers + last day
+    expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
