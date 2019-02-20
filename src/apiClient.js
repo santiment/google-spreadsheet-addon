@@ -181,3 +181,19 @@ ApiClient_.prototype.fetchDailyGithubActivity = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'githubActivity')
 }
+
+ApiClient_.prototype.fetchDailyDevActivity = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       devActivity(slug: "' + slug + '",\
+                    from: "' + toUTC_(from) + '",\
+                    to: "' + toUTC_(to) + '",\
+                    interval: "1d") {\
+         activity\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'devActivity')
+}
