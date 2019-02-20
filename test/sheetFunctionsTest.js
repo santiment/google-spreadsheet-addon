@@ -359,3 +359,35 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_DAILY_NETWORK_GROWTH', () => {
+  const expected = {
+    date: 'string',
+    newAddresses: 'number'
+  }
+
+  const response = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+  const headers = response[0]
+  const networkGrowths = response[1]
+
+  testFieldTypes(networkGrowths, expected)
+  testHeaders(headers, expected)
+
+  it('returns a record per every day', () => {
+    const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+
+    expect(networkGrowths.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(networkGrowths[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
