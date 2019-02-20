@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "extends": "eslint-config-es5",
+  "parserOptions": {"ecmaVersion": 5},
+  "plugins": ["googleappsscript"],
+  "env": { "googleappsscript/googleappsscript": true },
+  "rules": {
+    "semi": ["error", "never"],
+    "space-before-function-paren": ["error", "always"],
+    "no-multi-str": "off",
+    "no-unused-vars": "off",
+    "func-names": ["warn", "never"],
+    "no-eq-null": "off",
+    "eqeqeq": ["error", "smart"]
+  },
+  "globals": {
+    "ApiClient_": "readonly",
+    "Connection_": "readonly",
+    "formatDatetimeField_": "readonly",
+    "formatNumber_": "readonly",
+    "checkForHistoricData_": "readonly",
+    "setUserProperty_": "readonly",
+    "apiKeyProperty_": "readonly",
+    "hasApiKeyProperty_": "readonly",
+    "API_KEY": "readonly",
+    "toUTC_": "readonly"
+  }
+}

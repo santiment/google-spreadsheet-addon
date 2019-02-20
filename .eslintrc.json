@@ -1,0 +1,13 @@
+{
+    "extends": "standard",
+    "globals": {
+      "describe": "readonly",
+      "it": "readonly",
+      "expect": "readonly",
+      "beforeEach": "readonly",
+      "afterEach": "readonly" ,
+      "san": "readonly",
+      "sinon": "readonly",
+      "sandbox": "readonly"
+    }
+}
