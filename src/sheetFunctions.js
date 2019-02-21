@@ -362,3 +362,29 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
     ]
   }))
 }
+
+
+/**
+ * Returns token circulation for a given slug and time interval.
+ *
+ * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
+ * which can be found at the end of the URL
+ * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of token circulation.
+ * @customfunction
+ */
+function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchDailyTokenCirculation(projectSlug, from, to)
+  var headers = ['date', 'tokenCirculation']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.tokenCirculation)
+    ]
+  }))
+}
