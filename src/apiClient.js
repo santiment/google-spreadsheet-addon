@@ -197,3 +197,19 @@ ApiClient_.prototype.fetchDailyDevActivity = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'devActivity')
 }
+
+ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       networkGrowth(slug: "' + slug + '",\
+                    from: "' + toUTC_(from) + '",\
+                    to: "' + toUTC_(to) + '",\
+                    interval: "1d") {\
+         newAddresses\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'networkGrowth')
+}

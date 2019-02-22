@@ -311,3 +311,28 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
     ]
   }))
 }
+
+/**
+ * Returns the number of new addresses being created on the project network for a given slug and time interval.
+ *
+ * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
+ * which can be found at the end of the URL
+ * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of number of new addresses.
+ * @customfunction
+ */
+function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchDailyNetworkGrowth(projectSlug, from, to)
+  var headers = ['date', 'newAddresses']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.newAddresses)
+    ]
+  }))
+}
