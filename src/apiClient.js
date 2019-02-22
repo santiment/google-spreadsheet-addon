@@ -198,13 +198,14 @@ ApiClient_.prototype.fetchDailyDevActivity = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'devActivity')
 }
 
+
 ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
   var query = {
     'query': '{\
        networkGrowth(slug: "' + slug + '",\
-                    from: "' + toUTC_(from) + '",\
-                    to: "' + toUTC_(to) + '",\
-                    interval: "1d") {\
+                     from: "' + toUTC_(from) + '",\
+                     to: "' + toUTC_(to) + '",\
+                     interval: "1d") {\
          newAddresses\
          datetime\
        }\
@@ -212,4 +213,20 @@ ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
   }
 
   return this.conn.graphQLQuery(query, 'networkGrowth')
+}
+
+ApiClient_.prototype.fetchDailyExchangeFundsFlow = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       exchangeFundsFlow(slug: "' + slug + '",\
+                         from: "' + toUTC_(from) + '",\
+                         to: "' + toUTC_(to) + '",\
+                         interval: "1d") {\
+         inOutDifference\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
 }
