@@ -423,3 +423,35 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
+  const expected = {
+    date: 'string',
+    tokenCirculation: 'number'
+  }
+
+  const response = san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+  testHeaders(headers, expected)
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
