@@ -1,5 +1,5 @@
 /**
- * Gets the daily prices for the asset specified, during a given time frame.
+ * Gets the daily prices for the specified asset, during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -111,7 +111,7 @@ function SAN_ERC20_PROJECTS () {
 }
 
 /**
- * Gets the daily active addresses for the asset specified, during a given time frame.
+ * Gets the daily active addresses for the specified asset, during a given time interval.
  * "Daily Active Addresses" refers to the number of unique addresses that
  * participated in transactions on a blockchain each day.
  *
@@ -138,9 +138,9 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily transaction volume for the asset specified, during a given time frame.
+ * Gets the daily transaction volume for the specified asset, during a given time interval.
  * "Transaction Volume" refers to the total number of tokens within all
- * transfers that have occurred on a blockchain each day.
+ * transfers that have occurred on a blockchain.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -165,7 +165,7 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily open, high, low, and close price values for an asset during a given time frame.
+ * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -200,7 +200,7 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
 
 /**
  * Gets the daily price-volume difference technical indicator for a given asset,
- * currency and time period. This indicator measures the difference in trend between price and volume,
+ * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
  * @param {string} currency The currency in which the data should be presented. Either "USD" or "BTC".
@@ -238,7 +238,7 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
 }
 
 /**
- * Returns a list of mentions count for a given project and time
+ * Returns a list of mentions count for a given project and time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
