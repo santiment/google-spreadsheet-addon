@@ -13,7 +13,7 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPrices(projectSlug, from, to)
-  var headers = ['date', 'priceUsd', 'volume']
+  var headers = ['Date', 'USD Price', 'Volume']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -26,9 +26,9 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
 
 /**
  * Gets an array of all assets for which Santiment has data.
- * Each asset record includes: slug, name, price in USD, market cap in USD,
+ * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day, and ticker.
+ * ETH spent in the last 7 days, ETH spent in the last day.
  *
  * @returns {Array} of all projects.
  * @customfunction
@@ -36,23 +36,24 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
 function SAN_ALL_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchAllProjects()
   var headers = [
-    'slug',
-    'name',
-    'priceUsd',
-    'marketcapUsd',
-    'volumeUsd',
-    'usdBalance',
-    'ethBalance',
-    'ethSpent30d',
-    'ethSpent7d',
-    'ethSpent1d',
-    'ticker'
+    'Ticker',
+    'Name',
+    'Slug',
+    'USD Price',
+    'USD Marketcap',
+    'USD Volume',
+    'USD Balance',
+    'ETH Balance',
+    'ETH Spent 30D',
+    'ETH Spent 7D',
+    'ETH Spent 1D'
   ]
 
   return [headers].concat(results.map(function (result) {
     return [
-      result.slug,
+      result.ticker,
       result.name,
+      result.slug,
       formatNumber_(result.priceUsd),
       formatNumber_(result.marketcapUsd),
       formatNumber_(result.volumeUsd),
@@ -60,17 +61,16 @@ function SAN_ALL_PROJECTS () {
       formatNumber_(result.ethBalance),
       formatNumber_(result.ethSpent30d),
       formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d),
-      result.ticker
+      formatNumber_(result.ethSpent1d)
     ]
   }))
 }
 
 /**
  * Gets an array of all ERC20 assets for which Santiment has data.
- * Each asset record includes: slug, name, price in USD, market cap in USD,
+ * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day, ticker and main contract address.
+ * ETH spent in the last 7 days, ETH spent in the last day and main contract address.
  * @returns {Array} of all ERC20 projects.
  * @customfunction
  */
@@ -78,24 +78,25 @@ function SAN_ERC20_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchErc20Projects()
 
   var headers = [
-    'slug',
-    'name',
-    'priceUsd',
-    'marketcapUsd',
-    'volumeUsd',
-    'usdBalance',
-    'ethBalance',
-    'ethSpent30d',
-    'ethSpent7d',
-    'ethSpent1d',
-    'ticker',
-    'mainContractAddress'
+    'Ticker',
+    'Name',
+    'Slug',
+    'USD Price',
+    'USD Marketcap',
+    'USD Volume',
+    'USD Balance',
+    'ETH Balance',
+    'ETH Spent 30D',
+    'ETH Spent 7D',
+    'ETH Spent 1D',
+    'Main Contract Address'
   ]
 
   return [headers].concat(results.map(function (result) {
     return [
-      result.slug,
+      result.ticker,
       result.name,
+      result.slug,
       formatNumber_(result.priceUsd),
       formatNumber_(result.marketcapUsd),
       formatNumber_(result.volumeUsd),
@@ -104,7 +105,6 @@ function SAN_ERC20_PROJECTS () {
       formatNumber_(result.ethSpent30d),
       formatNumber_(result.ethSpent7d),
       formatNumber_(result.ethSpent1d),
-      result.ticker,
       result.mainContractAddress
     ]
   }))
@@ -127,7 +127,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(projectSlug, from, to)
-  var headers = ['date', 'activeAddresses']
+  var headers = ['Date', 'Active Addresses']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -154,7 +154,7 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(projectSlug, from, to)
-  var headers = ['date', 'transactionVolume']
+  var headers = ['Date', 'Transaction Volume']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -179,7 +179,13 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyOhlc(projectSlug, from, to)
-  var headers = ['date', 'closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']
+  var headers = [
+    'Date',
+    'Close Price USD',
+    'High Price USD',
+    'Low Price USD',
+    'Open Price USD'
+  ]
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -208,7 +214,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectTicker, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectTicker, from, to)
-  var headers = ['date', 'priceChange', 'priceVolumeDiff', 'volumeChange']
+  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -227,7 +233,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectTicker, from, to) {
  */
 function SAN_SOCIAL_VOLUME_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
-  var headers = ['SV Projects']
+  var headers = ['Social Volume Projects']
   return headers.concat(results)
 }
 
@@ -252,7 +258,7 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(projectSlug, from, to, socialVolumeType)
-  var headers = ['date', 'mentionsCount']
+  var headers = ['Date', 'Mentions Count']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -277,7 +283,7 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyGithubActivity(projectSlug, from, to)
-  var headers = ['date', 'activity']
+  var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -302,7 +308,7 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyDevActivity(projectSlug, from, to)
-  var headers = ['date', 'activity']
+  var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -327,7 +333,7 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyNetworkGrowth(projectSlug, from, to)
-  var headers = ['date', 'newAddresses']
+  var headers = ['Date', 'New Addresses']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -353,7 +359,7 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyExchangeFundsFlow(projectSlug, from, to)
-  var headers = ['date', 'inOutDifference']
+  var headers = ['Date', 'In/Out Difference']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -379,7 +385,7 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyTokenCirculation(projectSlug, from, to)
-  var headers = ['date', 'tokenCirculation']
+  var headers = ['Date', 'Token Circulation']
 
   return [headers].concat(results.map(function (result) {
     return [
