@@ -527,3 +527,31 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
 
   return [headers, formattedResult]
 }
+
+/**
+ * Returns amount of tokens changing addresses, multiplied by the number of blocks
+ * created on the blockchain since they last moved.
+ * Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.
+ *
+ * Grouping by interval works by summing all records in the interval.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of burn rates.
+ * @customfunction
+ */
+function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchDailyTokenAgeConsumed(projectSlug, from, to)
+  var headers = ['Date', 'Token Age Consumed']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.tokenAgeConsumed)
+    ]
+  }))
+}

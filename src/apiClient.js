@@ -246,6 +246,7 @@ ApiClient_.prototype.fetchDailyTokenCirculation = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'tokenCirculation')
 }
 
+
 ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, from, to) {
   var query = {
     'query': '{\
@@ -260,7 +261,7 @@ ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, fro
            word\
          }\
        }\
-     }'
+    }'
   }
 
   return this.conn.graphQLQuery(query, 'trendingWords')
@@ -294,22 +295,38 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
 ApiClient_.prototype.fetchProjectSocialData = function (slug) {
   var query = {
     'query': '{\
-       projectBySlug(slug: "' + slug + '") {\
-         ticker\
-         name\
-         slug\
-         websiteLink\
-         facebookLink\
-         blogLink\
-         linkedinLink\
-         githubLink\
-         twitterLink\
-         whitepaperLink\
-         redditLink\
-         slackLink\
+      projectBySlug(slug: "' + slug + '") {\
+        ticker\
+        name\
+        slug\
+        websiteLink\
+        facebookLink\
+        blogLink\
+        linkedinLink\
+        githubLink\
+        twitterLink\
+        whitepaperLink\
+        redditLink\
+        slackLink\
+      }\
+    }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}
+
+ApiClient_.prototype.fetchDailyTokenAgeConsumed = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       tokenAgeConsumed(slug: "' + slug + '",\
+                        from: "' + toUTC_(from) + '",\
+                        to: "' + toUTC_(to) + '",\
+                        interval: "1d") {\
+         tokenAgeConsumed\
+         datetime\
        }\
      }'
   }
 
-  return this.conn.graphQLQuery(query, 'projectBySlug')
+  return this.conn.graphQLQuery(query, 'tokenAgeConsumed')
 }

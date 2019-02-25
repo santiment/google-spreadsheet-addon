@@ -585,6 +585,38 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
     san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
+
+describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
+  const expected = { date: 'string', tokenAgeConsumed: 'number' }
+
+  const response = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+  const headers = response[0]
+  const activities = response[1]
+
+  testFieldTypes(activities, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Token Age Consumed']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
