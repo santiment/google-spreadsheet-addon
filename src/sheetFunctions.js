@@ -1,9 +1,9 @@
 /**
  * Gets the daily prices for the asset specified, during a given time frame.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
+ * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
- * https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily prices.
@@ -115,9 +115,9 @@ function SAN_ERC20_PROJECTS () {
  * "Daily Active Addresses" refers to the number of unique addresses that
  * participated in transactions on a blockchain each day.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily active addresses.
@@ -142,9 +142,9 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * "Transaction Volume" refers to the total number of tokens within all
  * transfers that have occurred on a blockchain each day.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily transaction volumes.
@@ -167,9 +167,9 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
 /**
  * Gets the daily open, high, low, and close price values for an asset during a given time frame.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily open, high, low, and close price values.
@@ -197,8 +197,8 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * currency and time period. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
- * @param {"USD"} currency The currency in which the data should be presented. Either "USD" or "BTC".
- * @param {"SAN"} projectTicker The ticker of the asset, spelled in capital letters e.g. "SAN".
+ * @param {string} currency The currency in which the data should be presented. Either "USD" or "BTC".
+ * @param {string} projectTicker The ticker of the asset, spelled in capital letters. Example: "SAN".
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily price-volume difference technical indicator.
@@ -234,12 +234,12 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
 /**
  * Returns a list of mentions count for a given project and time
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @param {"PROFESSIONAL_TRADERS_CHAT_OVERVIEW"} socialVolumeType the source of mention counts, one of the following:
+ * @param {string} socialVolumeType The source of mention counts, one of the following:
  * "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
  * "TELEGRAM_CHATS_OVERVIEW",
  * "TELEGRAM_DISCUSSION_OVERVIEW",
@@ -265,9 +265,9 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
 /**
  * Returns a list of github activity for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of github activity.
@@ -290,9 +290,9 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
 /**
  * Returns a list of dev activity for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of dev activity.
@@ -315,9 +315,9 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
 /**
  * Returns the number of new addresses being created on the project network for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of number of new addresses.
@@ -341,9 +341,9 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * Fetches the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of dev activity.
@@ -367,9 +367,9 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
 /**
  * Returns token circulation for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of token circulation.
