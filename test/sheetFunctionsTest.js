@@ -542,3 +542,52 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_DAILY_TRENDING_WORDS', () => {
+  const sources = ['TELEGRAM', 'PROFESSIONAL_TRADERS_CHAT', 'REDDIT', 'ALL']
+
+  const size = 3
+  const hour = 1
+
+  sources.forEach((source) => {
+    describe(`using source: ${source}`, () => {
+      const expected = {
+        date: 'string',
+        word: 'string',
+        score: 'number'
+      }
+
+      const response = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+
+      const headers = response[0]
+      const results = response[1]
+
+      testFieldTypes(results, expected)
+
+      it('has proper headers', () => {
+        const expectedHeaders = ['Date', 'Word', 'Score']
+        expect(headers).to.deep.equal(expectedHeaders)
+      })
+    })
+  })
+
+  it('returns n records per day', () => {
+    const source = 'ALL'
+    const results = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+
+    expect(results.length).to.equal((numberOfDays + 1) * size + 1) // last day + headers
+  })
+
+  // TODO: Add a test for ordering of the results(like in the other places)
+  // when we have it implemented in the API
+
+  it('checks for historic data', () => {
+    const source = 'ALL'
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})

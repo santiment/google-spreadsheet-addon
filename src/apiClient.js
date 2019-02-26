@@ -245,3 +245,23 @@ ApiClient_.prototype.fetchDailyTokenCirculation = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'tokenCirculation')
 }
+
+ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, from, to) {
+  var query = {
+    'query': '{\
+       trendingWords(source: ' + source + ',\
+                     size: ' + size + ',\
+                     hour: ' + hour + ',\
+                     from: "' + toUTC_(from) + '",\
+                     to: "' + toUTC_(to) + '") {\
+         datetime\
+         topWords {\
+           score\
+           word\
+         }\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'trendingWords')
+}
