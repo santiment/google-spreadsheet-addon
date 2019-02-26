@@ -1,9 +1,9 @@
 /**
- * Gets the daily prices for the asset specified, during a given time frame.
+ * Gets the daily prices for the specified asset, during a given time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
+ * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
- * https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily prices.
@@ -13,7 +13,7 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPrices(projectSlug, from, to)
-  var headers = ['date', 'priceUsd', 'volume']
+  var headers = ['Date', 'USD Price', 'Volume']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -26,9 +26,9 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
 
 /**
  * Gets an array of all assets for which Santiment has data.
- * Each asset record includes: slug, name, price in USD, market cap in USD,
+ * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day, and ticker.
+ * ETH spent in the last 7 days, ETH spent in the last day.
  *
  * @returns {Array} of all projects.
  * @customfunction
@@ -36,23 +36,24 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
 function SAN_ALL_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchAllProjects()
   var headers = [
-    'slug',
-    'name',
-    'priceUsd',
-    'marketcapUsd',
-    'volumeUsd',
-    'usdBalance',
-    'ethBalance',
-    'ethSpent30d',
-    'ethSpent7d',
-    'ethSpent1d',
-    'ticker'
+    'Ticker',
+    'Name',
+    'Slug',
+    'USD Price',
+    'USD Marketcap',
+    'USD Volume',
+    'USD Balance',
+    'ETH Balance',
+    'ETH Spent 30D',
+    'ETH Spent 7D',
+    'ETH Spent 1D'
   ]
 
   return [headers].concat(results.map(function (result) {
     return [
-      result.slug,
+      result.ticker,
       result.name,
+      result.slug,
       formatNumber_(result.priceUsd),
       formatNumber_(result.marketcapUsd),
       formatNumber_(result.volumeUsd),
@@ -60,17 +61,16 @@ function SAN_ALL_PROJECTS () {
       formatNumber_(result.ethBalance),
       formatNumber_(result.ethSpent30d),
       formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d),
-      result.ticker
+      formatNumber_(result.ethSpent1d)
     ]
   }))
 }
 
 /**
  * Gets an array of all ERC20 assets for which Santiment has data.
- * Each asset record includes: slug, name, price in USD, market cap in USD,
+ * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day, ticker and main contract address.
+ * ETH spent in the last 7 days, ETH spent in the last day and main contract address.
  * @returns {Array} of all ERC20 projects.
  * @customfunction
  */
@@ -78,24 +78,25 @@ function SAN_ERC20_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchErc20Projects()
 
   var headers = [
-    'slug',
-    'name',
-    'priceUsd',
-    'marketcapUsd',
-    'volumeUsd',
-    'usdBalance',
-    'ethBalance',
-    'ethSpent30d',
-    'ethSpent7d',
-    'ethSpent1d',
-    'ticker',
-    'mainContractAddress'
+    'Ticker',
+    'Name',
+    'Slug',
+    'USD Price',
+    'USD Marketcap',
+    'USD Volume',
+    'USD Balance',
+    'ETH Balance',
+    'ETH Spent 30D',
+    'ETH Spent 7D',
+    'ETH Spent 1D',
+    'Main Contract Address'
   ]
 
   return [headers].concat(results.map(function (result) {
     return [
-      result.slug,
+      result.ticker,
       result.name,
+      result.slug,
       formatNumber_(result.priceUsd),
       formatNumber_(result.marketcapUsd),
       formatNumber_(result.volumeUsd),
@@ -104,20 +105,19 @@ function SAN_ERC20_PROJECTS () {
       formatNumber_(result.ethSpent30d),
       formatNumber_(result.ethSpent7d),
       formatNumber_(result.ethSpent1d),
-      result.ticker,
       result.mainContractAddress
     ]
   }))
 }
 
 /**
- * Gets the daily active addresses for the asset specified, during a given time frame.
+ * Gets the daily active addresses for the specified asset, during a given time interval.
  * "Daily Active Addresses" refers to the number of unique addresses that
  * participated in transactions on a blockchain each day.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily active addresses.
@@ -127,7 +127,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(projectSlug, from, to)
-  var headers = ['date', 'activeAddresses']
+  var headers = ['Date', 'Active Addresses']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -138,13 +138,13 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily transaction volume for the asset specified, during a given time frame.
+ * Gets the daily transaction volume for the specified asset, during a given time interval.
  * "Transaction Volume" refers to the total number of tokens within all
- * transfers that have occurred on a blockchain each day.
+ * transfers that have occurred on a blockchain.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily transaction volumes.
@@ -154,7 +154,7 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(projectSlug, from, to)
-  var headers = ['date', 'transactionVolume']
+  var headers = ['Date', 'Transaction Volume']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -165,11 +165,11 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily open, high, low, and close price values for an asset during a given time frame.
+ * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily open, high, low, and close price values.
@@ -179,7 +179,13 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyOhlc(projectSlug, from, to)
-  var headers = ['date', 'closePriceUsd', 'highPriceUsd', 'lowPriceUsd', 'openPriceUsd']
+  var headers = [
+    'Date',
+    'Close Price USD',
+    'High Price USD',
+    'Low Price USD',
+    'Open Price USD'
+  ]
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -194,11 +200,11 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
 
 /**
  * Gets the daily price-volume difference technical indicator for a given asset,
- * currency and time period. This indicator measures the difference in trend between price and volume,
+ * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
- * @param {"USD"} currency The currency in which the data should be presented. Either "USD" or "BTC".
- * @param {"SAN"} projectTicker The ticker of the asset, spelled in capital letters e.g. "SAN".
+ * @param {string} currency The currency in which the data should be presented. Either "USD" or "BTC".
+ * @param {string} projectTicker The ticker of the asset, spelled in capital letters. Example: "SAN".
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily price-volume difference technical indicator.
@@ -208,7 +214,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectTicker, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectTicker, from, to)
-  var headers = ['date', 'priceChange', 'priceVolumeDiff', 'volumeChange']
+  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -227,19 +233,19 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectTicker, from, to) {
  */
 function SAN_SOCIAL_VOLUME_PROJECTS () {
   var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
-  var headers = ['SV Projects']
+  var headers = ['Social Volume Projects']
   return headers.concat(results)
 }
 
 /**
- * Returns a list of mentions count for a given project and time
+ * Returns a list of mentions count for a given project and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @param {"PROFESSIONAL_TRADERS_CHAT_OVERVIEW"} socialVolumeType the source of mention counts, one of the following:
+ * @param {string} socialVolumeType The source of mention counts, one of the following:
  * "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
  * "TELEGRAM_CHATS_OVERVIEW",
  * "TELEGRAM_DISCUSSION_OVERVIEW",
@@ -252,7 +258,7 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(projectSlug, from, to, socialVolumeType)
-  var headers = ['date', 'mentionsCount']
+  var headers = ['Date', 'Mentions Count']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -265,9 +271,9 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
 /**
  * Returns a list of github activity for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of github activity.
@@ -277,7 +283,7 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyGithubActivity(projectSlug, from, to)
-  var headers = ['date', 'activity']
+  var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -290,9 +296,9 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
 /**
  * Returns a list of dev activity for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of dev activity.
@@ -302,7 +308,7 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyDevActivity(projectSlug, from, to)
-  var headers = ['date', 'activity']
+  var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -315,9 +321,9 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
 /**
  * Returns the number of new addresses being created on the project network for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of number of new addresses.
@@ -327,7 +333,7 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyNetworkGrowth(projectSlug, from, to)
-  var headers = ['date', 'newAddresses']
+  var headers = ['Date', 'New Addresses']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -341,9 +347,9 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * Fetches the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of dev activity.
@@ -353,7 +359,7 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyExchangeFundsFlow(projectSlug, from, to)
-  var headers = ['date', 'inOutDifference']
+  var headers = ['Date', 'In/Out Difference']
 
   return [headers].concat(results.map(function (result) {
     return [
@@ -367,9 +373,9 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
 /**
  * Returns token circulation for a given slug and time interval.
  *
- * @param {"santiment"} projectSlug Name of the asset at coinmarketcap.com,
- * which can be found at the end of the URL
- * (eg. the Santiment URL is https://coinmarketcap.com/currencies/santiment, so the projectSlug would be santiment).
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of token circulation.
@@ -379,7 +385,7 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
   checkForHistoricData_(from)
 
   var results = new ApiClient_(new Connection_()).fetchDailyTokenCirculation(projectSlug, from, to)
-  var headers = ['date', 'tokenCirculation']
+  var headers = ['Date', 'Token Circulation']
 
   return [headers].concat(results.map(function (result) {
     return [

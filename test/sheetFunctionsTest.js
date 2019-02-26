@@ -17,11 +17,6 @@ const testFieldTypes = (resources, expected) => {
   })
 }
 
-const testHeaders = (headers, expected) => {
-  const expectedHeaders = Object.keys(expected)
-  expect(headers).to.deep.equal(expectedHeaders)
-}
-
 const numberOfDays = 3
 const to = startOfYesterday()
 const from = subDays(to, numberOfDays)
@@ -30,29 +25,6 @@ const days = eachDay(from, subDays(to, 1)) // last day should not be included (h
 const token = 'santiment'
 const ticker = 'SAN'
 const fiatCurrency = 'USD'
-
-describe('SAN_ALL_PROJECTS', () => {
-  const expected = {
-    slug: 'string',
-    name: 'string',
-    priceUsd: 'number',
-    marketcapUsd: 'number',
-    volumeUsd: 'number',
-    usdBalance: 'number',
-    ethBalance: 'number',
-    ethSpent30d: 'number',
-    ethSpent7d: 'number',
-    ethSpent1d: 'number',
-    ticker: 'string'
-  }
-
-  const response = san.SAN_ALL_PROJECTS()
-  const headers = response[0]
-  const projects = response[1]
-
-  testFieldTypes(projects, expected)
-  testHeaders(headers, expected)
-})
 
 describe('SAN_DAILY_PRICES', () => {
   const expected = {
@@ -66,7 +38,11 @@ describe('SAN_DAILY_PRICES', () => {
   const prices = response[1]
 
   testFieldTypes(prices, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'USD Price', 'Volume']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const prices = san.SAN_DAILY_PRICES(token, from, to)
@@ -87,10 +63,51 @@ describe('SAN_DAILY_PRICES', () => {
   })
 })
 
+describe('SAN_ALL_PROJECTS', () => {
+  const expectedFields = {
+    ticker: 'string',
+    name: 'string',
+    slug: 'string',
+    priceUsd: 'number',
+    marketcapUsd: 'number',
+    volumeUsd: 'number',
+    usdBalance: 'number',
+    ethBalance: 'number',
+    ethSpent30d: 'number',
+    ethSpent7d: 'number',
+    ethSpent1d: 'number'
+  }
+
+  const response = san.SAN_ALL_PROJECTS()
+  const headers = response[0]
+  const projects = response[1]
+
+  testFieldTypes(projects, expectedFields)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Ticker',
+      'Name',
+      'Slug',
+      'USD Price',
+      'USD Marketcap',
+      'USD Volume',
+      'USD Balance',
+      'ETH Balance',
+      'ETH Spent 30D',
+      'ETH Spent 7D',
+      'ETH Spent 1D'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+})
+
 describe('SAN_ERC20_PROJECTS', () => {
   const expected = {
-    slug: 'string',
+    ticker: 'string',
     name: 'string',
+    slug: 'string',
     priceUsd: 'number',
     marketcapUsd: 'number',
     volumeUsd: 'number',
@@ -99,7 +116,6 @@ describe('SAN_ERC20_PROJECTS', () => {
     ethSpent30d: 'number',
     ethSpent7d: 'number',
     ethSpent1d: 'number',
-    ticker: 'string',
     mainContractAddress: 'string'
   }
 
@@ -108,7 +124,25 @@ describe('SAN_ERC20_PROJECTS', () => {
   const projects = response[1]
 
   testFieldTypes(projects, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Ticker',
+      'Name',
+      'Slug',
+      'USD Price',
+      'USD Marketcap',
+      'USD Volume',
+      'USD Balance',
+      'ETH Balance',
+      'ETH Spent 30D',
+      'ETH Spent 7D',
+      'ETH Spent 1D',
+      'Main Contract Address'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 })
 
 describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
@@ -122,7 +156,11 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Active Addresses']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
@@ -155,7 +193,11 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Transaction Volume']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
@@ -191,7 +233,18 @@ describe('SAN_DAILY_OHLC', () => {
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Date',
+      'Close Price USD',
+      'High Price USD',
+      'Low Price USD',
+      'Open Price USD'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const ohlc = san.SAN_DAILY_OHLC(token, from, to)
@@ -226,7 +279,17 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Date',
+      'Price Change',
+      'Price Volume Diff',
+      'Volume Change'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
@@ -255,8 +318,8 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
     expect(projects).to.be.an('array')
   })
 
-  it('has "SV Projects" header', () => {
-    expect(projects[0]).to.equal('SV Projects')
+  it('has proper header', () => {
+    expect(projects[0]).to.equal('Social Volume Projects')
   })
 })
 
@@ -273,7 +336,11 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Mentions Count']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const token = 'bitcoin'
@@ -307,7 +374,11 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Activity']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const activities = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
@@ -339,7 +410,11 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Activity']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const activities = san.SAN_DAILY_DEV_ACTIVITY(token, from, to)
@@ -371,7 +446,11 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   const networkGrowths = response[1]
 
   testFieldTypes(networkGrowths, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'New Addresses']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
@@ -403,7 +482,11 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'In/Out Difference']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
@@ -435,7 +518,11 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHeaders(headers, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Token Circulation']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
 
   it('returns a record per every day', () => {
     const results = san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
