@@ -265,3 +265,27 @@ ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, fro
 
   return this.conn.graphQLQuery(query, 'trendingWords')
 }
+
+ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
+  var query = {
+    'query': '{\
+       projectBySlug(slug: "' + slug + '") {\
+         ticker\
+         coinmarketcapId\
+         fundsRaisedUsdIcoEndPrice\
+         ethSpent30d: ethSpent(days:30)\
+         ethBalance\
+         usdBalance\
+         priceUsd\
+         percentChange24h\
+         percentChange7d\
+         volumeChange24h\
+         availableSupply\
+         marketcapUsd\
+         averageGithubActivity(days:30)\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}

@@ -590,3 +590,47 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_PROJECT_FUNDAMENTALS', () => {
+  const expected = {
+    ticker: 'string',
+    coinmarketcapId: 'string',
+    fundsRaisedUsdIcoEndPrice: 'number',
+    ethSpent: 'number',
+    ethBalance: 'number',
+    usdBalance: 'number',
+    priceUsd: 'number',
+    percentChange24h: 'number',
+    percentChange7d: 'number',
+    volumeChange24h: 'number',
+    availableSupply: 'number',
+    marketcapUsd: 'number',
+    averageGithubActivity: 'number'
+  }
+
+  const response = san.SAN_PROJECT_FUNDAMENTALS(token)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Ticker',
+      'Coinmarketcap ID',
+      'Funds Raised From ICO In USD',
+      'ETH Spent 30D',
+      'ETH Balance',
+      'USD Balance',
+      'USD Price',
+      'Percent Change 24H',
+      'Percent Change 7D',
+      'Volume Change 24H',
+      'Available Supply',
+      'USD Marketcap',
+      'Average Github Activity 30D'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+})
