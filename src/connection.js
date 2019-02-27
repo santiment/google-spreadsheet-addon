@@ -30,9 +30,12 @@ Connection_.prototype.fetchQuery = function (query) {
 
 Connection_.prototype.parseResponse = function (response, queryName) {
   if (response.getResponseCode() !== 200) {
-    var errors = JSON.parse(response.getContentText()).errors
+    var responseData = response.getContentText()
+    var responseCode = response.getResponseCode()
+    console.error('code: ' + responseCode + ', data: ' + responseData)
+    var errors = JSON.parse(responseData).errors
     var errorMessage = errors.map(function (error) { return error.message })
-    throw new Error('code: ' + response.getResponseCode() + ', messages: ' + errorMessage)
+    throw new Error('code: ' + responseCode + ', messages: ' + errorMessage)
   }
 
   return JSON.parse(response.getContentText()).data[queryName]
