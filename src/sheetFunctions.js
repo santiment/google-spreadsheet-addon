@@ -478,3 +478,44 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
 
   return [headers, formattedResult]
 }
+
+/**
+ * Fetch social data for a specified project.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @returns {Array} of project's social data.
+ * @customfunction
+ */
+function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
+  var result = new ApiClient_(new Connection_()).fetchProjectSocialData(projectSlug)
+
+  var headers = [
+    'Ticker',
+    'Coinmarketcap ID',
+    'Website Link',
+    'Whitepaper Link',
+    'Facebook Link',
+    'Blog Link',
+    'LinkedIn Link',
+    'Github Link',
+    'Twitter Link',
+    'Reddit Link'
+  ]
+
+  var formattedResult = [
+    result.ticker,
+    result.coinmarketcapId,
+    result.websiteLink,
+    result.whitepaperLink,
+    result.facebookLink,
+    result.blogLink,
+    result.linkedinLink,
+    result.githubLink,
+    result.twitterLink,
+    result.redditLink
+  ]
+
+  return [headers, formattedResult]
+}

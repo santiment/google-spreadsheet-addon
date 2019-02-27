@@ -289,3 +289,24 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
 
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
+
+ApiClient_.prototype.fetchProjectSocialData = function (slug) {
+  var query = {
+    'query': '{\
+       projectBySlug(slug: "' + slug + '") {\
+         ticker\
+         coinmarketcapId\
+         websiteLink\
+         facebookLink\
+         blogLink\
+         linkedinLink\
+         githubLink\
+         twitterLink\
+         whitepaperLink\
+         redditLink\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}

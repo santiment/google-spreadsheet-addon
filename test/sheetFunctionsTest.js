@@ -634,3 +634,41 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
     expect(headers).to.deep.equal(expectedHeaders)
   })
 })
+
+describe('SAN_PROJECT_SOCIAL_DATA', () => {
+  const expected = {
+    ticker: 'string',
+    coinmarketcapId: 'string',
+    websiteLink: 'string',
+    whitepaperLink: 'string',
+    facebookLink: 'string',
+    blogLink: 'string',
+    linkedinLink: 'null',
+    githubLink: 'string',
+    twitterLink: 'string',
+    redditLink: 'string'
+  }
+
+  const response = san.SAN_PROJECT_SOCIAL_DATA(token)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = [
+      'Ticker',
+      'Coinmarketcap ID',
+      'Website Link',
+      'Whitepaper Link',
+      'Facebook Link',
+      'Blog Link',
+      'LinkedIn Link',
+      'Github Link',
+      'Twitter Link',
+      'Reddit Link'
+    ]
+
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+})
