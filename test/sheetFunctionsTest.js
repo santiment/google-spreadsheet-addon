@@ -646,7 +646,8 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
     linkedinLink: 'null',
     githubLink: 'string',
     twitterLink: 'string',
-    redditLink: 'string'
+    redditLink: 'string',
+    slackLink: 'string'
   }
 
   const response = san.SAN_PROJECT_SOCIAL_DATA(token)
@@ -666,7 +667,8 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
       'LinkedIn Link',
       'Github Link',
       'Twitter Link',
-      'Reddit Link'
+      'Reddit Link',
+      'Chat Link'
     ]
 
     expect(headers).to.deep.equal(expectedHeaders)

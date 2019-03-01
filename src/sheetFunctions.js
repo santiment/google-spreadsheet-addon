@@ -501,7 +501,8 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
     'LinkedIn Link',
     'Github Link',
     'Twitter Link',
-    'Reddit Link'
+    'Reddit Link',
+    'Chat Link'
   ]
 
   var formattedResult = [
@@ -514,7 +515,8 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
     result.linkedinLink,
     result.githubLink,
     result.twitterLink,
-    result.redditLink
+    result.redditLink,
+    result.slackLink
   ]
 
   return [headers, formattedResult]

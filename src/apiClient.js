@@ -304,6 +304,7 @@ ApiClient_.prototype.fetchProjectSocialData = function (slug) {
          twitterLink\
          whitepaperLink\
          redditLink\
+         slackLink\
        }\
      }'
   }
