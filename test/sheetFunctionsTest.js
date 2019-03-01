@@ -594,7 +594,8 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
 describe('SAN_PROJECT_FUNDAMENTALS', () => {
   const expected = {
     ticker: 'string',
-    coinmarketcapId: 'string',
+    name: 'string',
+    slug: 'string',
     fundsRaisedUsdIcoEndPrice: 'number',
     ethSpent: 'number',
     ethBalance: 'number',
@@ -617,7 +618,8 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
   it('has proper headers', () => {
     const expectedHeaders = [
       'Ticker',
-      'Coinmarketcap ID',
+      'Name',
+      'Slug',
       'Funds Raised From ICO In USD',
       'ETH Spent 30D',
       'ETH Balance',
@@ -638,7 +640,8 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
 describe('SAN_PROJECT_SOCIAL_DATA', () => {
   const expected = {
     ticker: 'string',
-    coinmarketcapId: 'string',
+    name: 'string',
+    slug: 'string',
     websiteLink: 'string',
     whitepaperLink: 'string',
     facebookLink: 'string',
@@ -659,7 +662,8 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   it('has proper headers', () => {
     const expectedHeaders = [
       'Ticker',
-      'Coinmarketcap ID',
+      'Name',
+      'Slug',
       'Website Link',
       'Whitepaper Link',
       'Facebook Link',

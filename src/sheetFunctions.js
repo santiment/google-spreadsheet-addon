@@ -446,7 +446,8 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
   var result = new ApiClient_(new Connection_()).fetchProjectFundamentals(projectSlug)
   var headers = [
     'Ticker',
-    'Coinmarketcap ID',
+    'Name',
+    'Slug',
     'Funds Raised From ICO In USD',
     'ETH Spent 30D',
     'ETH Balance',
@@ -462,7 +463,8 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
 
   var formattedResult = [
     result.ticker,
-    result.coinmarketcapId,
+    result.name,
+    result.slug,
     formatNumber_(result.fundsRaisedUsdIcoEndPrice),
     formatNumber_(result.ethSpent30d),
     formatNumber_(result.ethBalance),
@@ -493,7 +495,8 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
 
   var headers = [
     'Ticker',
-    'Coinmarketcap ID',
+    'Name',
+    'Slug',
     'Website Link',
     'Whitepaper Link',
     'Facebook Link',
@@ -507,7 +510,8 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
 
   var formattedResult = [
     result.ticker,
-    result.coinmarketcapId,
+    result.name,
+    result.slug,
     result.websiteLink,
     result.whitepaperLink,
     result.facebookLink,

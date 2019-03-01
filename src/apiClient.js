@@ -271,7 +271,8 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
     'query': '{\
        projectBySlug(slug: "' + slug + '") {\
          ticker\
-         coinmarketcapId\
+         name\
+         slug\
          fundsRaisedUsdIcoEndPrice\
          ethSpent30d: ethSpent(days:30)\
          ethBalance\
@@ -295,7 +296,8 @@ ApiClient_.prototype.fetchProjectSocialData = function (slug) {
     'query': '{\
        projectBySlug(slug: "' + slug + '") {\
          ticker\
-         coinmarketcapId\
+         name\
+         slug\
          websiteLink\
          facebookLink\
          blogLink\
