@@ -22,8 +22,7 @@ const to = startOfYesterday()
 const from = subDays(to, numberOfDays)
 const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
 
-const token = 'santiment'
-const ticker = 'SAN'
+const slug = 'santiment'
 const fiatCurrency = 'USD'
 
 describe('SAN_DAILY_PRICES', () => {
@@ -33,7 +32,7 @@ describe('SAN_DAILY_PRICES', () => {
     volume: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICES(token, from, to)
+  const response = san.SAN_DAILY_PRICES(slug, from, to)
   const headers = response[0]
   const prices = response[1]
 
@@ -45,7 +44,7 @@ describe('SAN_DAILY_PRICES', () => {
   })
 
   it('returns a record per every day', () => {
-    const prices = san.SAN_DAILY_PRICES(token, from, to)
+    const prices = san.SAN_DAILY_PRICES(slug, from, to)
 
     expect(prices.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -56,7 +55,7 @@ describe('SAN_DAILY_PRICES', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_PRICES(token, from, to)
+    san.SAN_DAILY_PRICES(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -151,7 +150,7 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
     activeAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
+  const response = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
   const headers = response[0]
   const addresses = response[1]
 
@@ -163,7 +162,7 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
+    const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
 
     expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -175,7 +174,7 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_ACTIVE_ADDRESSES(token, from, to)
+    san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -188,7 +187,7 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
     transactionVolume: 'number'
   }
 
-  const response = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
+  const response = san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
@@ -200,7 +199,7 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
+    const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
 
     expect(transcationVolumes.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -212,7 +211,7 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_TRANSACTION_VOLUME(token, from, to)
+    san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -228,7 +227,7 @@ describe('SAN_DAILY_OHLC', () => {
     openPriceUsd: 'number'
   }
 
-  const response = san.SAN_DAILY_OHLC(token, from, to)
+  const response = san.SAN_DAILY_OHLC(slug, from, to)
   const headers = response[0]
   const ohlc = response[1]
 
@@ -247,7 +246,7 @@ describe('SAN_DAILY_OHLC', () => {
   })
 
   it('returns a record per every day', () => {
-    const ohlc = san.SAN_DAILY_OHLC(token, from, to)
+    const ohlc = san.SAN_DAILY_OHLC(slug, from, to)
 
     expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -259,7 +258,7 @@ describe('SAN_DAILY_OHLC', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_OHLC(token, from, to)
+    san.SAN_DAILY_OHLC(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -274,7 +273,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
     volumeChange: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
@@ -292,7 +291,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
@@ -304,7 +303,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -324,14 +323,14 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
 })
 
 describe('SAN_DAILY_SOCIAL_VOLUME', () => {
-  const token = 'bitcoin'
+  const slug = 'bitcoin'
 
   const expected = {
     date: 'string',
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+  const response = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
   const headers = response[0]
   const volumes = response[1]
 
@@ -343,8 +342,8 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const token = 'bitcoin'
-    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+    const slug = 'bitcoin'
+    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
@@ -356,7 +355,7 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_SOCIAL_VOLUME(token, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+    san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -369,7 +368,7 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
     activity: 'number'
   }
 
-  const response = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+  const response = san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
@@ -381,7 +380,7 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+    const activities = san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
 
     expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -392,7 +391,7 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_GITHUB_ACTIVITY(token, from, to)
+    san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -405,7 +404,7 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
     activity: 'number'
   }
 
-  const response = san.SAN_DAILY_DEV_ACTIVITY(token, from, to)
+  const response = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
@@ -417,7 +416,7 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DAILY_DEV_ACTIVITY(token, from, to)
+    const activities = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
 
     expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -428,7 +427,7 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_DEV_ACTIVITY(token, from, to)
+    san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -441,7 +440,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
     newAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+  const response = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
   const networkGrowths = response[1]
 
@@ -453,9 +452,9 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   })
 
   it('returns a record per every day', () => {
-    const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+    const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
 
-    expect(networkGrowths.length).to.equal(numberOfDays + 2) // headers
+    expect(networkGrowths.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(networkGrowths[index + 1][0]).to.equal(formatDate(day))
     }
@@ -464,7 +463,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
+    san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -477,7 +476,7 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
     inOutDifference: 'number'
   }
 
-  const response = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
+  const response = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
@@ -489,7 +488,7 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
+    const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
@@ -500,7 +499,7 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(token, from, to)
+    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
@@ -513,7 +512,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
     tokenCirculation: 'number'
   }
 
-  const response = san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+  const response = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
@@ -525,7 +524,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+    const results = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers
     for (let [index, day] of days.entries()) {
@@ -536,7 +535,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_TOKEN_CIRCULATION(token, from, to)
+    san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
