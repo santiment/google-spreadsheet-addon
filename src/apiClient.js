@@ -283,7 +283,7 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
          volumeChange24h\
          availableSupply\
          marketcapUsd\
-         averageGithubActivity(days:30)\
+         averageDevActivity(days:30)\
        }\
      }'
   }

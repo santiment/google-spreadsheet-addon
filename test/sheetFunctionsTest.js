@@ -606,10 +606,10 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
     volumeChange24h: 'number',
     availableSupply: 'number',
     marketcapUsd: 'number',
-    averageGithubActivity: 'number'
+    averageDevActivity: 'number'
   }
 
-  const response = san.SAN_PROJECT_FUNDAMENTALS(token)
+  const response = san.SAN_PROJECT_FUNDAMENTALS(slug)
   const headers = response[0]
   const results = response[1]
 
@@ -630,7 +630,7 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
       'Volume Change 24H',
       'Available Supply',
       'USD Marketcap',
-      'Average Github Activity 30D'
+      'Average Dev Activity 30D'
     ]
 
     expect(headers).to.deep.equal(expectedHeaders)
@@ -653,7 +653,7 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
     slackLink: 'string'
   }
 
-  const response = san.SAN_PROJECT_SOCIAL_DATA(token)
+  const response = san.SAN_PROJECT_SOCIAL_DATA(slug)
   const headers = response[0]
   const results = response[1]
 

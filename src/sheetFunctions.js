@@ -458,7 +458,7 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
     'Volume Change 24H',
     'Available Supply',
     'USD Marketcap',
-    'Average Github Activity 30D'
+    'Average Dev Activity 30D'
   ]
 
   var formattedResult = [
@@ -475,7 +475,7 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
     formatNumber_(result.volumeChange24h),
     formatNumber_(result.availableSupply),
     formatNumber_(result.marketcapUsd),
-    formatNumber_(result.averageGithubActivity)
+    formatNumber_(result.averageDevActivity)
   ]
 
   return [headers, formattedResult]
