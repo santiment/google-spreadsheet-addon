@@ -454,7 +454,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   it('returns a record per every day', () => {
     const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(token, from, to)
 
-    expect(networkGrowths.length).to.equal(numberOfDays + 2) // headers
+    expect(networkGrowths.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(networkGrowths[index + 1][0]).to.equal(formatDate(day))
     }
