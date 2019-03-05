@@ -453,11 +453,12 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
     'ETH Balance',
     'USD Balance',
     'USD Price',
+    'USD Volume',
+    'USD Marketcap',
     'Percent Change 24H',
     'Percent Change 7D',
     'Volume Change 24H',
     'Available Supply',
-    'USD Marketcap',
     'Average Dev Activity 30D'
   ]
 
@@ -470,11 +471,12 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
     formatNumber_(result.ethBalance),
     formatNumber_(result.usdBalance),
     formatNumber_(result.priceUsd),
+    formatNumber_(result.volumeUsd),
+    formatNumber_(result.marketcapUsd),
     formatNumber_(result.percentChange24h),
     formatNumber_(result.percentChange7d),
     formatNumber_(result.volumeChange24h),
     formatNumber_(result.availableSupply),
-    formatNumber_(result.marketcapUsd),
     formatNumber_(result.averageDevActivity)
   ]
 

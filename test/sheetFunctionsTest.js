@@ -601,11 +601,12 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
     ethBalance: 'number',
     usdBalance: 'number',
     priceUsd: 'number',
+    volumeUsd: 'number',
+    marketcapUsd: 'number',
     percentChange24h: 'number',
     percentChange7d: 'number',
     volumeChange24h: 'number',
     availableSupply: 'number',
-    marketcapUsd: 'number',
     averageDevActivity: 'number'
   }
 
@@ -625,11 +626,12 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
       'ETH Balance',
       'USD Balance',
       'USD Price',
+      'USD Volume',
+      'USD Marketcap',
       'Percent Change 24H',
       'Percent Change 7D',
       'Volume Change 24H',
       'Available Supply',
-      'USD Marketcap',
       'Average Dev Activity 30D'
     ]
 
