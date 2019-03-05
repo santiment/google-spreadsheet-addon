@@ -432,3 +432,98 @@ function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
   var flatResults = [].concat.apply([], results)
   return [headers].concat(flatResults)
 }
+
+/**
+ * Fetch fundamentals for a specified project.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @returns {Array} of project details.
+ * @customfunction
+ */
+function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
+  var result = new ApiClient_(new Connection_()).fetchProjectFundamentals(projectSlug)
+  var headers = [
+    'Ticker',
+    'Name',
+    'Slug',
+    'Funds Raised From ICO In USD',
+    'ETH Spent 30D',
+    'ETH Balance',
+    'USD Balance',
+    'USD Price',
+    'USD Volume',
+    'USD Marketcap',
+    'Percent Change 24H',
+    'Percent Change 7D',
+    'Volume Change 24H',
+    'Available Supply',
+    'Average Dev Activity 30D'
+  ]
+
+  var formattedResult = [
+    result.ticker,
+    result.name,
+    result.slug,
+    formatNumber_(result.fundsRaisedUsdIcoEndPrice),
+    formatNumber_(result.ethSpent30d),
+    formatNumber_(result.ethBalance),
+    formatNumber_(result.usdBalance),
+    formatNumber_(result.priceUsd),
+    formatNumber_(result.volumeUsd),
+    formatNumber_(result.marketcapUsd),
+    formatNumber_(result.percentChange24h),
+    formatNumber_(result.percentChange7d),
+    formatNumber_(result.volumeChange24h),
+    formatNumber_(result.availableSupply),
+    formatNumber_(result.averageDevActivity)
+  ]
+
+  return [headers, formattedResult]
+}
+
+/**
+ * Fetch social data for a specified project.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @returns {Array} of project's social data.
+ * @customfunction
+ */
+function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
+  var result = new ApiClient_(new Connection_()).fetchProjectSocialData(projectSlug)
+
+  var headers = [
+    'Ticker',
+    'Name',
+    'Slug',
+    'Website Link',
+    'Whitepaper Link',
+    'Facebook Link',
+    'Blog Link',
+    'LinkedIn Link',
+    'Github Link',
+    'Twitter Link',
+    'Reddit Link',
+    'Chat Link'
+  ]
+
+  var formattedResult = [
+    result.ticker,
+    result.name,
+    result.slug,
+    result.websiteLink,
+    result.whitepaperLink,
+    result.facebookLink,
+    result.blogLink,
+    result.linkedinLink,
+    result.githubLink,
+    result.twitterLink,
+    result.redditLink,
+    result.slackLink
+  ]
+
+  return [headers, formattedResult]
+}
