@@ -125,11 +125,11 @@ ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'ohlc')
 }
 
-ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, ticker, from, to) {
+ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, slug, from, to) {
   var query = {
     'query': '{\
        priceVolumeDiff(currency: "' + currency + '",\
-                       ticker: "' + ticker + '",\
+                       slug: "' + slug + '",\
                        from: "' + toUTC_(from) + '",\
                        to: "' + toUTC_(to) + '",\
                        interval: "1d") {\

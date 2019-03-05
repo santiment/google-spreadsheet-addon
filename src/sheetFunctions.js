@@ -204,16 +204,18 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
  * @param {string} currency The currency in which the data should be presented. Either "USD" or "BTC".
- * @param {string} projectTicker The ticker of the asset, spelled in capital letters. Example: "SAN".
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of daily price-volume difference technical indicator.
  * @customfunction
  */
-function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectTicker, from, to) {
+function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
   checkForHistoricData_(from)
 
-  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectTicker, from, to)
+  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectSlug, from, to)
   var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
 
   return [headers].concat(results.map(function (result) {

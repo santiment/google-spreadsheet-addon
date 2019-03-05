@@ -23,7 +23,6 @@ const from = subDays(to, numberOfDays)
 const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
 
 const token = 'santiment'
-const ticker = 'SAN'
 const fiatCurrency = 'USD'
 
 describe('SAN_DAILY_PRICES', () => {
@@ -274,7 +273,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
     volumeChange: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, token, from, to)
   const headers = response[0]
   const volumes = response[1]
 
@@ -292,7 +291,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, token, from, to)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
@@ -304,7 +303,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   it('checks for historic data', () => {
     const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
 
-    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, ticker, from, to)
+    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, token, from, to)
 
     expect(checkForHistoricDataMock).to.have.been.called
     checkForHistoricDataMock.verify()
