@@ -29,7 +29,7 @@ transfers that have occurred on a blockchain.</p>
 <dt><a href="#SAN_DAILY_OHLC">SAN_DAILY_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_PRICE_VOLUME_DIFF">SAN_DAILY_PRICE_VOLUME_DIFF(currency, projectTicker, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_DAILY_PRICE_VOLUME_DIFF">SAN_DAILY_PRICE_VOLUME_DIFF(currency, projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets the daily price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.</p>
@@ -55,6 +55,21 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 </dd>
 <dt><a href="#SAN_DAILY_TOKEN_CIRCULATION">SAN_DAILY_TOKEN_CIRCULATION(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns token circulation for a given slug and time interval.</p>
+</dd>
+<dt><a href="#SAN_DAILY_TRENDING_WORDS">SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns list of trending words and their corresponding trend score.</p>
+</dd>
+<dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
+<dd><p>Fetch fundamentals for a specified project.</p>
+</dd>
+<dt><a href="#SAN_PROJECT_SOCIAL_DATA">SAN_PROJECT_SOCIAL_DATA(projectSlug)</a> ⇒ <code>Array</code></dt>
+<dd><p>Fetch social data for a specified project.</p>
+</dd>
+<dt><a href="#SAN_DAILY_TOKEN_AGE_CONSUMED">SAN_DAILY_TOKEN_AGE_CONSUMED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns amount of tokens changing addresses, multiplied by the number of blocks
+created on the blockchain since they last moved.
+Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.</p>
+<p>Grouping by interval works by summing all records in the interval.</p>
 </dd>
 </dl>
 
@@ -146,7 +161,7 @@ Gets the daily open, high, low, and close price values for the specified asset, 
 
 <a name="SAN_DAILY_PRICE_VOLUME_DIFF"></a>
 
-## SAN\_DAILY\_PRICE\_VOLUME\_DIFF(currency, projectTicker, from, to) ⇒ <code>Array</code>
+## SAN\_DAILY\_PRICE\_VOLUME\_DIFF(currency, projectSlug, from, to) ⇒ <code>Array</code>
 Gets the daily price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
@@ -158,7 +173,7 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 | Param | Type | Description |
 | --- | --- | --- |
 | currency | <code>string</code> | The currency in which the data should be presented. Either "USD" or "BTC". |
-| projectTicker | <code>string</code> | The ticker of the asset, spelled in capital letters. Example: "SAN". |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
@@ -254,6 +269,68 @@ Returns token circulation for a given slug and time interval.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of token circulation.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_DAILY_TRENDING_WORDS"></a>
+
+## SAN\_DAILY\_TRENDING\_WORDS(source, size, hour, from, to) ⇒ <code>Array</code>
+Returns list of trending words and their corresponding trend score.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of trending words and their score.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| source | <code>string</code> | One of the following: TELEGRAM PROFESSIONAL_TRADERS_CHAT REDDIT ALL |
+| size | <code>number</code> | An integer showing how many words should be included in the top list (max 100). |
+| hour | <code>number</code> | An integer showing the hour of the day when the calculation was executed. The trending words are currently generated only 3 times a day - 01:00 UTC, 08:00 UTC and 14:00 UTC. Example: 1 |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_PROJECT_FUNDAMENTALS"></a>
+
+## SAN\_PROJECT\_FUNDAMENTALS(projectSlug) ⇒ <code>Array</code>
+Fetch fundamentals for a specified project.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of project details.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+
+<a name="SAN_PROJECT_SOCIAL_DATA"></a>
+
+## SAN\_PROJECT\_SOCIAL\_DATA(projectSlug) ⇒ <code>Array</code>
+Fetch social data for a specified project.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of project's social data.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+
+<a name="SAN_DAILY_TOKEN_AGE_CONSUMED"></a>
+
+## SAN\_DAILY\_TOKEN\_AGE\_CONSUMED(projectSlug, from, to) ⇒ <code>Array</code>
+Returns amount of tokens changing addresses, multiplied by the number of blocks
+created on the blockchain since they last moved.
+Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.
+
+Grouping by interval works by summing all records in the interval.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of burn rates.  
 **Customfunction**:   
 
 | Param | Type | Description |
