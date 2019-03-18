@@ -590,39 +590,6 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
   })
 })
 
-describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
-  const expected = { date: 'string', tokenAgeConsumed: 'number' }
-
-  const response = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
-  const headers = response[0]
-  const activities = response[1]
-
-  testFieldTypes(activities, expected)
-
-  it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Token Age Consumed']
-    expect(headers).to.deep.equal(expectedHeaders)
-  })
-
-  it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
-
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
-    for (let [index, day] of days.entries()) {
-      expect(results[index + 1][0]).to.equal(formatDate(day))
-    }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
-})
-
 describe('SAN_PROJECT_FUNDAMENTALS', () => {
   const expected = {
     ticker: 'string',
@@ -710,6 +677,72 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
     ]
 
     expect(headers).to.deep.equal(expectedHeaders)
+  })
+})
+
+describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
+  const expected = { date: 'string', tokenAgeConsumed: 'number' }
+
+  const response = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+  const headers = response[0]
+  const activities = response[1]
+
+  testFieldTypes(activities, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Token Age Consumed']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
+
+describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
+  const expected = { date: 'string', activeDeposits: 'number' }
+
+  const response = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Active Deposits']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
   })
 })
 

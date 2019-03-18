@@ -346,3 +346,19 @@ ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'mvrvRatio')
 }
+
+ApiClient_.prototype.fetchDailyActiveDeposits = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       dailyActiveDeposits(slug: "' + slug + '",\
+                           from: "' + toUTC_(from) + '",\
+                           to: "' + toUTC_(to) + '",\
+                           interval: "1d") {\
+         activeDeposits\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'dailyActiveDeposits')
+}

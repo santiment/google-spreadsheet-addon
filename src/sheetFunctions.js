@@ -571,11 +571,34 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
 
   var results = new ApiClient_(new Connection_()).fetchMvrvRatio(projectSlug, from, to)
   var headers = ['Date', 'Ratio']
-
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.ratio)
+    ]
+  }))
+}
+
+/**
+ * Returns number of unique deposit addresses that have been active for a project.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of deposit address numbers.
+ * @customfunction
+ */
+function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchDailyActiveDeposits(projectSlug, from, to)
+  var headers = ['Date', 'Active Deposits']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.activeDeposits)
     ]
   }))
 }
