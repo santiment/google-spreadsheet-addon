@@ -71,6 +71,9 @@ created on the blockchain since they last moved.
 Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.</p>
 <p>Grouping by interval works by summing all records in the interval.</p>
 </dd>
+<dt><a href="#SAN_MVRV_RATIO">SAN_MVRV_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value)</p>
+</dd>
 </dl>
 
 <a name="SAN_DAILY_PRICES"></a>
@@ -331,6 +334,21 @@ Grouping by interval works by summing all records in the interval.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of burn rates.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_MVRV_RATIO"></a>
+
+## SAN\_MVRV\_RATIO(projectSlug, from, to) ⇒ <code>Array</code>
+Returns MVRV(Market-Value-to-Realized-Value)
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of ratios.  
 **Customfunction**:   
 
 | Param | Type | Description |
