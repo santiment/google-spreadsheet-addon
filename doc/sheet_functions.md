@@ -74,6 +74,9 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_MVRV_RATIO">SAN_MVRV_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value)</p>
 </dd>
+<dt><a href="#SAN_DAILY_ACTIVE_DEPOSITS">SAN_DAILY_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
+</dd>
 </dl>
 
 <a name="SAN_DAILY_PRICES"></a>
@@ -349,6 +352,21 @@ Returns MVRV(Market-Value-to-Realized-Value)
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of ratios.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_DAILY_ACTIVE_DEPOSITS"></a>
+
+## SAN\_DAILY\_ACTIVE\_DEPOSITS(projectSlug, from, to) ⇒ <code>Array</code>
+Returns number of unique deposit addresses that have been active for a project.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of deposit address numbers.  
 **Customfunction**:   
 
 | Param | Type | Description |
