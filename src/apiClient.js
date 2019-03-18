@@ -330,3 +330,19 @@ ApiClient_.prototype.fetchDailyTokenAgeConsumed = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'tokenAgeConsumed')
 }
+
+ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       mvrvRatio(slug: "' + slug + '",\
+                 from: "' + toUTC_(from) + '",\
+                 to: "' + toUTC_(to) + '",\
+                 interval: "1d") {\
+         ratio\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'mvrvRatio')
+}
