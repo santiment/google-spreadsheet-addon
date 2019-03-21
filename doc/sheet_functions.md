@@ -74,6 +74,14 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_MVRV_RATIO">SAN_MVRV_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value)</p>
 </dd>
+<dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+Since Daily Transaction Volume gets rather noisy and easy to manipulate
+by transferring the same tokens through couple of addresses over and over again,
+it’s not an ideal measure of a network’s economic activity.
+That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
+which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.</p>
+</dd>
 <dt><a href="#SAN_DAILY_ACTIVE_DEPOSITS">SAN_DAILY_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
 </dd>
@@ -352,6 +360,26 @@ Returns MVRV(Market-Value-to-Realized-Value)
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of ratios.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_NVT_RATIO"></a>
+
+## SAN\_NVT\_RATIO(projectSlug, from, to) ⇒ <code>Array</code>
+Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+Since Daily Transaction Volume gets rather noisy and easy to manipulate
+by transferring the same tokens through couple of addresses over and over again,
+it’s not an ideal measure of a network’s economic activity.
+That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
+which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of NVT ratios.  
 **Customfunction**:   
 
 | Param | Type | Description |
