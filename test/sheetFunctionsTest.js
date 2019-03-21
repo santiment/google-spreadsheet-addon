@@ -819,3 +819,36 @@ describe('SAN_NVT_RATIO', () => {
     checkForHistoricDataMock.verify()
   })
 })
+
+describe('SAN_REALIZED_VALUE', () => {
+  const expected = { date: 'string', realizedValue: 'number' }
+
+  const response = san.SAN_REALIZED_VALUE(slug, from, to)
+  const headers = response[0]
+  const results = response[1]
+
+  testFieldTypes(results, expected)
+
+  it('has proper headers', () => {
+    const expectedHeaders = ['Date', 'Realized Value']
+    expect(headers).to.deep.equal(expectedHeaders)
+  })
+
+  it('returns a record per every day', () => {
+    const results = san.SAN_REALIZED_VALUE(slug, from, to)
+
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('checks for historic data', () => {
+    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+
+    san.SAN_REALIZED_VALUE(slug, from, to)
+
+    expect(checkForHistoricDataMock).to.have.been.called
+    checkForHistoricDataMock.verify()
+  })
+})
