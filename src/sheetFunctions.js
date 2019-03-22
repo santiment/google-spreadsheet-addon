@@ -597,7 +597,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
 function SAN_NVT_RATIO (projectSlug, from, to) {
   checkForHistoricData_(from)
 
-  var results = new ApiClient_(new Connection_()).fetchMvrvRatio(projectSlug, from, to)
+  var results = new ApiClient_(new Connection_()).fetchNvtRatio(projectSlug, from, to)
   var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
   return [headers].concat(results.map(function (result) {
     return [
