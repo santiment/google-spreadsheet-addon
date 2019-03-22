@@ -85,6 +85,11 @@ which filters out excess transactions and provides a cleaner overview of a block
 <dt><a href="#SAN_DAILY_ACTIVE_DEPOSITS">SAN_DAILY_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
 </dd>
+<dt><a href="#SAN_REALIZED_VALUE">SAN_REALIZED_VALUE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.</p>
+</dd>
 </dl>
 
 <a name="SAN_DAILY_PRICES"></a>
@@ -395,6 +400,23 @@ Returns number of unique deposit addresses that have been active for a project.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of deposit address numbers.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_REALIZED_VALUE"></a>
+
+## SAN\_REALIZED\_VALUE(projectSlug, from, to) ⇒ <code>Array</code>
+Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of realized values.  
 **Customfunction**:   
 
 | Param | Type | Description |
