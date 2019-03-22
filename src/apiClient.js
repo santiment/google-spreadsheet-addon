@@ -347,6 +347,23 @@ ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'mvrvRatio')
 }
 
+ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       nvtRatio(slug: "' + slug + '",\
+                from: "' + toUTC_(from) + '",\
+                to: "' + toUTC_(to) + '",\
+                interval: "1d") {\
+         nvtRatioTxVolume\
+         nvtRatioCirculation\
+         datetime\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'nvtRatio')
+}
+
 ApiClient_.prototype.fetchDailyActiveDeposits = function (slug, from, to) {
   var query = {
     'query': '{\

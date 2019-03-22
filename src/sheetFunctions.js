@@ -580,6 +580,35 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
 }
 
 /**
+ * Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+ * Since Daily Transaction Volume gets rather noisy and easy to manipulate
+ * by transferring the same tokens through couple of addresses over and over again,
+ * it’s not an ideal measure of a network’s economic activity.
+ * That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
+ * which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of NVT ratios.
+ * @customfunction
+ */
+function SAN_NVT_RATIO (projectSlug, from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchMvrvRatio(projectSlug, from, to)
+  var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.nvtRatioTxVolume),
+      formatNumber_(result.nvtRatioCirculation)
+    ]
+  }))
+}
+
+/**
  * Returns number of unique deposit addresses that have been active for a project.
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
