@@ -656,3 +656,26 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
     ]
   }))
 }
+
+/**
+ * Returns used Gas by a blockchain.
+ * When you send tokens, interact with a contract or do anything else on the blockchain,
+ * you must pay for that computation. That payment is calculated in Gas.
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of quantities of gas used.
+ * @customfunction
+ */
+function SAN_GAS_USED (from, to) {
+  checkForHistoricData_(from)
+
+  var results = new ApiClient_(new Connection_()).fetchGasUsed(from, to)
+  var headers = ['Date', 'ETH Gas Used']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.ethGasUsed)
+    ]
+  }))
+}
