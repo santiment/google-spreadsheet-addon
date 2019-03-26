@@ -24,6 +24,14 @@ function checkForHistoricData_ (from) {
   }
 }
 
+function assertHasData_ (data) {
+  if (data === null) throw new NoDataError_()
+}
+
+function assertCanAccessHistoricData_ (from) {
+  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) throw new HistoricDataForbiddenError_()
+}
+
 function formatDatetimeField_ (field) {
   return new Date(field).toISOString().slice(0, 10)
 }

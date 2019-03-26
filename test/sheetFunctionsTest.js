@@ -460,13 +460,19 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
     }
   })
 
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
+  it('returns an error when requested data is historic and no api key is present', () => {
+    const to = subDays(startOfYesterday(), 200)
+    const from = subDays(to, 205)
 
-    san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    const result = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    expect(result).to.deep.eq(['Full historical data is only accessible to premium users. Add your API key to use it.'])
+  })
 
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
+  it('handles null data response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchDailyNetworkGrowth').returns(null)
+
+    const result = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    expect(result).to.deep.eq(['No data'])
   })
 })
 

@@ -320,6 +320,25 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
   }))
 }
 
+function getApiClient_ () {
+  return new ApiClient_(new Connection_())
+}
+
+function dailyNetworkGrowth_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyNetworkGrowth(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'New Addresses']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.newAddresses)
+    ]
+  }))
+}
+
 /**
  * Returns the number of new addresses being created on the project network for a given slug and time interval.
  *
@@ -332,17 +351,7 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyNetworkGrowth(projectSlug, from, to)
-  var headers = ['Date', 'New Addresses']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.newAddresses)
-    ]
-  }))
+  return handleErrors_(dailyNetworkGrowth_)(projectSlug, from, to)
 }
 
 /**
@@ -370,7 +379,6 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
     ]
   }))
 }
-
 
 /**
  * Returns token circulation for a given slug and time interval.
