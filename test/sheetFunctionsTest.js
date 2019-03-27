@@ -9,6 +9,17 @@ const startOfYesterday = require('date-fns/start_of_yesterday')
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
 
+const numberOfDays = 3
+const to = startOfYesterday()
+const from = subDays(to, numberOfDays)
+const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
+
+const historicDataTo = subDays(startOfYesterday(), 200)
+const historicDataFrom = subDays(historicDataTo, 205)
+
+const slug = 'santiment'
+const fiatCurrency = 'USD'
+
 const testFieldTypes = (resources, expected) => {
   Object.entries(expected).forEach(([attr, type], index) => {
     it(`returns ${attr} attribute`, () => {
@@ -17,13 +28,21 @@ const testFieldTypes = (resources, expected) => {
   })
 }
 
-const numberOfDays = 3
-const to = startOfYesterday()
-const from = subDays(to, numberOfDays)
-const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
+const testHistoricDataIsForbidden = (func, ...args) => {
+  it('returns a message when requested data is historic and no api key is present', () => {
+    const result = func(...args)
+    expect(result).to.deep.eq([san.HISTORIC_DATA_FORBIDDEN_MSG])
+  })
+}
 
-const slug = 'santiment'
-const fiatCurrency = 'USD'
+const testHandlesNullData = (stubName, func, ...args) => {
+  it('returns a message when there is no data', () => {
+    sandbox.stub(san.ApiClient_.prototype, stubName).returns(null)
+
+    const result = func(...args)
+    expect(result).to.deep.eq([san.NO_DATA_MSG])
+  })
+}
 
 describe('SAN_DAILY_PRICES', () => {
   const expected = {
@@ -37,6 +56,8 @@ describe('SAN_DAILY_PRICES', () => {
   const prices = response[1]
 
   testFieldTypes(prices, expected)
+  testHistoricDataIsForbidden(san.SAN_DAILY_PRICES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchDailyPrices', san.SAN_DAILY_PRICES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'USD Price', 'Volume']
@@ -50,15 +71,6 @@ describe('SAN_DAILY_PRICES', () => {
     for (let [index, day] of days.entries()) {
       expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_PRICES(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })
 
@@ -82,6 +94,7 @@ describe('SAN_ALL_PROJECTS', () => {
   const projects = response[1]
 
   testFieldTypes(projects, expectedFields)
+  testHandlesNullData('fetchAllProjects', san.SAN_ALL_PROJECTS)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -123,6 +136,7 @@ describe('SAN_ERC20_PROJECTS', () => {
   const projects = response[1]
 
   testFieldTypes(projects, expected)
+  testHandlesNullData('fetchErc20Projects', san.SAN_ERC20_PROJECTS)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -155,6 +169,8 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
+  testHistoricDataIsForbidden(san.SAN_DAILY_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchDailyActiveAddresses', san.SAN_DAILY_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Addresses']
@@ -170,15 +186,6 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
       expect(addresses[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
@@ -192,6 +199,8 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
+  testHistoricDataIsForbidden(san.SAN_DAILY_TRANSACTION_VOLUME, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchDailyTransactionVolume', san.SAN_DAILY_TRANSACTION_VOLUME, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Transaction Volume']
@@ -206,15 +215,6 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
     for (let [index, day] of days.entries()) {
       expect(transcationVolumes[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })
 
@@ -232,6 +232,8 @@ describe('SAN_DAILY_OHLC', () => {
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
+  testHistoricDataIsForbidden(san.SAN_DAILY_OHLC, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchDailyOhlc', san.SAN_DAILY_OHLC, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -254,15 +256,6 @@ describe('SAN_DAILY_OHLC', () => {
       expect(ohlc[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_OHLC(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
@@ -278,6 +271,19 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    fiatCurrency,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyPriceVolumeDiff',
+    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    fiatCurrency,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -299,18 +305,11 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
       expect(volumes[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
+  testHandlesNullData('fetchSocialVolumeProjects', san.SAN_SOCIAL_VOLUME_PROJECTS)
+
   const projects = san.SAN_SOCIAL_VOLUME_PROJECTS()
 
   it('returns an array of projects', () => {
@@ -324,17 +323,31 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
 
 describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   const slug = 'bitcoin'
+  const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'
 
   const expected = {
     date: 'string',
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+  const response = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_SOCIAL_VOLUME,
+    slug,
+    historicDataFrom,
+    historicDataTo,
+    socialVolumeType)
+  testHandlesNullData(
+    'fetchDailySocialVolume',
+    san.SAN_DAILY_SOCIAL_VOLUME,
+    slug,
+    from,
+    to,
+    socialVolumeType)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Mentions Count']
@@ -343,22 +356,13 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
 
   it('returns a record per every day', () => {
     const slug = 'bitcoin'
-    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
     for (let [index, day] of days.entries()) {
       expect(volumes[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })
 
@@ -373,6 +377,17 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_GITHUB_ACTIVITY,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyGithubActivity',
+    san.SAN_DAILY_GITHUB_ACTIVITY,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Activity']
@@ -387,15 +402,6 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_DEV_ACTIVITY', () => {
@@ -409,6 +415,17 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_DEV_ACTIVITY,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyDevActivity',
+    san.SAN_DAILY_DEV_ACTIVITY,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Activity']
@@ -423,15 +440,6 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_NETWORK_GROWTH', () => {
@@ -442,9 +450,11 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
 
   const response = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
-  const networkGrowths = response[1]
+  const results = response[1]
 
-  testFieldTypes(networkGrowths, expected)
+  testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(san.SAN_DAILY_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchDailyNetworkGrowth', san.SAN_DAILY_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'New Addresses']
@@ -452,27 +462,12 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   })
 
   it('returns a record per every day', () => {
-    const networkGrowths = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    const results = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
 
-    expect(networkGrowths.length).to.equal(numberOfDays + 2) // headers + last day
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
-      expect(networkGrowths[index + 1][0]).to.equal(formatDate(day))
+      expect(results[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('returns an error when requested data is historic and no api key is present', () => {
-    const to = subDays(startOfYesterday(), 200)
-    const from = subDays(to, 205)
-
-    const result = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
-    expect(result).to.deep.eq(['Full historical data is only accessible to premium users. Add your API key to use it.'])
-  })
-
-  it('handles null data response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchDailyNetworkGrowth').returns(null)
-
-    const result = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
-    expect(result).to.deep.eq(['No data'])
   })
 })
 
@@ -487,6 +482,17 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyExchangeFundsFlow',
+    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'In/Out Difference']
@@ -501,15 +507,6 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
@@ -523,6 +520,17 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_TOKEN_CIRCULATION,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyTokenCirculation',
+    san.SAN_DAILY_TOKEN_CIRCULATION,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Token Circulation']
@@ -536,15 +544,6 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })
 
@@ -583,17 +582,24 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
     expect(results.length).to.equal((numberOfDays + 1) * size + 1) // last day + headers
   })
 
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_TRENDING_WORDS,
+    'ALL',
+    size,
+    hour,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyTrendingWords',
+    san.SAN_DAILY_TRENDING_WORDS,
+    'ALL',
+    size,
+    hour,
+    from,
+    to)
+
   // TODO: Add a test for ordering of the results(like in the other places)
   // when we have it implemented in the API
-
-  it('checks for historic data', () => {
-    const source = 'ALL'
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_PROJECT_FUNDAMENTALS', () => {
@@ -620,6 +626,7 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHandlesNullData('fetchProjectFundamentals', san.SAN_PROJECT_FUNDAMENTALS, slug)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -665,6 +672,7 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHandlesNullData('fetchProjectSocialData', san.SAN_PROJECT_SOCIAL_DATA, slug)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -694,6 +702,17 @@ describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyTokenAgeConsumed',
+    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Token Age Consumed']
@@ -708,15 +727,6 @@ describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
@@ -727,6 +737,17 @@ describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchDailyActiveDeposits',
+    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Deposits']
@@ -741,15 +762,6 @@ describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_MVRV_RATIO', () => {
@@ -760,6 +772,17 @@ describe('SAN_MVRV_RATIO', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_MVRV_RATIO,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchMvrvRatio',
+    san.SAN_MVRV_RATIO,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Ratio']
@@ -773,15 +796,6 @@ describe('SAN_MVRV_RATIO', () => {
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_MVRV_RATIO(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })
 
@@ -797,6 +811,17 @@ describe('SAN_NVT_RATIO', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_NVT_RATIO,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchNvtRatio',
+    san.SAN_NVT_RATIO,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -816,15 +841,6 @@ describe('SAN_NVT_RATIO', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_NVT_RATIO(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_GAS_USED', () => {
@@ -835,6 +851,11 @@ describe('SAN_GAS_USED', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_GAS_USED,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData('fetchGasUsed', san.SAN_GAS_USED, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'ETH Gas Used']
@@ -850,15 +871,6 @@ describe('SAN_GAS_USED', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_GAS_USED(from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
-  })
 })
 
 describe('SAN_REALIZED_VALUE', () => {
@@ -869,6 +881,17 @@ describe('SAN_REALIZED_VALUE', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+  testHistoricDataIsForbidden(
+    san.SAN_REALIZED_VALUE,
+    slug,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchRealizedValue',
+    san.SAN_REALIZED_VALUE,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Realized Value']
@@ -883,14 +906,5 @@ describe('SAN_REALIZED_VALUE', () => {
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
-  })
-
-  it('checks for historic data', () => {
-    const checkForHistoricDataMock = sandbox.mock(san).expects('checkForHistoricData_')
-
-    san.SAN_REALIZED_VALUE(slug, from, to)
-
-    expect(checkForHistoricDataMock).to.have.been.called
-    checkForHistoricDataMock.verify()
   })
 })

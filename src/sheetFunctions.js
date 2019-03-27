@@ -1,18 +1,12 @@
-/**
- * Gets the daily prices for the specified asset, during a given time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily prices.
- * @customfunction
- */
-function SAN_DAILY_PRICES (projectSlug, from, to) {
-  checkForHistoricData_(from)
+function getApiClient_ () {
+  return new ApiClient_(new Connection_())
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyPrices(projectSlug, from, to)
+function dailyPrices_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyPrices(slug, from, to)
+  assertHasData_(results)
+
   var headers = ['Date', 'USD Price', 'Volume']
 
   return [headers].concat(results.map(function (result) {
@@ -25,16 +19,24 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
 }
 
 /**
- * Gets an array of all assets for which Santiment has data.
- * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
- * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day.
+ * Gets the daily prices for the specified asset, during a given time interval.
  *
- * @returns {Array} of all projects.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of daily prices.
  * @customfunction
  */
-function SAN_ALL_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchAllProjects()
+function SAN_DAILY_PRICES (projectSlug, from, to) {
+  return handleErrors_(dailyPrices_)(projectSlug, from, to)
+}
+
+function allProjects_ () {
+  var results = getApiClient_().fetchAllProjects()
+  assertHasData_(results)
+
   var headers = [
     'Ticker',
     'Name',
@@ -67,15 +69,21 @@ function SAN_ALL_PROJECTS () {
 }
 
 /**
- * Gets an array of all ERC20 assets for which Santiment has data.
+ * Gets an array of all assets for which Santiment has data.
  * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
- * ETH spent in the last 7 days, ETH spent in the last day and main contract address.
- * @returns {Array} of all ERC20 projects.
+ * ETH spent in the last 7 days, ETH spent in the last day.
+ *
+ * @returns {Array} of all projects.
  * @customfunction
  */
-function SAN_ERC20_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchErc20Projects()
+function SAN_ALL_PROJECTS () {
+  return handleErrors_(allProjects_)()
+}
+
+function erc20Projects_ () {
+  var results = getApiClient_().fetchErc20Projects()
+  assertHasData_(results)
 
   var headers = [
     'Ticker',
@@ -111,6 +119,33 @@ function SAN_ERC20_PROJECTS () {
 }
 
 /**
+ * Gets an array of all ERC20 assets for which Santiment has data.
+ * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
+ * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
+ * ETH spent in the last 7 days, ETH spent in the last day and main contract address.
+ * @returns {Array} of all ERC20 projects.
+ * @customfunction
+ */
+function SAN_ERC20_PROJECTS () {
+  return handleErrors_(erc20Projects_)()
+}
+
+function dailyActiveAddresses_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyActiveAddresses(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Active Addresses']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.activeAddresses)
+    ]
+  }))
+}
+
+/**
  * Gets the daily active addresses for the specified asset, during a given time interval.
  * "Daily Active Addresses" refers to the number of unique addresses that
  * participated in transactions on a blockchain each day.
@@ -124,15 +159,20 @@ function SAN_ERC20_PROJECTS () {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyActiveAddresses_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(projectSlug, from, to)
-  var headers = ['Date', 'Active Addresses']
+function dailyTransactionVolume_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyTransactionVolume(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Transaction Volume']
 
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeAddresses)
+      formatNumber_(result.transactionVolume)
     ]
   }))
 }
@@ -151,34 +191,14 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(projectSlug, from, to)
-  var headers = ['Date', 'Transaction Volume']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.transactionVolume)
-    ]
-  }))
+  return handleErrors_(dailyTransactionVolume_)(projectSlug, from, to)
 }
 
-/**
- * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily open, high, low, and close price values.
- * @customfunction
- */
-function SAN_DAILY_OHLC (projectSlug, from, to) {
-  checkForHistoricData_(from)
+function dailyOhlc_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyOhlc(slug, from, to)
+  assertHasData_(results)
 
-  var results = new ApiClient_(new Connection_()).fetchDailyOhlc(projectSlug, from, to)
   var headers = [
     'Date',
     'Close Price USD',
@@ -199,6 +219,38 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
 }
 
 /**
+ * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of daily open, high, low, and close price values.
+ * @customfunction
+ */
+function SAN_DAILY_OHLC (projectSlug, from, to) {
+  return handleErrors_(dailyOhlc_)(projectSlug, from, to)
+}
+
+function dailyPriceVolumeDiff_ (currency, slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyPriceVolumeDiff(currency, slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.priceChange),
+      formatNumber_(result.priceVolumeDiff),
+      formatNumber_(result.volumeChange)
+    ]
+  }))
+}
+
+/**
  * Gets the daily price-volume difference technical indicator for a given asset,
  * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
@@ -213,19 +265,15 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyPriceVolumeDiff_)(currency, projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectSlug, from, to)
-  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
+function socialVolumeProjects_ () {
+  var results = getApiClient_().fetchSocialVolumeProjects()
+  assertHasData_(results)
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.priceChange),
-      formatNumber_(result.priceVolumeDiff),
-      formatNumber_(result.volumeChange)
-    ]
-  }))
+  var headers = ['Social Volume Projects']
+  return headers.concat(results)
 }
 
 /**
@@ -234,9 +282,22 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
-  var headers = ['Social Volume Projects']
-  return headers.concat(results)
+  return handleErrors_(socialVolumeProjects_)()
+}
+
+function dailySocialVolume_ (slug, from, to, socialVolumeType) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailySocialVolume(slug, from, to, socialVolumeType)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Mentions Count']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.mentionsCount)
+    ]
+  }))
 }
 
 /**
@@ -257,15 +318,20 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
  * @customfunction
  */
 function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailySocialVolume_)(projectSlug, from, to, socialVolumeType)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(projectSlug, from, to, socialVolumeType)
-  var headers = ['Date', 'Mentions Count']
+function dailyGithubActivity_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyGithubActivity(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.mentionsCount)
+      formatNumber_(result.activity)
     ]
   }))
 }
@@ -282,9 +348,14 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @customfunction
  */
 function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyGithubActivity_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyGithubActivity(projectSlug, from, to)
+function dailyDevActivity_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyDevActivity(slug, from, to)
+  assertHasData_(results)
+
   var headers = ['Date', 'Activity']
 
   return [headers].concat(results.map(function (result) {
@@ -307,21 +378,7 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyDevActivity(projectSlug, from, to)
-  var headers = ['Date', 'Activity']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activity)
-    ]
-  }))
-}
-
-function getApiClient_ () {
-  return new ApiClient_(new Connection_())
+  return handleErrors_(dailyDevActivity_)(projectSlug, from, to)
 }
 
 function dailyNetworkGrowth_ (slug, from, to) {
@@ -354,6 +411,21 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
   return handleErrors_(dailyNetworkGrowth_)(projectSlug, from, to)
 }
 
+function dailyExchangeFundsFlow_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyExchangeFundsFlow(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'In/Out Difference']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.inOutDifference)
+    ]
+  }))
+}
+
 /**
  * Fetches the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
@@ -367,15 +439,20 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyExchangeFundsFlow_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyExchangeFundsFlow(projectSlug, from, to)
-  var headers = ['Date', 'In/Out Difference']
+function dailyTokenCirculation_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyTokenCirculation(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Token Circulation']
 
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.inOutDifference)
+      formatNumber_(result.tokenCirculation)
     ]
   }))
 }
@@ -392,17 +469,28 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyTokenCirculation_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyTokenCirculation(projectSlug, from, to)
-  var headers = ['Date', 'Token Circulation']
+function dailyTrendingWords_ (source, size, hour, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyTrendingWords(source, size, hour, from, to)
+  assertHasData_(results)
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenCirculation)
-    ]
-  }))
+  var headers = ['Date', 'Word', 'Score']
+
+  results = results.map(function (result) {
+    return result.topWords.map(function (topWord) {
+      return [
+        formatDatetimeField_(result.datetime),
+        topWord.word,
+        formatNumber_(topWord.score)
+      ]
+    })
+  })
+
+  var flatResults = [].concat.apply([], results)
+  return [headers].concat(flatResults)
 }
 
 /**
@@ -422,36 +510,13 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTrendingWords(source, size, hour, from, to)
-  var headers = ['Date', 'Word', 'Score']
-
-  results = results.map(function (result) {
-    return result.topWords.map(function (topWord) {
-      return [
-        formatDatetimeField_(result.datetime),
-        topWord.word,
-        formatNumber_(topWord.score)
-      ]
-    })
-  })
-
-  var flatResults = [].concat.apply([], results)
-  return [headers].concat(flatResults)
+  return handleErrors_(dailyTrendingWords_)(source, size, hour, from, to)
 }
 
-/**
- * Fetch fundamentals for a specified project.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @returns {Array} of project details.
- * @customfunction
- */
-function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
-  var result = new ApiClient_(new Connection_()).fetchProjectFundamentals(projectSlug)
+function fetchProjectFundamentals_ (slug) {
+  var result = getApiClient_().fetchProjectFundamentals(slug)
+  assertHasData_(result)
+
   var headers = [
     'Ticker',
     'Name',
@@ -492,16 +557,21 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
 }
 
 /**
- * Fetch social data for a specified project.
+ * Fetch fundamentals for a specified project.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @returns {Array} of project's social data.
+ * @returns {Array} of project details.
  * @customfunction
  */
-function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
-  var result = new ApiClient_(new Connection_()).fetchProjectSocialData(projectSlug)
+function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
+  return handleErrors_(fetchProjectFundamentals_)(projectSlug)
+}
+
+function projectSocialData_ (slug) {
+  var result = getApiClient_().fetchProjectSocialData(slug)
+  assertHasData_(result)
 
   var headers = [
     'Ticker',
@@ -537,6 +607,34 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
 }
 
 /**
+ * Fetch social data for a specified project.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @returns {Array} of project's social data.
+ * @customfunction
+ */
+function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
+  return handleErrors_(projectSocialData_)(projectSlug)
+}
+
+function dailyTokenAgeConsumed_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyTokenAgeConsumed(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Token Age Consumed']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.tokenAgeConsumed)
+    ]
+  }))
+}
+
+/**
  * Returns amount of tokens changing addresses, multiplied by the number of blocks
  * created on the blockchain since they last moved.
  * Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.
@@ -551,15 +649,19 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyTokenAgeConsumed_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyTokenAgeConsumed(projectSlug, from, to)
-  var headers = ['Date', 'Token Age Consumed']
+function mvrvRatio_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchMvrvRatio(slug, from, to)
+  assertHasData_(results)
 
+  var headers = ['Date', 'Ratio']
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenAgeConsumed)
+      formatNumber_(result.ratio)
     ]
   }))
 }
@@ -575,14 +677,21 @@ function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_MVRV_RATIO (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(mvrvRatio_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchMvrvRatio(projectSlug, from, to)
-  var headers = ['Date', 'Ratio']
+function nvtRatio_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchNvtRatio(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
+
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.ratio)
+      formatNumber_(result.nvtRatioTxVolume),
+      formatNumber_(result.nvtRatioCirculation)
     ]
   }))
 }
@@ -603,15 +712,20 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_NVT_RATIO (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(nvtRatio_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchNvtRatio(projectSlug, from, to)
-  var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
+function dailyActiveDeposits_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyActiveDeposits(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Active Deposits']
+
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.nvtRatioTxVolume),
-      formatNumber_(result.nvtRatioCirculation)
+      formatNumber_(result.activeDeposits)
     ]
   }))
 }
@@ -627,15 +741,19 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(dailyActiveDeposits_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchDailyActiveDeposits(projectSlug, from, to)
-  var headers = ['Date', 'Active Deposits']
+function realizedValue_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchRealizedValue(slug, from, to)
+  assertHasData_(results)
 
+  var headers = ['Date', 'Realized Value']
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeDeposits)
+      formatNumber_(result.realizedValue)
     ]
   }))
 }
@@ -653,14 +771,20 @@ function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_REALIZED_VALUE (projectSlug, from, to) {
-  checkForHistoricData_(from)
+  return handleErrors_(realizedValue_)(projectSlug, from, to)
+}
 
-  var results = new ApiClient_(new Connection_()).fetchRealizedValue(projectSlug, from, to)
-  var headers = ['Date', 'Realized Value']
+function gasUsed_ (from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchGasUsed(from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'ETH Gas Used']
+
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.realizedValue)
+      formatNumber_(result.ethGasUsed)
     ]
   }))
 }
@@ -675,15 +799,5 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_GAS_USED (from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchGasUsed(from, to)
-  var headers = ['Date', 'ETH Gas Used']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.ethGasUsed)
-    ]
-  }))
+  return handleErrors_(gasUsed_)(from, to)
 }
