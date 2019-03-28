@@ -21,8 +21,6 @@
     "NoDataError_": "readonly",
     "HistoricDataForbiddenError_": "readonly",
     "handleErrors_": "readonly",
-    "checkForHistoricData_": "readonly",
-    "requestedDataIsHistoric_": "readonly",
     "assertCanAccessHistoricData_": "readonly",
     "assertHasData_": "readonly",
     "setUserProperty_": "readonly",
