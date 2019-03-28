@@ -757,7 +757,7 @@ describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 1) // headers
+    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
