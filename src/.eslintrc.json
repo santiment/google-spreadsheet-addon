@@ -36,6 +36,8 @@
     "dailyOhlc_": "readonly",
     "dailyPriceVolumeDiff_": "readonly",
     "socialVolumeProjects_": "readonly",
+    "dailyActiveAddresses_": "readonly",
+    "dailyTokenAgeConsumed_": "readonly",
     "dailySocialVolume_": "readonly",
     "dailyGithubActivity_": "readonly",
     "dailyDevActivity_": "readonly",

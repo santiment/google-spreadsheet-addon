@@ -38,21 +38,6 @@ function SAN_ERC20_PROJECTS () {
   return handleErrors_(erc20Projects_)()
 }
 
-function dailyActiveAddresses_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyActiveAddresses(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Active Addresses']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeAddresses)
-    ]
-  }))
-}
-
 /**
  * Gets the daily active addresses for the specified asset, during a given time interval.
  * "Daily Active Addresses" refers to the number of unique addresses that
@@ -270,21 +255,6 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
  */
 function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
   return handleErrors_(projectSocialData_)(projectSlug)
-}
-
-function dailyTokenAgeConsumed_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTokenAgeConsumed(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Token Age Consumed']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenAgeConsumed)
-    ]
-  }))
 }
 
 /**

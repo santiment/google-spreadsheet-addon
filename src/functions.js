@@ -90,6 +90,21 @@ function erc20Projects_ () {
   }))
 }
 
+function dailyActiveAddresses_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyActiveAddresses(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Active Addresses']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.activeAddresses)
+    ]
+  }))
+}
+
 function dailyTransactionVolume_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
   var results = getApiClient_().fetchDailyTransactionVolume(slug, from, to)
@@ -343,6 +358,21 @@ function projectSocialData_ (slug) {
   ]
 
   return [headers, formattedResult]
+}
+
+function dailyTokenAgeConsumed_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchDailyTokenAgeConsumed(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Token Age Consumed']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.tokenAgeConsumed)
+    ]
+  }))
 }
 
 function mvrvRatio_ (slug, from, to) {
