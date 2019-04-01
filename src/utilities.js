@@ -18,10 +18,12 @@ function requestedDataIsHistoric_ (from) {
   return timeSpan > HISTORIC_DATA_THRESHOLD
 }
 
-function checkForHistoricData_ (from) {
-  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) {
-    throw new Error('Full historical data is only accessible to premium users. Add your API key to use it.')
-  }
+function assertHasData_ (data) {
+  if (data === null) throw new NoDataError_()
+}
+
+function assertCanAccessHistoricData_ (from) {
+  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) throw new HistoricDataForbiddenError_()
 }
 
 function formatDatetimeField_ (field) {

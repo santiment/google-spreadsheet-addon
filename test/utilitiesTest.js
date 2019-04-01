@@ -43,20 +43,23 @@ describe('requestedDataIsHistoric_', () => {
   })
 })
 
-describe('checkForHistoricData_', () => {
+describe('assertCanAccessHistoricData_', () => {
   it('throws an error when historic data is requested and api key is not present', () => {
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
-    expect(() => san.checkForHistoricData_(from)).to.throw('Full historical data is only accessible to premium users. Add your API key to use it.')
+    expect(() =>
+      san.assertCanAccessHistoricData_(from))
+      .to.throw('Full historical data is only accessible to premium users. ' +
+                'Add your API key to use it.')
   })
 
   it("doesn't throw an error when requested data is not historic", () => {
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD - 1)
-    expect(() => san.checkForHistoricData_(from)).to.not.throw()
+    expect(() => san.assertCanAccessHistoricData_(from)).to.not.throw()
   })
 
   it("doesn't throw an error when historic data is requested and api key is present", () => {
     san.setUserProperty_('API_KEY', 'test_api_key')
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
-    expect(() => san.checkForHistoricData_(from)).to.not.throw()
+    expect(() => san.assertCanAccessHistoricData_(from)).to.not.throw()
   })
 })

@@ -10,18 +10,7 @@
  * @customfunction
  */
 function SAN_DAILY_PRICES (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyPrices(projectSlug, from, to)
-  var headers = ['Date', 'USD Price', 'Volume']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.priceUsd),
-      formatNumber_(result.volume)
-    ]
-  }))
+  return handleErrors_(dailyPrices_)(projectSlug, from, to)
 }
 
 /**
@@ -34,36 +23,7 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_ALL_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchAllProjects()
-  var headers = [
-    'Ticker',
-    'Name',
-    'Slug',
-    'USD Price',
-    'USD Marketcap',
-    'USD Volume',
-    'USD Balance',
-    'ETH Balance',
-    'ETH Spent 30D',
-    'ETH Spent 7D',
-    'ETH Spent 1D'
-  ]
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      result.ticker,
-      result.name,
-      result.slug,
-      formatNumber_(result.priceUsd),
-      formatNumber_(result.marketcapUsd),
-      formatNumber_(result.volumeUsd),
-      formatNumber_(result.usdBalance),
-      formatNumber_(result.ethBalance),
-      formatNumber_(result.ethSpent30d),
-      formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d)
-    ]
-  }))
+  return handleErrors_(allProjects_)()
 }
 
 /**
@@ -75,39 +35,7 @@ function SAN_ALL_PROJECTS () {
  * @customfunction
  */
 function SAN_ERC20_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchErc20Projects()
-
-  var headers = [
-    'Ticker',
-    'Name',
-    'Slug',
-    'USD Price',
-    'USD Marketcap',
-    'USD Volume',
-    'USD Balance',
-    'ETH Balance',
-    'ETH Spent 30D',
-    'ETH Spent 7D',
-    'ETH Spent 1D',
-    'Main Contract Address'
-  ]
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      result.ticker,
-      result.name,
-      result.slug,
-      formatNumber_(result.priceUsd),
-      formatNumber_(result.marketcapUsd),
-      formatNumber_(result.volumeUsd),
-      formatNumber_(result.usdBalance),
-      formatNumber_(result.ethBalance),
-      formatNumber_(result.ethSpent30d),
-      formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d),
-      result.mainContractAddress
-    ]
-  }))
+  return handleErrors_(erc20Projects_)()
 }
 
 /**
@@ -124,17 +52,7 @@ function SAN_ERC20_PROJECTS () {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyActiveAddresses(projectSlug, from, to)
-  var headers = ['Date', 'Active Addresses']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeAddresses)
-    ]
-  }))
+  return handleErrors_(dailyActiveAddresses_)(projectSlug, from, to)
 }
 
 /**
@@ -151,17 +69,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTransactionVolume(projectSlug, from, to)
-  var headers = ['Date', 'Transaction Volume']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.transactionVolume)
-    ]
-  }))
+  return handleErrors_(dailyTransactionVolume_)(projectSlug, from, to)
 }
 
 /**
@@ -176,26 +84,7 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_OHLC (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyOhlc(projectSlug, from, to)
-  var headers = [
-    'Date',
-    'Close Price USD',
-    'High Price USD',
-    'Low Price USD',
-    'Open Price USD'
-  ]
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.closePriceUsd),
-      formatNumber_(result.highPriceUsd),
-      formatNumber_(result.lowPriceUsd),
-      formatNumber_(result.openPriceUsd)
-    ]
-  }))
+  return handleErrors_(dailyOhlc_)(projectSlug, from, to)
 }
 
 /**
@@ -213,19 +102,7 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyPriceVolumeDiff(currency, projectSlug, from, to)
-  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.priceChange),
-      formatNumber_(result.priceVolumeDiff),
-      formatNumber_(result.volumeChange)
-    ]
-  }))
+  return handleErrors_(dailyPriceVolumeDiff_)(currency, projectSlug, from, to)
 }
 
 /**
@@ -234,9 +111,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
  * @customfunction
  */
 function SAN_SOCIAL_VOLUME_PROJECTS () {
-  var results = new ApiClient_(new Connection_()).fetchSocialVolumeProjects()
-  var headers = ['Social Volume Projects']
-  return headers.concat(results)
+  return handleErrors_(socialVolumeProjects_)()
 }
 
 /**
@@ -257,17 +132,7 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
  * @customfunction
  */
 function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailySocialVolume(projectSlug, from, to, socialVolumeType)
-  var headers = ['Date', 'Mentions Count']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.mentionsCount)
-    ]
-  }))
+  return handleErrors_(dailySocialVolume_)(projectSlug, from, to, socialVolumeType)
 }
 
 /**
@@ -282,17 +147,7 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @customfunction
  */
 function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyGithubActivity(projectSlug, from, to)
-  var headers = ['Date', 'Activity']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activity)
-    ]
-  }))
+  return handleErrors_(dailyGithubActivity_)(projectSlug, from, to)
 }
 
 /**
@@ -307,17 +162,7 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyDevActivity(projectSlug, from, to)
-  var headers = ['Date', 'Activity']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activity)
-    ]
-  }))
+  return handleErrors_(dailyDevActivity_)(projectSlug, from, to)
 }
 
 /**
@@ -332,17 +177,7 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyNetworkGrowth(projectSlug, from, to)
-  var headers = ['Date', 'New Addresses']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.newAddresses)
-    ]
-  }))
+  return handleErrors_(dailyNetworkGrowth_)(projectSlug, from, to)
 }
 
 /**
@@ -358,19 +193,8 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyExchangeFundsFlow(projectSlug, from, to)
-  var headers = ['Date', 'In/Out Difference']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.inOutDifference)
-    ]
-  }))
+  return handleErrors_(dailyExchangeFundsFlow_)(projectSlug, from, to)
 }
-
 
 /**
  * Returns token circulation for a given slug and time interval.
@@ -384,17 +208,7 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTokenCirculation(projectSlug, from, to)
-  var headers = ['Date', 'Token Circulation']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenCirculation)
-    ]
-  }))
+  return handleErrors_(dailyTokenCirculation_)(projectSlug, from, to)
 }
 
 /**
@@ -414,23 +228,7 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTrendingWords(source, size, hour, from, to)
-  var headers = ['Date', 'Word', 'Score']
-
-  results = results.map(function (result) {
-    return result.topWords.map(function (topWord) {
-      return [
-        formatDatetimeField_(result.datetime),
-        topWord.word,
-        formatNumber_(topWord.score)
-      ]
-    })
-  })
-
-  var flatResults = [].concat.apply([], results)
-  return [headers].concat(flatResults)
+  return handleErrors_(dailyTrendingWords_)(source, size, hour, from, to)
 }
 
 /**
@@ -443,44 +241,7 @@ function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
  * @customfunction
  */
 function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
-  var result = new ApiClient_(new Connection_()).fetchProjectFundamentals(projectSlug)
-  var headers = [
-    'Ticker',
-    'Name',
-    'Slug',
-    'Funds Raised From ICO In USD',
-    'ETH Spent 30D',
-    'ETH Balance',
-    'USD Balance',
-    'USD Price',
-    'USD Volume',
-    'USD Marketcap',
-    'Percent Change 24H',
-    'Percent Change 7D',
-    'Volume Change 24H',
-    'Available Supply',
-    'Average Dev Activity 30D'
-  ]
-
-  var formattedResult = [
-    result.ticker,
-    result.name,
-    result.slug,
-    formatNumber_(result.fundsRaisedUsdIcoEndPrice),
-    formatNumber_(result.ethSpent30d),
-    formatNumber_(result.ethBalance),
-    formatNumber_(result.usdBalance),
-    formatNumber_(result.priceUsd),
-    formatNumber_(result.volumeUsd),
-    formatNumber_(result.marketcapUsd),
-    formatNumber_(result.percentChange24h),
-    formatNumber_(result.percentChange7d),
-    formatNumber_(result.volumeChange24h),
-    formatNumber_(result.availableSupply),
-    formatNumber_(result.averageDevActivity)
-  ]
-
-  return [headers, formattedResult]
+  return handleErrors_(fetchProjectFundamentals_)(projectSlug)
 }
 
 /**
@@ -493,39 +254,7 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
  * @customfunction
  */
 function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
-  var result = new ApiClient_(new Connection_()).fetchProjectSocialData(projectSlug)
-
-  var headers = [
-    'Ticker',
-    'Name',
-    'Slug',
-    'Website Link',
-    'Whitepaper Link',
-    'Facebook Link',
-    'Blog Link',
-    'LinkedIn Link',
-    'Github Link',
-    'Twitter Link',
-    'Reddit Link',
-    'Chat Link'
-  ]
-
-  var formattedResult = [
-    result.ticker,
-    result.name,
-    result.slug,
-    result.websiteLink,
-    result.whitepaperLink,
-    result.facebookLink,
-    result.blogLink,
-    result.linkedinLink,
-    result.githubLink,
-    result.twitterLink,
-    result.redditLink,
-    result.slackLink
-  ]
-
-  return [headers, formattedResult]
+  return handleErrors_(projectSocialData_)(projectSlug)
 }
 
 /**
@@ -543,17 +272,7 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyTokenAgeConsumed(projectSlug, from, to)
-  var headers = ['Date', 'Token Age Consumed']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenAgeConsumed)
-    ]
-  }))
+  return handleErrors_(dailyTokenAgeConsumed_)(projectSlug, from, to)
 }
 
 /**
@@ -567,16 +286,7 @@ function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_MVRV_RATIO (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchMvrvRatio(projectSlug, from, to)
-  var headers = ['Date', 'Ratio']
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.ratio)
-    ]
-  }))
+  return handleErrors_(mvrvRatio_)(projectSlug, from, to)
 }
 
 /**
@@ -595,17 +305,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_NVT_RATIO (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchNvtRatio(projectSlug, from, to)
-  var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.nvtRatioTxVolume),
-      formatNumber_(result.nvtRatioCirculation)
-    ]
-  }))
+  return handleErrors_(nvtRatio_)(projectSlug, from, to)
 }
 
 /**
@@ -619,17 +319,7 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchDailyActiveDeposits(projectSlug, from, to)
-  var headers = ['Date', 'Active Deposits']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeDeposits)
-    ]
-  }))
+  return handleErrors_(dailyActiveDeposits_)(projectSlug, from, to)
 }
 
 /**
@@ -645,16 +335,7 @@ function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_REALIZED_VALUE (projectSlug, from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchRealizedValue(projectSlug, from, to)
-  var headers = ['Date', 'Realized Value']
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.realizedValue)
-    ]
-  }))
+  return handleErrors_(realizedValue_)(projectSlug, from, to)
 }
 
 /**
@@ -667,15 +348,5 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_GAS_USED (from, to) {
-  checkForHistoricData_(from)
-
-  var results = new ApiClient_(new Connection_()).fetchGasUsed(from, to)
-  var headers = ['Date', 'ETH Gas Used']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.ethGasUsed)
-    ]
-  }))
+  return handleErrors_(gasUsed_)(from, to)
 }
