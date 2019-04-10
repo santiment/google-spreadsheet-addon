@@ -105,9 +105,9 @@ function activeAddresses_ (slug, from, to) {
   }))
 }
 
-function dailyTransactionVolume_ (slug, from, to) {
+function transactionVolume_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTransactionVolume(slug, from, to)
+  var results = getApiClient_().fetchTransactionVolume(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Transaction Volume']

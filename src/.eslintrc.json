@@ -32,7 +32,7 @@
     "allProjects_": "readonly",
     "getApiClient_": "readonly",
     "erc20Projects_": "readonly",
-    "dailyTransactionVolume_": "readonly",
+    "transactionVolume_": "readonly",
     "dailyOhlc_": "readonly",
     "dailyPriceVolumeDiff_": "readonly",
     "socialVolumeProjects_": "readonly",

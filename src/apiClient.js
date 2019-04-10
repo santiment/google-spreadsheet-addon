@@ -90,7 +90,7 @@ ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'dailyActiveAddresses')
 }
 
-ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
+ApiClient_.prototype.fetchTransactionVolume = function (slug, from, to) {
   var query = {
     'query': '{\
        transactionVolume(slug: "' + slug + '",\

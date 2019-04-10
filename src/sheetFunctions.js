@@ -56,7 +56,7 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily transaction volume for the specified asset, during a given time interval.
+ * Gets the transaction volume for the specified asset, during a given time interval.
  * "Transaction Volume" refers to the total number of tokens within all
  * transfers that have occurred on a blockchain.
  *
@@ -65,11 +65,11 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily transaction volumes.
+ * @returns {Array} of transaction volumes.
  * @customfunction
  */
-function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
-  return handleErrors_(dailyTransactionVolume_)(projectSlug, from, to)
+function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
+  return handleErrors_(transactionVolume_)(projectSlug, from, to)
 }
 
 /**
