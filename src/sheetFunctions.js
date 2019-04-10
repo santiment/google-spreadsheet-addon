@@ -39,20 +39,20 @@ function SAN_ERC20_PROJECTS () {
 }
 
 /**
- * Gets the daily active addresses for the specified asset, during a given time interval.
- * "Daily Active Addresses" refers to the number of unique addresses that
- * participated in transactions on a blockchain each day.
+ * Gets the active addresses for the specified asset, during a given time interval.
+ * "Active Addresses" refers to the number of unique addresses that
+ * participated in transactions on a blockchain.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily active addresses.
+ * @returns {Array} of number of active addresses.
  * @customfunction
  */
-function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  return handleErrors_(dailyActiveAddresses_)(projectSlug, from, to)
+function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
+  return handleErrors_(activeAddresses_)(projectSlug, from, to)
 }
 
 /**

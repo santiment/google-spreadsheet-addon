@@ -90,9 +90,9 @@ function erc20Projects_ () {
   }))
 }
 
-function dailyActiveAddresses_ (slug, from, to) {
+function activeAddresses_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyActiveAddresses(slug, from, to)
+  var results = getApiClient_().fetchActiveAddresses(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Active Addresses']

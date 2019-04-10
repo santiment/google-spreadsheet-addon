@@ -158,19 +158,19 @@ describe('SAN_ERC20_PROJECTS', () => {
   })
 })
 
-describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
+describe('SAN_ACTIVE_ADDRESSES', () => {
   const expected = {
     date: 'string',
     activeAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
+  const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
   const headers = response[0]
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyActiveAddresses', san.SAN_DAILY_ACTIVE_ADDRESSES, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Addresses']
@@ -178,7 +178,7 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
+    const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
 
     expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
 

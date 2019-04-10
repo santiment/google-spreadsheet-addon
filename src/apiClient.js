@@ -74,7 +74,7 @@ ApiClient_.prototype.fetchErc20Projects = function () {
   return this.conn.graphQLQuery(query, 'allErc20Projects')
 }
 
-ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
   var query = {
     'query': '{\
        dailyActiveAddresses(slug: "' + slug + '",\
