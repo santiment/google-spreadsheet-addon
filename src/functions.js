@@ -184,9 +184,9 @@ function socialVolume_ (slug, from, to, socialVolumeType) {
   }))
 }
 
-function dailyGithubActivity_ (slug, from, to) {
+function githubActivity_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyGithubActivity(slug, from, to)
+  var results = getApiClient_().fetchGithubActivity(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Activity']

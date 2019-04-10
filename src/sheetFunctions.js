@@ -147,8 +147,8 @@ function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @returns {Array} of github activity.
  * @customfunction
  */
-function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(dailyGithubActivity_)(projectSlug, from, to)
+function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
+  return handleErrors_(githubActivity_)(projectSlug, from, to)
 }
 
 /**
