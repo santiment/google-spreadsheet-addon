@@ -198,7 +198,7 @@ ApiClient_.prototype.fetchDevActivity = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'devActivity')
 }
 
-ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
+ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
   var query = {
     'query': '{\
        networkGrowth(slug: "' + slug + '",\

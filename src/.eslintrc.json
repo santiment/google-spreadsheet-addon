@@ -41,7 +41,7 @@
     "dailyTokenAgeConsumed_": "readonly",
     "githubActivity_": "readonly",
     "devActivity_": "readonly",
-    "dailyNetworkGrowth_": "readonly",
+    "networkGrowth_": "readonly",
     "dailyExchangeFundsFlow_": "readonly",
     "dailyTokenCirculation_": "readonly",
     "dailyTrendingWords_": "readonly",

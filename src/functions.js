@@ -214,9 +214,9 @@ function devActivity_ (slug, from, to) {
   }))
 }
 
-function dailyNetworkGrowth_ (slug, from, to) {
+function networkGrowth_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyNetworkGrowth(slug, from, to)
+  var results = getApiClient_().fetchNetworkGrowth(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'New Addresses']

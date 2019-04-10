@@ -442,19 +442,19 @@ describe('SAN_DEV_ACTIVITY', () => {
   })
 })
 
-describe('SAN_DAILY_NETWORK_GROWTH', () => {
+describe('SAN_NETWORK_GROWTH', () => {
   const expected = {
     date: 'string',
     newAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+  const response = san.SAN_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyNetworkGrowth', san.SAN_DAILY_NETWORK_GROWTH, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'New Addresses']
@@ -462,7 +462,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    const results = san.SAN_NETWORK_GROWTH(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {

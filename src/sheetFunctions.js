@@ -167,7 +167,8 @@ function SAN_DEV_ACTIVITY (projectSlug, from, to) {
 }
 
 /**
- * Returns the number of new addresses being created on the project network for a given slug and time interval.
+ * Returns the number of new addresses being created on the project network
+ * for a given slug and time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -177,8 +178,8 @@ function SAN_DEV_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of number of new addresses.
  * @customfunction
  */
-function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
-  return handleErrors_(dailyNetworkGrowth_)(projectSlug, from, to)
+function SAN_NETWORK_GROWTH (projectSlug, from, to) {
+  return handleErrors_(networkGrowth_)(projectSlug, from, to)
 }
 
 /**
