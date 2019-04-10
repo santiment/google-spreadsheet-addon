@@ -404,25 +404,25 @@ describe('SAN_GITHUB_ACTIVITY', () => {
   })
 })
 
-describe('SAN_DAILY_DEV_ACTIVITY', () => {
+describe('SAN_DEV_ACTIVITY', () => {
   const expected = {
     date: 'string',
     activity: 'number'
   }
 
-  const response = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
+  const response = san.SAN_DEV_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_DEV_ACTIVITY,
+    san.SAN_DEV_ACTIVITY,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyDevActivity',
-    san.SAN_DAILY_DEV_ACTIVITY,
+    'fetchDevActivity',
+    san.SAN_DEV_ACTIVITY,
     slug,
     from,
     to)
@@ -433,7 +433,7 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
+    const activities = san.SAN_DEV_ACTIVITY(slug, from, to)
 
     expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {

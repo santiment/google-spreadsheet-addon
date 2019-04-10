@@ -162,8 +162,8 @@ function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of dev activity.
  * @customfunction
  */
-function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(dailyDevActivity_)(projectSlug, from, to)
+function SAN_DEV_ACTIVITY (projectSlug, from, to) {
+  return handleErrors_(devActivity_)(projectSlug, from, to)
 }
 
 /**

@@ -40,7 +40,7 @@
     "activeAddresses_": "readonly",
     "dailyTokenAgeConsumed_": "readonly",
     "githubActivity_": "readonly",
-    "dailyDevActivity_": "readonly",
+    "devActivity_": "readonly",
     "dailyNetworkGrowth_": "readonly",
     "dailyExchangeFundsFlow_": "readonly",
     "dailyTokenCirculation_": "readonly",

@@ -199,9 +199,9 @@ function githubActivity_ (slug, from, to) {
   }))
 }
 
-function dailyDevActivity_ (slug, from, to) {
+function devActivity_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyDevActivity(slug, from, to)
+  var results = getApiClient_().fetchDevActivity(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Activity']
