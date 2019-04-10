@@ -144,9 +144,9 @@ function ohlc_ (slug, from, to) {
   }))
 }
 
-function dailyPriceVolumeDiff_ (currency, slug, from, to) {
+function priceVolumeDiff_ (currency, slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyPriceVolumeDiff(currency, slug, from, to)
+  var results = getApiClient_().fetchPriceVolumeDiff(currency, slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']

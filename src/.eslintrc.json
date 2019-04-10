@@ -34,7 +34,7 @@
     "erc20Projects_": "readonly",
     "transactionVolume_": "readonly",
     "ohlc_": "readonly",
-    "dailyPriceVolumeDiff_": "readonly",
+    "priceVolumeDiff_": "readonly",
     "socialVolumeProjects_": "readonly",
     "activeAddresses_": "readonly",
     "dailyTokenAgeConsumed_": "readonly",

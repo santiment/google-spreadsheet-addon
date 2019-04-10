@@ -258,7 +258,7 @@ describe('SAN_OHLC', () => {
   })
 })
 
-describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
+describe('SAN_PRICE_VOLUME_DIFF', () => {
   const expected = {
     date: 'string',
     priceChange: 'number',
@@ -266,20 +266,20 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
     volumeChange: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+  const response = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyPriceVolumeDiff',
-    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    'fetchPriceVolumeDiff',
+    san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
     slug,
     from,
@@ -297,7 +297,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+    const volumes = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 

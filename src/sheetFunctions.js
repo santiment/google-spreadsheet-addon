@@ -89,7 +89,7 @@ function SAN_OHLC (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily price-volume difference technical indicator for a given asset,
+ * Gets the price-volume difference technical indicator for a given asset,
  * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
@@ -99,11 +99,11 @@ function SAN_OHLC (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily price-volume difference technical indicator.
+ * @returns {Array} of price-volume difference technical indicator.
  * @customfunction
  */
-function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
-  return handleErrors_(dailyPriceVolumeDiff_)(currency, projectSlug, from, to)
+function SAN_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
+  return handleErrors_(priceVolumeDiff_)(currency, projectSlug, from, to)
 }
 
 /**
