@@ -2,9 +2,9 @@ function getApiClient_ () {
   return new ApiClient_(new Connection_())
 }
 
-function dailyPrices_ (slug, from, to) {
+function prices_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyPrices(slug, from, to)
+  var results = getApiClient_().fetchPrices(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'USD Price', 'Volume']

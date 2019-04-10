@@ -12,7 +12,7 @@ ApiClient_.prototype.fetchCurrentUserPermissions = function () {
   return this.conn.graphQLQuery(query, 'currentUser')
 }
 
-ApiClient_.prototype.fetchDailyPrices = function (slug, from, to) {
+ApiClient_.prototype.fetchPrices = function (slug, from, to) {
   var query = {
     'query': '{\
        historyPrice(slug: "' + slug + '",\

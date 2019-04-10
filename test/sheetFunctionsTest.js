@@ -44,20 +44,20 @@ const testHandlesNullData = (stubName, func, ...args) => {
   })
 }
 
-describe('SAN_DAILY_PRICES', () => {
+describe('SAN_PRICES', () => {
   const expected = {
     date: 'string',
     priceUsd: 'number',
     volume: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICES(slug, from, to)
+  const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
   const prices = response[1]
 
   testFieldTypes(prices, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_PRICES, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyPrices', san.SAN_DAILY_PRICES, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_PRICES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'USD Price', 'Volume']
@@ -65,7 +65,7 @@ describe('SAN_DAILY_PRICES', () => {
   })
 
   it('returns a record per every day', () => {
-    const prices = san.SAN_DAILY_PRICES(slug, from, to)
+    const prices = san.SAN_PRICES(slug, from, to)
 
     expect(prices.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
