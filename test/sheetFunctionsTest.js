@@ -218,7 +218,7 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   })
 })
 
-describe('SAN_DAILY_OHLC', () => {
+describe('SAN_OHLC', () => {
   const expected = {
     date: 'string',
     closePriceUsd: 'number',
@@ -227,13 +227,13 @@ describe('SAN_DAILY_OHLC', () => {
     openPriceUsd: 'number'
   }
 
-  const response = san.SAN_DAILY_OHLC(slug, from, to)
+  const response = san.SAN_OHLC(slug, from, to)
   const headers = response[0]
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_OHLC, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyOhlc', san.SAN_DAILY_OHLC, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_OHLC, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -248,7 +248,7 @@ describe('SAN_DAILY_OHLC', () => {
   })
 
   it('returns a record per every day', () => {
-    const ohlc = san.SAN_DAILY_OHLC(slug, from, to)
+    const ohlc = san.SAN_OHLC(slug, from, to)
 
     expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
 

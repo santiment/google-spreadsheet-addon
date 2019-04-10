@@ -120,9 +120,9 @@ function transactionVolume_ (slug, from, to) {
   }))
 }
 
-function dailyOhlc_ (slug, from, to) {
+function ohlc_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyOhlc(slug, from, to)
+  var results = getApiClient_().fetchOhlc(slug, from, to)
   assertHasData_(results)
 
   var headers = [

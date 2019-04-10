@@ -106,7 +106,7 @@ ApiClient_.prototype.fetchTransactionVolume = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'transactionVolume')
 }
 
-ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
+ApiClient_.prototype.fetchOhlc = function (slug, from, to) {
   var query = {
     'query': '{\
        ohlc(slug: "' + slug + '",\

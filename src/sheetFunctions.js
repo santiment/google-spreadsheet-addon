@@ -73,18 +73,19 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
 }
 
 /**
- * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
+ * Gets the open, high, low, and close price values for the specified asset,
+ * during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily open, high, low, and close price values.
+ * @returns {Array} of open, high, low, and close price values.
  * @customfunction
  */
-function SAN_DAILY_OHLC (projectSlug, from, to) {
-  return handleErrors_(dailyOhlc_)(projectSlug, from, to)
+function SAN_OHLC (projectSlug, from, to) {
+  return handleErrors_(ohlc_)(projectSlug, from, to)
 }
 
 /**
