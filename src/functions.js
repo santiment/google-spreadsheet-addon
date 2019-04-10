@@ -169,9 +169,9 @@ function socialVolumeProjects_ () {
   return headers.concat(results)
 }
 
-function dailySocialVolume_ (slug, from, to, socialVolumeType) {
+function socialVolume_ (slug, from, to, socialVolumeType) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailySocialVolume(slug, from, to, socialVolumeType)
+  var results = getApiClient_().fetchSocialVolume(slug, from, to, socialVolumeType)
   assertHasData_(results)
 
   var headers = ['Date', 'Mentions Count']

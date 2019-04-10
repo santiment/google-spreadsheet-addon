@@ -321,7 +321,7 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
   })
 })
 
-describe('SAN_DAILY_SOCIAL_VOLUME', () => {
+describe('SAN_SOCIAL_VOLUME', () => {
   const slug = 'bitcoin'
   const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'
 
@@ -330,20 +330,20 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+  const response = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_SOCIAL_VOLUME,
+    san.SAN_SOCIAL_VOLUME,
     slug,
     historicDataFrom,
     historicDataTo,
     socialVolumeType)
   testHandlesNullData(
-    'fetchDailySocialVolume',
-    san.SAN_DAILY_SOCIAL_VOLUME,
+    'fetchSocialVolume',
+    san.SAN_SOCIAL_VOLUME,
     slug,
     from,
     to,
@@ -356,7 +356,7 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
 
   it('returns a record per every day', () => {
     const slug = 'bitcoin'
-    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+    const volumes = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 

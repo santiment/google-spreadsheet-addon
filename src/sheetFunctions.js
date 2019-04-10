@@ -132,8 +132,8 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
  * @returns {Array} of mention counts.
  * @customfunction
  */
-function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  return handleErrors_(dailySocialVolume_)(projectSlug, from, to, socialVolumeType)
+function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
+  return handleErrors_(socialVolume_)(projectSlug, from, to, socialVolumeType)
 }
 
 /**

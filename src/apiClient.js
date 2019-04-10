@@ -149,7 +149,7 @@ ApiClient_.prototype.fetchSocialVolumeProjects = function () {
   return this.conn.graphQLQuery(query, 'socialVolumeProjects')
 }
 
-ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVolumeType) {
+ApiClient_.prototype.fetchSocialVolume = function (slug, from, to, socialVolumeType) {
   var query = {
     'query': '{\
        socialVolume(slug: "' + slug + '",\
