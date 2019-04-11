@@ -694,22 +694,22 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   })
 })
 
-describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
+describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const expected = { date: 'string', tokenAgeConsumed: 'number' }
 
-  const response = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+  const response = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    san.SAN_TOKEN_AGE_CONSUMED,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTokenAgeConsumed',
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    'fetchTokenAgeConsumed',
+    san.SAN_TOKEN_AGE_CONSUMED,
     slug,
     from,
     to)
@@ -720,7 +720,7 @@ describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+    const results = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {

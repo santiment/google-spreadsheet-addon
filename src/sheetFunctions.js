@@ -270,11 +270,11 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of burn rates.
+ * @returns {Array} of token age consumed numbers.
  * @customfunction
  */
-function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
-  return handleErrors_(dailyTokenAgeConsumed_)(projectSlug, from, to)
+function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
+  return handleErrors_(tokenAgeConsumed_)(projectSlug, from, to)
 }
 
 /**

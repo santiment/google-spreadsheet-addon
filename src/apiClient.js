@@ -315,7 +315,7 @@ ApiClient_.prototype.fetchProjectSocialData = function (slug) {
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
 
-ApiClient_.prototype.fetchDailyTokenAgeConsumed = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   var query = {
     'query': '{\
        tokenAgeConsumed(slug: "' + slug + '",\

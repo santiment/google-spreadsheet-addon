@@ -360,9 +360,9 @@ function projectSocialData_ (slug) {
   return [headers, formattedResult]
 }
 
-function dailyTokenAgeConsumed_ (slug, from, to) {
+function tokenAgeConsumed_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTokenAgeConsumed(slug, from, to)
+  var results = getApiClient_().fetchTokenAgeConsumed(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Token Age Consumed']

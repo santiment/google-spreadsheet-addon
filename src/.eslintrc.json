@@ -38,7 +38,7 @@
     "socialVolumeProjects_": "readonly",
     "socialVolume_": "readonly",
     "activeAddresses_": "readonly",
-    "dailyTokenAgeConsumed_": "readonly",
+    "tokenAgeConsumed_": "readonly",
     "githubActivity_": "readonly",
     "devActivity_": "readonly",
     "networkGrowth_": "readonly",
