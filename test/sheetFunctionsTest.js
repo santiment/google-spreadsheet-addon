@@ -729,22 +729,22 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   })
 })
 
-describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
+describe('SAN_ACTIVE_DEPOSITS', () => {
   const expected = { date: 'string', activeDeposits: 'number' }
 
-  const response = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+  const response = san.SAN_ACTIVE_DEPOSITS(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    san.SAN_ACTIVE_DEPOSITS,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyActiveDeposits',
-    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    'fetchActiveDeposits',
+    san.SAN_ACTIVE_DEPOSITS,
     slug,
     from,
     to)
@@ -755,7 +755,7 @@ describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+    const results = san.SAN_ACTIVE_DEPOSITS(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {

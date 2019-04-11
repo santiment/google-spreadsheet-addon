@@ -49,7 +49,7 @@
     "projectSocialData_": "readonly",
     "mvrvRatio_": "readonly",
     "nvtRatio_": "readonly",
-    "dailyActiveDeposits_": "readonly",
+    "activeDeposits_": "readonly",
     "realizedValue_": "readonly",
     "gasUsed_": "readonly"
   }

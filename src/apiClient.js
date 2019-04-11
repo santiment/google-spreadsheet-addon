@@ -364,7 +364,7 @@ ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'nvtRatio')
 }
 
-ApiClient_.prototype.fetchDailyActiveDeposits = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
   var query = {
     'query': '{\
        dailyActiveDeposits(slug: "' + slug + '",\

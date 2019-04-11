@@ -405,9 +405,9 @@ function nvtRatio_ (slug, from, to) {
   }))
 }
 
-function dailyActiveDeposits_ (slug, from, to) {
+function activeDeposits_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyActiveDeposits(slug, from, to)
+  var results = getApiClient_().fetchActiveDeposits(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Active Deposits']

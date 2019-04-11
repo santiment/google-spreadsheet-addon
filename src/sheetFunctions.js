@@ -320,8 +320,8 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  * @returns {Array} of deposit address numbers.
  * @customfunction
  */
-function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  return handleErrors_(dailyActiveDeposits_)(projectSlug, from, to)
+function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
+  return handleErrors_(activeDeposits_)(projectSlug, from, to)
 }
 
 /**
