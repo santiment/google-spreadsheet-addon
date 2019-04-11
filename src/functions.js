@@ -229,9 +229,9 @@ function networkGrowth_ (slug, from, to) {
   }))
 }
 
-function dailyExchangeFundsFlow_ (slug, from, to) {
+function exchangeFundsFlow_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyExchangeFundsFlow(slug, from, to)
+  var results = getApiClient_().fetchExchangeFundsFlow(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'In/Out Difference']

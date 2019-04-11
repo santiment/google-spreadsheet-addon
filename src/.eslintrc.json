@@ -42,7 +42,7 @@
     "githubActivity_": "readonly",
     "devActivity_": "readonly",
     "networkGrowth_": "readonly",
-    "dailyExchangeFundsFlow_": "readonly",
+    "exchangeFundsFlow_": "readonly",
     "dailyTokenCirculation_": "readonly",
     "dailyTrendingWords_": "readonly",
     "fetchProjectFundamentals_": "readonly",

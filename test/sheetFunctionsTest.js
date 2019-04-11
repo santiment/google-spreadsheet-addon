@@ -471,25 +471,25 @@ describe('SAN_NETWORK_GROWTH', () => {
   })
 })
 
-describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
+describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   const expected = {
     date: 'string',
     inOutDifference: 'number'
   }
 
-  const response = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
+  const response = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyExchangeFundsFlow',
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    'fetchExchangeFundsFlow',
+    san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     from,
     to)
@@ -500,7 +500,7 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
+    const results = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {

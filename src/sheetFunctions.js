@@ -191,11 +191,11 @@ function SAN_NETWORK_GROWTH (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of dev activity.
+ * @returns {Array} of token deposit/withdraw differences.
  * @customfunction
  */
-function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  return handleErrors_(dailyExchangeFundsFlow_)(projectSlug, from, to)
+function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
+  return handleErrors_(exchangeFundsFlow_)(projectSlug, from, to)
 }
 
 /**

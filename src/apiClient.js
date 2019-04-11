@@ -214,7 +214,7 @@ ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'networkGrowth')
 }
 
-ApiClient_.prototype.fetchDailyExchangeFundsFlow = function (slug, from, to) {
+ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   var query = {
     'query': '{\
        exchangeFundsFlow(slug: "' + slug + '",\
