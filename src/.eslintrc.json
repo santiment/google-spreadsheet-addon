@@ -43,7 +43,7 @@
     "devActivity_": "readonly",
     "networkGrowth_": "readonly",
     "exchangeFundsFlow_": "readonly",
-    "dailyTokenCirculation_": "readonly",
+    "tokenCirculation_": "readonly",
     "dailyTrendingWords_": "readonly",
     "fetchProjectFundamentals_": "readonly",
     "projectSocialData_": "readonly",

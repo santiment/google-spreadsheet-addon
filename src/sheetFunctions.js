@@ -209,8 +209,8 @@ function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @returns {Array} of token circulation.
  * @customfunction
  */
-function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
-  return handleErrors_(dailyTokenCirculation_)(projectSlug, from, to)
+function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
+  return handleErrors_(tokenCirculation_)(projectSlug, from, to)
 }
 
 /**

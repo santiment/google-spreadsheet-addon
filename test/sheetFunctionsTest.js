@@ -509,25 +509,25 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   })
 })
 
-describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
+describe('SAN_TOKEN_CIRCULATION', () => {
   const expected = {
     date: 'string',
     tokenCirculation: 'number'
   }
 
-  const response = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
+  const response = san.SAN_TOKEN_CIRCULATION(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TOKEN_CIRCULATION,
+    san.SAN_TOKEN_CIRCULATION,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTokenCirculation',
-    san.SAN_DAILY_TOKEN_CIRCULATION,
+    'fetchTokenCirculation',
+    san.SAN_TOKEN_CIRCULATION,
     slug,
     from,
     to)
@@ -538,7 +538,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
+    const results = san.SAN_TOKEN_CIRCULATION(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers
     for (let [index, day] of days.entries()) {

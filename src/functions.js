@@ -244,9 +244,9 @@ function exchangeFundsFlow_ (slug, from, to) {
   }))
 }
 
-function dailyTokenCirculation_ (slug, from, to) {
+function tokenCirculation_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTokenCirculation(slug, from, to)
+  var results = getApiClient_().fetchTokenCirculation(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Token Circulation']

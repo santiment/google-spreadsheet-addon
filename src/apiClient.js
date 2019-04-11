@@ -230,7 +230,7 @@ ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
 }
 
-ApiClient_.prototype.fetchDailyTokenCirculation = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
   var query = {
     'query': '{\
        tokenCirculation(slug: "' + slug + '",\
