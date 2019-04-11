@@ -547,7 +547,7 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   })
 })
 
-describe('SAN_DAILY_TRENDING_WORDS', () => {
+describe('SAN_TRENDING_WORDS', () => {
   const sources = ['TELEGRAM', 'PROFESSIONAL_TRADERS_CHAT', 'REDDIT', 'ALL']
 
   const size = 3
@@ -561,7 +561,7 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
         score: 'number'
       }
 
-      const response = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+      const response = san.SAN_TRENDING_WORDS(source, size, hour, from, to)
 
       const headers = response[0]
       const results = response[1]
@@ -577,21 +577,21 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
 
   it('returns n records per day', () => {
     const source = 'ALL'
-    const results = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+    const results = san.SAN_TRENDING_WORDS(source, size, hour, from, to)
 
     expect(results.length).to.equal((numberOfDays + 1) * size + 1) // last day + headers
   })
 
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TRENDING_WORDS,
+    san.SAN_TRENDING_WORDS,
     'ALL',
     size,
     hour,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTrendingWords',
-    san.SAN_DAILY_TRENDING_WORDS,
+    'fetchTrendingWords',
+    san.SAN_TRENDING_WORDS,
     'ALL',
     size,
     hour,

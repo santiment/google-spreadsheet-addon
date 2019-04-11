@@ -259,9 +259,9 @@ function tokenCirculation_ (slug, from, to) {
   }))
 }
 
-function dailyTrendingWords_ (source, size, hour, from, to) {
+function trendingWords_ (source, size, hour, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTrendingWords(source, size, hour, from, to)
+  var results = getApiClient_().fetchTrendingWords(source, size, hour, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Word', 'Score']

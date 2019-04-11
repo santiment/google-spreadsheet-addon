@@ -44,7 +44,7 @@
     "networkGrowth_": "readonly",
     "exchangeFundsFlow_": "readonly",
     "tokenCirculation_": "readonly",
-    "dailyTrendingWords_": "readonly",
+    "trendingWords_": "readonly",
     "fetchProjectFundamentals_": "readonly",
     "projectSocialData_": "readonly",
     "mvrvRatio_": "readonly",

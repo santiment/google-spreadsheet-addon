@@ -229,8 +229,8 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @returns {Array} of trending words and their score.
  * @customfunction
  */
-function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
-  return handleErrors_(dailyTrendingWords_)(source, size, hour, from, to)
+function SAN_TRENDING_WORDS (source, size, hour, from, to) {
+  return handleErrors_(trendingWords_)(source, size, hour, from, to)
 }
 
 /**

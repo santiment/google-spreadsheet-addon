@@ -247,7 +247,7 @@ ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
 }
 
 
-ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, from, to) {
+ApiClient_.prototype.fetchTrendingWords = function (source, size, hour, from, to) {
   var query = {
     'query': '{\
        trendingWords(source: ' + source + ',\
