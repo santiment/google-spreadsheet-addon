@@ -41,39 +41,107 @@ describe('headers', () => {
   })
 })
 
-describe('parsing of response', () => {
-  it('returns errors when there are any', () => {
+describe('error handling', () => {
+  it('can handle known server errors', () => {
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
+    const logStub = sandbox.stub(san, 'logError_').returns(null)
 
-    stub.returns(
-      { body: JSON.stringify({
-        'errors': [
-          {
-            'locations': [
-              {
-                'column': 0,
-                'line': 3
-              }
-            ],
-            'message': 'Cannot query field "marketcapppp" on type "PricePoint". Did you mean "marketcap"?'
-          },
-          {
-            'locations': [
-              {
-                'column': 0,
-                'line': 1
-              }
-            ],
-            'message': 'Argument "from" has invalid value "2018-06-01".'
-          }
-        ]
-      }),
-      statusCode: 400 })
+    const body = {
+      errors: [
+        {
+          locations: [{ column: 0, line: 3 }],
+          message: 'message 1'
+        },
+        {
+          locations: [{ column: 0, line: 1 }],
+          message: 'message 2'
+        }
+      ]
+    }
+
+    stub.returns({ body: JSON.stringify(body), statusCode: 400 })
 
     const conn = new san.Connection_()
 
-    const expectedError = 'code: 400, messages: Cannot query field "marketcapppp" on type "PricePoint".' +
-                          ' Did you mean "marketcap"?,Argument "from" has invalid value "2018-06-01".'
+    const expectedError = 'Server error! message 1, message 2'
+    const expectedLogMessage = {
+      message: expectedError,
+      query: '',
+      queryName: '',
+      responseCode: 400,
+      responseBody: JSON.stringify(body)
+    }
+
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
+  })
+
+  it('can handle unknown server errors', () => {
+    const stub = sandbox.stub(san.UrlFetchApp, '_request')
+    const logStub = sandbox.stub(san, 'logError_').returns(null)
+
+    const body = { some: 'json' }
+
+    stub.returns({ body: JSON.stringify(body), statusCode: 400 })
+
+    const conn = new san.Connection_()
+
+    const expectedError = 'Server error!'
+    const expectedLogMessage = {
+      message: expectedError,
+      query: '',
+      queryName: '',
+      responseCode: 400,
+      responseBody: JSON.stringify(body) }
+
+    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
+  })
+
+  it('can handle internal server error', () => {
+    const stub = sandbox.stub(san.UrlFetchApp, '_request')
+    const logStub = sandbox.stub(san, 'logError_').returns(null)
+
+    const body = {
+      errors: {
+        detail: 'Internal server error'
+      }
+    }
+
+    stub.returns({ body: JSON.stringify(body), statusCode: 500 })
+
+    const conn = new san.Connection_()
+
+    const expectedError = 'Internal server error!'
+    const expectedLogMessage = {
+      message: expectedError,
+      query: '',
+      queryName: '',
+      responseCode: 500,
+      responseBody: JSON.stringify(body) }
+
+    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
+  })
+
+  it('can handle JSON parsing error', () => {
+    const stub = sandbox.stub(san.UrlFetchApp, '_request')
+    const logStub = sandbox.stub(san, 'logError_').returns(null)
+
+    const body = 'json'
+
+    stub.returns({ body: body, statusCode: 200 })
+
+    const conn = new san.Connection_()
+    const expectedError = 'Unexpected token j in JSON at position 0'
+    const expectedLogMessage = {
+      message: expectedError,
+      query: '',
+      queryName: '',
+      responseCode: 200,
+      responseBody: body }
+
+    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
   })
 })

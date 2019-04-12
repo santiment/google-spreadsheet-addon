@@ -4,9 +4,27 @@ var HISTORIC_DATA_FORBIDDEN_MSG =
   'Full historical data is only accessible to premium users. ' +
   'Add your API key to use it.'
 
+var INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
+
+var SERVER_ERROR_MSG = 'Server error!'
+
 function NoDataError_ () {
   this.name = 'NoDataError'
   this.message = NO_DATA_MSG
+}
+
+function InternalServerError_ () {
+  this.name = 'InternalServerError'
+  this.message = INTERNAL_SERVER_ERROR_MSG
+}
+
+function ServerError_ (message) {
+  this.name = 'ServerError'
+  if (message != null) {
+    this.message = SERVER_ERROR_MSG + ' ' + message
+  } else {
+    this.message = SERVER_ERROR_MSG
+  }
 }
 
 function HistoricDataForbiddenError_ () {
@@ -17,6 +35,12 @@ function HistoricDataForbiddenError_ () {
 NoDataError_.prototype = Object.create(Error.prototype)
 NoDataError_.prototype.constructor = NoDataError_
 
+InternalServerError_.prototype = Object.create(Error.prototype)
+InternalServerError_.prototype.constructor = InternalServerError_
+
+ServerError_.prototype = Object.create(Error.prototype)
+ServerError_.prototype.constructor = ServerError_
+
 HistoricDataForbiddenError_.prototype = Object.create(Error.prototype)
 HistoricDataForbiddenError_.prototype.constructor = HistoricDataForbiddenError_
 
@@ -25,13 +49,13 @@ function handleErrors_ (func) {
     try {
       return func.apply(this, arguments)
     } catch (e) {
-      if (e instanceof NoDataError_) {
-        return [NO_DATA_MSG]
-      } else if (e instanceof HistoricDataForbiddenError_) {
-        return [HISTORIC_DATA_FORBIDDEN_MSG]
-      }
-
-      throw e
+      return [e.message]
     }
   }
+}
+
+function logError_ (error) {
+  // Logs to Stackdriver
+  // https://developers.google.com/apps-script/reference/base/console
+  console.error(error)
 }
