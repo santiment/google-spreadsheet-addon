@@ -1,8 +1,8 @@
 ## Functions
 
 <dl>
-<dt><a href="#SAN_DAILY_PRICES">SAN_DAILY_PRICES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the daily prices for the specified asset, during a given time interval.</p>
+<dt><a href="#SAN_PRICES">SAN_PRICES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Gets the prices for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_ALL_PROJECTS">SAN_ALL_PROJECTS()</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets an array of all assets for which Santiment has data.
@@ -16,47 +16,49 @@ Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day and main contract address.</p>
 </dd>
-<dt><a href="#SAN_DAILY_ACTIVE_ADDRESSES">SAN_DAILY_ACTIVE_ADDRESSES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the daily active addresses for the specified asset, during a given time interval.
-&quot;Daily Active Addresses&quot; refers to the number of unique addresses that
-participated in transactions on a blockchain each day.</p>
+<dt><a href="#SAN_ACTIVE_ADDRESSES">SAN_ACTIVE_ADDRESSES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Gets the active addresses for the specified asset, during a given time interval.
+&quot;Active Addresses&quot; refers to the number of unique addresses that
+participated in transactions on a blockchain.</p>
 </dd>
-<dt><a href="#SAN_DAILY_TRANSACTION_VOLUME">SAN_DAILY_TRANSACTION_VOLUME(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the daily transaction volume for the specified asset, during a given time interval.
+<dt><a href="#SAN_TRANSACTION_VOLUME">SAN_TRANSACTION_VOLUME(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Gets the transaction volume for the specified asset, during a given time interval.
 &quot;Transaction Volume&quot; refers to the total number of tokens within all
 transfers that have occurred on a blockchain.</p>
 </dd>
-<dt><a href="#SAN_DAILY_OHLC">SAN_DAILY_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.</p>
+<dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Gets the open, high, low, and close price values for the specified asset,
+during a given time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_PRICE_VOLUME_DIFF">SAN_DAILY_PRICE_VOLUME_DIFF(currency, projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the daily price-volume difference technical indicator for a given asset,
+<dt><a href="#SAN_PRICE_VOLUME_DIFF">SAN_PRICE_VOLUME_DIFF(currency, projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Gets the price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_VOLUME_PROJECTS">SAN_SOCIAL_VOLUME_PROJECTS()</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns a list of project slugs for which there is social volume data.</p>
 </dd>
-<dt><a href="#SAN_DAILY_SOCIAL_VOLUME">SAN_DAILY_SOCIAL_VOLUME(projectSlug, from, to, socialVolumeType)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_SOCIAL_VOLUME">SAN_SOCIAL_VOLUME(projectSlug, from, to, socialVolumeType)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns a list of mentions count for a given project and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_GITHUB_ACTIVITY">SAN_DAILY_GITHUB_ACTIVITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_GITHUB_ACTIVITY">SAN_GITHUB_ACTIVITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns a list of github activity for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_DEV_ACTIVITY">SAN_DAILY_DEV_ACTIVITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_DEV_ACTIVITY">SAN_DEV_ACTIVITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns a list of dev activity for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_NETWORK_GROWTH">SAN_DAILY_NETWORK_GROWTH(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the number of new addresses being created on the project network for a given slug and time interval.</p>
+<dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the number of new addresses being created on the project network
+for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_EXCHANGE_FUNDS_FLOW">SAN_DAILY_EXCHANGE_FUNDS_FLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_EXCHANGE_FUNDS_FLOW">SAN_EXCHANGE_FUNDS_FLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetches the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_TOKEN_CIRCULATION">SAN_DAILY_TOKEN_CIRCULATION(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_TOKEN_CIRCULATION">SAN_TOKEN_CIRCULATION(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns token circulation for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_DAILY_TRENDING_WORDS">SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_TRENDING_WORDS">SAN_TRENDING_WORDS(source, size, hour, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns list of trending words and their corresponding trend score.</p>
 </dd>
 <dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
@@ -65,7 +67,7 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <dt><a href="#SAN_PROJECT_SOCIAL_DATA">SAN_PROJECT_SOCIAL_DATA(projectSlug)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetch social data for a specified project.</p>
 </dd>
-<dt><a href="#SAN_DAILY_TOKEN_AGE_CONSUMED">SAN_DAILY_TOKEN_AGE_CONSUMED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_TOKEN_AGE_CONSUMED">SAN_TOKEN_AGE_CONSUMED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns amount of tokens changing addresses, multiplied by the number of blocks
 created on the blockchain since they last moved.
 Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.</p>
@@ -82,7 +84,7 @@ it’s not an ideal measure of a network’s economic activity.
 That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
 which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.</p>
 </dd>
-<dt><a href="#SAN_DAILY_ACTIVE_DEPOSITS">SAN_DAILY_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_ACTIVE_DEPOSITS">SAN_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
 </dd>
 <dt><a href="#SAN_REALIZED_VALUE">SAN_REALIZED_VALUE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
@@ -97,13 +99,13 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 </dd>
 </dl>
 
-<a name="SAN_DAILY_PRICES"></a>
+<a name="SAN_PRICES"></a>
 
-## SAN\_DAILY\_PRICES(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the daily prices for the specified asset, during a given time interval.
+## SAN\_PRICES(projectSlug, from, to) ⇒ <code>Array</code>
+Gets the prices for the specified asset, during a given time interval.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily prices.  
+**Returns**: <code>Array</code> - of prices.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -134,15 +136,15 @@ ETH spent in the last 7 days, ETH spent in the last day and main contract addres
 **Kind**: global function  
 **Returns**: <code>Array</code> - of all ERC20 projects.  
 **Customfunction**:   
-<a name="SAN_DAILY_ACTIVE_ADDRESSES"></a>
+<a name="SAN_ACTIVE_ADDRESSES"></a>
 
-## SAN\_DAILY\_ACTIVE\_ADDRESSES(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the daily active addresses for the specified asset, during a given time interval.
-"Daily Active Addresses" refers to the number of unique addresses that
-participated in transactions on a blockchain each day.
+## SAN\_ACTIVE\_ADDRESSES(projectSlug, from, to) ⇒ <code>Array</code>
+Gets the active addresses for the specified asset, during a given time interval.
+"Active Addresses" refers to the number of unique addresses that
+participated in transactions on a blockchain.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily active addresses.  
+**Returns**: <code>Array</code> - of number of active addresses.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -151,15 +153,15 @@ participated in transactions on a blockchain each day.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_TRANSACTION_VOLUME"></a>
+<a name="SAN_TRANSACTION_VOLUME"></a>
 
-## SAN\_DAILY\_TRANSACTION\_VOLUME(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the daily transaction volume for the specified asset, during a given time interval.
+## SAN\_TRANSACTION\_VOLUME(projectSlug, from, to) ⇒ <code>Array</code>
+Gets the transaction volume for the specified asset, during a given time interval.
 "Transaction Volume" refers to the total number of tokens within all
 transfers that have occurred on a blockchain.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily transaction volumes.  
+**Returns**: <code>Array</code> - of transaction volumes.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -168,13 +170,14 @@ transfers that have occurred on a blockchain.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_OHLC"></a>
+<a name="SAN_OHLC"></a>
 
-## SAN\_DAILY\_OHLC(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
+## SAN\_OHLC(projectSlug, from, to) ⇒ <code>Array</code>
+Gets the open, high, low, and close price values for the specified asset,
+during a given time interval.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily open, high, low, and close price values.  
+**Returns**: <code>Array</code> - of open, high, low, and close price values.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -183,15 +186,15 @@ Gets the daily open, high, low, and close price values for the specified asset, 
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_PRICE_VOLUME_DIFF"></a>
+<a name="SAN_PRICE_VOLUME_DIFF"></a>
 
-## SAN\_DAILY\_PRICE\_VOLUME\_DIFF(currency, projectSlug, from, to) ⇒ <code>Array</code>
-Gets the daily price-volume difference technical indicator for a given asset,
+## SAN\_PRICE\_VOLUME\_DIFF(currency, projectSlug, from, to) ⇒ <code>Array</code>
+Gets the price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily price-volume difference technical indicator.  
+**Returns**: <code>Array</code> - of price-volume difference technical indicator.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -209,9 +212,9 @@ Returns a list of project slugs for which there is social volume data.
 **Kind**: global function  
 **Returns**: <code>Array</code> - of social volume projects.  
 **Customfunction**:   
-<a name="SAN_DAILY_SOCIAL_VOLUME"></a>
+<a name="SAN_SOCIAL_VOLUME"></a>
 
-## SAN\_DAILY\_SOCIAL\_VOLUME(projectSlug, from, to, socialVolumeType) ⇒ <code>Array</code>
+## SAN\_SOCIAL\_VOLUME(projectSlug, from, to, socialVolumeType) ⇒ <code>Array</code>
 Returns a list of mentions count for a given project and time interval.
 
 **Kind**: global function  
@@ -225,9 +228,9 @@ Returns a list of mentions count for a given project and time interval.
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | socialVolumeType | <code>string</code> | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW" |
 
-<a name="SAN_DAILY_GITHUB_ACTIVITY"></a>
+<a name="SAN_GITHUB_ACTIVITY"></a>
 
-## SAN\_DAILY\_GITHUB\_ACTIVITY(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_GITHUB\_ACTIVITY(projectSlug, from, to) ⇒ <code>Array</code>
 Returns a list of github activity for a given slug and time interval.
 
 **Kind**: global function  
@@ -240,9 +243,9 @@ Returns a list of github activity for a given slug and time interval.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_DEV_ACTIVITY"></a>
+<a name="SAN_DEV_ACTIVITY"></a>
 
-## SAN\_DAILY\_DEV\_ACTIVITY(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_DEV\_ACTIVITY(projectSlug, from, to) ⇒ <code>Array</code>
 Returns a list of dev activity for a given slug and time interval.
 
 **Kind**: global function  
@@ -255,10 +258,11 @@ Returns a list of dev activity for a given slug and time interval.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_NETWORK_GROWTH"></a>
+<a name="SAN_NETWORK_GROWTH"></a>
 
-## SAN\_DAILY\_NETWORK\_GROWTH(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the number of new addresses being created on the project network for a given slug and time interval.
+## SAN\_NETWORK\_GROWTH(projectSlug, from, to) ⇒ <code>Array</code>
+Returns the number of new addresses being created on the project network
+for a given slug and time interval.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of number of new addresses.  
@@ -270,14 +274,14 @@ Returns the number of new addresses being created on the project network for a g
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_EXCHANGE_FUNDS_FLOW"></a>
+<a name="SAN_EXCHANGE_FUNDS_FLOW"></a>
 
-## SAN\_DAILY\_EXCHANGE\_FUNDS\_FLOW(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_EXCHANGE\_FUNDS\_FLOW(projectSlug, from, to) ⇒ <code>Array</code>
 Fetches the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of dev activity.  
+**Returns**: <code>Array</code> - of token deposit/withdraw differences.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -286,9 +290,9 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_TOKEN_CIRCULATION"></a>
+<a name="SAN_TOKEN_CIRCULATION"></a>
 
-## SAN\_DAILY\_TOKEN\_CIRCULATION(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_TOKEN\_CIRCULATION(projectSlug, from, to) ⇒ <code>Array</code>
 Returns token circulation for a given slug and time interval.
 
 **Kind**: global function  
@@ -301,9 +305,9 @@ Returns token circulation for a given slug and time interval.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_TRENDING_WORDS"></a>
+<a name="SAN_TRENDING_WORDS"></a>
 
-## SAN\_DAILY\_TRENDING\_WORDS(source, size, hour, from, to) ⇒ <code>Array</code>
+## SAN\_TRENDING\_WORDS(source, size, hour, from, to) ⇒ <code>Array</code>
 Returns list of trending words and their corresponding trend score.
 
 **Kind**: global function  
@@ -344,9 +348,9 @@ Fetch social data for a specified project.
 | --- | --- | --- |
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 
-<a name="SAN_DAILY_TOKEN_AGE_CONSUMED"></a>
+<a name="SAN_TOKEN_AGE_CONSUMED"></a>
 
-## SAN\_DAILY\_TOKEN\_AGE\_CONSUMED(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_TOKEN\_AGE\_CONSUMED(projectSlug, from, to) ⇒ <code>Array</code>
 Returns amount of tokens changing addresses, multiplied by the number of blocks
 created on the blockchain since they last moved.
 Spikes are signal of a large amount of tokens moving after being idle for an extended period of time.
@@ -354,7 +358,7 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 Grouping by interval works by summing all records in the interval.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of burn rates.  
+**Returns**: <code>Array</code> - of token age consumed numbers.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -398,9 +402,9 @@ which filters out excess transactions and provides a cleaner overview of a block
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_DAILY_ACTIVE_DEPOSITS"></a>
+<a name="SAN_ACTIVE_DEPOSITS"></a>
 
-## SAN\_DAILY\_ACTIVE\_DEPOSITS(projectSlug, from, to) ⇒ <code>Array</code>
+## SAN\_ACTIVE\_DEPOSITS(projectSlug, from, to) ⇒ <code>Array</code>
 Returns number of unique deposit addresses that have been active for a project.
 
 **Kind**: global function  

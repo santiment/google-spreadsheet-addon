@@ -44,20 +44,20 @@ const testHandlesNullData = (stubName, func, ...args) => {
   })
 }
 
-describe('SAN_DAILY_PRICES', () => {
+describe('SAN_PRICES', () => {
   const expected = {
     date: 'string',
     priceUsd: 'number',
     volume: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICES(slug, from, to)
+  const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
   const prices = response[1]
 
   testFieldTypes(prices, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_PRICES, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyPrices', san.SAN_DAILY_PRICES, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_PRICES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'USD Price', 'Volume']
@@ -65,7 +65,7 @@ describe('SAN_DAILY_PRICES', () => {
   })
 
   it('returns a record per every day', () => {
-    const prices = san.SAN_DAILY_PRICES(slug, from, to)
+    const prices = san.SAN_PRICES(slug, from, to)
 
     expect(prices.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -158,19 +158,19 @@ describe('SAN_ERC20_PROJECTS', () => {
   })
 })
 
-describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
+describe('SAN_ACTIVE_ADDRESSES', () => {
   const expected = {
     date: 'string',
     activeAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
+  const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
   const headers = response[0]
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyActiveAddresses', san.SAN_DAILY_ACTIVE_ADDRESSES, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Addresses']
@@ -178,7 +178,7 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_DAILY_ACTIVE_ADDRESSES(slug, from, to)
+    const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
 
     expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -188,19 +188,19 @@ describe('SAN_DAILY_ACTIVE_ADDRESSES', () => {
   })
 })
 
-describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
+describe('SAN_TRANSACTION_VOLUME', () => {
   const expected = {
     date: 'string',
     transactionVolume: 'number'
   }
 
-  const response = san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
+  const response = san.SAN_TRANSACTION_VOLUME(slug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_TRANSACTION_VOLUME, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyTransactionVolume', san.SAN_DAILY_TRANSACTION_VOLUME, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_TRANSACTION_VOLUME, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Transaction Volume']
@@ -208,7 +208,7 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const transcationVolumes = san.SAN_DAILY_TRANSACTION_VOLUME(slug, from, to)
+    const transcationVolumes = san.SAN_TRANSACTION_VOLUME(slug, from, to)
 
     expect(transcationVolumes.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -218,7 +218,7 @@ describe('SAN_DAILY_TRANSACTION_VOLUME', () => {
   })
 })
 
-describe('SAN_DAILY_OHLC', () => {
+describe('SAN_OHLC', () => {
   const expected = {
     date: 'string',
     closePriceUsd: 'number',
@@ -227,13 +227,13 @@ describe('SAN_DAILY_OHLC', () => {
     openPriceUsd: 'number'
   }
 
-  const response = san.SAN_DAILY_OHLC(slug, from, to)
+  const response = san.SAN_OHLC(slug, from, to)
   const headers = response[0]
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_OHLC, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyOhlc', san.SAN_DAILY_OHLC, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_OHLC, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -248,7 +248,7 @@ describe('SAN_DAILY_OHLC', () => {
   })
 
   it('returns a record per every day', () => {
-    const ohlc = san.SAN_DAILY_OHLC(slug, from, to)
+    const ohlc = san.SAN_OHLC(slug, from, to)
 
     expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
 
@@ -258,7 +258,7 @@ describe('SAN_DAILY_OHLC', () => {
   })
 })
 
-describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
+describe('SAN_PRICE_VOLUME_DIFF', () => {
   const expected = {
     date: 'string',
     priceChange: 'number',
@@ -266,20 +266,20 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
     volumeChange: 'number'
   }
 
-  const response = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+  const response = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyPriceVolumeDiff',
-    san.SAN_DAILY_PRICE_VOLUME_DIFF,
+    'fetchPriceVolumeDiff',
+    san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
     slug,
     from,
@@ -297,7 +297,7 @@ describe('SAN_DAILY_PRICE_VOLUME_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_DAILY_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+    const volumes = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
@@ -321,7 +321,7 @@ describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
   })
 })
 
-describe('SAN_DAILY_SOCIAL_VOLUME', () => {
+describe('SAN_SOCIAL_VOLUME', () => {
   const slug = 'bitcoin'
   const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'
 
@@ -330,20 +330,20 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+  const response = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_SOCIAL_VOLUME,
+    san.SAN_SOCIAL_VOLUME,
     slug,
     historicDataFrom,
     historicDataTo,
     socialVolumeType)
   testHandlesNullData(
-    'fetchDailySocialVolume',
-    san.SAN_DAILY_SOCIAL_VOLUME,
+    'fetchSocialVolume',
+    san.SAN_SOCIAL_VOLUME,
     slug,
     from,
     to,
@@ -356,7 +356,7 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
 
   it('returns a record per every day', () => {
     const slug = 'bitcoin'
-    const volumes = san.SAN_DAILY_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+    const volumes = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
 
     expect(volumes.length).to.equal(numberOfDays + 1) // headers
 
@@ -366,25 +366,25 @@ describe('SAN_DAILY_SOCIAL_VOLUME', () => {
   })
 })
 
-describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
+describe('SAN_GITHUB_ACTIVITY', () => {
   const expected = {
     date: 'string',
     activity: 'number'
   }
 
-  const response = san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
+  const response = san.SAN_GITHUB_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_GITHUB_ACTIVITY,
+    san.SAN_GITHUB_ACTIVITY,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyGithubActivity',
-    san.SAN_DAILY_GITHUB_ACTIVITY,
+    'fetchGithubActivity',
+    san.SAN_GITHUB_ACTIVITY,
     slug,
     from,
     to)
@@ -395,7 +395,7 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DAILY_GITHUB_ACTIVITY(slug, from, to)
+    const activities = san.SAN_GITHUB_ACTIVITY(slug, from, to)
 
     expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -404,25 +404,25 @@ describe('SAN_DAILY_GITHUB_ACTIVITY', () => {
   })
 })
 
-describe('SAN_DAILY_DEV_ACTIVITY', () => {
+describe('SAN_DEV_ACTIVITY', () => {
   const expected = {
     date: 'string',
     activity: 'number'
   }
 
-  const response = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
+  const response = san.SAN_DEV_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_DEV_ACTIVITY,
+    san.SAN_DEV_ACTIVITY,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyDevActivity',
-    san.SAN_DAILY_DEV_ACTIVITY,
+    'fetchDevActivity',
+    san.SAN_DEV_ACTIVITY,
     slug,
     from,
     to)
@@ -433,7 +433,7 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DAILY_DEV_ACTIVITY(slug, from, to)
+    const activities = san.SAN_DEV_ACTIVITY(slug, from, to)
 
     expect(activities.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
@@ -442,19 +442,19 @@ describe('SAN_DAILY_DEV_ACTIVITY', () => {
   })
 })
 
-describe('SAN_DAILY_NETWORK_GROWTH', () => {
+describe('SAN_NETWORK_GROWTH', () => {
   const expected = {
     date: 'string',
     newAddresses: 'number'
   }
 
-  const response = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+  const response = san.SAN_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(san.SAN_DAILY_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchDailyNetworkGrowth', san.SAN_DAILY_NETWORK_GROWTH, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'New Addresses']
@@ -462,7 +462,7 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_NETWORK_GROWTH(slug, from, to)
+    const results = san.SAN_NETWORK_GROWTH(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
@@ -471,25 +471,25 @@ describe('SAN_DAILY_NETWORK_GROWTH', () => {
   })
 })
 
-describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
+describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   const expected = {
     date: 'string',
     inOutDifference: 'number'
   }
 
-  const response = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
+  const response = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyExchangeFundsFlow',
-    san.SAN_DAILY_EXCHANGE_FUNDS_FLOW,
+    'fetchExchangeFundsFlow',
+    san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     from,
     to)
@@ -500,7 +500,7 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_EXCHANGE_FUNDS_FLOW(slug, from, to)
+    const results = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
@@ -509,25 +509,25 @@ describe('SAN_DAILY_EXCHANGE_FUNDS_FLOW', () => {
   })
 })
 
-describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
+describe('SAN_TOKEN_CIRCULATION', () => {
   const expected = {
     date: 'string',
     tokenCirculation: 'number'
   }
 
-  const response = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
+  const response = san.SAN_TOKEN_CIRCULATION(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TOKEN_CIRCULATION,
+    san.SAN_TOKEN_CIRCULATION,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTokenCirculation',
-    san.SAN_DAILY_TOKEN_CIRCULATION,
+    'fetchTokenCirculation',
+    san.SAN_TOKEN_CIRCULATION,
     slug,
     from,
     to)
@@ -538,7 +538,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_CIRCULATION(slug, from, to)
+    const results = san.SAN_TOKEN_CIRCULATION(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers
     for (let [index, day] of days.entries()) {
@@ -547,7 +547,7 @@ describe('SAN_DAILY_TOKEN_CIRCULATION', () => {
   })
 })
 
-describe('SAN_DAILY_TRENDING_WORDS', () => {
+describe('SAN_TRENDING_WORDS', () => {
   const sources = ['TELEGRAM', 'PROFESSIONAL_TRADERS_CHAT', 'REDDIT', 'ALL']
 
   const size = 3
@@ -561,7 +561,7 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
         score: 'number'
       }
 
-      const response = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+      const response = san.SAN_TRENDING_WORDS(source, size, hour, from, to)
 
       const headers = response[0]
       const results = response[1]
@@ -577,21 +577,21 @@ describe('SAN_DAILY_TRENDING_WORDS', () => {
 
   it('returns n records per day', () => {
     const source = 'ALL'
-    const results = san.SAN_DAILY_TRENDING_WORDS(source, size, hour, from, to)
+    const results = san.SAN_TRENDING_WORDS(source, size, hour, from, to)
 
     expect(results.length).to.equal((numberOfDays + 1) * size + 1) // last day + headers
   })
 
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TRENDING_WORDS,
+    san.SAN_TRENDING_WORDS,
     'ALL',
     size,
     hour,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTrendingWords',
-    san.SAN_DAILY_TRENDING_WORDS,
+    'fetchTrendingWords',
+    san.SAN_TRENDING_WORDS,
     'ALL',
     size,
     hour,
@@ -694,22 +694,22 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   })
 })
 
-describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
+describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const expected = { date: 'string', tokenAgeConsumed: 'number' }
 
-  const response = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+  const response = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    san.SAN_TOKEN_AGE_CONSUMED,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyTokenAgeConsumed',
-    san.SAN_DAILY_TOKEN_AGE_CONSUMED,
+    'fetchTokenAgeConsumed',
+    san.SAN_TOKEN_AGE_CONSUMED,
     slug,
     from,
     to)
@@ -720,7 +720,7 @@ describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_TOKEN_AGE_CONSUMED(slug, from, to)
+    const results = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
 
     expect(results.length).to.equal(numberOfDays + 2) // headers + last day
     for (let [index, day] of days.entries()) {
@@ -729,22 +729,22 @@ describe('SAN_DAILY_TOKEN_AGE_CONSUMED', () => {
   })
 })
 
-describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
+describe('SAN_ACTIVE_DEPOSITS', () => {
   const expected = { date: 'string', activeDeposits: 'number' }
 
-  const response = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+  const response = san.SAN_ACTIVE_DEPOSITS(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
-    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    san.SAN_ACTIVE_DEPOSITS,
     slug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
-    'fetchDailyActiveDeposits',
-    san.SAN_DAILY_ACTIVE_DEPOSITS,
+    'fetchActiveDeposits',
+    san.SAN_ACTIVE_DEPOSITS,
     slug,
     from,
     to)
@@ -755,9 +755,9 @@ describe('SAN_DAILY_ACTIVE_DEPOSITS', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_DAILY_ACTIVE_DEPOSITS(slug, from, to)
+    const results = san.SAN_ACTIVE_DEPOSITS(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    expect(results.length).to.equal(numberOfDays + 1) // headers
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }

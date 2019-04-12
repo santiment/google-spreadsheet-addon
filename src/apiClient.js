@@ -12,7 +12,7 @@ ApiClient_.prototype.fetchCurrentUserPermissions = function () {
   return this.conn.graphQLQuery(query, 'currentUser')
 }
 
-ApiClient_.prototype.fetchDailyPrices = function (slug, from, to) {
+ApiClient_.prototype.fetchPrices = function (slug, from, to) {
   var query = {
     'query': '{\
        historyPrice(slug: "' + slug + '",\
@@ -74,7 +74,7 @@ ApiClient_.prototype.fetchErc20Projects = function () {
   return this.conn.graphQLQuery(query, 'allErc20Projects')
 }
 
-ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
   var query = {
     'query': '{\
        dailyActiveAddresses(slug: "' + slug + '",\
@@ -90,7 +90,7 @@ ApiClient_.prototype.fetchDailyActiveAddresses = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'dailyActiveAddresses')
 }
 
-ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
+ApiClient_.prototype.fetchTransactionVolume = function (slug, from, to) {
   var query = {
     'query': '{\
        transactionVolume(slug: "' + slug + '",\
@@ -106,7 +106,7 @@ ApiClient_.prototype.fetchDailyTransactionVolume = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'transactionVolume')
 }
 
-ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
+ApiClient_.prototype.fetchOhlc = function (slug, from, to) {
   var query = {
     'query': '{\
        ohlc(slug: "' + slug + '",\
@@ -125,7 +125,7 @@ ApiClient_.prototype.fetchDailyOhlc = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'ohlc')
 }
 
-ApiClient_.prototype.fetchDailyPriceVolumeDiff = function (currency, slug, from, to) {
+ApiClient_.prototype.fetchPriceVolumeDiff = function (currency, slug, from, to) {
   var query = {
     'query': '{\
        priceVolumeDiff(currency: "' + currency + '",\
@@ -149,7 +149,7 @@ ApiClient_.prototype.fetchSocialVolumeProjects = function () {
   return this.conn.graphQLQuery(query, 'socialVolumeProjects')
 }
 
-ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVolumeType) {
+ApiClient_.prototype.fetchSocialVolume = function (slug, from, to, socialVolumeType) {
   var query = {
     'query': '{\
        socialVolume(slug: "' + slug + '",\
@@ -166,13 +166,13 @@ ApiClient_.prototype.fetchDailySocialVolume = function (slug, from, to, socialVo
   return this.conn.graphQLQuery(query, 'socialVolume')
 }
 
-ApiClient_.prototype.fetchDailyGithubActivity = function (slug, from, to) {
+ApiClient_.prototype.fetchGithubActivity = function (slug, from, to) {
   var query = {
     'query': '{\
        githubActivity(slug: "' + slug + '",\
-                    from: "' + toUTC_(from) + '",\
-                    to: "' + toUTC_(to) + '",\
-                    interval: "1d") {\
+                      from: "' + toUTC_(from) + '",\
+                      to: "' + toUTC_(to) + '",\
+                      interval: "1d") {\
          activity\
          datetime\
        }\
@@ -182,13 +182,13 @@ ApiClient_.prototype.fetchDailyGithubActivity = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'githubActivity')
 }
 
-ApiClient_.prototype.fetchDailyDevActivity = function (slug, from, to) {
+ApiClient_.prototype.fetchDevActivity = function (slug, from, to) {
   var query = {
     'query': '{\
        devActivity(slug: "' + slug + '",\
-                    from: "' + toUTC_(from) + '",\
-                    to: "' + toUTC_(to) + '",\
-                    interval: "1d") {\
+                   from: "' + toUTC_(from) + '",\
+                   to: "' + toUTC_(to) + '",\
+                   interval: "1d") {\
          activity\
          datetime\
        }\
@@ -198,7 +198,7 @@ ApiClient_.prototype.fetchDailyDevActivity = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'devActivity')
 }
 
-ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
+ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
   var query = {
     'query': '{\
        networkGrowth(slug: "' + slug + '",\
@@ -214,7 +214,7 @@ ApiClient_.prototype.fetchDailyNetworkGrowth = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'networkGrowth')
 }
 
-ApiClient_.prototype.fetchDailyExchangeFundsFlow = function (slug, from, to) {
+ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   var query = {
     'query': '{\
        exchangeFundsFlow(slug: "' + slug + '",\
@@ -230,7 +230,7 @@ ApiClient_.prototype.fetchDailyExchangeFundsFlow = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
 }
 
-ApiClient_.prototype.fetchDailyTokenCirculation = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
   var query = {
     'query': '{\
        tokenCirculation(slug: "' + slug + '",\
@@ -247,7 +247,7 @@ ApiClient_.prototype.fetchDailyTokenCirculation = function (slug, from, to) {
 }
 
 
-ApiClient_.prototype.fetchDailyTrendingWords = function (source, size, hour, from, to) {
+ApiClient_.prototype.fetchTrendingWords = function (source, size, hour, from, to) {
   var query = {
     'query': '{\
        trendingWords(source: ' + source + ',\
@@ -315,7 +315,7 @@ ApiClient_.prototype.fetchProjectSocialData = function (slug) {
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
 
-ApiClient_.prototype.fetchDailyTokenAgeConsumed = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   var query = {
     'query': '{\
        tokenAgeConsumed(slug: "' + slug + '",\
@@ -364,7 +364,7 @@ ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'nvtRatio')
 }
 
-ApiClient_.prototype.fetchDailyActiveDeposits = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
   var query = {
     'query': '{\
        dailyActiveDeposits(slug: "' + slug + '",\

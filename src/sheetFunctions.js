@@ -1,16 +1,16 @@
 /**
- * Gets the daily prices for the specified asset, during a given time interval.
+ * Gets the prices for the specified asset, during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily prices.
+ * @returns {Array} of prices.
  * @customfunction
  */
-function SAN_DAILY_PRICES (projectSlug, from, to) {
-  return handleErrors_(dailyPrices_)(projectSlug, from, to)
+function SAN_PRICES (projectSlug, from, to) {
+  return handleErrors_(prices_)(projectSlug, from, to)
 }
 
 /**
@@ -39,24 +39,24 @@ function SAN_ERC20_PROJECTS () {
 }
 
 /**
- * Gets the daily active addresses for the specified asset, during a given time interval.
- * "Daily Active Addresses" refers to the number of unique addresses that
- * participated in transactions on a blockchain each day.
+ * Gets the active addresses for the specified asset, during a given time interval.
+ * "Active Addresses" refers to the number of unique addresses that
+ * participated in transactions on a blockchain.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily active addresses.
+ * @returns {Array} of number of active addresses.
  * @customfunction
  */
-function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  return handleErrors_(dailyActiveAddresses_)(projectSlug, from, to)
+function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
+  return handleErrors_(activeAddresses_)(projectSlug, from, to)
 }
 
 /**
- * Gets the daily transaction volume for the specified asset, during a given time interval.
+ * Gets the transaction volume for the specified asset, during a given time interval.
  * "Transaction Volume" refers to the total number of tokens within all
  * transfers that have occurred on a blockchain.
  *
@@ -65,30 +65,31 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily transaction volumes.
+ * @returns {Array} of transaction volumes.
  * @customfunction
  */
-function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
-  return handleErrors_(dailyTransactionVolume_)(projectSlug, from, to)
+function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
+  return handleErrors_(transactionVolume_)(projectSlug, from, to)
 }
 
 /**
- * Gets the daily open, high, low, and close price values for the specified asset, during a given time interval.
+ * Gets the open, high, low, and close price values for the specified asset,
+ * during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily open, high, low, and close price values.
+ * @returns {Array} of open, high, low, and close price values.
  * @customfunction
  */
-function SAN_DAILY_OHLC (projectSlug, from, to) {
-  return handleErrors_(dailyOhlc_)(projectSlug, from, to)
+function SAN_OHLC (projectSlug, from, to) {
+  return handleErrors_(ohlc_)(projectSlug, from, to)
 }
 
 /**
- * Gets the daily price-volume difference technical indicator for a given asset,
+ * Gets the price-volume difference technical indicator for a given asset,
  * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
@@ -98,11 +99,11 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of daily price-volume difference technical indicator.
+ * @returns {Array} of price-volume difference technical indicator.
  * @customfunction
  */
-function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
-  return handleErrors_(dailyPriceVolumeDiff_)(currency, projectSlug, from, to)
+function SAN_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
+  return handleErrors_(priceVolumeDiff_)(currency, projectSlug, from, to)
 }
 
 /**
@@ -131,8 +132,8 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
  * @returns {Array} of mention counts.
  * @customfunction
  */
-function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  return handleErrors_(dailySocialVolume_)(projectSlug, from, to, socialVolumeType)
+function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
+  return handleErrors_(socialVolume_)(projectSlug, from, to, socialVolumeType)
 }
 
 /**
@@ -146,8 +147,8 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @returns {Array} of github activity.
  * @customfunction
  */
-function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(dailyGithubActivity_)(projectSlug, from, to)
+function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
+  return handleErrors_(githubActivity_)(projectSlug, from, to)
 }
 
 /**
@@ -161,12 +162,13 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of dev activity.
  * @customfunction
  */
-function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(dailyDevActivity_)(projectSlug, from, to)
+function SAN_DEV_ACTIVITY (projectSlug, from, to) {
+  return handleErrors_(devActivity_)(projectSlug, from, to)
 }
 
 /**
- * Returns the number of new addresses being created on the project network for a given slug and time interval.
+ * Returns the number of new addresses being created on the project network
+ * for a given slug and time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -176,8 +178,8 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of number of new addresses.
  * @customfunction
  */
-function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
-  return handleErrors_(dailyNetworkGrowth_)(projectSlug, from, to)
+function SAN_NETWORK_GROWTH (projectSlug, from, to) {
+  return handleErrors_(networkGrowth_)(projectSlug, from, to)
 }
 
 /**
@@ -189,11 +191,11 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of dev activity.
+ * @returns {Array} of token deposit/withdraw differences.
  * @customfunction
  */
-function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  return handleErrors_(dailyExchangeFundsFlow_)(projectSlug, from, to)
+function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
+  return handleErrors_(exchangeFundsFlow_)(projectSlug, from, to)
 }
 
 /**
@@ -207,8 +209,8 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @returns {Array} of token circulation.
  * @customfunction
  */
-function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
-  return handleErrors_(dailyTokenCirculation_)(projectSlug, from, to)
+function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
+  return handleErrors_(tokenCirculation_)(projectSlug, from, to)
 }
 
 /**
@@ -227,8 +229,8 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @returns {Array} of trending words and their score.
  * @customfunction
  */
-function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
-  return handleErrors_(dailyTrendingWords_)(source, size, hour, from, to)
+function SAN_TRENDING_WORDS (source, size, hour, from, to) {
+  return handleErrors_(trendingWords_)(source, size, hour, from, to)
 }
 
 /**
@@ -268,11 +270,11 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of burn rates.
+ * @returns {Array} of token age consumed numbers.
  * @customfunction
  */
-function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
-  return handleErrors_(dailyTokenAgeConsumed_)(projectSlug, from, to)
+function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
+  return handleErrors_(tokenAgeConsumed_)(projectSlug, from, to)
 }
 
 /**
@@ -318,8 +320,8 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  * @returns {Array} of deposit address numbers.
  * @customfunction
  */
-function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  return handleErrors_(dailyActiveDeposits_)(projectSlug, from, to)
+function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
+  return handleErrors_(activeDeposits_)(projectSlug, from, to)
 }
 
 /**

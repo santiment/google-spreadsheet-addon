@@ -2,9 +2,9 @@ function getApiClient_ () {
   return new ApiClient_(new Connection_())
 }
 
-function dailyPrices_ (slug, from, to) {
+function prices_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyPrices(slug, from, to)
+  var results = getApiClient_().fetchPrices(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'USD Price', 'Volume']
@@ -90,9 +90,9 @@ function erc20Projects_ () {
   }))
 }
 
-function dailyActiveAddresses_ (slug, from, to) {
+function activeAddresses_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyActiveAddresses(slug, from, to)
+  var results = getApiClient_().fetchActiveAddresses(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Active Addresses']
@@ -105,9 +105,9 @@ function dailyActiveAddresses_ (slug, from, to) {
   }))
 }
 
-function dailyTransactionVolume_ (slug, from, to) {
+function transactionVolume_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTransactionVolume(slug, from, to)
+  var results = getApiClient_().fetchTransactionVolume(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Transaction Volume']
@@ -120,9 +120,9 @@ function dailyTransactionVolume_ (slug, from, to) {
   }))
 }
 
-function dailyOhlc_ (slug, from, to) {
+function ohlc_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyOhlc(slug, from, to)
+  var results = getApiClient_().fetchOhlc(slug, from, to)
   assertHasData_(results)
 
   var headers = [
@@ -144,9 +144,9 @@ function dailyOhlc_ (slug, from, to) {
   }))
 }
 
-function dailyPriceVolumeDiff_ (currency, slug, from, to) {
+function priceVolumeDiff_ (currency, slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyPriceVolumeDiff(currency, slug, from, to)
+  var results = getApiClient_().fetchPriceVolumeDiff(currency, slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
@@ -169,9 +169,9 @@ function socialVolumeProjects_ () {
   return headers.concat(results)
 }
 
-function dailySocialVolume_ (slug, from, to, socialVolumeType) {
+function socialVolume_ (slug, from, to, socialVolumeType) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailySocialVolume(slug, from, to, socialVolumeType)
+  var results = getApiClient_().fetchSocialVolume(slug, from, to, socialVolumeType)
   assertHasData_(results)
 
   var headers = ['Date', 'Mentions Count']
@@ -184,9 +184,9 @@ function dailySocialVolume_ (slug, from, to, socialVolumeType) {
   }))
 }
 
-function dailyGithubActivity_ (slug, from, to) {
+function githubActivity_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyGithubActivity(slug, from, to)
+  var results = getApiClient_().fetchGithubActivity(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Activity']
@@ -199,9 +199,9 @@ function dailyGithubActivity_ (slug, from, to) {
   }))
 }
 
-function dailyDevActivity_ (slug, from, to) {
+function devActivity_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyDevActivity(slug, from, to)
+  var results = getApiClient_().fetchDevActivity(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Activity']
@@ -214,9 +214,9 @@ function dailyDevActivity_ (slug, from, to) {
   }))
 }
 
-function dailyNetworkGrowth_ (slug, from, to) {
+function networkGrowth_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyNetworkGrowth(slug, from, to)
+  var results = getApiClient_().fetchNetworkGrowth(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'New Addresses']
@@ -229,9 +229,9 @@ function dailyNetworkGrowth_ (slug, from, to) {
   }))
 }
 
-function dailyExchangeFundsFlow_ (slug, from, to) {
+function exchangeFundsFlow_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyExchangeFundsFlow(slug, from, to)
+  var results = getApiClient_().fetchExchangeFundsFlow(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'In/Out Difference']
@@ -244,9 +244,9 @@ function dailyExchangeFundsFlow_ (slug, from, to) {
   }))
 }
 
-function dailyTokenCirculation_ (slug, from, to) {
+function tokenCirculation_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTokenCirculation(slug, from, to)
+  var results = getApiClient_().fetchTokenCirculation(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Token Circulation']
@@ -259,9 +259,9 @@ function dailyTokenCirculation_ (slug, from, to) {
   }))
 }
 
-function dailyTrendingWords_ (source, size, hour, from, to) {
+function trendingWords_ (source, size, hour, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTrendingWords(source, size, hour, from, to)
+  var results = getApiClient_().fetchTrendingWords(source, size, hour, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Word', 'Score']
@@ -360,9 +360,9 @@ function projectSocialData_ (slug) {
   return [headers, formattedResult]
 }
 
-function dailyTokenAgeConsumed_ (slug, from, to) {
+function tokenAgeConsumed_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyTokenAgeConsumed(slug, from, to)
+  var results = getApiClient_().fetchTokenAgeConsumed(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Token Age Consumed']
@@ -405,9 +405,9 @@ function nvtRatio_ (slug, from, to) {
   }))
 }
 
-function dailyActiveDeposits_ (slug, from, to) {
+function activeDeposits_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchDailyActiveDeposits(slug, from, to)
+  var results = getApiClient_().fetchActiveDeposits(slug, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Active Deposits']
