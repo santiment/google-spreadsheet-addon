@@ -12,7 +12,7 @@ function onInstall () {
 }
 
 function enable_ () {
-  var title = 'Santiment Data'
+  var title = 'SANsheets'
   var message = 'This add-on gives you access to cryptocurrency data through various custom functions. Every function starts with =SAN.'
   var ui = SpreadsheetApp.getUi()
   ui.alert(title, message, ui.ButtonSet.OK)

@@ -1,6 +1,6 @@
 # google-spreadsheet-addon
 
-Contains the source code of the [Santiment Data](https://chrome.google.com/webstore/detail/santiment-data/khglcgdkikfpccnfonmimpfkmolokbbk?utm_source=permalink)
+Contains the source code of the [SANsheets](https://chrome.google.com/webstore/detail/santiment-data/khglcgdkikfpccnfonmimpfkmolokbbk?utm_source=permalink)
 google spreadsheet add-on.
 
 ## Usage
