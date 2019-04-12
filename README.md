@@ -3,6 +3,11 @@
 Contains the source code of the [Santiment Data](https://chrome.google.com/webstore/detail/santiment-data/khglcgdkikfpccnfonmimpfkmolokbbk?utm_source=permalink)
 google spreadsheet add-on.
 
+## Usage
+
+  * [Functions documentation](doc/sheet_functions.md)
+  * [Deprecated functions documentation](doc/deprecated_sheet_functions.md)
+
 ## Development
 
 The project is based on [clasp](https://github.com/google/clasp) and [gas-local](https://github.com/mzagorny/gas-local) to enable local development and testing. Most of the Google functions has been mocked in order to work locally, check `gas_mock` for reference. The `src` directory contains the source code that will be pushed to the google apps webeditor. Changing code directly in the webeditor is not recommended apart from debugging because it will get wiped out next time someone pushes.
