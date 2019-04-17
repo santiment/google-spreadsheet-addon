@@ -28,20 +28,25 @@ Connection_.prototype.fetchQuery = function (query) {
   return UrlFetchApp.fetch(this.url, this.buildRequestOptions(query))
 }
 
+Connection_.prototype.buildErrorMessage = function (errors) {
+  return errors.map(function (error) { return error.message }).join(', ')
+}
 
 Connection_.prototype.handleResponse = function (responseCode, responseBody, queryName) {
+  var errors = responseBody.errors
+
   switch (responseCode) {
   case 200:
-    return responseBody.data[queryName]
+    if (errors != null) {
+      throw new ServerError_(this.buildErrorMessage(errors))
+    } else {
+      return responseBody.data[queryName]
+    }
   case 500:
     throw new InternalServerError_()
   default:
-    var errorMessage
-    var errors = responseBody.errors
-
     if (errors != null) {
-      errorMessage = errors.map(function (error) { return error.message }).join(', ')
-      throw new ServerError_(errorMessage)
+      throw new ServerError_(this.buildErrorMessage(errors))
     } else {
       throw new ServerError_()
     }
