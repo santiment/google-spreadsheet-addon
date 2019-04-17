@@ -53,9 +53,3 @@ function handleErrors_ (func) {
     }
   }
 }
-
-function logError_ (error) {
-  // Logs to Stackdriver
-  // https://developers.google.com/apps-script/reference/base/console
-  console.error(error)
-}

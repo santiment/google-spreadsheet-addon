@@ -20,6 +20,7 @@
     "formatNumber_": "readonly",
     "NoDataError_": "readonly",
     "logError_": "readonly",
+    "logInfo_": "readonly",
     "ServerError_": "readonly",
     "InternalServerError_": "readonly",
     "HistoricDataForbiddenError_": "readonly",

@@ -54,6 +54,13 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
     var responseCode = response.getResponseCode()
     var responseBody = JSON.parse(response.getContentText())
 
+    var logMessage = {
+      query: query,
+      queryName: queryName
+    }
+
+    logInfo_(logMessage)
+
     return this.handleResponse(responseCode, responseBody, queryName)
   } catch (e) {
     var error = {
