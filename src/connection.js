@@ -60,6 +60,7 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
     var responseBody = JSON.parse(response.getContentText())
 
     var logMessage = {
+      type: 'RequestLog',
       query: query,
       queryName: queryName
     }
@@ -69,6 +70,7 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
     return this.handleResponse(responseCode, responseBody, queryName)
   } catch (e) {
     var error = {
+      type: e.name,
       message: e.message,
       query: query,
       queryName: queryName,
