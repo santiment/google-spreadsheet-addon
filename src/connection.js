@@ -28,20 +28,57 @@ Connection_.prototype.fetchQuery = function (query) {
   return UrlFetchApp.fetch(this.url, this.buildRequestOptions(query))
 }
 
-Connection_.prototype.parseResponse = function (response, queryName) {
-  if (response.getResponseCode() !== 200) {
-    var responseData = response.getContentText()
-    var responseCode = response.getResponseCode()
-    console.error('code: ' + responseCode + ', data: ' + responseData)
-    var errors = JSON.parse(responseData).errors
-    var errorMessage = errors.map(function (error) { return error.message })
-    throw new Error('code: ' + responseCode + ', messages: ' + errorMessage)
-  }
+Connection_.prototype.buildErrorMessage = function (errors) {
+  return errors.map(function (error) { return error.message }).join(', ')
+}
 
-  return JSON.parse(response.getContentText()).data[queryName]
+Connection_.prototype.handleResponse = function (responseCode, responseBody, queryName) {
+  var errors = responseBody.errors
+
+  switch (responseCode) {
+  case 200:
+    if (errors != null) {
+      throw new ServerError_(this.buildErrorMessage(errors))
+    } else {
+      return responseBody.data[queryName]
+    }
+  case 500:
+    throw new InternalServerError_()
+  default:
+    if (errors != null) {
+      throw new ServerError_(this.buildErrorMessage(errors))
+    } else {
+      throw new ServerError_()
+    }
+  }
 }
 
 Connection_.prototype.graphQLQuery = function (query, queryName) {
-  var response = this.fetchQuery(query)
-  return this.parseResponse(response, queryName)
+  try {
+    var response = this.fetchQuery(query)
+    var responseCode = response.getResponseCode()
+    var responseBody = JSON.parse(response.getContentText())
+
+    var logMessage = {
+      type: 'RequestLog',
+      query: query,
+      queryName: queryName
+    }
+
+    logInfo_(logMessage)
+
+    return this.handleResponse(responseCode, responseBody, queryName)
+  } catch (e) {
+    var error = {
+      type: e.name,
+      message: e.message,
+      query: query,
+      queryName: queryName,
+      responseCode: response.getResponseCode(),
+      responseBody: response.getContentText()
+    }
+
+    logError_(error)
+    throw e
+  }
 }

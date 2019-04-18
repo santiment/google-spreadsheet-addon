@@ -32,9 +32,10 @@ function addApiKeyDialog_ () {
     var apiClient = new ApiClient_(new Connection_(input))
     if (apiClient.hasValidApiKey() === true) {
       setUserProperty_(API_KEY, input)
-
+      logInfo_({type: 'ApiKeyLog', message: 'Valid API key has been added'})
       ui.alert('Your API key is valid and has been saved')
     } else {
+      logWarning_({type: 'ApiKeyLog', message: 'An attempt to add invalid API key has been made.'})
       ui.alert('Your API key is not valid and has not been saved!')
     }
   }
