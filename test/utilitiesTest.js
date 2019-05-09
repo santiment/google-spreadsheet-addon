@@ -18,17 +18,6 @@ describe('userProperties', () => {
   })
 })
 
-describe('hasApiKeyProperty_', () => {
-  it('returns true when an API key property is present', () => {
-    san.setUserProperty_('API_KEY', 'test_api_key')
-    expect(san.hasApiKeyProperty_()).to.be.true
-  })
-
-  it('returns false when an API key property is not present', () => {
-    expect(san.hasApiKeyProperty_()).to.be.false
-  })
-})
-
 describe('requestedDataIsHistoric_', () => {
   it('returns false when period is less than HISTORIC_DATA_THRESHOLD', () => {
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD - 1)

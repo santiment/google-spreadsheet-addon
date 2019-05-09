@@ -1,4 +1,3 @@
-var API_KEY = 'API_KEY'
 var HISTORIC_DATA_THRESHOLD = 90
 
 function setUserProperty_ (key, value) {
@@ -8,9 +7,6 @@ function setUserProperty_ (key, value) {
 function getUserProperty_ (key) {
   return PropertiesService.getUserProperties().getProperty(key)
 }
-
-function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
-function hasApiKeyProperty_ () { return !!apiKeyProperty_() }
 
 function requestedDataIsHistoric_ (from) {
   var oneDay = 24 * 60 * 60 * 1000
