@@ -5,20 +5,30 @@ require('./helper.js')
 const dateFnsFormat = require('date-fns/format')
 const subDays = require('date-fns/sub_days')
 const eachDay = require('date-fns/each_day')
-const startOfYesterday = require('date-fns/start_of_yesterday')
+const startOfDay = require('date-fns/start_of_day')
+const endOfYesterday = require('date-fns/end_of_yesterday')
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
 
 const numberOfDays = 3
-const to = startOfYesterday()
-const from = subDays(to, numberOfDays)
+
+const to = endOfYesterday()
+const from = startOfDay(subDays(to, numberOfDays))
 const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
 
-const historicDataTo = subDays(startOfYesterday(), 200)
-const historicDataFrom = subDays(historicDataTo, 205)
+const historicDataTo = subDays(endOfYesterday(), 200)
+const historicDataFrom = startOfDay(subDays(historicDataTo, 205))
 
 const slug = 'santiment'
 const fiatCurrency = 'USD'
+
+const assertNumberOfRecords = (records, number) => {
+  const includingHeader = number + 1
+  const includingHeaderAndLastDay = number + 2
+
+  // HACK: Some queries return the last day, others don't.
+  expect(records).to.have.lengthOf.within(includingHeader, includingHeaderAndLastDay)
+}
 
 const testFieldTypes = (resources, expected) => {
   Object.entries(expected).forEach(([attr, type], index) => {
@@ -67,7 +77,8 @@ describe('SAN_PRICES', () => {
   it('returns a record per every day', () => {
     const prices = san.SAN_PRICES(slug, from, to)
 
-    expect(prices.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(prices, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
@@ -180,7 +191,7 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   it('returns a record per every day', () => {
     const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
 
-    expect(addresses.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(addresses, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(addresses[index + 1][0]).to.equal(formatDate(day))
@@ -210,7 +221,7 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   it('returns a record per every day', () => {
     const transcationVolumes = san.SAN_TRANSACTION_VOLUME(slug, from, to)
 
-    expect(transcationVolumes.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(transcationVolumes, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(transcationVolumes[index + 1][0]).to.equal(formatDate(day))
@@ -250,7 +261,7 @@ describe('SAN_OHLC', () => {
   it('returns a record per every day', () => {
     const ohlc = san.SAN_OHLC(slug, from, to)
 
-    expect(ohlc.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(ohlc, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(ohlc[index + 1][0]).to.equal(formatDate(day))
@@ -299,7 +310,7 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
   it('returns a record per every day', () => {
     const volumes = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
 
-    expect(volumes.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(volumes, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(volumes[index + 1][0]).to.equal(formatDate(day))
@@ -358,7 +369,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
     const slug = 'bitcoin'
     const volumes = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
 
-    expect(volumes.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(volumes, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(volumes[index + 1][0]).to.equal(formatDate(day))
@@ -397,7 +408,8 @@ describe('SAN_GITHUB_ACTIVITY', () => {
   it('returns a record per every day', () => {
     const activities = san.SAN_GITHUB_ACTIVITY(slug, from, to)
 
-    expect(activities.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(activities, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
@@ -435,7 +447,8 @@ describe('SAN_DEV_ACTIVITY', () => {
   it('returns a record per every day', () => {
     const activities = san.SAN_DEV_ACTIVITY(slug, from, to)
 
-    expect(activities.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(activities, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(activities[index + 1][0]).to.equal(formatDate(day))
     }
@@ -464,7 +477,8 @@ describe('SAN_NETWORK_GROWTH', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_NETWORK_GROWTH(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -502,7 +516,8 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -540,7 +555,8 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_TOKEN_CIRCULATION(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -722,7 +738,8 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -757,7 +774,8 @@ describe('SAN_ACTIVE_DEPOSITS', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_ACTIVE_DEPOSITS(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -792,7 +810,8 @@ describe('SAN_MVRV_RATIO', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_MVRV_RATIO(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
+
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
@@ -835,7 +854,7 @@ describe('SAN_NVT_RATIO', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_NVT_RATIO(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
@@ -865,7 +884,7 @@ describe('SAN_GAS_USED', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_GAS_USED(from, to)
 
-    expect(results.length).to.equal(numberOfDays + 1) // headers
+    assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
@@ -901,7 +920,7 @@ describe('SAN_REALIZED_VALUE', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_REALIZED_VALUE(slug, from, to)
 
-    expect(results.length).to.equal(numberOfDays + 2) // headers + last day
+    assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {
       expect(results[index + 1][0]).to.equal(formatDate(day))
