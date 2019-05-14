@@ -2,11 +2,6 @@ function ApiClient_ (conn) {
   this.conn = conn
 }
 
-ApiClient_.prototype.hasValidApiKey = function () {
-  var response = this.fetchCurrentUserPermissions()
-  return (response && response.permissions && response.permissions.spreadsheet) === true
-}
-
 ApiClient_.prototype.fetchCurrentUserPermissions = function () {
   var query = { 'query': '{currentUser {permissions {spreadsheet}}}' }
   return this.conn.graphQLQuery(query, 'currentUser')

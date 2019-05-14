@@ -34,21 +34,3 @@ describe('fetchCurrentUserPermissions', () => {
     })
   })
 })
-
-describe('hasValidApiKey', () => {
-  it('returns true when the current user can access historic data', () => {
-    const apiClient = new san.ApiClient_(new san.Connection_())
-    const stub = sandbox.stub(apiClient, 'fetchCurrentUserPermissions')
-    stub.returns({ permissions: { spreadsheet: true } })
-
-    expect(apiClient.hasValidApiKey()).to.be.true
-  })
-
-  it("returns false when the current user don't have access to historic data", () => {
-    const apiClient = new san.ApiClient_(new san.Connection_())
-    const stub = sandbox.stub(apiClient, 'fetchCurrentUserPermissions')
-    stub.returns(null)
-
-    expect(apiClient.hasValidApiKey()).to.be.false
-  })
-})
