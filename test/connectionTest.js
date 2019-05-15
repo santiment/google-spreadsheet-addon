@@ -42,7 +42,7 @@ describe('headers', () => {
 })
 
 describe('error handling', () => {
-  it('can handle known server errors', () => {
+  it('can handle known server errors with errors array', () => {
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
     const logStub = sandbox.stub(san, 'logError_').returns(null)
 
@@ -71,6 +71,32 @@ describe('error handling', () => {
       responseCode: 400,
       responseBody: JSON.stringify(body)
     }
+
+    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
+    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
+  })
+
+  it('can handle known server errors with detail key', () => {
+    const stub = sandbox.stub(san.UrlFetchApp, '_request')
+    const logStub = sandbox.stub(san, 'logError_').returns(null)
+
+    const body = {
+      errors: {
+        detail: 'Bad authorization header'
+      }
+    }
+
+    stub.returns({ body: JSON.stringify(body), statusCode: 400 })
+
+    const conn = new san.Connection_()
+
+    const expectedError = 'Server error!'
+    const expectedLogMessage = {
+      message: expectedError + ' ' + 'Bad authorization header',
+      query: '',
+      queryName: '',
+      responseCode: 400,
+      responseBody: JSON.stringify(body) }
 
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))

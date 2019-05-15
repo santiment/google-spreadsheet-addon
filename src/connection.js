@@ -29,7 +29,15 @@ Connection_.prototype.fetchQuery = function (query) {
 }
 
 Connection_.prototype.buildErrorMessage = function (errors) {
-  return errors.map(function (error) { return error.message }).join(', ')
+  var message = ''
+
+  if (errors instanceof Array) {
+    message = errors.map(function (error) { return error.message }).join(', ')
+  } else if (errors.hasOwnProperty('detail')) {
+    message = errors.detail
+  }
+
+  return message
 }
 
 Connection_.prototype.handleResponse = function (responseCode, responseBody, queryName) {
