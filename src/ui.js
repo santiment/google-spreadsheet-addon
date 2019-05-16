@@ -1,14 +1,37 @@
+function loadMenu () {
+  var ui = SpreadsheetApp.getUi()
+
+  if (hasApiKeyProperty_()) {
+    ui
+      .createAddonMenu()
+      .addItem('Enable', 'enable_')
+      .addSubMenu(
+        ui
+          .createMenu('API key')
+          .addItem('View', 'viewApiKeyDialog_')
+          .addItem('Validate', 'validateApiKeyDialog_')
+          .addItem('Remove', 'removeApiKeyDialog_')
+      )
+      .addToUi()
+  } else {
+    ui
+      .createAddonMenu()
+      .addItem('Enable', 'enable_')
+      .addSubMenu(
+        ui
+          .createMenu('API key')
+          .addItem('Add', 'addApiKeyDialog_')
+      )
+      .addToUi()
+  }
+}
+
 function onOpen () {
-  SpreadsheetApp
-    .getUi()
-    .createAddonMenu()
-    .addItem('Enable', 'enable_')
-    .addItem('Add API key', 'addApiKeyDialog_')
-    .addToUi()
+  loadMenu()
 }
 
 function onInstall () {
-  onOpen()
+  loadMenu()
 }
 
 function enable_ () {
@@ -33,5 +56,39 @@ function addApiKeyDialog_ () {
     var userPermissions = apiClient.fetchCurrentUserPermissions()
     var userMessage = addApiKey_(input, userPermissions)
     ui.alert(userMessage)
+  }
+
+  loadMenu()
+}
+
+function viewApiKeyDialog_ () {
+  var ui = SpreadsheetApp.getUi()
+  var title = 'Your API key'
+  var apiKey = apiKeyProperty_()
+  var text = obfuscateApiKey_(apiKey)
+
+  ui.alert(title, text, ui.ButtonSet.OK)
+}
+
+function validateApiKeyDialog_ () {
+  var ui = SpreadsheetApp.getUi()
+  var apiKey = apiKeyProperty_()
+
+  var apiClient = new ApiClient_(new Connection_(apiKey))
+  var userPermissions = apiClient.fetchCurrentUserPermissions()
+  var userMessage = checkApiKeyStillValid_(apiKey, userPermissions)
+  ui.alert(userMessage)
+}
+
+function removeApiKeyDialog_ () {
+  var ui = SpreadsheetApp.getUi()
+  var title = 'Delete API key'
+  var text = 'Are you sure you want to delete the API key?'
+  var result = ui.alert(title, text, ui.ButtonSet.OK_CANCEL)
+
+  if (result === ui.Button.OK) {
+    deleteApiKeyProperty_()
+    ui.alert('API key has been removed!')
+    loadMenu()
   }
 }

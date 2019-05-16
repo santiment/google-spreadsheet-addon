@@ -13,6 +13,23 @@ describe('hasApiKeyProperty_', () => {
   })
 })
 
+describe('deleteApiKeyProperty_', () => {
+  it('deletes API_KEY property', () => {
+    san.setUserProperty_('API_KEY', 'test_api_key')
+    expect(san.getUserProperty_('API_KEY')).to.equal('test_api_key')
+
+    san.deleteApiKeyProperty_()
+    expect(san.getUserProperty_('API_KEY')).to.be.null
+  })
+})
+
+describe('setApiKeyProperty_', () => {
+  it('saves API_KEY property', () => {
+    san.setApiKeyProperty_('test_api_key')
+    expect(san.getUserProperty_('API_KEY')).to.equal('test_api_key')
+  })
+})
+
 describe('validateApiKey_', () => {
   it('returns true when the user is recognised from the API key', () => {
     const response = { permissions: { spreadsheet: false } }
@@ -40,6 +57,15 @@ describe('validateCanAccessHistoricData_', () => {
   })
 })
 
+describe('obfuscateApiKey_', () => {
+  it('obfuscates a string', () => {
+    const key = '3c5vakw2vbtfys5cennei7oialmjdpev_n3o4lldsm2srak7fpuioygb2alxhq5vy'
+    const obfuscatedKey = san.obfuscateApiKey_(key)
+
+    expect(obfuscatedKey).to.equal('3c5**********************************************************5vy')
+  })
+})
+
 describe('addApiKey_', () => {
   describe('when API key is invalid', () => {
     it('returns proper message', () => {
@@ -64,7 +90,7 @@ describe('addApiKey_', () => {
 
     it('returns proper message', () => {
       const message = san.addApiKey_('example_api_key', permissions)
-      expect(message).to.eq('API key is valid and has been saved')
+      expect(message).to.eq('API key is valid and has been saved.')
     })
 
     it('logs the event', () => {
@@ -109,6 +135,55 @@ describe('addApiKey_', () => {
 
       san.addApiKey_('example_api_key', permissions)
       expect(setApiKeyProperty).to.have.been.calledWith('example_api_key')
+    })
+  })
+})
+
+describe('checkApiKeyStillValid_', () => {
+  describe('when API key is invalid', () => {
+    it('returns proper message', () => {
+      const message = san.checkApiKeyStillValid_('example_api_key', null)
+      expect(message).to.eq('API key is not valid!')
+    })
+
+    it('logs the event', () => {
+      const logWarning = sandbox.stub(san, 'logWarning_').returns(null)
+
+      san.checkApiKeyStillValid_('example_api_key', null)
+
+      expect(logWarning).to.have.been.calledWith({
+        type: 'ApiKeyLog',
+        message: 'User has invalid API key.'
+      })
+    })
+  })
+
+  describe('when API key is valid and user has permissions', () => {
+    const permissions = { permissions: { spreadsheet: true } }
+
+    it('returns proper message', () => {
+      const message = san.checkApiKeyStillValid_('example_api_key', permissions)
+      expect(message).to.eq('API key is valid.')
+    })
+  })
+
+  describe("when API key is valid but user doesn't have permissions", () => {
+    const permissions = { permissions: { spreadsheet: false } }
+
+    it('returns proper message', () => {
+      const message = san.checkApiKeyStillValid_('example_api_key', permissions)
+      expect(message).to.eq("API key is valid but you don't have needed permissions to access historic data!")
+    })
+
+    it('logs the event', () => {
+      const logWarning = sandbox.stub(san, 'logWarning_').returns(null)
+
+      san.checkApiKeyStillValid_('example_api_key', permissions)
+
+      expect(logWarning).to.have.been.calledWith({
+        type: 'ApiKeyLog',
+        message: "User has valid API key but doesn't have needed permissions."
+      })
     })
   })
 })
