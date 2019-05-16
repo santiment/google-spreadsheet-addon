@@ -80,6 +80,7 @@ describe('addApiKey_', () => {
 
       expect(logWarning).to.have.been.calledWith({
         type: 'ApiKeyLog',
+        action: 'AddApiKey',
         message: 'An attempt to add invalid API key has been made.'
       })
     })
@@ -100,6 +101,7 @@ describe('addApiKey_', () => {
 
       expect(logInfo).to.have.been.calledWith({
         type: 'ApiKeyLog',
+        action: 'AddApiKey',
         message: 'Valid API key has been added.' })
     })
 
@@ -126,6 +128,7 @@ describe('addApiKey_', () => {
 
       expect(logWarning).to.have.been.calledWith({
         type: 'ApiKeyLog',
+        action: 'AddApiKey',
         message: "Valid API key has been added but user doesn't have needed permissions."
       })
     })
@@ -153,6 +156,7 @@ describe('checkApiKeyStillValid_', () => {
 
       expect(logWarning).to.have.been.calledWith({
         type: 'ApiKeyLog',
+        action: 'ValidateApiKey',
         message: 'User has invalid API key.'
       })
     })
@@ -182,6 +186,7 @@ describe('checkApiKeyStillValid_', () => {
 
       expect(logWarning).to.have.been.calledWith({
         type: 'ApiKeyLog',
+        action: 'ValidateApiKey',
         message: "User has valid API key but doesn't have needed permissions."
       })
     })
