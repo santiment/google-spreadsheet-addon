@@ -76,13 +76,13 @@ describe('error handling', () => {
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
   })
 
-  it('can handle known server errors with detail key', () => {
+  it('can handle known server errors with details key', () => {
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
     const logStub = sandbox.stub(san, 'logError_').returns(null)
 
     const body = {
       errors: {
-        detail: 'Bad authorization header'
+        details: 'Bad authorization header'
       }
     }
 
@@ -130,7 +130,7 @@ describe('error handling', () => {
 
     const body = {
       errors: {
-        detail: 'Internal server error'
+        details: 'Internal server error'
       }
     }
 

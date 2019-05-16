@@ -33,8 +33,8 @@ Connection_.prototype.buildErrorMessage = function (errors) {
 
   if (errors instanceof Array) {
     message = errors.map(function (error) { return error.message }).join(', ')
-  } else if (errors.hasOwnProperty('detail')) {
-    message = errors.detail
+  } else if (errors.hasOwnProperty('details')) {
+    message = errors.details
   }
 
   return message
