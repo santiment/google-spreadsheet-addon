@@ -449,3 +449,20 @@ function gasUsed_ (from, to) {
     ]
   }))
 }
+
+function miningPoolsDistribution_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchMiningPoolsDistribution(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Top 3', 'Top 10', 'Other']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.top3),
+      formatNumber_(result.top10),
+      formatNumber_(result.other)
+    ]
+  }))
+}

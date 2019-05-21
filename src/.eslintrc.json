@@ -58,6 +58,7 @@
     "nvtRatio_": "readonly",
     "activeDeposits_": "readonly",
     "realizedValue_": "readonly",
-    "gasUsed_": "readonly"
+    "gasUsed_": "readonly",
+    "miningPoolsDistribution_": "readonly"
   }
 }
