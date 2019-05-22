@@ -192,3 +192,29 @@ describe('checkApiKeyStillValid_', () => {
     })
   })
 })
+
+describe('removeApiKey_', () => {
+  it('removes the API key', () => {
+    const deleteApiKeyProperty = sandbox.stub(san, 'deleteApiKeyProperty_').returns(null)
+
+    san.removeApiKey_()
+    expect(deleteApiKeyProperty).to.have.been.called
+  })
+
+  it('returns proper message', () => {
+    const message = san.removeApiKey_()
+    expect(message).to.eq('API key has been removed!')
+  })
+
+  it('logs the event', () => {
+    const logInfo = sandbox.stub(san, 'logInfo_').returns(null)
+
+    san.removeApiKey_()
+
+    expect(logInfo).to.have.been.calledWith({
+      type: 'ApiKeyLog',
+      action: 'RemoveApiKey',
+      message: 'API key has been removed.'
+    })
+  })
+})

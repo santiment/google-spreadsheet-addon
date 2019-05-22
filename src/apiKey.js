@@ -1,6 +1,7 @@
 var API_KEY = 'API_KEY'
 var API_KEY_LOG_TYPE = 'ApiKeyLog'
 var ADD_API_KEY_ACTION = 'AddApiKey'
+var REMOVE_API_KEY_ACTION = 'RemoveApiKey'
 var VALIDATE_API_KEY_ACTION = 'ValidateApiKey'
 
 function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
@@ -60,6 +61,18 @@ function addApiKey_ (key, userPermissions) {
   }
 
   return userMessage
+}
+
+function removeApiKey_ () {
+  deleteApiKeyProperty_()
+
+  logInfo_({
+    type: API_KEY_LOG_TYPE,
+    action: REMOVE_API_KEY_ACTION,
+    message: 'API key has been removed.'
+  })
+
+  return 'API key has been removed!'
 }
 
 function checkApiKeyStillValid_ (key, userPermissions) {

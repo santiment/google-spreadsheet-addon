@@ -82,13 +82,13 @@ function validateApiKeyDialog_ () {
 
 function removeApiKeyDialog_ () {
   var ui = SpreadsheetApp.getUi()
-  var title = 'Delete API key'
-  var text = 'Are you sure you want to delete the API key?'
+  var title = 'Remove API key'
+  var text = 'Are you sure you want to remove the API key?'
   var result = ui.alert(title, text, ui.ButtonSet.OK_CANCEL)
 
   if (result === ui.Button.OK) {
-    deleteApiKeyProperty_()
-    ui.alert('API key has been removed!')
+    var userMessage = removeApiKey_()
+    ui.alert(userMessage)
     loadMenu()
   }
 }

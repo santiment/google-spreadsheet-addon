@@ -30,6 +30,7 @@
     "assertHasData_": "readonly",
     "apiKeyProperty_": "readonly",
     "addApiKey_": "readonly",
+    "removeApiKey_": "readonly",
     "deleteApiKeyProperty_": "readonly",
     "hasApiKeyProperty_": "readonly",
     "obfuscateApiKey_": "readonly",
