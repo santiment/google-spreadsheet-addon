@@ -1,6 +1,8 @@
 /* eslint-disable valid-jsdoc */
 
-function useInsteadMessage_ (newFunctionName) {
+function useInstead_ (newFunctionName, oldFunctionName) {
+  var message = 'Deprecated function ' + oldFunctionName + ' has been used.'
+  logInfo_({type: 'Deprecated', message: message})
   return 'DEPRECATED: Use =' + newFunctionName + ' instead.'
 }
 
@@ -16,7 +18,7 @@ function useInsteadMessage_ (newFunctionName) {
 * @customfunction
 */
 function SAN_DAILY_PRICES (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_PRICES')
+  return useInstead_('SAN_PRICES', 'SAN_DAILY_PRICES')
 }
 
 
@@ -32,7 +34,7 @@ function SAN_DAILY_PRICES (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_ACTIVE_ADDRESSES')
+  return useInstead_('SAN_ACTIVE_ADDRESSES', 'SAN_DAILY_ACTIVE_ADDRESSES')
 }
 
 /**
@@ -47,7 +49,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_TRANSACTION_VOLUME')
+  return useInstead_('SAN_TRANSACTION_VOLUME', 'SAN_DAILY_TRANSACTION_VOLUME')
 }
 
 /**
@@ -62,7 +64,7 @@ function SAN_DAILY_TRANSACTION_VOLUME (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_OHLC (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_OHLC')
+  return useInstead_('SAN_OHLC', 'SAN_DAILY_OHLC')
 }
 
 /**
@@ -78,7 +80,7 @@ function SAN_DAILY_OHLC (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
-  return useInsteadMessage_('SAN_PRICE_VOLUME_DIFF')
+  return useInstead_('SAN_PRICE_VOLUME_DIFF', 'SAN_DAILY_PRICE_VOLUME_DIFF')
 }
 
 
@@ -100,7 +102,7 @@ function SAN_DAILY_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  return useInsteadMessage_('SAN_SOCIAL_VOLUME')
+  return useInstead_('SAN_SOCIAL_VOLUME', 'SAN_DAILY_SOCIAL_VOLUME')
 }
 
 /**
@@ -115,7 +117,7 @@ function SAN_DAILY_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @customfunction
  */
 function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_GITHUB_ACTIVITY')
+  return useInstead_('SAN_GITHUB_ACTIVITY', 'SAN_DAILY_GITHUB_ACTIVITY')
 }
 
 /**
@@ -130,7 +132,7 @@ function SAN_DAILY_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_DEV_ACTIVITY')
+  return useInstead_('SAN_DEV_ACTIVITY', 'SAN_DAILY_DEV_ACTIVITY')
 }
 
 /**
@@ -145,7 +147,7 @@ function SAN_DAILY_DEV_ACTIVITY (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_NETWORK_GROWTH')
+  return useInstead_('SAN_NETWORK_GROWTH', 'SAN_DAILY_NETWORK_GROWTH')
 }
 
 /**
@@ -160,7 +162,7 @@ function SAN_DAILY_NETWORK_GROWTH (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_EXCHANGE_FUNDS_FLOW')
+  return useInstead_('SAN_EXCHANGE_FUNDS_FLOW', 'SAN_DAILY_EXCHANGE_FUNDS_FLOW')
 }
 
 /**
@@ -175,7 +177,7 @@ function SAN_DAILY_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_TOKEN_CIRCULATION')
+  return useInstead_('SAN_TOKEN_CIRCULATION', 'SAN_DAILY_TOKEN_CIRCULATION')
 }
 
 /**
@@ -195,7 +197,7 @@ function SAN_DAILY_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
-  return useInsteadMessage_('SAN_TRENDING_WORDS')
+  return useInstead_('SAN_TRENDING_WORDS', 'SAN_DAILY_TRENDING_WORDS')
 }
 
 /**
@@ -211,7 +213,7 @@ function SAN_DAILY_TRENDING_WORDS (source, size, hour, from, to) {
  * @customfunction
  */
 function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_TOKEN_AGE_CONSUMED')
+  return useInstead_('SAN_TOKEN_AGE_CONSUMED', 'SAN_DAILY_TOKEN_AGE_CONSUMED')
 }
 
 
@@ -227,5 +229,5 @@ function SAN_DAILY_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
  * @customfunction
  */
 function SAN_DAILY_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  return useInsteadMessage_('SAN_ACTIVE_DEPOSITS')
+  return useInstead_('SAN_ACTIVE_DEPOSITS', 'SAN_DAILY_ACTIVE_DEPOSITS')
 }
