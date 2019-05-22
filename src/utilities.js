@@ -8,6 +8,10 @@ function getUserProperty_ (key) {
   return PropertiesService.getUserProperties().getProperty(key)
 }
 
+function deleteUserProperty_ (key) {
+  PropertiesService.getUserProperties().deleteProperty(key)
+}
+
 function requestedDataIsHistoric_ (from) {
   var oneDay = 24 * 60 * 60 * 1000
   var timeSpan = ((new Date()) - from) / oneDay
