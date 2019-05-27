@@ -53,7 +53,7 @@ function addApiKeyDialog_ () {
 
   if (button === ui.Button.OK) {
     var apiClient = new ApiClient_(new Connection_(input))
-    var userPermissions = apiClient.fetchCurrentUserPermissions()
+    var userPermissions = handleErrors_(apiClient.fetchCurrentUserPermissions)()
     var userMessage = addApiKey_(input, userPermissions)
     ui.alert(userMessage)
   }
@@ -75,7 +75,7 @@ function validateApiKeyDialog_ () {
   var apiKey = apiKeyProperty_()
 
   var apiClient = new ApiClient_(new Connection_(apiKey))
-  var userPermissions = apiClient.fetchCurrentUserPermissions()
+  var userPermissions = handleErrors_(apiClient.fetchCurrentUserPermissions)()
   var userMessage = checkApiKeyStillValid_(apiKey, userPermissions)
   ui.alert(userMessage)
 }
