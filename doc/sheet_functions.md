@@ -97,6 +97,11 @@ of all wallets holding tokens at the moment.</p>
 When you send tokens, interact with a contract or do anything else on the blockchain,
 you must pay for that computation. That payment is calculated in Gas.</p>
 </dd>
+<dt><a href="#SAN_MINING_POOLS_DISTRIBUTION">SAN_MINING_POOLS_DISTRIBUTION(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the distribution of miners between mining pools.
+What part of the miners are using top3, top10 and all the other pools.
+Currently only ETH is supported.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -447,6 +452,23 @@ you must pay for that computation. That payment is calculated in Gas.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_MINING_POOLS_DISTRIBUTION"></a>
+
+## SAN\_MINING\_POOLS\_DISTRIBUTION(projectSlug, from, to) ⇒ <code>Array</code>
+Returns the distribution of miners between mining pools.
+What part of the miners are using top3, top10 and all the other pools.
+Currently only ETH is supported.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of distribution ratios.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 

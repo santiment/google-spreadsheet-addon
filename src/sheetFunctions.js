@@ -352,3 +352,19 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
 function SAN_GAS_USED (from, to) {
   return handleErrors_(gasUsed_)(from, to)
 }
+
+/**
+ * Returns the distribution of miners between mining pools.
+ * What part of the miners are using top3, top10 and all the other pools.
+ * Currently only ETH is supported.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of distribution ratios.
+ * @customfunction
+ */
+function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
+  return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
+}
