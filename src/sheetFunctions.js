@@ -368,3 +368,18 @@ function SAN_GAS_USED (from, to) {
 function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
   return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
 }
+
+
+/**
+ * Returns the news for given word
+ * @param {string} tag Project name, ticker or other crypto related words.
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {number} size Size limit of the returned results. Default is 10.
+ * @returns {Array} of news.
+ * @customfunction
+ */
+function SAN_NEWS (tag, from, to, size) {
+  var numberOfRecords = (typeof size !== 'undefined') ? size : 10
+  return handleErrors_(news_)(tag, from, to, numberOfRecords)
+}

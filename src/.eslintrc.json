@@ -65,6 +65,7 @@
     "activeDeposits_": "readonly",
     "realizedValue_": "readonly",
     "gasUsed_": "readonly",
-    "miningPoolsDistribution_": "readonly"
+    "miningPoolsDistribution_": "readonly",
+    "news_": "readonly"
   }
 }
