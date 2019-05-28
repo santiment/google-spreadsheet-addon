@@ -35,6 +35,7 @@
     "hasApiKeyProperty_": "readonly",
     "obfuscateApiKey_": "readonly",
     "checkApiKeyStillValid_": "readonly",
+    "fetchUserPermissions_": "readonly",
     "API_KEY": "readonly",
     "toUTC_": "readonly",
     "prices_": "readonly",

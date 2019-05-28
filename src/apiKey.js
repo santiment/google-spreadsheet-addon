@@ -4,6 +4,11 @@ var ADD_API_KEY_ACTION = 'AddApiKey'
 var REMOVE_API_KEY_ACTION = 'RemoveApiKey'
 var VALIDATE_API_KEY_ACTION = 'ValidateApiKey'
 
+function fetchUserPermissions_ (key) {
+  var apiClient = new ApiClient_(new Connection_(key))
+  return apiClient.fetchCurrentUserPermissions()
+}
+
 function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
 function hasApiKeyProperty_ () { return !!apiKeyProperty_() }
 

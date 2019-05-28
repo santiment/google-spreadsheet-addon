@@ -52,8 +52,7 @@ function addApiKeyDialog_ () {
   var input = result.getResponseText().trim()
 
   if (button === ui.Button.OK) {
-    var apiClient = new ApiClient_(new Connection_(input))
-    var userPermissions = handleErrors_(apiClient.fetchCurrentUserPermissions)()
+    var userPermissions = handleErrors_(fetchUserPermissions_)(input)
     var userMessage = addApiKey_(input, userPermissions)
     ui.alert(userMessage)
   }
@@ -73,9 +72,7 @@ function viewApiKeyDialog_ () {
 function validateApiKeyDialog_ () {
   var ui = SpreadsheetApp.getUi()
   var apiKey = apiKeyProperty_()
-
-  var apiClient = new ApiClient_(new Connection_(apiKey))
-  var userPermissions = handleErrors_(apiClient.fetchCurrentUserPermissions)()
+  var userPermissions = handleErrors_(fetchUserPermissions_)(apiKey)
   var userMessage = checkApiKeyStillValid_(apiKey, userPermissions)
   ui.alert(userMessage)
 }
