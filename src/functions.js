@@ -466,3 +466,21 @@ function miningPoolsDistribution_ (slug, from, to) {
     ]
   }))
 }
+
+function news_ (tag, from, to, size) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchNews(tag, from, to, size)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Title', 'Source', 'URL', 'Description']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      result.title,
+      result.sourceName,
+      result.url,
+      result.description
+    ]
+  }))
+}

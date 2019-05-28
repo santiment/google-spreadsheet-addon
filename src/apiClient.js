@@ -424,3 +424,22 @@ ApiClient_.prototype.fetchMiningPoolsDistribution = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'miningPoolsDistribution')
 }
+
+ApiClient_.prototype.fetchNews = function (tag, from, to, size) {
+  var query = {
+    'query': '{\
+       news(tag: "' + tag + '",\
+            from: "' + toUTC_(from) + '",\
+            to: "' + toUTC_(to) + '",\
+            size: ' + size + ') {\
+         datetime\
+         title\
+         sourceName\
+         url\
+         description\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'news')
+}
