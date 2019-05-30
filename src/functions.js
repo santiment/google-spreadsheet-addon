@@ -435,17 +435,17 @@ function realizedValue_ (slug, from, to) {
   }))
 }
 
-function gasUsed_ (from, to) {
+function gasUsed_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
-  var results = getApiClient_().fetchGasUsed(from, to)
+  var results = getApiClient_().fetchGasUsed(slug, from, to)
   assertHasData_(results)
 
-  var headers = ['Date', 'ETH Gas Used']
+  var headers = ['Date', 'Gas Used']
 
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.ethGasUsed)
+      formatNumber_(result.gasUsed)
     ]
   }))
 }

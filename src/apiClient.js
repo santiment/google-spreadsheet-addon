@@ -392,13 +392,14 @@ ApiClient_.prototype.fetchRealizedValue = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'realizedValue')
 }
 
-ApiClient_.prototype.fetchGasUsed = function (from, to) {
+ApiClient_.prototype.fetchGasUsed = function (slug, from, to) {
   var query = {
     'query': '{\
-       gasUsed(from: "' + toUTC_(from) + '",\
+       gasUsed(slug: "' + slug + '",\
+               from: "' + toUTC_(from) + '",\
                to: "' + toUTC_(to) + '",\
                interval: "1d") {\
-         ethGasUsed\
+         gasUsed\
          datetime\
        }\
      }'

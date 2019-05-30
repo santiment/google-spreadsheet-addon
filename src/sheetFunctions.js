@@ -344,13 +344,16 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
  * Returns used Gas by a blockchain.
  * When you send tokens, interact with a contract or do anything else on the blockchain,
  * you must pay for that computation. That payment is calculated in Gas.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of quantities of gas used.
  * @customfunction
  */
-function SAN_GAS_USED (from, to) {
-  return handleErrors_(gasUsed_)(from, to)
+function SAN_GAS_USED (projectSlug, from, to) {
+  return handleErrors_(gasUsed_)(projectSlug, from, to)
 }
 
 /**
