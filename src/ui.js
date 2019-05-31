@@ -1,37 +1,43 @@
-function loadMenu () {
+function loadAddApiKeyMenu_ (ui, menu) {
+  var apiKeySubMenu = ui.createMenu('API key').addItem('Add', 'addApiKeyDialog_')
+  menu.addSubMenu(apiKeySubMenu).addToUi()
+}
+
+function loadManageExistingApiKeyMenu_ (ui, menu) {
+  var apiKeySubMenu = ui
+    .createMenu('API key')
+    .addItem('View', 'viewApiKeyDialog_')
+    .addItem('Validate', 'validateApiKeyDialog_')
+    .addItem('Remove', 'removeApiKeyDialog_')
+
+  menu.addSubMenu(apiKeySubMenu).addToUi()
+}
+
+function loadFullMenu_ () {
   var ui = SpreadsheetApp.getUi()
+  var menu = ui.createAddonMenu()
 
   if (hasApiKeyProperty_()) {
-    ui
-      .createAddonMenu()
-      .addItem('Enable', 'enable_')
-      .addSubMenu(
-        ui
-          .createMenu('API key')
-          .addItem('View', 'viewApiKeyDialog_')
-          .addItem('Validate', 'validateApiKeyDialog_')
-          .addItem('Remove', 'removeApiKeyDialog_')
-      )
-      .addToUi()
+    loadManageExistingApiKeyMenu_(ui, menu)
   } else {
-    ui
-      .createAddonMenu()
-      .addItem('Enable', 'enable_')
-      .addSubMenu(
-        ui
-          .createMenu('API key')
-          .addItem('Add', 'addApiKeyDialog_')
-      )
-      .addToUi()
+    loadAddApiKeyMenu_(ui, menu)
   }
 }
 
-function onOpen () {
-  loadMenu()
+function loadBasicMenu_ () {
+  SpreadsheetApp.getUi().createAddonMenu().addItem('Enable', 'enable_').addToUi()
 }
 
-function onInstall () {
-  loadMenu()
+function onOpen (e) {
+  if (e && e.authMode === ScriptApp.AuthMode.NONE) {
+    loadBasicMenu_()
+  } else {
+    loadFullMenu_()
+  }
+}
+
+function onInstall (e) {
+  onOpen(e)
 }
 
 function enable_ () {
@@ -39,6 +45,8 @@ function enable_ () {
   var message = 'This add-on gives you access to cryptocurrency data through various custom functions. Every function starts with =SAN.'
   var ui = SpreadsheetApp.getUi()
   ui.alert(title, message, ui.ButtonSet.OK)
+
+  loadFullMenu_()
 }
 
 function addApiKeyDialog_ () {
@@ -55,9 +63,8 @@ function addApiKeyDialog_ () {
     var userPermissions = handleErrors_(fetchUserPermissions_)(input)
     var userMessage = addApiKey_(input, userPermissions)
     ui.alert(userMessage)
+    loadFullMenu_()
   }
-
-  loadMenu()
 }
 
 function viewApiKeyDialog_ () {
@@ -86,6 +93,6 @@ function removeApiKeyDialog_ () {
   if (result === ui.Button.OK) {
     var userMessage = removeApiKey_()
     ui.alert(userMessage)
-    loadMenu()
+    loadFullMenu_()
   }
 }
