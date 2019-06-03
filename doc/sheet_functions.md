@@ -92,7 +92,7 @@ which filters out excess transactions and provides a cleaner overview of a block
 The realized value across the whole network is computed by summing the realized values
 of all wallets holding tokens at the moment.</p>
 </dd>
-<dt><a href="#SAN_GAS_USED">SAN_GAS_USED(from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_GAS_USED">SAN_GAS_USED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns used Gas by a blockchain.
 When you send tokens, interact with a contract or do anything else on the blockchain,
 you must pay for that computation. That payment is calculated in Gas.</p>
@@ -444,7 +444,7 @@ of all wallets holding tokens at the moment.
 
 <a name="SAN_GAS_USED"></a>
 
-## SAN\_GAS\_USED(from, to) ⇒ <code>Array</code>
+## SAN\_GAS\_USED(projectSlug, from, to) ⇒ <code>Array</code>
 Returns used Gas by a blockchain.
 When you send tokens, interact with a contract or do anything else on the blockchain,
 you must pay for that computation. That payment is calculated in Gas.
@@ -455,6 +455,7 @@ you must pay for that computation. That payment is calculated in Gas.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
