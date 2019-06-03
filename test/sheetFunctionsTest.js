@@ -20,6 +20,7 @@ const historicDataTo = subDays(endOfYesterday(), 200)
 const historicDataFrom = startOfDay(subDays(historicDataTo, 205))
 
 const slug = 'santiment'
+const ethereumSlug = 'ethereum'
 const fiatCurrency = 'USD'
 
 const assertNumberOfRecords = (records, number) => {
@@ -863,26 +864,27 @@ describe('SAN_NVT_RATIO', () => {
 })
 
 describe('SAN_GAS_USED', () => {
-  const expected = { date: 'string', ethGasUsed: 'number' }
+  const expected = { date: 'string', gasUsed: 'number' }
 
-  const response = san.SAN_GAS_USED(from, to)
+  const response = san.SAN_GAS_USED(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_GAS_USED,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
-  testHandlesNullData('fetchGasUsed', san.SAN_GAS_USED, from, to)
+  testHandlesNullData('fetchGasUsed', san.SAN_GAS_USED, ethereumSlug, from, to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'ETH Gas Used']
+    const expectedHeaders = ['Date', 'Gas Used']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_GAS_USED(from, to)
+    const results = san.SAN_GAS_USED(ethereumSlug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 
@@ -929,7 +931,6 @@ describe('SAN_REALIZED_VALUE', () => {
 })
 
 describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
-  const ethereumSlug = 'ethereum'
   const expected = { date: 'string', top3: 'number', top10: 'number', other: 'number' }
 
   const response = san.SAN_MINING_POOLS_DISTRIBUTION(ethereumSlug, from, to)
@@ -965,7 +966,6 @@ describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
 })
 
 describe('SAN_NEWS', () => {
-  const ethereumSlug = 'ethereum'
   const size = 5
 
   const expected = {
