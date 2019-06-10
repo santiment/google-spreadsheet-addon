@@ -27,6 +27,11 @@ function ServerError_ (message) {
   }
 }
 
+function UnsupportedError_ (message) {
+  this.name = 'UnsupportedError'
+  this.message = message
+}
+
 function HistoricDataForbiddenError_ () {
   this.name = 'HistoricDataForbiddenError'
   this.message = HISTORIC_DATA_FORBIDDEN_MSG
@@ -40,6 +45,9 @@ InternalServerError_.prototype.constructor = InternalServerError_
 
 ServerError_.prototype = Object.create(Error.prototype)
 ServerError_.prototype.constructor = ServerError_
+
+UnsupportedError_.prototype = Object.create(Error.prototype)
+UnsupportedError_.prototype.constructor = UnsupportedError_
 
 HistoricDataForbiddenError_.prototype = Object.create(Error.prototype)
 HistoricDataForbiddenError_.prototype.constructor = HistoricDataForbiddenError_

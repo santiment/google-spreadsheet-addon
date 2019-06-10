@@ -372,7 +372,6 @@ function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
   return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
 }
 
-
 /**
  * Returns the news for given word
  * @param {string} tag Project name, ticker or other crypto related words.
@@ -385,4 +384,17 @@ function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
 function SAN_NEWS (tag, from, to, size) {
   var numberOfRecords = (typeof size !== 'undefined') ? size : 10
   return handleErrors_(news_)(tag, from, to, numberOfRecords)
+}
+
+/**
+ * Returns the latest price for a given asset in a desired currency.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {string} currency The currency in which the data should be presented. Either "USD" or "BTC".
+ * @returns {number} latest price.
+ * @customfunction
+ */
+function SAN_LATEST_PRICE (projectSlug, currency) {
+  return handleErrors_(latestPrice_)(projectSlug, currency)
 }

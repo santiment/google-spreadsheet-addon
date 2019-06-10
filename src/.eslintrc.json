@@ -24,6 +24,7 @@
     "logInfo_": "readonly",
     "ServerError_": "readonly",
     "InternalServerError_": "readonly",
+    "UnsupportedError_": "readonly",
     "HistoricDataForbiddenError_": "readonly",
     "handleErrors_": "readonly",
     "assertCanAccessHistoricData_": "readonly",
@@ -66,6 +67,7 @@
     "realizedValue_": "readonly",
     "gasUsed_": "readonly",
     "miningPoolsDistribution_": "readonly",
-    "news_": "readonly"
+    "news_": "readonly",
+    "latestPrice_": "readonly"
   }
 }
