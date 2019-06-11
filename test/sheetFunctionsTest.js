@@ -1010,3 +1010,26 @@ describe('SAN_NEWS', () => {
     expect(results).to.have.lengthOf(size + 1)
   })
 })
+
+describe('SAN_LATEST_PRICE', () => {
+  testHandlesNullData(
+    'fetchLatestPrice',
+    san.SAN_LATEST_PRICE,
+    ethereumSlug,
+    'USD')
+
+  it('returns the latest price in USD', () => {
+    const response = san.SAN_LATEST_PRICE(ethereumSlug, 'USD')
+    expect(response).to.be.a('number')
+  })
+
+  it('returns the latest price in BTC', () => {
+    const response = san.SAN_LATEST_PRICE(ethereumSlug, 'BTC')
+    expect(response).to.be.a('number')
+  })
+
+  it('returns error when the requested currency is not USD or BTC', () => {
+    const response = san.SAN_LATEST_PRICE(ethereumSlug, 'EUR')
+    expect(response).to.deep.eq(['EUR is not supported! Use any of: USD/BTC'])
+  })
+})

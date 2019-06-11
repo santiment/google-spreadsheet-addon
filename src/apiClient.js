@@ -444,3 +444,12 @@ ApiClient_.prototype.fetchNews = function (tag, from, to, size) {
 
   return this.conn.graphQLQuery(query, 'news')
 }
+
+ApiClient_.prototype.fetchLatestPrice = function (slug, currencyField) {
+  var query = {
+    'query': '{ projectBySlug(slug: "' + slug + '") {' + currencyField + '}}'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}
+

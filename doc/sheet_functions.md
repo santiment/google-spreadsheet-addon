@@ -105,6 +105,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_NEWS">SAN_NEWS(tag, from, to, size)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the news for given word</p>
 </dd>
+<dt><a href="#SAN_LATEST_PRICE">SAN_LATEST_PRICE(projectSlug, currency)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the latest price for a given asset in a desired currency.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -491,4 +494,18 @@ Returns the news for given word
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | size | <code>number</code> | Size limit of the returned results. Default is 10. |
+
+<a name="SAN_LATEST_PRICE"></a>
+
+## SAN\_LATEST\_PRICE(projectSlug, currency) ⇒ <code>number</code>
+Returns the latest price for a given asset in a desired currency.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - latest price.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| currency | <code>string</code> | The currency in which the data should be presented. Either "USD" or "BTC". |
 

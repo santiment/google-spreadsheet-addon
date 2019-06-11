@@ -484,3 +484,18 @@ function news_ (tag, from, to, size) {
     ]
   }))
 }
+
+function latestPrice_ (slug, currency) {
+  var supportedCurrencies = ['USD', 'BTC']
+
+  if (supportedCurrencies.indexOf(currency.toUpperCase()) === -1) {
+    throw new UnsupportedError_(currency + ' is not supported! Use any of: ' + supportedCurrencies.join('/'))
+  }
+
+  var currencyField = 'price' + currency.charAt(0).toUpperCase() + currency.toLowerCase().slice(1)
+  var result = getApiClient_().fetchLatestPrice(slug, currencyField)
+
+  assertHasData_(result)
+
+  return result[currencyField]
+}
