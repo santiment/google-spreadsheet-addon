@@ -71,6 +71,7 @@
     "miningPoolsDistribution_": "readonly",
     "minersBalance_": "readonly",
     "news_": "readonly",
-    "latestPrice_": "readonly"
+    "latestPrice_": "readonly",
+    "dailyClosingPrice_": "readonly"
   }
 }

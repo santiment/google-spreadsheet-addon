@@ -469,3 +469,17 @@ ApiClient_.prototype.fetchLatestPrice = function (slug, currencyField) {
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
 
+ApiClient_.prototype.fetchDailyClosingPrice = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       ohlc(slug: "' + slug + '",\
+            from: "' + toUTC_(from) + '",\
+            to: "' + toUTC_(to) + '",\
+            interval: "1d") {\
+         closePriceUsd\
+       }\
+    }'
+  }
+
+  return this.conn.graphQLQuery(query, 'ohlc')
+}
