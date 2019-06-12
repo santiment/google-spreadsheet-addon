@@ -373,6 +373,21 @@ function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
 }
 
 /**
+ * Returns miners balances over time
+ * Currently only ETH is supported.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of balances.
+ * @customfunction
+ */
+function SAN_MINERS_BALANCE (projectSlug, from, to) {
+  return handleErrors_(minersBalance_)(projectSlug, from, to)
+}
+
+/**
  * Returns the news for given word
  * @param {string} tag Project name, ticker or other crypto related words.
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
@@ -398,3 +413,4 @@ function SAN_NEWS (tag, from, to, size) {
 function SAN_LATEST_PRICE (projectSlug, currency) {
   return handleErrors_(latestPrice_)(projectSlug, currency)
 }
+
