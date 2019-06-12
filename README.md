@@ -6,7 +6,6 @@ google spreadsheet add-on.
 ## Usage
 
   * [Functions documentation](doc/sheet_functions.md)
-  * [Deprecated functions documentation](doc/deprecated_sheet_functions.md)
 
 ## Development
 
