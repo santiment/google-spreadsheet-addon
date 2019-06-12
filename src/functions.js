@@ -18,6 +18,20 @@ function prices_ (slug, from, to) {
   }))
 }
 
+function priceAbsoluteChange_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+
+  var results = getApiClient_().fetchOhlc(slug, from, to)
+  assertHasData_(results)
+
+  var firstDateResults = results[0]
+  var lastDateResults = results[results.length - 1]
+
+  var absoluteChange = lastDateResults.closePriceUsd - firstDateResults.openPriceUsd
+
+  return absoluteChange
+}
+
 function allProjects_ () {
   var results = getApiClient_().fetchAllProjects()
   assertHasData_(results)

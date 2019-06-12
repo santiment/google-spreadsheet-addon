@@ -40,6 +40,7 @@
     "API_KEY": "readonly",
     "toUTC_": "readonly",
     "prices_": "readonly",
+    "priceAbsoluteChange_": "readonly",
     "allProjects_": "readonly",
     "getApiClient_": "readonly",
     "getUserProperty_": "readonly",
