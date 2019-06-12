@@ -102,6 +102,10 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 What part of the miners are using top3, top10 and all the other pools.
 Currently only ETH is supported.</p>
 </dd>
+<dt><a href="#SAN_MINERS_BALANCE">SAN_MINERS_BALANCE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns miners balances over time
+Currently only ETH is supported.</p>
+</dd>
 <dt><a href="#SAN_NEWS">SAN_NEWS(tag, from, to, size)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the news for given word</p>
 </dd>
@@ -471,6 +475,22 @@ Currently only ETH is supported.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of distribution ratios.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_MINERS_BALANCE"></a>
+
+## SAN\_MINERS\_BALANCE(projectSlug, from, to) ⇒ <code>Array</code>
+Returns miners balances over time
+Currently only ETH is supported.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of balances.  
 **Customfunction**:   
 
 | Param | Type | Description |
