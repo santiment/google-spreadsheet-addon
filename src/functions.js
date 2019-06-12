@@ -27,9 +27,14 @@ function priceAbsoluteChange_ (slug, from, to) {
   var firstDateResults = results[0]
   var lastDateResults = results[results.length - 1]
 
-  var absoluteChange = lastDateResults.closePriceUsd - firstDateResults.openPriceUsd
+  if (firstDateResults == null ||
+      lastDateResults == null ||
+      !firstDateResults.hasOwnProperty('openPriceUsd') ||
+      !lastDateResults.hasOwnProperty('closePriceUsd')) {
+    throw new NoDataError_()
+  }
 
-  return absoluteChange
+  return lastDateResults.closePriceUsd - firstDateResults.openPriceUsd
 }
 
 function allProjects_ () {
