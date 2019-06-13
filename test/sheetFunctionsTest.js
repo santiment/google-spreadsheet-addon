@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('./helper.js')
+const helper = require('./helper.js')
 
 const dateFnsFormat = require('date-fns/format')
 const subDays = require('date-fns/sub_days')
@@ -31,14 +31,6 @@ const assertNumberOfRecords = (records, number) => {
   expect(records).to.have.lengthOf.within(includingHeader, includingHeaderAndLastDay)
 }
 
-const testFieldTypes = (resources, expected) => {
-  Object.entries(expected).forEach(([attr, type], index) => {
-    it(`returns ${attr} attribute`, () => {
-      expect(resources[index]).to.be.a(type)
-    })
-  })
-}
-
 const testHistoricDataIsForbidden = (func, ...args) => {
   it('returns a message when requested data is historic and no api key is present', () => {
     const result = func(...args)
@@ -66,7 +58,7 @@ describe('SAN_PRICES', () => {
   const headers = response[0]
   const prices = response[1]
 
-  testFieldTypes(prices, expected)
+  helper.testFieldTypes(prices, expected)
   testHistoricDataIsForbidden(san.SAN_PRICES, slug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
 
@@ -83,6 +75,24 @@ describe('SAN_PRICES', () => {
     for (let [index, day] of days.entries()) {
       expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
+  })
+})
+
+describe('SAN_PRICE_ABSOLUTE_CHANGE', () => {
+  testHistoricDataIsForbidden(
+    san.SAN_PRICE_ABSOLUTE_CHANGE,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchOhlc',
+    san.SAN_PRICE_ABSOLUTE_CHANGE,
+    ethereumSlug,
+    from,
+    to)
+
+  it('returns the absolute price change', () => {
+    const response = san.SAN_PRICE_ABSOLUTE_CHANGE(ethereumSlug, from, to)
+    expect(response).to.be.a('number')
   })
 })
 
@@ -105,7 +115,7 @@ describe('SAN_ALL_PROJECTS', () => {
   const headers = response[0]
   const projects = response[1]
 
-  testFieldTypes(projects, expectedFields)
+  helper.testFieldTypes(projects, expectedFields)
   testHandlesNullData('fetchAllProjects', san.SAN_ALL_PROJECTS)
 
   it('has proper headers', () => {
@@ -147,7 +157,7 @@ describe('SAN_ERC20_PROJECTS', () => {
   const headers = response[0]
   const projects = response[1]
 
-  testFieldTypes(projects, expected)
+  helper.testFieldTypes(projects, expected)
   testHandlesNullData('fetchErc20Projects', san.SAN_ERC20_PROJECTS)
 
   it('has proper headers', () => {
@@ -180,7 +190,7 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   const headers = response[0]
   const addresses = response[1]
 
-  testFieldTypes(addresses, expected)
+  helper.testFieldTypes(addresses, expected)
   testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, slug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
@@ -210,7 +220,7 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   const headers = response[0]
   const volumes = response[1]
 
-  testFieldTypes(volumes, expected)
+  helper.testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(san.SAN_TRANSACTION_VOLUME, slug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, slug, from, to)
 
@@ -243,7 +253,7 @@ describe('SAN_OHLC', () => {
   const headers = response[0]
   const ohlc = response[1]
 
-  testFieldTypes(ohlc, expected)
+  helper.testFieldTypes(ohlc, expected)
   testHistoricDataIsForbidden(san.SAN_OHLC, slug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
@@ -282,7 +292,7 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
   const headers = response[0]
   const volumes = response[1]
 
-  testFieldTypes(volumes, expected)
+  helper.testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
     san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
@@ -346,7 +356,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
   const headers = response[0]
   const volumes = response[1]
 
-  testFieldTypes(volumes, expected)
+  helper.testFieldTypes(volumes, expected)
   testHistoricDataIsForbidden(
     san.SAN_SOCIAL_VOLUME,
     slug,
@@ -388,7 +398,7 @@ describe('SAN_GITHUB_ACTIVITY', () => {
   const headers = response[0]
   const activities = response[1]
 
-  testFieldTypes(activities, expected)
+  helper.testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
     san.SAN_GITHUB_ACTIVITY,
     slug,
@@ -427,7 +437,7 @@ describe('SAN_DEV_ACTIVITY', () => {
   const headers = response[0]
   const activities = response[1]
 
-  testFieldTypes(activities, expected)
+  helper.testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
     san.SAN_DEV_ACTIVITY,
     slug,
@@ -466,7 +476,7 @@ describe('SAN_NETWORK_GROWTH', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(san.SAN_NETWORK_GROWTH, slug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
 
@@ -496,7 +506,7 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
@@ -535,7 +545,7 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_TOKEN_CIRCULATION,
     slug,
@@ -583,7 +593,7 @@ describe('SAN_TRENDING_WORDS', () => {
       const headers = response[0]
       const results = response[1]
 
-      testFieldTypes(results, expected)
+      helper.testFieldTypes(results, expected)
 
       it('has proper headers', () => {
         const expectedHeaders = ['Date', 'Word', 'Score']
@@ -642,7 +652,7 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHandlesNullData('fetchProjectFundamentals', san.SAN_PROJECT_FUNDAMENTALS, slug)
 
   it('has proper headers', () => {
@@ -688,7 +698,7 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHandlesNullData('fetchProjectSocialData', san.SAN_PROJECT_SOCIAL_DATA, slug)
 
   it('has proper headers', () => {
@@ -718,7 +728,7 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const headers = response[0]
   const activities = response[1]
 
-  testFieldTypes(activities, expected)
+  helper.testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
     san.SAN_TOKEN_AGE_CONSUMED,
     slug,
@@ -754,7 +764,7 @@ describe('SAN_ACTIVE_DEPOSITS', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_ACTIVE_DEPOSITS,
     slug,
@@ -790,7 +800,7 @@ describe('SAN_MVRV_RATIO', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_MVRV_RATIO,
     slug,
@@ -830,7 +840,7 @@ describe('SAN_NVT_RATIO', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_NVT_RATIO,
     slug,
@@ -870,7 +880,7 @@ describe('SAN_GAS_USED', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_GAS_USED,
     ethereumSlug,
@@ -901,7 +911,7 @@ describe('SAN_REALIZED_VALUE', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_REALIZED_VALUE,
     slug,
@@ -937,7 +947,7 @@ describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_MINING_POOLS_DISTRIBUTION,
     historicDataFrom,
@@ -972,7 +982,7 @@ describe('SAN_MINERS_BALANCE', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_MINERS_BALANCE,
     historicDataFrom,
@@ -1015,7 +1025,7 @@ describe('SAN_NEWS', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  helper.testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_NEWS,
     ethereumSlug,

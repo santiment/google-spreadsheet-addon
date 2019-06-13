@@ -18,6 +18,25 @@ function prices_ (slug, from, to) {
   }))
 }
 
+function priceAbsoluteChange_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+
+  var results = getApiClient_().fetchOhlc(slug, from, to)
+  assertHasData_(results)
+
+  var firstDateResults = results[0]
+  var lastDateResults = results[results.length - 1]
+
+  if (firstDateResults == null ||
+      lastDateResults == null ||
+      !firstDateResults.hasOwnProperty('openPriceUsd') ||
+      !lastDateResults.hasOwnProperty('closePriceUsd')) {
+    throw new NoDataError_()
+  }
+
+  return lastDateResults.closePriceUsd - firstDateResults.openPriceUsd
+}
+
 function allProjects_ () {
   var results = getApiClient_().fetchAllProjects()
   assertHasData_(results)
