@@ -19,7 +19,7 @@ function requestedDataIsHistoric_ (from) {
 }
 
 function assertHasData_ (data) {
-  if (data === null) throw new NoDataError_()
+  if (data === null || data === []) throw new NoDataError_()
 }
 
 function assertCanAccessHistoricData_ (from) {
