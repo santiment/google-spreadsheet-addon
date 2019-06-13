@@ -426,6 +426,22 @@ ApiClient_.prototype.fetchMiningPoolsDistribution = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'miningPoolsDistribution')
 }
 
+ApiClient_.prototype.fetchMinersBalance = function (slug, from, to) {
+  var query = {
+    'query': '{\
+       minersBalance(slug: "' + slug + '",\
+                     from: "' + toUTC_(from) + '",\
+                     to: "' + toUTC_(to) + '",\
+                     interval: "1d") {\
+         datetime\
+         balance\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'minersBalance')
+}
+
 ApiClient_.prototype.fetchNews = function (tag, from, to, size) {
   var query = {
     'query': '{\

@@ -467,6 +467,21 @@ function miningPoolsDistribution_ (slug, from, to) {
   }))
 }
 
+function minersBalance_ (slug, from, to) {
+  assertCanAccessHistoricData_(from)
+  var results = getApiClient_().fetchMinersBalance(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Balance']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.balance)
+    ]
+  }))
+}
+
 function news_ (tag, from, to, size) {
   assertCanAccessHistoricData_(from)
   var results = getApiClient_().fetchNews(tag, from, to, size)
