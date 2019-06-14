@@ -39,6 +39,7 @@
     "fetchUserPermissions_": "readonly",
     "API_KEY": "readonly",
     "toUTC_": "readonly",
+    "beginningOfDaytoEndOfDay_": "readonly",
     "prices_": "readonly",
     "priceAbsoluteChange_": "readonly",
     "allProjects_": "readonly",

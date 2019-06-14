@@ -1,9 +1,30 @@
+/* eslint-disable no-unused-expressions */
+
 require('../helper.js')
 
 describe('priceAbsoluteChange_', () => {
   const slug = 'santiment'
-  const from = '2019-01-01T00:00:00.000Z'
-  const to = '2019-01-03T00:00:00.000Z'
+
+  const from = new Date(2019, 0, 1, 0, 0, 0)
+  const to = new Date(2019, 0, 3, 0, 0, 0)
+
+  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
+
+  it('includes the last day of the period', () => {
+    const beginningOfDaytoEndOfDay = sandbox.stub(san, 'beginningOfDaytoEndOfDay_')
+    sandbox.stub(san.ApiClient_.prototype, 'fetchOhlc').returns(
+      [
+        {
+          'openPriceUsd': 100.00,
+          'closePriceUsd': 100.01
+        }
+      ]
+    )
+
+    san.priceAbsoluteChange_(slug, from, to)
+
+    expect(beginningOfDaytoEndOfDay).to.have.been.called
+  })
 
   it('returns the absolute change between last close and first open price', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchOhlc').returns(

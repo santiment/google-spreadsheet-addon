@@ -38,3 +38,8 @@ function toUTC_ (date) {
   var timezone = SpreadsheetApp.getActive().getSpreadsheetTimeZone()
   return Utilities.formatDate(new Date(date), timezone, "yyyy-MM-dd'T'HH:mm:ss'Z'")
 }
+
+function beginningOfDaytoEndOfDay_ (date) {
+  var millisInDay = 24 * 60 * 60 * 1000
+  return new Date(date.getTime() + millisInDay - 1000) // remove a second to get 23:59:59
+}

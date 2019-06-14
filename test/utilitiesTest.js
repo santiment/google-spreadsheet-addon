@@ -60,3 +60,12 @@ describe('assertCanAccessHistoricData_', () => {
     expect(() => san.assertCanAccessHistoricData_(from)).to.not.throw()
   })
 })
+
+describe('beginningOfDaytoEndOfDay_', () => {
+  it('returns datetime at 23:59:59 for a given beginning of day datetime', () => {
+    const startOfDay = new Date(2019, 0, 1, 0, 0, 0)
+    const endOfDay = new Date(2019, 0, 1, 23, 59, 59)
+
+    expect(san.beginningOfDaytoEndOfDay_(startOfDay)).to.equalTime(endOfDay)
+  })
+})
