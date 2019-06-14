@@ -21,7 +21,9 @@ function prices_ (slug, from, to) {
 function priceAbsoluteChange_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
 
-  var results = getApiClient_().fetchOhlc(slug, from, to)
+  var endOfDay = beginningOfDaytoEndOfDay_(to)
+
+  var results = getApiClient_().fetchOhlc(slug, from, endOfDay)
   assertHasData_(results)
 
   var firstDateResults = results[0]
