@@ -4,6 +4,7 @@ const sandbox = sinon.createSandbox()
 const chai = require('chai')
 const expect = chai.expect
 chai.use(sinonChai)
+chai.use(require('chai-datetime'))
 
 const gas = require('gas-local')
 const mock = require('../index.js')
