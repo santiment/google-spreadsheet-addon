@@ -29,6 +29,21 @@ function SAN_PRICE_ABSOLUTE_CHANGE (projectSlug, from, to) {
 }
 
 /**
+ * Returns the percent price change for the specified asset, during a given time interval.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {number} price change in percent.
+ * @customfunction
+ */
+function SAN_PRICE_PERCENT_CHANGE (projectSlug, from, to) {
+  return handleErrors_(pricePercentChange_)(projectSlug, from, to)
+}
+
+/**
  * Gets an array of all assets for which Santiment has data.
  * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,

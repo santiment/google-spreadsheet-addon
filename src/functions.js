@@ -18,7 +18,7 @@ function prices_ (slug, from, to) {
   }))
 }
 
-function priceAbsoluteChange_ (slug, from, to) {
+function priceChange_ (slug, from, to) {
   assertCanAccessHistoricData_(from)
 
   var endOfDay = beginningOfDaytoEndOfDay_(to)
@@ -36,7 +36,22 @@ function priceAbsoluteChange_ (slug, from, to) {
     throw new NoDataError_()
   }
 
-  return lastDateResults.closePriceUsd - firstDateResults.openPriceUsd
+  return {
+    open: firstDateResults.openPriceUsd,
+    close: lastDateResults.closePriceUsd
+  }
+}
+
+function priceAbsoluteChange_ (slug, from, to) {
+  var prices = priceChange_(slug, from, to)
+  return prices.close - prices.open
+}
+
+function pricePercentChange_ (slug, from, to) {
+  var prices = priceChange_(slug, from, to)
+  var priceDiff = prices.close - prices.open
+
+  return priceDiff * 100 / prices.open
 }
 
 function allProjects_ () {
