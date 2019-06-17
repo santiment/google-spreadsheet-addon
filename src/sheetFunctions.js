@@ -429,3 +429,15 @@ function SAN_LATEST_PRICE (projectSlug, currency) {
   return handleErrors_(latestPrice_)(projectSlug, currency)
 }
 
+/**
+ * Returns the closing price for a given day.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} day The date to fetch the data. Example: DATE(2018, 9, 20)
+ * @returns {number} closing price.
+ * @customfunction
+ */
+function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
+  return handleErrors_(dailyClosingPrice_)(projectSlug, day)
+}

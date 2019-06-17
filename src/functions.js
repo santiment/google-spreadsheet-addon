@@ -535,3 +535,19 @@ function latestPrice_ (slug, currency) {
 
   return result[currencyField]
 }
+
+function dailyClosingPrice_ (slug, day) {
+  assertCanAccessHistoricData_(day)
+  var endOfDay = beginningOfDaytoEndOfDay_(day)
+
+  var results = getApiClient_().fetchDailyClosingPrice(slug, day, endOfDay)
+  assertHasData_(results)
+
+  var result = results[0]
+
+  if ( result == null || !result.hasOwnProperty('closePriceUsd')) {
+    throw new NoDataError_()
+  }
+
+  return formatNumber_(result.closePriceUsd)
+}
