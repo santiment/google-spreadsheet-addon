@@ -7,6 +7,9 @@
 <dt><a href="#SAN_PRICE_ABSOLUTE_CHANGE">SAN_PRICE_ABSOLUTE_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the absolute price change for the specified asset, during a given time interval.</p>
 </dd>
+<dt><a href="#SAN_PRICE_PERCENT_CHANGE">SAN_PRICE_PERCENT_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the percent price change for the specified asset, during a given time interval.</p>
+</dd>
 <dt><a href="#SAN_ALL_PROJECTS">SAN_ALL_PROJECTS()</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets an array of all assets for which Santiment has data.
 Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
@@ -142,6 +145,21 @@ Returns the absolute price change for the specified asset, during a given time i
 
 **Kind**: global function  
 **Returns**: <code>number</code> - absolute price change.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_PRICE_PERCENT_CHANGE"></a>
+
+## SAN\_PRICE\_PERCENT\_CHANGE(projectSlug, from, to) ⇒ <code>number</code>
+Returns the percent price change for the specified asset, during a given time interval.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - price change in percent.  
 **Customfunction**:   
 
 | Param | Type | Description |

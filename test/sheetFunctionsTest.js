@@ -96,6 +96,24 @@ describe('SAN_PRICE_ABSOLUTE_CHANGE', () => {
   })
 })
 
+describe('SAN_PRICE_PERCENT_CHANGE', () => {
+  testHistoricDataIsForbidden(
+    san.SAN_PRICE_PERCENT_CHANGE,
+    historicDataFrom,
+    historicDataTo)
+  testHandlesNullData(
+    'fetchOhlc',
+    san.SAN_PRICE_PERCENT_CHANGE,
+    slug,
+    from,
+    to)
+
+  it('returns the absolute price change', () => {
+    const response = san.SAN_PRICE_PERCENT_CHANGE(slug, from, to)
+    expect(response).to.be.a('number')
+  })
+})
+
 describe('SAN_ALL_PROJECTS', () => {
   const expectedFields = {
     ticker: 'string',
