@@ -7,8 +7,8 @@ it('returns proper message on NoDataError_', () => {
 
 it('returns proper message on HistoricDataForbiddenError_', () => {
   const func = () => { throw new san.HistoricDataForbiddenError_() }
-  const errorMessage = 'Full historical data is only accessible to premium users. ' +
-   'Add your API key to use it.'
+  const errorMessage =
+    'Get premium membership on the following link: https://santiment.net/sansheets/'
   expect(san.handleErrors_(func)()).to.deep.eq([errorMessage])
 })
 
