@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('./helper.js')
+require('../helper.js')
 
 describe('hasApiKeyProperty_', () => {
   it('returns true when an API key property is present', () => {

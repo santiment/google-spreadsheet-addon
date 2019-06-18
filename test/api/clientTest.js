@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('./helper.js')
+require('../helper.js')
 
 describe('fetchCurrentUserPermissions', () => {
   it('returns null when API keys is not present', () => {
