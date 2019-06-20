@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('./helper.js')
+require('../helper.js')
 
 describe('api key', () => {
   it('sets api key from property when present', () => {
