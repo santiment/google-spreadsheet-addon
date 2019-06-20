@@ -26,12 +26,6 @@ Install dependencies:
 $ npm install
 ```
 
-Login clasp:
-
-```bash
-$ clasp login
-```
-
 ### Testing
 You can run the tests with:
 
@@ -51,7 +45,7 @@ and then run the tests:
 $ docker run -t google-spreadsheet-addon-tests
 ```
 
-### Pushing
+### Pushing to webeditor
 
 ```bash
 $ npm run push
