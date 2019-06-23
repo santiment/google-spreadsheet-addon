@@ -34,30 +34,38 @@ describe('requestedDataIsHistoric_', () => {
   })
 
   it('returns true when period is over HISTORIC_DATA_THRESHOLD', () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
-
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
     expect(san.requestedDataIsHistoric_(from)).to.be.true
   })
 })
 
 describe('assertCanAccessHistoricData_', () => {
   it('throws an error when historic data is requested and api key is not present', () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    const firstSlug = 'ethereum'
     expect(() =>
-      san.assertCanAccessHistoricData_(from))
+      san.assertCanAccessHistoricData_(from, firstSlug))
       .to.throw('Full historical data is only accessible to premium users. ' +
                 'Add your API key to use it.')
   })
 
   it("doesn't throw an error when requested data is not historic", () => {
+    const secondSlug = 'ethereum'
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD - 1)
-    expect(() => san.assertCanAccessHistoricData_(from)).to.not.throw()
+    expect(() => san.assertCanAccessHistoricData_(from, secondSlug)).to.not.throw()
   })
 
   it("doesn't throw an error when historic data is requested and api key is present", () => {
+    const thirdSlug = 'ethereum'
     san.setUserProperty_('API_KEY', 'test_api_key')
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
-    expect(() => san.assertCanAccessHistoricData_(from)).to.not.throw()
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    expect(() => san.assertCanAccessHistoricData_(from, thirdSlug)).to.not.throw()
+  })
+  it("doesn't throw an error when the data is historic and no api key is present, but the slug is santiment", () => {
+    const fourthSlug = 'santiment'
+    san.setUserProperty_('API_KEY', 'test_api_key')
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    expect(() => san.assertCanAccessHistoricData_(from, fourthSlug)).to.not.throw()
   })
 })
 
