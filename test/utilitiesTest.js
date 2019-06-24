@@ -43,7 +43,7 @@ describe('requestedDataIsHistoric_', () => {
 
 describe('assertCanAccessHistoricData_', () => {
   it('throws an error when historic data is requested and api key is not present', () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
     expect(() =>
       san.assertCanAccessHistoricData_(from, ethereumSlug))
       .to.throw('Full historical data is only accessible to premium users. ' +
@@ -51,17 +51,17 @@ describe('assertCanAccessHistoricData_', () => {
   })
 
   it("doesn't throw an error when requested data is not historic", () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD - 1)
     expect(() => san.assertCanAccessHistoricData_(from, ethereumSlug)).to.not.throw()
   })
 
   it("doesn't throw an error when historic data is requested and api key is present", () => {
     san.setUserProperty_('API_KEY', 'test_api_key')
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
     expect(() => san.assertCanAccessHistoricData_(from, ethereumSlug)).to.not.throw()
   })
   it("doesn't throw an error when the data is historic and no api key is present, but the slug is santiment", () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
     expect(() => san.assertCanAccessHistoricData_(from, slug)).to.not.throw()
   })
 })
