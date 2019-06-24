@@ -30,13 +30,13 @@ describe('userProperties', () => {
 
 describe('requestedDataIsHistoric_', () => {
   it('returns false when period is less than HISTORIC_DATA_THRESHOLD', () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD - 1)
 
     expect(san.requestedDataIsHistoric_(from)).to.be.false
   })
 
   it('returns true when period is over HISTORIC_DATA_THRESHOLD', () => {
-    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD + 1)
+    const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
     expect(san.requestedDataIsHistoric_(from)).to.be.true
   })
 })
