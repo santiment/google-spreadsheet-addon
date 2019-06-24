@@ -1,8 +1,7 @@
 var NO_DATA_MSG = 'No data'
 
 var HISTORIC_DATA_FORBIDDEN_MSG =
-  'Full historical data is only accessible to premium users. ' +
-  'Add your API key to use it.'
+  'Get premium membership on the following link: https://santiment.net/sansheets/'
 
 var INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
 
