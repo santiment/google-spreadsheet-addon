@@ -7,7 +7,6 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  ethereumSlug,
   slug,
   from,
   to,
@@ -47,8 +46,7 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_TOKEN_CIRCULATION(ethereumSlug, from, to)
-
+    const results = san.SAN_TOKEN_CIRCULATION(slug, from, to)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

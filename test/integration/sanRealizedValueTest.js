@@ -44,7 +44,6 @@ describe('SAN_REALIZED_VALUE', () => {
 
   it('returns a record per every day', () => {
     const results = san.SAN_REALIZED_VALUE(slug, from, to)
-
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {
