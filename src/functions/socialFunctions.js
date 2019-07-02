@@ -40,7 +40,7 @@ function socialVolume_ (slug, from, to, socialVolumeType) {
 }
 
 function trendingWords_ (source, size, hour, from, to) {
-  assertCanAccessHistoricData_(from, source)
+  assertCanAccessHistoricData_(from, nil)
   var results = getApiClient_().fetchTrendingWords(source, size, hour, from, to)
   assertHasData_(results)
 
