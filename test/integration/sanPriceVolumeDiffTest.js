@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   fiatCurrency,
   from,
   to,
@@ -26,7 +26,7 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
     volumeChange: 'number'
   }
 
-  const response = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+  const response = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, ethereumSlug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
@@ -34,14 +34,14 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
   testHistoricDataIsForbidden(
     san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchPriceVolumeDiff',
     san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -57,7 +57,7 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, slug, from, to)
+    const volumes = san.SAN_PRICE_VOLUME_DIFF(fiatCurrency, ethereumSlug, from, to)
 
     assertNumberOfRecords(volumes, numberOfDays)
 

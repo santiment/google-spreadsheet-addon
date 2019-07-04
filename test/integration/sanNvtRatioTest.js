@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -24,20 +24,20 @@ describe('SAN_NVT_RATIO', () => {
     nvtRatioCirculation: 'number'
   }
 
-  const response = san.SAN_NVT_RATIO(slug, from, to)
+  const response = san.SAN_NVT_RATIO(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_NVT_RATIO,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchNvtRatio',
     san.SAN_NVT_RATIO,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -51,7 +51,7 @@ describe('SAN_NVT_RATIO', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_NVT_RATIO(slug, from, to)
+    const results = san.SAN_NVT_RATIO(ethereumSlug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 
