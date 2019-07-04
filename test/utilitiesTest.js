@@ -46,8 +46,7 @@ describe('assertCanAccessHistoricData_', () => {
     const from = subDays(now, san.HISTORIC_DATA_THRESHOLD)
     expect(() =>
       san.assertCanAccessHistoricData_(from, ethereumSlug))
-      .to.throw('Full historical data is only accessible to premium users. ' +
-                'Add your API key to use it.')
+      .to.throw(san.HISTORIC_DATA_FORBIDDEN_MSG)
   })
 
   it("doesn't throw an error when requested data is not historic", () => {
