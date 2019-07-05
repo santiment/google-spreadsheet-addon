@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -23,20 +23,20 @@ describe('SAN_DEV_ACTIVITY', () => {
     activity: 'number'
   }
 
-  const response = san.SAN_DEV_ACTIVITY(slug, from, to)
+  const response = san.SAN_DEV_ACTIVITY(ethereumSlug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
     san.SAN_DEV_ACTIVITY,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchDevActivity',
     san.SAN_DEV_ACTIVITY,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -46,7 +46,7 @@ describe('SAN_DEV_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DEV_ACTIVITY(slug, from, to)
+    const activities = san.SAN_DEV_ACTIVITY(ethereumSlug, from, to)
 
     assertNumberOfRecords(activities, numberOfDays)
 

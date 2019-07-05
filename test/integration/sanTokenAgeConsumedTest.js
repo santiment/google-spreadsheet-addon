@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -20,20 +20,20 @@ const {
 describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const expected = { date: 'string', tokenAgeConsumed: 'number' }
 
-  const response = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
+  const response = san.SAN_TOKEN_AGE_CONSUMED(ethereumSlug, from, to)
   const headers = response[0]
   const activities = response[1]
 
   testFieldTypes(activities, expected)
   testHistoricDataIsForbidden(
     san.SAN_TOKEN_AGE_CONSUMED,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchTokenAgeConsumed',
     san.SAN_TOKEN_AGE_CONSUMED,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -43,7 +43,7 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
+    const results = san.SAN_TOKEN_AGE_CONSUMED(ethereumSlug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 

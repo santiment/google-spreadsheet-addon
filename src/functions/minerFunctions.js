@@ -1,5 +1,5 @@
 function gasUsed_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchGasUsed(slug, from, to)
   assertHasData_(results)
 
@@ -14,7 +14,7 @@ function gasUsed_ (slug, from, to) {
 }
 
 function miningPoolsDistribution_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchMiningPoolsDistribution(slug, from, to)
   assertHasData_(results)
 
@@ -31,7 +31,7 @@ function miningPoolsDistribution_ (slug, from, to) {
 }
 
 function minersBalance_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchMinersBalance(slug, from, to)
   assertHasData_(results)
 

@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -23,20 +23,20 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
     inOutDifference: 'number'
   }
 
-  const response = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
+  const response = san.SAN_EXCHANGE_FUNDS_FLOW(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_EXCHANGE_FUNDS_FLOW,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchExchangeFundsFlow',
     san.SAN_EXCHANGE_FUNDS_FLOW,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -46,7 +46,7 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
+    const results = san.SAN_EXCHANGE_FUNDS_FLOW(ethereumSlug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 

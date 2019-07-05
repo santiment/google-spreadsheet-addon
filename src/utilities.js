@@ -22,8 +22,8 @@ function assertHasData_ (data) {
   if (data === null || data === []) throw new NoDataError_()
 }
 
-function assertCanAccessHistoricData_ (from) {
-  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_()) throw new HistoricDataForbiddenError_()
+function assertCanAccessHistoricData_ (from, slug) {
+  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_() && slug !== 'santiment') throw new HistoricDataForbiddenError_()
 }
 
 function formatDatetimeField_ (field) {

@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -23,20 +23,20 @@ describe('SAN_TOKEN_CIRCULATION', () => {
     tokenCirculation: 'number'
   }
 
-  const response = san.SAN_TOKEN_CIRCULATION(slug, from, to)
+  const response = san.SAN_TOKEN_CIRCULATION(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(
     san.SAN_TOKEN_CIRCULATION,
-    slug,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(
     'fetchTokenCirculation',
     san.SAN_TOKEN_CIRCULATION,
-    slug,
+    ethereumSlug,
     from,
     to)
 
@@ -46,8 +46,7 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_TOKEN_CIRCULATION(slug, from, to)
-
+    const results = san.SAN_TOKEN_CIRCULATION(ethereumSlug, from, to)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

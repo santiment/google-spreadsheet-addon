@@ -1,5 +1,5 @@
 function githubActivity_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchGithubActivity(slug, from, to)
   assertHasData_(results)
 
@@ -14,7 +14,7 @@ function githubActivity_ (slug, from, to) {
 }
 
 function devActivity_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchDevActivity(slug, from, to)
   assertHasData_(results)
 

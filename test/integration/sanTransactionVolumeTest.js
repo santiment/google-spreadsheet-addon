@@ -7,7 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
-  slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -23,13 +23,13 @@ describe('SAN_TRANSACTION_VOLUME', () => {
     transactionVolume: 'number'
   }
 
-  const response = san.SAN_TRANSACTION_VOLUME(slug, from, to)
+  const response = san.SAN_TRANSACTION_VOLUME(ethereumSlug, from, to)
   const headers = response[0]
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHistoricDataIsForbidden(san.SAN_TRANSACTION_VOLUME, slug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, slug, from, to)
+  testHistoricDataIsForbidden(san.SAN_TRANSACTION_VOLUME, ethereumSlug, historicDataFrom, historicDataTo)
+  testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, ethereumSlug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Transaction Volume']
@@ -37,7 +37,7 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const transcationVolumes = san.SAN_TRANSACTION_VOLUME(slug, from, to)
+    const transcationVolumes = san.SAN_TRANSACTION_VOLUME(ethereumSlug, from, to)
 
     assertNumberOfRecords(transcationVolumes, numberOfDays)
 

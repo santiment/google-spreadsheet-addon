@@ -14,7 +14,7 @@ function latestPrice_ (slug, currency) {
 }
 
 function dailyClosingPrice_ (slug, day) {
-  assertCanAccessHistoricData_(day)
+  assertCanAccessHistoricData_(day, slug)
   var endOfDay = beginningOfDaytoEndOfDay_(day)
 
   var results = getApiClient_().fetchDailyClosingPrice(slug, day, endOfDay)
@@ -30,7 +30,7 @@ function dailyClosingPrice_ (slug, day) {
 }
 
 function prices_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchPrices(slug, from, to)
   assertHasData_(results)
 
@@ -46,7 +46,7 @@ function prices_ (slug, from, to) {
 }
 
 function priceOpenClose_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
 
   var endOfDay = beginningOfDaytoEndOfDay_(to)
 
@@ -82,7 +82,7 @@ function pricePercentChange_ (slug, from, to) {
 }
 
 function ohlc_ (slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchOhlc(slug, from, to)
   assertHasData_(results)
 
@@ -106,7 +106,7 @@ function ohlc_ (slug, from, to) {
 }
 
 function priceVolumeDiff_ (currency, slug, from, to) {
-  assertCanAccessHistoricData_(from)
+  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchPriceVolumeDiff(currency, slug, from, to)
   assertHasData_(results)
 

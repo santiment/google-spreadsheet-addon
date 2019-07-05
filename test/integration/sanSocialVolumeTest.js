@@ -18,7 +18,6 @@ const {
 } = require('../setup.js')
 
 describe('SAN_SOCIAL_VOLUME', () => {
-  const slug = 'bitcoin'
   const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'
 
   const expected = {
@@ -26,7 +25,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+  const response = san.SAN_SOCIAL_VOLUME(ethereumSlug, from, to, socialVolumeType)
   const headers = response[0]
   const volumes = response[1]
 
@@ -51,8 +50,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const slug = 'bitcoin'
-    const volumes = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
+    const volumes = san.SAN_SOCIAL_VOLUME(ethereumSlug, from, to, socialVolumeType)
 
     assertNumberOfRecords(volumes, numberOfDays)
 
