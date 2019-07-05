@@ -48,11 +48,6 @@ describe('SAN_NEWS', () => {
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
-  it('returns 10 records by default', () => {
-    const results = san.SAN_NEWS(ethereumSlug, from, to)
-    expect(results).to.have.lengthOf(11) // + headers
-  })
-
   it('returns the requested number or records', () => {
     const results = san.SAN_NEWS(ethereumSlug, from, to, size)
     expect(results).to.have.lengthOf(size + 1)
