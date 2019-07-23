@@ -471,3 +471,7 @@ function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
 function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
   return handleErrors_(historicalBalance_)(projectSlug, from, to, address)
 }
+
+function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
+  return handleErrors_(historyTwitterData_)(projectSlug, from, to)
+}

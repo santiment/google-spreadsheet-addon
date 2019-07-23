@@ -160,3 +160,17 @@ function historicalBalance_ (slug, from, to, address) {
     ]
   }))
 }
+
+
+function historyTwitterData_ (slug, from, to) {
+  var results = getApiClient_().fetchHistoryTwitterData(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Followers Count']
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.followersCount)
+    ]
+  }))
+}
