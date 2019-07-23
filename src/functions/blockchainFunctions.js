@@ -146,3 +146,17 @@ function exchangeFundsFlow_ (slug, from, to) {
     ]
   }))
 }
+
+function historicalBalance_ (slug, from, to, address) {
+  var results = getApiClient_().fetchHistoricalBalance(slug, from, to, address)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Balance']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.balance)
+    ]
+  }))
+}
