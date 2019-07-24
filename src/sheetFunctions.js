@@ -485,3 +485,7 @@ function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
 function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
   return handleErrors_(historyTwitterData_)(projectSlug, from, to)
 }
+
+function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source) {
+  return handleErrors_(socialDominance_)(projectSlug, from, to, source)
+}

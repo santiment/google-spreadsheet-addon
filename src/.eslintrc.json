@@ -75,6 +75,7 @@
     "latestPrice_": "readonly",
     "dailyClosingPrice_": "readonly",
     "historicalBalance_": "readonly",
-    "historyTwitterData_": "readonly"
+    "historyTwitterData_": "readonly",
+    "socialDominance_": "readonly"
   }
 }
