@@ -5,6 +5,7 @@ const from = new Date(2019, 7, 21, 0, 0, 0)
 const to = new Date(2019, 7, 24, 0, 0, 0)
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
 const limit = 2
+const transactionType = 'ALL'
 
 describe('historicalBalance', () => {
   it('returns historical balance of an address', () => {
@@ -52,7 +53,6 @@ describe('historicalBalance', () => {
       ]
     )
   })
-
   it('throws "No data" on null response', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchHistoricalBalance').returns(null)
     expect(() => san.historicalBalance_(slug, from, to, ethAddress)).to.throw('No data')
@@ -149,9 +149,105 @@ describe('tokenTopTransactions_', () => {
       ]
     )
   })
-
   it('throws "No data" on null response', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchTokenTopTransactions').returns(null)
     expect(() => san.tokenTopTransactions_(slug, from, to, limit)).to.throw('No data')
+  })
+})
+
+describe('ethTopTransactions_', () => {
+  it('returns top eth transactions', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthTopTransactions').returns(
+      {
+        ethTopTransactions: [{
+          datetime: '2019-07-21T17:39:17.000000Z',
+          fromAddress: {
+            address: '0x6dd5a9f47cfbc44c04a0a4452f0ba792ebfbcc9a',
+            isExchange: false
+          },
+          toAddress: {
+            address: '0x55193c0fbf5921d4d91f26cc8cf84f5d72c6e50d',
+            isExchange: false
+          },
+          trxHash: '0x33d89d936fb53761dd9ddc004699e6a2d8d09597b9aeaf294a04f378c712eb53',
+          trxValue: 113.64
+        },
+        {
+          datetime: '2019-07-24T15:11:34.000000Z',
+          fromAddress: {
+            address: '0x6a1517622feb74a242e68a26f423ae38e020a0b1',
+            isExchange: false
+          },
+          toAddress: {
+            address: '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2',
+            isExchange: false
+          },
+          trxHash: '0x17b0284721c6f8c0dcff763aedd2c3713f678630bc8a1f91a4520ad1d323040f',
+          trxValue: 3.36511
+        }
+        ]
+      }
+    )
+
+    const response = san.ethTopTransactions_(slug, from, to, limit, transactionType)
+
+    expect(response).to.deep.eq(
+      [
+        [
+          'Date',
+          'From Address',
+          'From Is Exchange',
+          'To Address',
+          'To Is Exchange',
+          'Transaction Hash',
+          'Transaction Value'
+        ],
+        [
+          '2019-07-21',
+          '0x6dd5a9f47cfbc44c04a0a4452f0ba792ebfbcc9a',
+          false,
+          '0x55193c0fbf5921d4d91f26cc8cf84f5d72c6e50d',
+          false,
+          '0x33d89d936fb53761dd9ddc004699e6a2d8d09597b9aeaf294a04f378c712eb53',
+          113.64
+        ],
+        [
+          '2019-07-24',
+          '0x6a1517622feb74a242e68a26f423ae38e020a0b1',
+          false,
+          '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2',
+          false,
+          '0x17b0284721c6f8c0dcff763aedd2c3713f678630bc8a1f91a4520ad1d323040f',
+          3.36511
+        ]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthTopTransactions').returns(
+      {
+        ethTopTransactions: []
+      }
+    )
+    const response = san.ethTopTransactions_(slug, from, to, limit, transactionType)
+    expect(response).to.deep.eq(
+      [
+        [
+          'Date',
+          'From Address',
+          'From Is Exchange',
+          'To Address',
+          'To Is Exchange',
+          'Transaction Hash',
+          'Transaction Value'
+        ]
+      ]
+    )
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthTopTransactions').returns(null)
+    expect(() => san.ethTopTransactions_(slug, from, to, limit, transactionType)).to.throw('No data')
   })
 })
