@@ -175,3 +175,28 @@ ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address)
 
   return this.conn.graphQLQuery(query, 'historicalBalance')
 }
+
+ApiClient_.prototype.fetchTokenTopTransactions = function (slug, from, to, limit) {
+  var query = {
+    'query': '{ projectBySlug(slug: "' + slug + '"){\
+        tokenTopTransactions(from: "' + toUTC_(from) + '",\
+                             to: "' + toUTC_(to) + '",\
+                             limit: ' + limit + '){\
+                               datetime\
+                               fromAddress{\
+                                 address\
+                                 isExchange\
+                               }\
+                               toAddress{\
+                                 address\
+                                 isExchange\
+                               }\
+                               trxHash\
+                               trxValue\
+                             }\
+                           }\
+                         }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}
