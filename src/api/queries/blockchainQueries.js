@@ -242,3 +242,22 @@ ApiClient_.prototype.fetchEthSpentOverTime = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
+
+ApiClient_.prototype.fetchTopHoldersPercentOfTotalSupply = function (slug, from, to, numberOfHolders) {
+  var query = {
+    'query': '{\
+       topHoldersPercentOfTotalSupply(slug: "' + slug + '",\
+                                      from: "' + toUTC_(from) + '",\
+                                      to: "' + toUTC_(to) + '",\
+                                      interval: "1d",\
+                                      numberOfHolders: ' + numberOfHolders + ') {\
+                                        datetime\
+                                        inExchanges\
+                                        outsideExchanges\
+                                        inTopHoldersTotal\
+                                      }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'topHoldersPercentOfTotalSupply')
+}

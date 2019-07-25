@@ -545,3 +545,18 @@ function SAN_ETH_TOP_TRANSACTIONS (projectSlug, from, to, limit, transactionType
 function SAN_ETH_SPENT_OVER_TIME (projectSlug, from, to) {
   return handleErrors_(ethSpentOverTime_)(projectSlug, from, to)
 }
+
+/**
+ * Returns the top holders' percent of total supply - in exchanges, outside exchanges and combined.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {number} numberOfHolders Take top number of holders into account when calculating.
+ * @returns {Array} followers count over time.
+ * @customfunction
+ */
+function SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY (projectSlug, from, to, numberOfHolders) {
+  return handleErrors_(topHoldersPercentOfTotalSupply_)(projectSlug, from, to, numberOfHolders)
+}
