@@ -531,3 +531,17 @@ function SAN_TOKEN_TOP_TRANSACTIONS (projectSlug, from, to, limit) {
 function SAN_ETH_TOP_TRANSACTIONS (projectSlug, from, to, limit, transactionType) {
   return handleErrors_(ethTopTransactions_)(projectSlug, from, to, limit, transactionType)
 }
+
+/**
+ * ETH spent for each interval from the project's team wallet and time period
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} of the ETH, that was spent over a given period of time
+ * @customfunction
+ */
+function SAN_ETH_SPENT_OVER_TIME (projectSlug, from, to) {
+  return handleErrors_(ethSpentOverTime_)(projectSlug, from, to)
+}

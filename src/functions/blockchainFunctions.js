@@ -213,3 +213,17 @@ function ethTopTransactions_ (slug, from, to, limit, transactionType) {
     ]
   }))
 }
+
+function ethSpentOverTime_ (slug, from, to) {
+  var results = getApiClient_().fetchEthSpentOverTime(slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'ETH Spent']
+
+  return [headers].concat(results.ethSpentOverTime.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.ethSpent)
+    ]
+  }))
+}

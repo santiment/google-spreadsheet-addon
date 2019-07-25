@@ -78,6 +78,7 @@
     "historyTwitterData_": "readonly",
     "socialDominance_": "readonly",
     "tokenTopTransactions_": "readonly",
-    "ethTopTransactions_": "readonly"
+    "ethTopTransactions_": "readonly",
+    "ethSpentOverTime_": "readonly"
   }
 }
