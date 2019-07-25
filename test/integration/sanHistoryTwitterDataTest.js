@@ -20,6 +20,7 @@ describe('SAN_HISTORY_TWITTER_DATA', () => {
   const response = san.SAN_HISTORY_TWITTER_DATA(slug, from, to)
   const headers = response[0]
   const results = response[1]
+
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchHistoryTwitterData',

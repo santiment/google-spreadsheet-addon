@@ -168,27 +168,10 @@ ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address)
                          interval: "1d",\
                          address: "' + address + '") {\
          datetime\
-        balance\
-      }\
-    }'
-  }
-
-  return this.conn.graphQLQuery(query, 'historicalBalance')
- }
-
-
-ApiClient_.prototype.fetchHistoryTwitterData = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       historyTwitterData(slug: "' + slug + '",\
-                          from: "' + toUTC_(from) + '",\
-                          to: "' + toUTC_(to) + '",\
-                          interval: "1d") {\
-         datetime\
-         followersCount\
+         balance\
        }\
      }'
   }
 
-  return this.conn.graphQLQuery(query, 'historyTwitterData')
+  return this.conn.graphQLQuery(query, 'historicalBalance')
 }

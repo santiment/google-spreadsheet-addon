@@ -124,6 +124,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_HISTORICAL_BALANCE">SAN_HISTORICAL_BALANCE(projectSlug, from, to, address)</a> ⇒ <code>Array</code></dt>
 <dd><p>Historical balance for erc20 token or eth address. Returns the historical balance for a given address in the given interval.</p>
 </dd>
+<dt><a href="#SAN_HISTORY_TWITTER_DATA">SAN_HISTORY_TWITTER_DATA(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Fetch the historical count of twitter followers.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -591,7 +594,7 @@ Returns the closing price for a given day.
 Historical balance for erc20 token or eth address. Returns the historical balance for a given address in the given interval.
 
 **Kind**: global function  
-**Returns**: <code>number</code> - historical balance
+**Returns**: <code>Array</code> - historical balance
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -600,3 +603,18 @@ Historical balance for erc20 token or eth address. Returns the historical balanc
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | address | <code>string</code> | The address, for which the historical balance is returned. |
+
+<a name="SAN_HISTORY_TWITTER_DATA"></a>
+
+## SAN\_HISTORY\_TWITTER\_DATA(projectSlug, from, to) ⇒ <code>Array</code>
+Fetch the historical count of twitter followers.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the followers count.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |

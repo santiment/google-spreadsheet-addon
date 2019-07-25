@@ -472,6 +472,16 @@ function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
   return handleErrors_(historicalBalance_)(projectSlug, from, to, address)
 }
 
+/**
+ * Fetch the historical count of twitter followers.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @returns {Array} followers count over time.
+ * @customfunction
+ */
 function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
   return handleErrors_(historyTwitterData_)(projectSlug, from, to)
 }
