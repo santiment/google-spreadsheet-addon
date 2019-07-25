@@ -21,7 +21,6 @@ const historicDataTo = subDays(endOfYesterday(), 200)
 const historicDataFrom = startOfDay(subDays(historicDataTo, 205))
 
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
-const source = 'ALL'
 
 module.exports = {
   slug: slug,
@@ -34,6 +33,5 @@ module.exports = {
   historicDataFrom: historicDataFrom,
   historicDataTo: historicDataTo,
   formatDate: formatDate,
-  ethAddress: ethAddress,
-  source: source
+  ethAddress: ethAddress
 }

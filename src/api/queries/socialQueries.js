@@ -74,3 +74,20 @@ ApiClient_.prototype.fetchHistoryTwitterData = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'historyTwitterData')
 }
+
+ApiClient_.prototype.fetchSocialDominance = function (slug, from, to, source) {
+  var query = {
+    'query': '{\
+       socialDominance(slug: "' + slug + '",\
+                       from: "' + toUTC_(from) + '",\
+                       to: "' + toUTC_(to) + '",\
+                       interval: "1d",\
+                       source: ' + source + ') {\
+         datetime\
+         dominance\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'socialDominance')
+}

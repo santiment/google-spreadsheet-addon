@@ -7,10 +7,10 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
-  source,
   historicDataFrom,
   historicDataTo,
   days,
@@ -24,7 +24,8 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
     dominance: 'number'
   }
 
-  const response = san.SAN_SOCIAL_DOMINANCE(ethereumSlug, from, to, source)
+  const source = 'ALL'
+  const response = san.SAN_SOCIAL_DOMINANCE(slug, from, to, source)
   const headers = response[0]
   const results = response[1]
 
@@ -38,7 +39,7 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
   testHandlesNullData(
     'fetchSocialDominance',
     san.SAN_SOCIAL_DOMINANCE,
-    ethereumSlug,
+    slug,
     from,
     to,
     source)
@@ -49,7 +50,7 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_SOCIAL_DOMINANCE(ethereumSlug, from, to, source)
+    const results = san.SAN_SOCIAL_DOMINANCE(slug, from, to, source)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

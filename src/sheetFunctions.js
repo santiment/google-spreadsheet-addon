@@ -486,6 +486,17 @@ function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
   return handleErrors_(historyTwitterData_)(projectSlug, from, to)
 }
 
+/**
+ * Returns the % of the social dominance a given project has over time in a given social channel.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} source The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT
+ * @returns {Array} of dominance.
+ * @customfunction
+ */
 function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source) {
   return handleErrors_(socialDominance_)(projectSlug, from, to, source)
 }
