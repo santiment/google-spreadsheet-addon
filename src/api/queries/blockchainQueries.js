@@ -158,3 +158,20 @@ ApiClient_.prototype.fetchRealizedValue = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'realizedValue')
 }
+
+ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address) {
+  var query = {
+    'query': '{\
+       historicalBalance(slug: "' + slug + '",\
+                         from: "' + toUTC_(from) + '",\
+                         to: "' + toUTC_(to) + '",\
+                         interval: "1d",\
+                         address: "' + address + '") {\
+         datetime\
+         balance\
+       }\
+     }'
+  }
+
+  return this.conn.graphQLQuery(query, 'historicalBalance')
+}

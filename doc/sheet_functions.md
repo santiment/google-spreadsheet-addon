@@ -121,6 +121,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_DAILY_CLOSING_PRICE">SAN_DAILY_CLOSING_PRICE(projectSlug, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the closing price for a given day.</p>
 </dd>
+<dt><a href="#SAN_HISTORICAL_BALANCE">SAN_HISTORICAL_BALANCE(projectSlug, from, to, address)</a> ⇒ <code>Array</code></dt>
+<dd><p>Historical balance for erc20 token or eth address. Returns the historical balance for a given address in the given interval.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -582,3 +585,18 @@ Returns the closing price for a given day.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | day | <code>date</code> | The date to fetch the data. Example: DATE(2018, 9, 20) |
 
+<a name="SAN_HISTORICAL_BALANCE"></a>
+
+## SAN\_HISTORICAL\_BALANCE(projectSlug, from, to, address) ⇒ <code>Array</code>
+Historical balance for erc20 token or eth address. Returns the historical balance for a given address in the given interval.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - historical balance
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| address | <code>string</code> | The address, for which the historical balance is returned. |

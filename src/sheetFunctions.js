@@ -456,3 +456,7 @@ function SAN_LATEST_PRICE (projectSlug, currency) {
 function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
   return handleErrors_(dailyClosingPrice_)(projectSlug, day)
 }
+
+function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
+  return handleErrors_(historicalBalance_)(projectSlug, from, to, address)
+}

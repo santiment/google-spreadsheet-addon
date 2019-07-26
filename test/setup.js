@@ -20,6 +20,8 @@ const days = eachDay(from, subDays(to, 1)) // last day should not be included (h
 const historicDataTo = subDays(endOfYesterday(), 200)
 const historicDataFrom = startOfDay(subDays(historicDataTo, 205))
 
+const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
+
 module.exports = {
   slug: slug,
   ethereumSlug: ethereumSlug,
@@ -30,5 +32,6 @@ module.exports = {
   numberOfDays: numberOfDays,
   historicDataFrom: historicDataFrom,
   historicDataTo: historicDataTo,
-  formatDate: formatDate
+  formatDate: formatDate,
+  ethAddress: ethAddress
 }
