@@ -1,5 +1,6 @@
 const dateFnsFormat = require('date-fns/format')
-const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
+const formatDate = (date, format = DEFAULT_DATE_FORMAT) =>
+    dateFnsFormat(date, format)
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 
 const subDays = require('date-fns/sub_days')
@@ -23,15 +24,15 @@ const historicDataFrom = startOfDay(subDays(historicDataTo, 205))
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
 
 module.exports = {
-  slug: slug,
-  ethereumSlug: ethereumSlug,
-  fiatCurrency: fiatCurrency,
-  to: to,
-  from: from,
-  days: days,
-  numberOfDays: numberOfDays,
-  historicDataFrom: historicDataFrom,
-  historicDataTo: historicDataTo,
-  formatDate: formatDate,
-  ethAddress: ethAddress
+    slug: slug,
+    ethereumSlug: ethereumSlug,
+    fiatCurrency: fiatCurrency,
+    to: to,
+    from: from,
+    days: days,
+    numberOfDays: numberOfDays,
+    historicDataFrom: historicDataFrom,
+    historicDataTo: historicDataTo,
+    formatDate: formatDate,
+    ethAddress: ethAddress,
 }

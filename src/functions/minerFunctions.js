@@ -1,46 +1,52 @@
-function gasUsed_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
-  var results = getApiClient_().fetchGasUsed(slug, from, to)
-  assertHasData_(results)
+function gasUsed_(slug, from, to) {
+    assertCanAccessHistoricData_(from, slug)
+    var results = getApiClient_().fetchGasUsed(slug, from, to)
+    assertHasData_(results)
 
-  var headers = ['Date', 'Gas Used']
+    var headers = ['Date', 'Gas Used']
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.gasUsed)
-    ]
-  }))
+    return [headers].concat(
+        results.map(function(result) {
+            return [
+                formatDatetimeField_(result.datetime),
+                formatNumber_(result.gasUsed),
+            ]
+        })
+    )
 }
 
-function miningPoolsDistribution_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
-  var results = getApiClient_().fetchMiningPoolsDistribution(slug, from, to)
-  assertHasData_(results)
+function miningPoolsDistribution_(slug, from, to) {
+    assertCanAccessHistoricData_(from, slug)
+    var results = getApiClient_().fetchMiningPoolsDistribution(slug, from, to)
+    assertHasData_(results)
 
-  var headers = ['Date', 'Top 3', 'Top 10', 'Other']
+    var headers = ['Date', 'Top 3', 'Top 10', 'Other']
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.top3),
-      formatNumber_(result.top10),
-      formatNumber_(result.other)
-    ]
-  }))
+    return [headers].concat(
+        results.map(function(result) {
+            return [
+                formatDatetimeField_(result.datetime),
+                formatNumber_(result.top3),
+                formatNumber_(result.top10),
+                formatNumber_(result.other),
+            ]
+        })
+    )
 }
 
-function minersBalance_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
-  var results = getApiClient_().fetchMinersBalance(slug, from, to)
-  assertHasData_(results)
+function minersBalance_(slug, from, to) {
+    assertCanAccessHistoricData_(from, slug)
+    var results = getApiClient_().fetchMinersBalance(slug, from, to)
+    assertHasData_(results)
 
-  var headers = ['Date', 'Balance']
+    var headers = ['Date', 'Balance']
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.balance)
-    ]
-  }))
+    return [headers].concat(
+        results.map(function(result) {
+            return [
+                formatDatetimeField_(result.datetime),
+                formatNumber_(result.balance),
+            ]
+        })
+    )
 }

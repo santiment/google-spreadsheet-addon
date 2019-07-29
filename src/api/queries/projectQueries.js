@@ -1,6 +1,7 @@
-ApiClient_.prototype.fetchAllProjects = function () {
-  var query = {
-    'query': '{\
+ApiClient_.prototype.fetchAllProjects = function() {
+    var query = {
+        query:
+            '{\
        allProjects {\
          slug\
          name\
@@ -14,15 +15,16 @@ ApiClient_.prototype.fetchAllProjects = function () {
          ethSpent7d: ethSpent(days:7)\
          ethSpent1d: ethSpent(days:1)\
        }\
-     }'
-  }
+     }',
+    }
 
-  return this.conn.graphQLQuery(query, 'allProjects')
+    return this.conn.graphQLQuery(query, 'allProjects')
 }
 
-ApiClient_.prototype.fetchErc20Projects = function () {
-  var query = {
-    'query': '{\
+ApiClient_.prototype.fetchErc20Projects = function() {
+    var query = {
+        query:
+            '{\
        allErc20Projects {\
          slug\
          name\
@@ -37,16 +39,19 @@ ApiClient_.prototype.fetchErc20Projects = function () {
          ethSpent7d: ethSpent(days:7)\
          ethSpent1d: ethSpent(days:1)\
        }\
-     }'
-  }
+     }',
+    }
 
-  return this.conn.graphQLQuery(query, 'allErc20Projects')
+    return this.conn.graphQLQuery(query, 'allErc20Projects')
 }
 
-ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
-  var query = {
-    'query': '{\
-       projectBySlug(slug: "' + slug + '") {\
+ApiClient_.prototype.fetchProjectFundamentals = function(slug) {
+    var query = {
+        query:
+            '{\
+       projectBySlug(slug: "' +
+            slug +
+            '") {\
          ticker\
          name\
          slug\
@@ -62,16 +67,19 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
          marketcapUsd\
          averageDevActivity(days:30)\
        }\
-     }'
-  }
+     }',
+    }
 
-  return this.conn.graphQLQuery(query, 'projectBySlug')
+    return this.conn.graphQLQuery(query, 'projectBySlug')
 }
 
-ApiClient_.prototype.fetchProjectSocialData = function (slug) {
-  var query = {
-    'query': '{\
-      projectBySlug(slug: "' + slug + '") {\
+ApiClient_.prototype.fetchProjectSocialData = function(slug) {
+    var query = {
+        query:
+            '{\
+      projectBySlug(slug: "' +
+            slug +
+            '") {\
         ticker\
         name\
         slug\
@@ -85,8 +93,8 @@ ApiClient_.prototype.fetchProjectSocialData = function (slug) {
         redditLink\
         slackLink\
       }\
-    }'
-  }
+    }',
+    }
 
-  return this.conn.graphQLQuery(query, 'projectBySlug')
+    return this.conn.graphQLQuery(query, 'projectBySlug')
 }

@@ -1,7 +1,7 @@
 const spreadsheetApp = () => ({
-  getActive: () => ({
-    getSpreadsheetTimeZone: () => 'Etc/GMT'
-  })
+    getActive: () => ({
+        getSpreadsheetTimeZone: () => 'Etc/GMT',
+    }),
 })
 
 const getMock = () => spreadsheetApp()

@@ -3,18 +3,18 @@
 
 var errorsWithWarnLevel = ['HistoricDataForbiddenError']
 
-function logWarning_ (message) {
-  console.warn(message)
+function logWarning_(message) {
+    console.warn(message)
 }
 
-function logInfo_ (message) {
-  console.info(message)
+function logInfo_(message) {
+    console.info(message)
 }
 
-function logError_ (message) {
-  if (errorsWithWarnLevel.indexOf(message.name) > -1) {
-    logWarning_(message)
-  } else {
-    console.error(message)
-  }
+function logError_(message) {
+    if (errorsWithWarnLevel.indexOf(message.name) > -1) {
+        logWarning_(message)
+    } else {
+        console.error(message)
+    }
 }
