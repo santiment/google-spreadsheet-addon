@@ -6,6 +6,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -24,7 +25,7 @@ describe('SAN_NEWS', () => {
     description: 'string'
   }
 
-  const response = san.SAN_NEWS(ethereumSlug, from, to, size)
+  const response = san.SAN_NEWS(slug, from, to, size)
   const headers = response[0]
   const results = response[1]
 
@@ -38,7 +39,7 @@ describe('SAN_NEWS', () => {
   testHandlesNullData(
     'fetchNews',
     san.SAN_NEWS,
-    ethereumSlug,
+    slug,
     from,
     to,
     size)
@@ -46,10 +47,5 @@ describe('SAN_NEWS', () => {
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Title', 'Source', 'URL', 'Description']
     expect(headers).to.deep.equal(expectedHeaders)
-  })
-
-  it('returns the requested number or records', () => {
-    const results = san.SAN_NEWS(ethereumSlug, from, to, size)
-    expect(results).to.have.lengthOf(size + 1)
   })
 })

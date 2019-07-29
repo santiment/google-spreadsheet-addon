@@ -7,6 +7,7 @@ const {
 
 const {
   slug,
+  ethereumSlug,
   from,
   to,
   historicDataFrom,
@@ -16,6 +17,7 @@ const {
 describe('SAN_PRICE_PERCENT_CHANGE', () => {
   testHistoricDataIsForbidden(
     san.SAN_PRICE_PERCENT_CHANGE,
+    ethereumSlug,
     historicDataFrom,
     historicDataTo)
   testHandlesNullData(

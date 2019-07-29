@@ -2,19 +2,16 @@ const { testFieldTypes } = require('../helper.js')
 
 const {
   testHistoricDataIsForbidden,
-  testHandlesNullData,
-  assertNumberOfRecords
+  testHandlesNullData
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
   historicDataFrom,
-  historicDataTo,
-  days,
-  numberOfDays,
-  formatDate
+  historicDataTo
 } = require('../setup.js')
 
 describe('SAN_SOCIAL_VOLUME', () => {
@@ -25,7 +22,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
     mentionsCount: 'number'
   }
 
-  const response = san.SAN_SOCIAL_VOLUME(ethereumSlug, from, to, socialVolumeType)
+  const response = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
   const headers = response[0]
   const volumes = response[1]
 
@@ -39,7 +36,7 @@ describe('SAN_SOCIAL_VOLUME', () => {
   testHandlesNullData(
     'fetchSocialVolume',
     san.SAN_SOCIAL_VOLUME,
-    ethereumSlug,
+    slug,
     from,
     to,
     socialVolumeType)
@@ -47,15 +44,5 @@ describe('SAN_SOCIAL_VOLUME', () => {
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Mentions Count']
     expect(headers).to.deep.equal(expectedHeaders)
-  })
-
-  it('returns a record per every day', () => {
-    const volumes = san.SAN_SOCIAL_VOLUME(ethereumSlug, from, to, socialVolumeType)
-
-    assertNumberOfRecords(volumes, numberOfDays)
-
-    for (let [index, day] of days.entries()) {
-      expect(volumes[index + 1][0]).to.equal(formatDate(day))
-    }
   })
 })

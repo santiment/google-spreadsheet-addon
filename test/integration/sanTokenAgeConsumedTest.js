@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -20,7 +21,7 @@ const {
 describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const expected = { date: 'string', tokenAgeConsumed: 'number' }
 
-  const response = san.SAN_TOKEN_AGE_CONSUMED(ethereumSlug, from, to)
+  const response = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
@@ -33,7 +34,7 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   testHandlesNullData(
     'fetchTokenAgeConsumed',
     san.SAN_TOKEN_AGE_CONSUMED,
-    ethereumSlug,
+    slug,
     from,
     to)
 
@@ -43,7 +44,7 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_TOKEN_AGE_CONSUMED(ethereumSlug, from, to)
+    const results = san.SAN_TOKEN_AGE_CONSUMED(slug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 
