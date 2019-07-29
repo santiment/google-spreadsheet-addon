@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -23,13 +24,13 @@ describe('SAN_NETWORK_GROWTH', () => {
     newAddresses: 'number'
   }
 
-  const response = san.SAN_NETWORK_GROWTH(ethereumSlug, from, to)
+  const response = san.SAN_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHistoricDataIsForbidden(san.SAN_NETWORK_GROWTH, ethereumSlug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, ethereumSlug, from, to)
+  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'New Addresses']
@@ -37,7 +38,7 @@ describe('SAN_NETWORK_GROWTH', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_NETWORK_GROWTH(ethereumSlug, from, to)
+    const results = san.SAN_NETWORK_GROWTH(slug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 

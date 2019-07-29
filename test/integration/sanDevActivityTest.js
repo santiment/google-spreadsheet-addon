@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -23,7 +24,7 @@ describe('SAN_DEV_ACTIVITY', () => {
     activity: 'number'
   }
 
-  const response = san.SAN_DEV_ACTIVITY(ethereumSlug, from, to)
+  const response = san.SAN_DEV_ACTIVITY(slug, from, to)
   const headers = response[0]
   const activities = response[1]
 
@@ -36,7 +37,7 @@ describe('SAN_DEV_ACTIVITY', () => {
   testHandlesNullData(
     'fetchDevActivity',
     san.SAN_DEV_ACTIVITY,
-    ethereumSlug,
+    slug,
     from,
     to)
 
@@ -46,7 +47,7 @@ describe('SAN_DEV_ACTIVITY', () => {
   })
 
   it('returns a record per every day', () => {
-    const activities = san.SAN_DEV_ACTIVITY(ethereumSlug, from, to)
+    const activities = san.SAN_DEV_ACTIVITY(slug, from, to)
 
     assertNumberOfRecords(activities, numberOfDays)
 

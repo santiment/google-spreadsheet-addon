@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -26,13 +27,13 @@ describe('SAN_OHLC', () => {
     openPriceUsd: 'number'
   }
 
-  const response = san.SAN_OHLC(ethereumSlug, from, to)
+  const response = san.SAN_OHLC(slug, from, to)
   const headers = response[0]
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
   testHistoricDataIsForbidden(san.SAN_OHLC, ethereumSlug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchOhlc', san.SAN_OHLC, ethereumSlug, from, to)
+  testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = [
@@ -47,7 +48,7 @@ describe('SAN_OHLC', () => {
   })
 
   it('returns a record per every day', () => {
-    const ohlc = san.SAN_OHLC(ethereumSlug, from, to)
+    const ohlc = san.SAN_OHLC(slug, from, to)
 
     assertNumberOfRecords(ohlc, numberOfDays)
 

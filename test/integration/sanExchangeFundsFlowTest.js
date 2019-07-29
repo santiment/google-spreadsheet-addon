@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -23,7 +24,7 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
     inOutDifference: 'number'
   }
 
-  const response = san.SAN_EXCHANGE_FUNDS_FLOW(ethereumSlug, from, to)
+  const response = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
@@ -36,7 +37,7 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   testHandlesNullData(
     'fetchExchangeFundsFlow',
     san.SAN_EXCHANGE_FUNDS_FLOW,
-    ethereumSlug,
+    slug,
     from,
     to)
 
@@ -46,7 +47,7 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_EXCHANGE_FUNDS_FLOW(ethereumSlug, from, to)
+    const results = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 

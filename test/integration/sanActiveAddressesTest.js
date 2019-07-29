@@ -7,6 +7,7 @@ const {
 } = require('../integration_helper.js')
 
 const {
+  slug,
   ethereumSlug,
   from,
   to,
@@ -23,13 +24,13 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
     activeAddresses: 'number'
   }
 
-  const response = san.SAN_ACTIVE_ADDRESSES(ethereumSlug, from, to)
+  const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
   const headers = response[0]
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
   testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, ethereumSlug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, ethereumSlug, from, to)
+  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Addresses']
@@ -37,7 +38,7 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_ACTIVE_ADDRESSES(ethereumSlug, from, to)
+    const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
 
     assertNumberOfRecords(addresses, numberOfDays)
 
