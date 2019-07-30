@@ -127,6 +127,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_HISTORY_TWITTER_DATA">SAN_HISTORY_TWITTER_DATA(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetch the historical count of twitter followers.</p>
 </dd>
+<dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, day)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the % of the social dominance a given project has over time in a given social channel.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -618,3 +621,19 @@ Fetch the historical count of twitter followers.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_SOCIAL_DOMINANCE"></a>
+
+## SAN\_SOCIAL\_DOMINANCE(projectSlug, from, to, source) ⇒ <code>Array</code>
+Returns the % of the social dominance a given project has over time in a given social channel.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - percentage of the social dominance of an object  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> | The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT |

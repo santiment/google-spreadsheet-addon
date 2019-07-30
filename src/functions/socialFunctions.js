@@ -72,3 +72,18 @@ function historyTwitterData_ (slug, from, to) {
     ]
   }))
 }
+
+function socialDominance_ (slug, from, to, social) {
+  assertCanAccessHistoricData_(from, slug)
+  var results = getApiClient_().fetchSocialDominance(slug, from, to, social)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Dominance']
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.dominance)
+    ]
+  }))
+}
