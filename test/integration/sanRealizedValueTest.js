@@ -30,13 +30,15 @@ describe('SAN_REALIZED_VALUE', () => {
     san.SAN_REALIZED_VALUE,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchRealizedValue',
     san.SAN_REALIZED_VALUE,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Realized Value']

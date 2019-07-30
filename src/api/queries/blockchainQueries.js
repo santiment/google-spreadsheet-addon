@@ -1,9 +1,16 @@
-ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveAddresses = function(slug, from, to) {
   var query = {
-    'query': '{\
-       dailyActiveAddresses(slug: "' + slug + '",\
-                            from: "' + toUTC_(from) + '",\
-                            to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       dailyActiveAddresses(slug: "' +
+      slug +
+      '",\
+                            from: "' +
+      toUTC_(from) +
+      '",\
+                            to: "' +
+      toUTC_(to) +
+      '",\
                             interval: "1d") {\
          activeAddresses\
          datetime\
@@ -14,12 +21,19 @@ ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'dailyActiveAddresses')
 }
 
-ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
+ApiClient_.prototype.fetchActiveDeposits = function(slug, from, to) {
   var query = {
-    'query': '{\
-       dailyActiveDeposits(slug: "' + slug + '",\
-                           from: "' + toUTC_(from) + '",\
-                           to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       dailyActiveDeposits(slug: "' +
+      slug +
+      '",\
+                           from: "' +
+      toUTC_(from) +
+      '",\
+                           to: "' +
+      toUTC_(to) +
+      '",\
                            interval: "1d") {\
          activeDeposits\
          datetime\
@@ -30,12 +44,19 @@ ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'dailyActiveDeposits')
 }
 
-ApiClient_.prototype.fetchTransactionVolume = function (slug, from, to) {
+ApiClient_.prototype.fetchTransactionVolume = function(slug, from, to) {
   var query = {
-    'query': '{\
-       transactionVolume(slug: "' + slug + '",\
-                         from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       transactionVolume(slug: "' +
+      slug +
+      '",\
+                         from: "' +
+      toUTC_(from) +
+      '",\
+                         to: "' +
+      toUTC_(to) +
+      '",\
                          interval: "1d") {\
          transactionVolume\
          datetime\
@@ -46,12 +67,19 @@ ApiClient_.prototype.fetchTransactionVolume = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'transactionVolume')
 }
 
-ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
+ApiClient_.prototype.fetchNetworkGrowth = function(slug, from, to) {
   var query = {
-    'query': '{\
-       networkGrowth(slug: "' + slug + '",\
-                     from: "' + toUTC_(from) + '",\
-                     to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       networkGrowth(slug: "' +
+      slug +
+      '",\
+                     from: "' +
+      toUTC_(from) +
+      '",\
+                     to: "' +
+      toUTC_(to) +
+      '",\
                      interval: "1d") {\
          newAddresses\
          datetime\
@@ -62,12 +90,19 @@ ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'networkGrowth')
 }
 
-ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
+ApiClient_.prototype.fetchExchangeFundsFlow = function(slug, from, to) {
   var query = {
-    'query': '{\
-       exchangeFundsFlow(slug: "' + slug + '",\
-                         from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       exchangeFundsFlow(slug: "' +
+      slug +
+      '",\
+                         from: "' +
+      toUTC_(from) +
+      '",\
+                         to: "' +
+      toUTC_(to) +
+      '",\
                          interval: "1d") {\
          inOutDifference\
          datetime\
@@ -78,12 +113,19 @@ ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
 }
 
-ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenCirculation = function(slug, from, to) {
   var query = {
-    'query': '{\
-       tokenCirculation(slug: "' + slug + '",\
-                        from: "' + toUTC_(from) + '",\
-                        to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       tokenCirculation(slug: "' +
+      slug +
+      '",\
+                        from: "' +
+      toUTC_(from) +
+      '",\
+                        to: "' +
+      toUTC_(to) +
+      '",\
                         interval: "1d") {\
          tokenCirculation\
          datetime\
@@ -94,12 +136,19 @@ ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'tokenCirculation')
 }
 
-ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
+ApiClient_.prototype.fetchTokenAgeConsumed = function(slug, from, to) {
   var query = {
-    'query': '{\
-       tokenAgeConsumed(slug: "' + slug + '",\
-                        from: "' + toUTC_(from) + '",\
-                        to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       tokenAgeConsumed(slug: "' +
+      slug +
+      '",\
+                        from: "' +
+      toUTC_(from) +
+      '",\
+                        to: "' +
+      toUTC_(to) +
+      '",\
                         interval: "1d") {\
          tokenAgeConsumed\
          datetime\
@@ -110,12 +159,19 @@ ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'tokenAgeConsumed')
 }
 
-ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
+ApiClient_.prototype.fetchMvrvRatio = function(slug, from, to) {
   var query = {
-    'query': '{\
-       mvrvRatio(slug: "' + slug + '",\
-                 from: "' + toUTC_(from) + '",\
-                 to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       mvrvRatio(slug: "' +
+      slug +
+      '",\
+                 from: "' +
+      toUTC_(from) +
+      '",\
+                 to: "' +
+      toUTC_(to) +
+      '",\
                  interval: "1d") {\
          ratio\
          datetime\
@@ -126,12 +182,19 @@ ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'mvrvRatio')
 }
 
-ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
+ApiClient_.prototype.fetchNvtRatio = function(slug, from, to) {
   var query = {
-    'query': '{\
-       nvtRatio(slug: "' + slug + '",\
-                from: "' + toUTC_(from) + '",\
-                to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       nvtRatio(slug: "' +
+      slug +
+      '",\
+                from: "' +
+      toUTC_(from) +
+      '",\
+                to: "' +
+      toUTC_(to) +
+      '",\
                 interval: "1d") {\
          nvtRatioTxVolume\
          nvtRatioCirculation\
@@ -143,12 +206,19 @@ ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'nvtRatio')
 }
 
-ApiClient_.prototype.fetchRealizedValue = function (slug, from, to) {
+ApiClient_.prototype.fetchRealizedValue = function(slug, from, to) {
   var query = {
-    'query': '{\
-       realizedValue(slug: "' + slug + '",\
-                     from: "' + toUTC_(from) + '",\
-                     to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       realizedValue(slug: "' +
+      slug +
+      '",\
+                     from: "' +
+      toUTC_(from) +
+      '",\
+                     to: "' +
+      toUTC_(to) +
+      '",\
                      interval: "1d") {\
          realizedValue\
          datetime\
@@ -159,14 +229,28 @@ ApiClient_.prototype.fetchRealizedValue = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'realizedValue')
 }
 
-ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address) {
+ApiClient_.prototype.fetchHistoricalBalance = function(
+  slug,
+  from,
+  to,
+  address
+) {
   var query = {
-    'query': '{\
-       historicalBalance(slug: "' + slug + '",\
-                         from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       historicalBalance(slug: "' +
+      slug +
+      '",\
+                         from: "' +
+      toUTC_(from) +
+      '",\
+                         to: "' +
+      toUTC_(to) +
+      '",\
                          interval: "1d",\
-                         address: "' + address + '") {\
+                         address: "' +
+      address +
+      '") {\
          datetime\
          balance\
        }\

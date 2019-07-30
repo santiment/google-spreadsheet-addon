@@ -29,8 +29,19 @@ describe('SAN_NETWORK_GROWTH', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(san.SAN_NETWORK_GROWTH, ethereumSlug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
+  testHistoricDataIsForbidden(
+    san.SAN_NETWORK_GROWTH,
+    ethereumSlug,
+    historicDataFrom,
+    historicDataTo
+  )
+  testHandlesNullData(
+    'fetchNetworkGrowth',
+    san.SAN_NETWORK_GROWTH,
+    slug,
+    from,
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'New Addresses']

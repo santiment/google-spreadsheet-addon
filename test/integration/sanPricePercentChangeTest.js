@@ -19,13 +19,9 @@ describe('SAN_PRICE_PERCENT_CHANGE', () => {
     san.SAN_PRICE_PERCENT_CHANGE,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
-  testHandlesNullData(
-    'fetchOhlc',
-    san.SAN_PRICE_PERCENT_CHANGE,
-    slug,
-    from,
-    to)
+    historicDataTo
+  )
+  testHandlesNullData('fetchOhlc', san.SAN_PRICE_PERCENT_CHANGE, slug, from, to)
 
   it('returns the absolute price change', () => {
     const response = san.SAN_PRICE_PERCENT_CHANGE(slug, from, to)

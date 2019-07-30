@@ -33,13 +33,15 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
     san.SAN_EXCHANGE_FUNDS_FLOW,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchExchangeFundsFlow',
     san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'In/Out Difference']

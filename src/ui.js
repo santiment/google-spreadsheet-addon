@@ -1,9 +1,11 @@
-function loadAddApiKeyMenu_ (ui, menu) {
-  var apiKeySubMenu = ui.createMenu('API key').addItem('Add', 'addApiKeyDialog_')
+function loadAddApiKeyMenu_(ui, menu) {
+  var apiKeySubMenu = ui
+    .createMenu('API key')
+    .addItem('Add', 'addApiKeyDialog_')
   menu.addSubMenu(apiKeySubMenu).addToUi()
 }
 
-function loadManageExistingApiKeyMenu_ (ui, menu) {
+function loadManageExistingApiKeyMenu_(ui, menu) {
   var apiKeySubMenu = ui
     .createMenu('API key')
     .addItem('View', 'viewApiKeyDialog_')
@@ -13,7 +15,7 @@ function loadManageExistingApiKeyMenu_ (ui, menu) {
   menu.addSubMenu(apiKeySubMenu).addToUi()
 }
 
-function loadFullMenu_ () {
+function loadFullMenu_() {
   var ui = SpreadsheetApp.getUi()
   var menu = ui.createAddonMenu()
 
@@ -24,11 +26,14 @@ function loadFullMenu_ () {
   }
 }
 
-function loadBasicMenu_ () {
-  SpreadsheetApp.getUi().createAddonMenu().addItem('Enable', 'enable_').addToUi()
+function loadBasicMenu_() {
+  SpreadsheetApp.getUi()
+    .createAddonMenu()
+    .addItem('Enable', 'enable_')
+    .addToUi()
 }
 
-function onOpen (e) {
+function onOpen(e) {
   if (e && e.authMode === ScriptApp.AuthMode.NONE) {
     loadBasicMenu_()
   } else {
@@ -36,20 +41,21 @@ function onOpen (e) {
   }
 }
 
-function onInstall (e) {
+function onInstall(e) {
   onOpen(e)
 }
 
-function enable_ () {
+function enable_() {
   var title = 'SANsheets'
-  var message = 'This add-on gives you access to cryptocurrency data through various custom functions. Every function starts with =SAN.'
+  var message =
+    'This add-on gives you access to cryptocurrency data through various custom functions. Every function starts with =SAN.'
   var ui = SpreadsheetApp.getUi()
   ui.alert(title, message, ui.ButtonSet.OK)
 
   loadFullMenu_()
 }
 
-function addApiKeyDialog_ () {
+function addApiKeyDialog_() {
   var ui = SpreadsheetApp.getUi()
 
   var title = 'Add an API key'
@@ -67,7 +73,7 @@ function addApiKeyDialog_ () {
   }
 }
 
-function viewApiKeyDialog_ () {
+function viewApiKeyDialog_() {
   var ui = SpreadsheetApp.getUi()
   var title = 'Your API key'
   var apiKey = apiKeyProperty_()
@@ -76,7 +82,7 @@ function viewApiKeyDialog_ () {
   ui.alert(title, text, ui.ButtonSet.OK)
 }
 
-function validateApiKeyDialog_ () {
+function validateApiKeyDialog_() {
   var ui = SpreadsheetApp.getUi()
   var apiKey = apiKeyProperty_()
   var userPermissions = handleErrors_(fetchUserPermissions_)(apiKey)
@@ -84,7 +90,7 @@ function validateApiKeyDialog_ () {
   ui.alert(userMessage)
 }
 
-function removeApiKeyDialog_ () {
+function removeApiKeyDialog_() {
   var ui = SpreadsheetApp.getUi()
   var title = 'Remove API key'
   var text = 'Are you sure you want to remove the API key?'

@@ -33,13 +33,9 @@ describe('SAN_DEV_ACTIVITY', () => {
     san.SAN_DEV_ACTIVITY,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
-  testHandlesNullData(
-    'fetchDevActivity',
-    san.SAN_DEV_ACTIVITY,
-    slug,
-    from,
-    to)
+    historicDataTo
+  )
+  testHandlesNullData('fetchDevActivity', san.SAN_DEV_ACTIVITY, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Activity']

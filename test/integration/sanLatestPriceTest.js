@@ -7,7 +7,8 @@ describe('SAN_LATEST_PRICE', () => {
     'fetchLatestPrice',
     san.SAN_LATEST_PRICE,
     slug,
-    fiatCurrency)
+    fiatCurrency
+  )
 
   it('returns the latest price in USD', () => {
     const response = san.SAN_LATEST_PRICE(slug, 'USD')

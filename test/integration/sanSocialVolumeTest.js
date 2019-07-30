@@ -32,14 +32,16 @@ describe('SAN_SOCIAL_VOLUME', () => {
     ethereumSlug,
     historicDataFrom,
     historicDataTo,
-    socialVolumeType)
+    socialVolumeType
+  )
   testHandlesNullData(
     'fetchSocialVolume',
     san.SAN_SOCIAL_VOLUME,
     slug,
     from,
     to,
-    socialVolumeType)
+    socialVolumeType
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Mentions Count']

@@ -29,7 +29,8 @@ describe('SAN_HISTORICAL_BALANCE', () => {
     slug,
     from,
     to,
-    ethAddress)
+    ethAddress
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Balance']

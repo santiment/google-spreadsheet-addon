@@ -33,7 +33,9 @@ global.sinon = sinon
 global.sandbox = sandbox
 
 beforeEach(() => san.PropertiesService.init())
-afterEach(() => { sandbox.restore() })
+afterEach(() => {
+  sandbox.restore()
+})
 
 module.exports = {
   testFieldTypes: testFieldTypes,

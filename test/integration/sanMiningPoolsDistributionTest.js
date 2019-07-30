@@ -18,7 +18,12 @@ const {
 } = require('../setup.js')
 
 describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
-  const expected = { date: 'string', top3: 'number', top10: 'number', other: 'number' }
+  const expected = {
+    date: 'string',
+    top3: 'number',
+    top10: 'number',
+    other: 'number'
+  }
 
   const response = san.SAN_MINING_POOLS_DISTRIBUTION(ethereumSlug, from, to)
   const headers = response[0]
@@ -28,13 +33,15 @@ describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
   testHistoricDataIsForbidden(
     san.SAN_MINING_POOLS_DISTRIBUTION,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchMiningPoolsDistribution',
     san.SAN_MINING_POOLS_DISTRIBUTION,
     ethereumSlug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Top 3', 'Top 10', 'Other']

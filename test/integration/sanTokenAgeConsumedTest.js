@@ -30,13 +30,15 @@ describe('SAN_TOKEN_AGE_CONSUMED', () => {
     san.SAN_TOKEN_AGE_CONSUMED,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchTokenAgeConsumed',
     san.SAN_TOKEN_AGE_CONSUMED,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Token Age Consumed']

@@ -1,4 +1,4 @@
-function allProjects_ () {
+function allProjects_() {
   var results = getApiClient_().fetchAllProjects()
   assertHasData_(results)
 
@@ -16,24 +16,26 @@ function allProjects_ () {
     'ETH Spent 1D'
   ]
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      result.ticker,
-      result.name,
-      result.slug,
-      formatNumber_(result.priceUsd),
-      formatNumber_(result.marketcapUsd),
-      formatNumber_(result.volumeUsd),
-      formatNumber_(result.usdBalance),
-      formatNumber_(result.ethBalance),
-      formatNumber_(result.ethSpent30d),
-      formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d)
-    ]
-  }))
+  return [headers].concat(
+    results.map(function(result) {
+      return [
+        result.ticker,
+        result.name,
+        result.slug,
+        formatNumber_(result.priceUsd),
+        formatNumber_(result.marketcapUsd),
+        formatNumber_(result.volumeUsd),
+        formatNumber_(result.usdBalance),
+        formatNumber_(result.ethBalance),
+        formatNumber_(result.ethSpent30d),
+        formatNumber_(result.ethSpent7d),
+        formatNumber_(result.ethSpent1d)
+      ]
+    })
+  )
 }
 
-function erc20Projects_ () {
+function erc20Projects_() {
   var results = getApiClient_().fetchErc20Projects()
   assertHasData_(results)
 
@@ -52,25 +54,27 @@ function erc20Projects_ () {
     'Main Contract Address'
   ]
 
-  return [headers].concat(results.map(function (result) {
-    return [
-      result.ticker,
-      result.name,
-      result.slug,
-      formatNumber_(result.priceUsd),
-      formatNumber_(result.marketcapUsd),
-      formatNumber_(result.volumeUsd),
-      formatNumber_(result.usdBalance),
-      formatNumber_(result.ethBalance),
-      formatNumber_(result.ethSpent30d),
-      formatNumber_(result.ethSpent7d),
-      formatNumber_(result.ethSpent1d),
-      result.mainContractAddress
-    ]
-  }))
+  return [headers].concat(
+    results.map(function(result) {
+      return [
+        result.ticker,
+        result.name,
+        result.slug,
+        formatNumber_(result.priceUsd),
+        formatNumber_(result.marketcapUsd),
+        formatNumber_(result.volumeUsd),
+        formatNumber_(result.usdBalance),
+        formatNumber_(result.ethBalance),
+        formatNumber_(result.ethSpent30d),
+        formatNumber_(result.ethSpent7d),
+        formatNumber_(result.ethSpent1d),
+        result.mainContractAddress
+      ]
+    })
+  )
 }
 
-function fetchProjectFundamentals_ (slug) {
+function fetchProjectFundamentals_(slug) {
   var result = getApiClient_().fetchProjectFundamentals(slug)
   assertHasData_(result)
 
@@ -113,7 +117,7 @@ function fetchProjectFundamentals_ (slug) {
   return [headers, formattedResult]
 }
 
-function projectSocialData_ (slug) {
+function projectSocialData_(slug) {
   var result = getApiClient_().fetchProjectSocialData(slug)
   assertHasData_(result)
 

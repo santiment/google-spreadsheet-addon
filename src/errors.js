@@ -7,17 +7,17 @@ var INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
 
 var SERVER_ERROR_MSG = 'Server error!'
 
-function NoDataError_ () {
+function NoDataError_() {
   this.name = 'NoDataError'
   this.message = NO_DATA_MSG
 }
 
-function InternalServerError_ () {
+function InternalServerError_() {
   this.name = 'InternalServerError'
   this.message = INTERNAL_SERVER_ERROR_MSG
 }
 
-function ServerError_ (message) {
+function ServerError_(message) {
   this.name = 'ServerError'
   if (message != null) {
     this.message = SERVER_ERROR_MSG + ' ' + message
@@ -26,12 +26,12 @@ function ServerError_ (message) {
   }
 }
 
-function UnsupportedError_ (message) {
+function UnsupportedError_(message) {
   this.name = 'UnsupportedError'
   this.message = message
 }
 
-function HistoricDataForbiddenError_ () {
+function HistoricDataForbiddenError_() {
   this.name = 'HistoricDataForbiddenError'
   this.message = HISTORIC_DATA_FORBIDDEN_MSG
 }
@@ -51,8 +51,8 @@ UnsupportedError_.prototype.constructor = UnsupportedError_
 HistoricDataForbiddenError_.prototype = Object.create(Error.prototype)
 HistoricDataForbiddenError_.prototype.constructor = HistoricDataForbiddenError_
 
-function handleErrors_ (func) {
-  return function () {
+function handleErrors_(func) {
+  return function() {
     try {
       return func.apply(this, arguments)
     } catch (e) {

@@ -1,7 +1,7 @@
-function ApiClient_ (conn) {
+function ApiClient_(conn) {
   this.conn = conn
 }
 
-function getApiClient_ () {
+function getApiClient_() {
   return new ApiClient_(new Connection_())
 }

@@ -1,59 +1,58 @@
 class Properties {
-  constructor () {
+  constructor() {
     this._data = {}
   }
 
-  deleteAllProperties () {
+  deleteAllProperties() {
     this._data = {}
     return this
   }
 
-  deleteProperty (key) {
+  deleteProperty(key) {
     delete this._data[key]
     return this
   }
 
-  getKeys () {
+  getKeys() {
     return Object.keys(this._data)
   }
 
-  getProperties () {
+  getProperties() {
     return this._data
   }
 
-  getProperty (key) {
+  getProperty(key) {
     return this._data[key] || null
   }
 
-  setProperties (properties = {}, deleteAllOthers = false) {
-    this._data = Object
-      .assign(deleteAllOthers ? {} : this._data, properties)
+  setProperties(properties = {}, deleteAllOthers = false) {
+    this._data = Object.assign(deleteAllOthers ? {} : this._data, properties)
 
     return this
   }
 
-  setProperty (key, value) {
+  setProperty(key, value) {
     this._data[key] = value
     return this
   }
 }
 
 class PropertiesService {
-  static init () {
+  static init() {
     PropertiesService.documentProperties = new Properties()
     PropertiesService.scriptProperties = new Properties()
     PropertiesService.userProperties = new Properties()
   }
 
-  static getDocumentProperties () {
+  static getDocumentProperties() {
     return PropertiesService.documentProperties
   }
 
-  static getScriptProperties () {
+  static getScriptProperties() {
     return PropertiesService.scriptProperties
   }
 
-  static getUserProperties () {
+  static getUserProperties() {
     return PropertiesService.userProperties
   }
 }

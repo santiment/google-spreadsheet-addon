@@ -2,7 +2,11 @@
 
 require('./helper.js')
 
-const testDeprecationMessage = (oldFunctionName, oldFunctionArgs, newFunctionName) => {
+const testDeprecationMessage = (
+  oldFunctionName,
+  oldFunctionArgs,
+  newFunctionName
+) => {
   it(`returns deprecation message for ${oldFunctionName}`, () => {
     const response = san[oldFunctionName].call(null, oldFunctionArgs)
     expect(response).to.eq(`DEPRECATED: Use =${newFunctionName} instead.`)

@@ -28,13 +28,15 @@ describe('SAN_MINERS_BALANCE', () => {
   testHistoricDataIsForbidden(
     san.SAN_MINERS_BALANCE,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchMinersBalance',
     san.SAN_MINERS_BALANCE,
     ethereumSlug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Balance']

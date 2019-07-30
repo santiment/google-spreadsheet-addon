@@ -35,14 +35,9 @@ describe('SAN_NEWS', () => {
     ethereumSlug,
     historicDataFrom,
     historicDataTo,
-    size)
-  testHandlesNullData(
-    'fetchNews',
-    san.SAN_NEWS,
-    slug,
-    from,
-    to,
-    size)
+    size
+  )
+  testHandlesNullData('fetchNews', san.SAN_NEWS, slug, from, to, size)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Title', 'Source', 'URL', 'Description']

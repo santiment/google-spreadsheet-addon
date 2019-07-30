@@ -33,13 +33,15 @@ describe('SAN_GITHUB_ACTIVITY', () => {
     san.SAN_GITHUB_ACTIVITY,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchGithubActivity',
     san.SAN_GITHUB_ACTIVITY,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Activity']

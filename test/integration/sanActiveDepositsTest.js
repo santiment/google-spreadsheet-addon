@@ -30,13 +30,15 @@ describe('SAN_ACTIVE_DEPOSITS', () => {
     san.SAN_ACTIVE_DEPOSITS,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchActiveDeposits',
     san.SAN_ACTIVE_DEPOSITS,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Deposits']

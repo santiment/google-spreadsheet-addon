@@ -1,9 +1,16 @@
-ApiClient_.prototype.fetchPrices = function (slug, from, to) {
+ApiClient_.prototype.fetchPrices = function(slug, from, to) {
   var query = {
-    'query': '{\
-       historyPrice(slug: "' + slug + '",\
-                    from: "' + toUTC_(from) + '",\
-                    to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       historyPrice(slug: "' +
+      slug +
+      '",\
+                    from: "' +
+      toUTC_(from) +
+      '",\
+                    to: "' +
+      toUTC_(to) +
+      '",\
                     interval: "1d") {\
          datetime\
          priceUsd\
@@ -15,12 +22,19 @@ ApiClient_.prototype.fetchPrices = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'historyPrice')
 }
 
-ApiClient_.prototype.fetchOhlc = function (slug, from, to) {
+ApiClient_.prototype.fetchOhlc = function(slug, from, to) {
   var query = {
-    'query': '{\
-       ohlc(slug: "' + slug + '",\
-            from: "' + toUTC_(from) + '",\
-            to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       ohlc(slug: "' +
+      slug +
+      '",\
+            from: "' +
+      toUTC_(from) +
+      '",\
+            to: "' +
+      toUTC_(to) +
+      '",\
             interval: "1d") {\
          datetime\
          closePriceUsd\
@@ -34,13 +48,22 @@ ApiClient_.prototype.fetchOhlc = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'ohlc')
 }
 
-ApiClient_.prototype.fetchPriceVolumeDiff = function (currency, slug, from, to) {
+ApiClient_.prototype.fetchPriceVolumeDiff = function(currency, slug, from, to) {
   var query = {
-    'query': '{\
-       priceVolumeDiff(currency: "' + currency + '",\
-                       slug: "' + slug + '",\
-                       from: "' + toUTC_(from) + '",\
-                       to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       priceVolumeDiff(currency: "' +
+      currency +
+      '",\
+                       slug: "' +
+      slug +
+      '",\
+                       from: "' +
+      toUTC_(from) +
+      '",\
+                       to: "' +
+      toUTC_(to) +
+      '",\
                        interval: "1d") {\
          datetime\
          priceChange\
@@ -53,12 +76,19 @@ ApiClient_.prototype.fetchPriceVolumeDiff = function (currency, slug, from, to) 
   return this.conn.graphQLQuery(query, 'priceVolumeDiff')
 }
 
-ApiClient_.prototype.fetchDailyClosingPrice = function (slug, from, to) {
+ApiClient_.prototype.fetchDailyClosingPrice = function(slug, from, to) {
   var query = {
-    'query': '{\
-       ohlc(slug: "' + slug + '",\
-            from: "' + toUTC_(from) + '",\
-            to: "' + toUTC_(to) + '",\
+    query:
+      '{\
+       ohlc(slug: "' +
+      slug +
+      '",\
+            from: "' +
+      toUTC_(from) +
+      '",\
+            to: "' +
+      toUTC_(to) +
+      '",\
             interval: "1d") {\
          closePriceUsd\
        }\
@@ -68,9 +98,9 @@ ApiClient_.prototype.fetchDailyClosingPrice = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'ohlc')
 }
 
-ApiClient_.prototype.fetchLatestPrice = function (slug, currencyField) {
+ApiClient_.prototype.fetchLatestPrice = function(slug, currencyField) {
   var query = {
-    'query': '{ projectBySlug(slug: "' + slug + '") {' + currencyField + '}}'
+    query: '{ projectBySlug(slug: "' + slug + '") {' + currencyField + '}}'
   }
 
   return this.conn.graphQLQuery(query, 'projectBySlug')

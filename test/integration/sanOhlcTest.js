@@ -32,7 +32,12 @@ describe('SAN_OHLC', () => {
   const ohlc = response[1]
 
   testFieldTypes(ohlc, expected)
-  testHistoricDataIsForbidden(san.SAN_OHLC, ethereumSlug, historicDataFrom, historicDataTo)
+  testHistoricDataIsForbidden(
+    san.SAN_OHLC,
+    ethereumSlug,
+    historicDataFrom,
+    historicDataTo
+  )
   testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
   it('has proper headers', () => {

@@ -4,37 +4,43 @@ var ADD_API_KEY_ACTION = 'AddApiKey'
 var REMOVE_API_KEY_ACTION = 'RemoveApiKey'
 var VALIDATE_API_KEY_ACTION = 'ValidateApiKey'
 
-function fetchUserPermissions_ (key) {
+function fetchUserPermissions_(key) {
   var apiClient = new ApiClient_(new Connection_(key))
   return apiClient.fetchCurrentUserPermissions()
 }
 
-function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
-function hasApiKeyProperty_ () { return !!apiKeyProperty_() }
+function apiKeyProperty_() {
+  return getUserProperty_(API_KEY)
+}
+function hasApiKeyProperty_() {
+  return !!apiKeyProperty_()
+}
 
-function validateApiKey_ (response) {
+function validateApiKey_(response) {
   return response != null && response.hasOwnProperty('permissions')
 }
 
-function validateCanAccessHistoricData_ (response) {
-  return (validateApiKey_(response) && response.permissions.spreadsheet) === true
+function validateCanAccessHistoricData_(response) {
+  return (
+    (validateApiKey_(response) && response.permissions.spreadsheet) === true
+  )
 }
 
-function setApiKeyProperty_ (key) {
+function setApiKeyProperty_(key) {
   setUserProperty_(API_KEY, key)
 }
 
-function deleteApiKeyProperty_ () {
+function deleteApiKeyProperty_() {
   deleteUserProperty_(API_KEY)
 }
 
-function obfuscateApiKey_ (key) {
-  return key.replace(/(.{3})(.+)(.{3})/g, function (_match, start, middle, end) {
+function obfuscateApiKey_(key) {
+  return key.replace(/(.{3})(.+)(.{3})/g, function(_match, start, middle, end) {
     return start + Array(middle.length).join('*') + end
   })
 }
 
-function addApiKey_ (key, userPermissions) {
+function addApiKey_(key, userPermissions) {
   if (validateApiKey_(userPermissions) === false) {
     logWarning_({
       type: API_KEY_LOG_TYPE,
@@ -59,16 +65,18 @@ function addApiKey_ (key, userPermissions) {
     logWarning_({
       type: API_KEY_LOG_TYPE,
       action: ADD_API_KEY_ACTION,
-      message: "Valid API key has been added but user doesn't have needed permissions."
+      message:
+        "Valid API key has been added but user doesn't have needed permissions."
     })
 
-    userMessage = "API key is valid and has been saved but you don't have needed permissions to access historic data!"
+    userMessage =
+      "API key is valid and has been saved but you don't have needed permissions to access historic data!"
   }
 
   return userMessage
 }
 
-function removeApiKey_ () {
+function removeApiKey_() {
   deleteApiKeyProperty_()
 
   logInfo_({
@@ -80,7 +88,7 @@ function removeApiKey_ () {
   return 'API key has been removed!'
 }
 
-function checkApiKeyStillValid_ (key, userPermissions) {
+function checkApiKeyStillValid_(key, userPermissions) {
   if (validateApiKey_(userPermissions) === false) {
     logWarning_({
       type: API_KEY_LOG_TYPE,
@@ -101,7 +109,8 @@ function checkApiKeyStillValid_ (key, userPermissions) {
       message: "User has valid API key but doesn't have needed permissions."
     })
 
-    userMessage = "API key is valid but you don't have needed permissions to access historic data!"
+    userMessage =
+      "API key is valid but you don't have needed permissions to access historic data!"
   }
 
   return userMessage

@@ -23,7 +23,11 @@ describe('SAN_PROJECT_SOCIAL_DATA', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchProjectSocialData', san.SAN_PROJECT_SOCIAL_DATA, slug)
+  testHandlesNullData(
+    'fetchProjectSocialData',
+    san.SAN_PROJECT_SOCIAL_DATA,
+    slug
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = [

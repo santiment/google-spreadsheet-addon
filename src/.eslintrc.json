@@ -1,17 +1,17 @@
 {
   "root": true,
-  "extends": "eslint-config-es5",
+  "extends": ["eslint-config-es5", "prettier"],
   "parserOptions": {"ecmaVersion": 5},
-  "plugins": ["googleappsscript"],
+  "plugins": ["googleappsscript", "prettier"],
   "env": { "googleappsscript/googleappsscript": true },
   "rules": {
     "semi": ["error", "never"],
-    "space-before-function-paren": ["error", "always"],
     "no-multi-str": "off",
     "no-unused-vars": "off",
     "func-names": ["warn", "never"],
     "no-eq-null": "off",
-    "eqeqeq": ["error", "smart"]
+    "eqeqeq": ["error", "smart"],
+    "prettier/prettier": "error"
   },
   "globals": {
     "ApiClient_": "readonly",

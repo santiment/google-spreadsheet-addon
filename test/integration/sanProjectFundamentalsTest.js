@@ -26,7 +26,11 @@ describe('SAN_PROJECT_FUNDAMENTALS', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchProjectFundamentals', san.SAN_PROJECT_FUNDAMENTALS, slug)
+  testHandlesNullData(
+    'fetchProjectFundamentals',
+    san.SAN_PROJECT_FUNDAMENTALS,
+    slug
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = [

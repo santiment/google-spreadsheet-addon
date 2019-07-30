@@ -5,7 +5,10 @@ require('../helper.js')
 describe('fetchCurrentUserPermissions', () => {
   it('returns null when API keys is not present', () => {
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
-    stub.returns({ body: JSON.stringify({ data: { currentUser: null } }), statusCode: 200 })
+    stub.returns({
+      body: JSON.stringify({ data: { currentUser: null } }),
+      statusCode: 200
+    })
 
     const apiClient = new san.ApiClient_(new san.Connection_())
     const response = apiClient.fetchCurrentUserPermissions()
@@ -22,7 +25,12 @@ describe('fetchCurrentUserPermissions', () => {
     san.setUserProperty_('API_KEY', apiKey)
 
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
-    stub.returns({ body: JSON.stringify({ data: { currentUser: { permissions: { spreadsheet: true } } } }), statusCode: 200 })
+    stub.returns({
+      body: JSON.stringify({
+        data: { currentUser: { permissions: { spreadsheet: true } } }
+      }),
+      statusCode: 200
+    })
 
     const apiClient = new san.ApiClient_(new san.Connection_())
     const response = apiClient.fetchCurrentUserPermissions()

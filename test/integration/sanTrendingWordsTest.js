@@ -19,7 +19,7 @@ describe('SAN_TRENDING_WORDS', () => {
   const size = 3
   const hour = 1
 
-  sources.forEach((source) => {
+  sources.forEach(source => {
     describe(`using source: ${source}`, () => {
       const expected = {
         date: 'string',
@@ -54,7 +54,8 @@ describe('SAN_TRENDING_WORDS', () => {
     size,
     hour,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchTrendingWords',
     san.SAN_TRENDING_WORDS,
@@ -62,7 +63,8 @@ describe('SAN_TRENDING_WORDS', () => {
     size,
     hour,
     from,
-    to)
+    to
+  )
 
   // TODO: Add a test for ordering of the results(like in the other places)
   // when we have it implemented in the API

@@ -25,13 +25,17 @@ describe('headers', () => {
     san.setUserProperty_('API_KEY', 'test-api-key')
     const conn = new san.Connection_()
     const requestOptions = conn.buildRequestOptions('')
-    expect(requestOptions['headers']['Authorization']).to.equal('Apikey test-api-key')
+    expect(requestOptions['headers']['Authorization']).to.equal(
+      'Apikey test-api-key'
+    )
   })
 
   it('sets an API key from a connection argument in headers', () => {
     const conn = new san.Connection_('api-key-from-argument')
     const requestOptions = conn.buildRequestOptions('')
-    expect(requestOptions['headers']['Authorization']).to.equal('Apikey api-key-from-argument')
+    expect(requestOptions['headers']['Authorization']).to.equal(
+      'Apikey api-key-from-argument'
+    )
   })
 
   it("doesn't include API key in headers when it is not present", () => {
@@ -96,7 +100,8 @@ describe('error handling', () => {
       query: '',
       queryName: '',
       responseCode: 400,
-      responseBody: JSON.stringify(body) }
+      responseBody: JSON.stringify(body)
+    }
 
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
@@ -118,7 +123,8 @@ describe('error handling', () => {
       query: '',
       queryName: '',
       responseCode: 400,
-      responseBody: JSON.stringify(body) }
+      responseBody: JSON.stringify(body)
+    }
 
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
@@ -144,7 +150,8 @@ describe('error handling', () => {
       query: '',
       queryName: '',
       responseCode: 500,
-      responseBody: JSON.stringify(body) }
+      responseBody: JSON.stringify(body)
+    }
 
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
@@ -165,7 +172,8 @@ describe('error handling', () => {
       query: '',
       queryName: '',
       responseCode: 200,
-      responseBody: body }
+      responseBody: body
+    }
 
     expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
     expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))

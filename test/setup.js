@@ -1,5 +1,6 @@
 const dateFnsFormat = require('date-fns/format')
-const formatDate = (date, format = DEFAULT_DATE_FORMAT) => dateFnsFormat(date, format)
+const formatDate = (date, format = DEFAULT_DATE_FORMAT) =>
+  dateFnsFormat(date, format)
 const DEFAULT_DATE_FORMAT = 'YYYY-MM-DD'
 
 const subDays = require('date-fns/sub_days')

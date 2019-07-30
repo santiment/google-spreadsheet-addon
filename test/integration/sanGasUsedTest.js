@@ -29,7 +29,8 @@ describe('SAN_GAS_USED', () => {
     san.SAN_GAS_USED,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData('fetchGasUsed', san.SAN_GAS_USED, ethereumSlug, from, to)
 
   it('has proper headers', () => {

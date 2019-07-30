@@ -3,7 +3,10 @@ const assertNumberOfRecords = (records, number) => {
   const includingHeaderAndLastDay = number + 2
 
   // HACK: Some queries return the last day, others don't.
-  expect(records).to.have.lengthOf.within(includingHeader, includingHeaderAndLastDay)
+  expect(records).to.have.lengthOf.within(
+    includingHeader,
+    includingHeaderAndLastDay
+  )
 }
 
 const testHistoricDataIsForbidden = (func, ...args) => {

@@ -34,13 +34,9 @@ describe('SAN_NVT_RATIO', () => {
     san.SAN_NVT_RATIO,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
-  testHandlesNullData(
-    'fetchNvtRatio',
-    san.SAN_NVT_RATIO,
-    slug,
-    from,
-    to)
+    historicDataTo
+  )
+  testHandlesNullData('fetchNvtRatio', san.SAN_NVT_RATIO, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = [

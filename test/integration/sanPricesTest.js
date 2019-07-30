@@ -30,7 +30,12 @@ describe('SAN_PRICES', () => {
   const prices = response[1]
 
   testFieldTypes(prices, expected)
-  testHistoricDataIsForbidden(san.SAN_PRICES, ethereumSlug, historicDataFrom, historicDataTo)
+  testHistoricDataIsForbidden(
+    san.SAN_PRICES,
+    ethereumSlug,
+    historicDataFrom,
+    historicDataTo
+  )
   testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
 
   it('has proper headers', () => {

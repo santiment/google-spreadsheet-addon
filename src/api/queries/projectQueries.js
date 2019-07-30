@@ -1,6 +1,7 @@
-ApiClient_.prototype.fetchAllProjects = function () {
+ApiClient_.prototype.fetchAllProjects = function() {
   var query = {
-    'query': '{\
+    query:
+      '{\
        allProjects {\
          slug\
          name\
@@ -20,9 +21,10 @@ ApiClient_.prototype.fetchAllProjects = function () {
   return this.conn.graphQLQuery(query, 'allProjects')
 }
 
-ApiClient_.prototype.fetchErc20Projects = function () {
+ApiClient_.prototype.fetchErc20Projects = function() {
   var query = {
-    'query': '{\
+    query:
+      '{\
        allErc20Projects {\
          slug\
          name\
@@ -43,10 +45,13 @@ ApiClient_.prototype.fetchErc20Projects = function () {
   return this.conn.graphQLQuery(query, 'allErc20Projects')
 }
 
-ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
+ApiClient_.prototype.fetchProjectFundamentals = function(slug) {
   var query = {
-    'query': '{\
-       projectBySlug(slug: "' + slug + '") {\
+    query:
+      '{\
+       projectBySlug(slug: "' +
+      slug +
+      '") {\
          ticker\
          name\
          slug\
@@ -68,10 +73,13 @@ ApiClient_.prototype.fetchProjectFundamentals = function (slug) {
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
 
-ApiClient_.prototype.fetchProjectSocialData = function (slug) {
+ApiClient_.prototype.fetchProjectSocialData = function(slug) {
   var query = {
-    'query': '{\
-      projectBySlug(slug: "' + slug + '") {\
+    query:
+      '{\
+      projectBySlug(slug: "' +
+      slug +
+      '") {\
         ticker\
         name\
         slug\

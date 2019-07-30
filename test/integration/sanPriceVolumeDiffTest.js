@@ -37,14 +37,16 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
     fiatCurrency,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchPriceVolumeDiff',
     san.SAN_PRICE_VOLUME_DIFF,
     fiatCurrency,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = [

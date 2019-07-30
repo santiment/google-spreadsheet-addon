@@ -6,7 +6,8 @@ describe('SAN_DAILY_CLOSING_PRICE', () => {
   testHistoricDataIsForbidden(
     san.SAN_DAILY_CLOSING_PRICE,
     ethereumSlug,
-    historicDataFrom)
+    historicDataFrom
+  )
 
   it('returns the latest price in USD', () => {
     const response = san.SAN_DAILY_CLOSING_PRICE(ethereumSlug, from)

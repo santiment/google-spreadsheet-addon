@@ -29,8 +29,19 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, ethereumSlug, historicDataFrom, historicDataTo)
-  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
+  testHistoricDataIsForbidden(
+    san.SAN_ACTIVE_ADDRESSES,
+    ethereumSlug,
+    historicDataFrom,
+    historicDataTo
+  )
+  testHandlesNullData(
+    'fetchActiveAddresses',
+    san.SAN_ACTIVE_ADDRESSES,
+    slug,
+    from,
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Active Addresses']

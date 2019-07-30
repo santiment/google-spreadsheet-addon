@@ -9,6 +9,6 @@ const utilities = () => ({
   }
 })
 
-const getMock = (body) => utilities()
+const getMock = body => utilities()
 
 module.exports = { getMock }

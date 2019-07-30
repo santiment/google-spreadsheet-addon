@@ -33,13 +33,15 @@ describe('SAN_TOKEN_CIRCULATION', () => {
     san.SAN_TOKEN_CIRCULATION,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
+    historicDataTo
+  )
   testHandlesNullData(
     'fetchTokenCirculation',
     san.SAN_TOKEN_CIRCULATION,
     slug,
     from,
-    to)
+    to
+  )
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Token Circulation']

@@ -9,7 +9,7 @@
  * @returns {Array} of prices.
  * @customfunction
  */
-function SAN_PRICES (projectSlug, from, to) {
+function SAN_PRICES(projectSlug, from, to) {
   return handleErrors_(prices_)(projectSlug, from, to)
 }
 
@@ -24,7 +24,7 @@ function SAN_PRICES (projectSlug, from, to) {
  * @returns {number} absolute price change.
  * @customfunction
  */
-function SAN_PRICE_ABSOLUTE_CHANGE (projectSlug, from, to) {
+function SAN_PRICE_ABSOLUTE_CHANGE(projectSlug, from, to) {
   return handleErrors_(priceAbsoluteChange_)(projectSlug, from, to)
 }
 
@@ -39,7 +39,7 @@ function SAN_PRICE_ABSOLUTE_CHANGE (projectSlug, from, to) {
  * @returns {number} price change in percent.
  * @customfunction
  */
-function SAN_PRICE_PERCENT_CHANGE (projectSlug, from, to) {
+function SAN_PRICE_PERCENT_CHANGE(projectSlug, from, to) {
   return handleErrors_(pricePercentChange_)(projectSlug, from, to)
 }
 
@@ -52,7 +52,7 @@ function SAN_PRICE_PERCENT_CHANGE (projectSlug, from, to) {
  * @returns {Array} of all projects.
  * @customfunction
  */
-function SAN_ALL_PROJECTS () {
+function SAN_ALL_PROJECTS() {
   return handleErrors_(allProjects_)()
 }
 
@@ -64,7 +64,7 @@ function SAN_ALL_PROJECTS () {
  * @returns {Array} of all ERC20 projects.
  * @customfunction
  */
-function SAN_ERC20_PROJECTS () {
+function SAN_ERC20_PROJECTS() {
   return handleErrors_(erc20Projects_)()
 }
 
@@ -81,7 +81,7 @@ function SAN_ERC20_PROJECTS () {
  * @returns {Array} of number of active addresses.
  * @customfunction
  */
-function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
+function SAN_ACTIVE_ADDRESSES(projectSlug, from, to) {
   return handleErrors_(activeAddresses_)(projectSlug, from, to)
 }
 
@@ -98,7 +98,7 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
  * @returns {Array} of transaction volumes.
  * @customfunction
  */
-function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
+function SAN_TRANSACTION_VOLUME(projectSlug, from, to) {
   return handleErrors_(transactionVolume_)(projectSlug, from, to)
 }
 
@@ -114,7 +114,7 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
  * @returns {Array} of open, high, low, and close price values.
  * @customfunction
  */
-function SAN_OHLC (projectSlug, from, to) {
+function SAN_OHLC(projectSlug, from, to) {
   return handleErrors_(ohlc_)(projectSlug, from, to)
 }
 
@@ -132,7 +132,7 @@ function SAN_OHLC (projectSlug, from, to) {
  * @returns {Array} of price-volume difference technical indicator.
  * @customfunction
  */
-function SAN_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
+function SAN_PRICE_VOLUME_DIFF(currency, projectSlug, from, to) {
   return handleErrors_(priceVolumeDiff_)(currency, projectSlug, from, to)
 }
 
@@ -141,7 +141,7 @@ function SAN_PRICE_VOLUME_DIFF (currency, projectSlug, from, to) {
  * @returns {Array} of social volume projects.
  * @customfunction
  */
-function SAN_SOCIAL_VOLUME_PROJECTS () {
+function SAN_SOCIAL_VOLUME_PROJECTS() {
   return handleErrors_(socialVolumeProjects_)()
 }
 
@@ -162,7 +162,7 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
  * @returns {Array} of mention counts.
  * @customfunction
  */
-function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
+function SAN_SOCIAL_VOLUME(projectSlug, from, to, socialVolumeType) {
   return handleErrors_(socialVolume_)(projectSlug, from, to, socialVolumeType)
 }
 
@@ -177,7 +177,7 @@ function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
  * @returns {Array} of github activity.
  * @customfunction
  */
-function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
+function SAN_GITHUB_ACTIVITY(projectSlug, from, to) {
   return handleErrors_(githubActivity_)(projectSlug, from, to)
 }
 
@@ -192,7 +192,7 @@ function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of dev activity.
  * @customfunction
  */
-function SAN_DEV_ACTIVITY (projectSlug, from, to) {
+function SAN_DEV_ACTIVITY(projectSlug, from, to) {
   return handleErrors_(devActivity_)(projectSlug, from, to)
 }
 
@@ -208,7 +208,7 @@ function SAN_DEV_ACTIVITY (projectSlug, from, to) {
  * @returns {Array} of number of new addresses.
  * @customfunction
  */
-function SAN_NETWORK_GROWTH (projectSlug, from, to) {
+function SAN_NETWORK_GROWTH(projectSlug, from, to) {
   return handleErrors_(networkGrowth_)(projectSlug, from, to)
 }
 
@@ -224,7 +224,7 @@ function SAN_NETWORK_GROWTH (projectSlug, from, to) {
  * @returns {Array} of token deposit/withdraw differences.
  * @customfunction
  */
-function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
+function SAN_EXCHANGE_FUNDS_FLOW(projectSlug, from, to) {
   return handleErrors_(exchangeFundsFlow_)(projectSlug, from, to)
 }
 
@@ -239,7 +239,7 @@ function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
  * @returns {Array} of token circulation.
  * @customfunction
  */
-function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
+function SAN_TOKEN_CIRCULATION(projectSlug, from, to) {
   return handleErrors_(tokenCirculation_)(projectSlug, from, to)
 }
 
@@ -259,7 +259,7 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
  * @returns {Array} of trending words and their score.
  * @customfunction
  */
-function SAN_TRENDING_WORDS (source, size, hour, from, to) {
+function SAN_TRENDING_WORDS(source, size, hour, from, to) {
   return handleErrors_(trendingWords_)(source, size, hour, from, to)
 }
 
@@ -272,7 +272,7 @@ function SAN_TRENDING_WORDS (source, size, hour, from, to) {
  * @returns {Array} of project details.
  * @customfunction
  */
-function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
+function SAN_PROJECT_FUNDAMENTALS(projectSlug) {
   return handleErrors_(fetchProjectFundamentals_)(projectSlug)
 }
 
@@ -285,7 +285,7 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
  * @returns {Array} of project's social data.
  * @customfunction
  */
-function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
+function SAN_PROJECT_SOCIAL_DATA(projectSlug) {
   return handleErrors_(projectSocialData_)(projectSlug)
 }
 
@@ -303,7 +303,7 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  * @returns {Array} of token age consumed numbers.
  * @customfunction
  */
-function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
+function SAN_TOKEN_AGE_CONSUMED(projectSlug, from, to) {
   return handleErrors_(tokenAgeConsumed_)(projectSlug, from, to)
 }
 
@@ -317,7 +317,7 @@ function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
  * @returns {Array} of ratios.
  * @customfunction
  */
-function SAN_MVRV_RATIO (projectSlug, from, to) {
+function SAN_MVRV_RATIO(projectSlug, from, to) {
   return handleErrors_(mvrvRatio_)(projectSlug, from, to)
 }
 
@@ -336,7 +336,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to) {
  * @returns {Array} of NVT ratios.
  * @customfunction
  */
-function SAN_NVT_RATIO (projectSlug, from, to) {
+function SAN_NVT_RATIO(projectSlug, from, to) {
   return handleErrors_(nvtRatio_)(projectSlug, from, to)
 }
 
@@ -350,7 +350,7 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  * @returns {Array} of deposit address numbers.
  * @customfunction
  */
-function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
+function SAN_ACTIVE_DEPOSITS(projectSlug, from, to) {
   return handleErrors_(activeDeposits_)(projectSlug, from, to)
 }
 
@@ -366,7 +366,7 @@ function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
  * @returns {Array} of realized values.
  * @customfunction
  */
-function SAN_REALIZED_VALUE (projectSlug, from, to) {
+function SAN_REALIZED_VALUE(projectSlug, from, to) {
   return handleErrors_(realizedValue_)(projectSlug, from, to)
 }
 
@@ -382,7 +382,7 @@ function SAN_REALIZED_VALUE (projectSlug, from, to) {
  * @returns {Array} of quantities of gas used.
  * @customfunction
  */
-function SAN_GAS_USED (projectSlug, from, to) {
+function SAN_GAS_USED(projectSlug, from, to) {
   return handleErrors_(gasUsed_)(projectSlug, from, to)
 }
 
@@ -398,7 +398,7 @@ function SAN_GAS_USED (projectSlug, from, to) {
  * @returns {Array} of distribution ratios.
  * @customfunction
  */
-function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
+function SAN_MINING_POOLS_DISTRIBUTION(projectSlug, from, to) {
   return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
 }
 
@@ -413,7 +413,7 @@ function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
  * @returns {Array} of balances.
  * @customfunction
  */
-function SAN_MINERS_BALANCE (projectSlug, from, to) {
+function SAN_MINERS_BALANCE(projectSlug, from, to) {
   return handleErrors_(minersBalance_)(projectSlug, from, to)
 }
 
@@ -426,8 +426,8 @@ function SAN_MINERS_BALANCE (projectSlug, from, to) {
  * @returns {Array} of news.
  * @customfunction
  */
-function SAN_NEWS (tag, from, to, size) {
-  var numberOfRecords = (typeof size !== 'undefined') ? size : 10
+function SAN_NEWS(tag, from, to, size) {
+  var numberOfRecords = typeof size !== 'undefined' ? size : 10
   return handleErrors_(news_)(tag, from, to, numberOfRecords)
 }
 
@@ -440,7 +440,7 @@ function SAN_NEWS (tag, from, to, size) {
  * @returns {number} latest price.
  * @customfunction
  */
-function SAN_LATEST_PRICE (projectSlug, currency) {
+function SAN_LATEST_PRICE(projectSlug, currency) {
   return handleErrors_(latestPrice_)(projectSlug, currency)
 }
 
@@ -453,7 +453,7 @@ function SAN_LATEST_PRICE (projectSlug, currency) {
  * @returns {number} closing price.
  * @customfunction
  */
-function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
+function SAN_DAILY_CLOSING_PRICE(projectSlug, day) {
   return handleErrors_(dailyClosingPrice_)(projectSlug, day)
 }
 
@@ -468,6 +468,6 @@ function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
  * @returns {Array} of balances.
  * @customfunction
  */
-function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
+function SAN_HISTORICAL_BALANCE(projectSlug, from, to, address) {
   return handleErrors_(historicalBalance_)(projectSlug, from, to, address)
 }

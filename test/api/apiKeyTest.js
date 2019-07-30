@@ -59,10 +59,13 @@ describe('validateCanAccessHistoricData_', () => {
 
 describe('obfuscateApiKey_', () => {
   it('obfuscates a string', () => {
-    const key = '3c5vakw2vbtfys5cennei7oialmjdpev_n3o4lldsm2srak7fpuioygb2alxhq5vy'
+    const key =
+      '3c5vakw2vbtfys5cennei7oialmjdpev_n3o4lldsm2srak7fpuioygb2alxhq5vy'
     const obfuscatedKey = san.obfuscateApiKey_(key)
 
-    expect(obfuscatedKey).to.equal('3c5**********************************************************5vy')
+    expect(obfuscatedKey).to.equal(
+      '3c5**********************************************************5vy'
+    )
   })
 })
 
@@ -102,11 +105,14 @@ describe('addApiKey_', () => {
       expect(logInfo).to.have.been.calledWith({
         type: 'ApiKeyLog',
         action: 'AddApiKey',
-        message: 'Valid API key has been added.' })
+        message: 'Valid API key has been added.'
+      })
     })
 
     it('saves the API key', () => {
-      const setApiKeyProperty = sandbox.stub(san, 'setApiKeyProperty_').returns(null)
+      const setApiKeyProperty = sandbox
+        .stub(san, 'setApiKeyProperty_')
+        .returns(null)
 
       san.addApiKey_('example_api_key', permissions)
       expect(setApiKeyProperty).to.have.been.calledWith('example_api_key')
@@ -118,7 +124,9 @@ describe('addApiKey_', () => {
 
     it('returns proper message', () => {
       const message = san.addApiKey_('example_api_key', permissions)
-      expect(message).to.eq("API key is valid and has been saved but you don't have needed permissions to access historic data!")
+      expect(message).to.eq(
+        "API key is valid and has been saved but you don't have needed permissions to access historic data!"
+      )
     })
 
     it('logs the event', () => {
@@ -129,12 +137,15 @@ describe('addApiKey_', () => {
       expect(logWarning).to.have.been.calledWith({
         type: 'ApiKeyLog',
         action: 'AddApiKey',
-        message: "Valid API key has been added but user doesn't have needed permissions."
+        message:
+          "Valid API key has been added but user doesn't have needed permissions."
       })
     })
 
     it('saves the API key', () => {
-      const setApiKeyProperty = sandbox.stub(san, 'setApiKeyProperty_').returns(null)
+      const setApiKeyProperty = sandbox
+        .stub(san, 'setApiKeyProperty_')
+        .returns(null)
 
       san.addApiKey_('example_api_key', permissions)
       expect(setApiKeyProperty).to.have.been.calledWith('example_api_key')
@@ -176,7 +187,9 @@ describe('checkApiKeyStillValid_', () => {
 
     it('returns proper message', () => {
       const message = san.checkApiKeyStillValid_('example_api_key', permissions)
-      expect(message).to.eq("API key is valid but you don't have needed permissions to access historic data!")
+      expect(message).to.eq(
+        "API key is valid but you don't have needed permissions to access historic data!"
+      )
     })
 
     it('logs the event', () => {
@@ -195,7 +208,9 @@ describe('checkApiKeyStillValid_', () => {
 
 describe('removeApiKey_', () => {
   it('removes the API key', () => {
-    const deleteApiKeyProperty = sandbox.stub(san, 'deleteApiKeyProperty_').returns(null)
+    const deleteApiKeyProperty = sandbox
+      .stub(san, 'deleteApiKeyProperty_')
+      .returns(null)
 
     san.removeApiKey_()
     expect(deleteApiKeyProperty).to.have.been.called

@@ -30,13 +30,9 @@ describe('SAN_MVRV_RATIO', () => {
     san.SAN_MVRV_RATIO,
     ethereumSlug,
     historicDataFrom,
-    historicDataTo)
-  testHandlesNullData(
-    'fetchMvrvRatio',
-    san.SAN_MVRV_RATIO,
-    slug,
-    from,
-    to)
+    historicDataTo
+  )
+  testHandlesNullData('fetchMvrvRatio', san.SAN_MVRV_RATIO, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Ratio']

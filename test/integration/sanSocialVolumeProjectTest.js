@@ -2,7 +2,10 @@ require('../helper.js')
 const { testHandlesNullData } = require('../integration_helper.js')
 
 describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
-  testHandlesNullData('fetchSocialVolumeProjects', san.SAN_SOCIAL_VOLUME_PROJECTS)
+  testHandlesNullData(
+    'fetchSocialVolumeProjects',
+    san.SAN_SOCIAL_VOLUME_PROJECTS
+  )
 
   const projects = san.SAN_SOCIAL_VOLUME_PROJECTS()
 
