@@ -160,3 +160,28 @@ function historicalBalance_ (slug, from, to, address) {
     ]
   }))
 }
+
+function tokenTopTransactions_ (slug, from, to, limit) {
+  var results = getApiClient_().fetchTokenTopTransactions(slug, from, to, limit)
+  assertHasData_(results)
+  var headers = [
+    'Date',
+    'From Address',
+    'From Is Exchange',
+    'To Address',
+    'To Is Exchange',
+    'Transaction Hash',
+    'Transaction Value'
+  ]
+  return [headers].concat(results.tokenTopTransactions.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      result.fromAddress.address,
+      result.fromAddress.isExchange,
+      result.toAddress.address,
+      result.toAddress.isExchange,
+      result.trxHash,
+      formatNumber_(result.trxValue)
+    ]
+  }))
+}

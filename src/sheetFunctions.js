@@ -500,3 +500,18 @@ function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
 function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source) {
   return handleErrors_(socialDominance_)(projectSlug, from, to, source)
 }
+
+/**
+ * Top token transactions for a given slug
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {number} limit The limit of transactions to be shown.
+ * @returns {Array} of top transactions
+ * @customfunction
+ */
+function SAN_TOKEN_TOP_TRANSACTIONS (projectSlug, from, to, limit) {
+  return handleErrors_(tokenTopTransactions_)(projectSlug, from, to, limit)
+}

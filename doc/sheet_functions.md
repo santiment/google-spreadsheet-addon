@@ -130,6 +130,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, day)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the % of the social dominance a given project has over time in a given social channel.</p>
 </dd>
+<dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
+<dd><p>Top token transactions for a given slug.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -637,3 +640,19 @@ Returns the % of the social dominance a given project has over time in a given s
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | source | <code>string</code> | The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT |
+
+<a name="SAN_TOKEN_TOP_TRANSACTIONS"></a>
+
+## SAN\_TOKEN\_TOP\_TRANSACTIONS(projectSlug, from, to, limit) ⇒ <code>Array</code>
+Top token transactions for a given slug
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of top token transactions.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| limit | <code>number</code> | The limit of transactions to be shown. |
