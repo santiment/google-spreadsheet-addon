@@ -200,3 +200,29 @@ ApiClient_.prototype.fetchTokenTopTransactions = function (slug, from, to, limit
 
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
+
+ApiClient_.prototype.fetchEthTopTransactions = function (slug, from, to, limit, transactionType) {
+  var query = {
+    'query': '{ projectBySlug(slug: "' + slug + '"){\
+        ethTopTransactions(from: "' + toUTC_(from) + '",\
+                           to: "' + toUTC_(to) + '",\
+                           limit: ' + limit + '\
+                           transactionType: ' + transactionType + '){\
+                               datetime\
+                               fromAddress{\
+                                 address\
+                                 isExchange\
+                               }\
+                               toAddress{\
+                                 address\
+                                 isExchange\
+                               }\
+                               trxHash\
+                               trxValue\
+                             }\
+                           }\
+                         }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}

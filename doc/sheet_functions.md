@@ -133,6 +133,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
 <dd><p>Top token transactions for a given slug.</p>
 </dd>
+<dt><a href="#SAN_ETH_TOP_TRANSACTIONS">SAN_ETH_TOP_TRANSACTIONS(projectSlug, from, to, limit, transactionType)</a> ⇒ <code>Array</code></dt>
+<dd><p>Top ETH transactions for project's team wallets.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -656,3 +659,20 @@ Top token transactions for a given slug
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | limit | <code>number</code> | The limit of transactions to be shown. |
+
+<a name="SAN_ETH_TOP_TRANSACTIONS"></a>
+
+## SAN\_ETH\_TOP\_TRANSACTIONS(projectSlug, from, to, limit, transactionType) ⇒ <code>Array</code>
+Top ETH transactions for project's team wallets.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of top eth transactions.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| limit | <code>number</code> | The limit of transactions to be shown. |
+| transactionType | <code>string</code> | Available transaction types: ALL, IN, OUT |

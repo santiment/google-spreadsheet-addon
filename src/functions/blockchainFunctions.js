@@ -173,7 +173,35 @@ function tokenTopTransactions_ (slug, from, to, limit) {
     'Transaction Hash',
     'Transaction Value'
   ]
+
   return [headers].concat(results.tokenTopTransactions.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      result.fromAddress.address,
+      result.fromAddress.isExchange,
+      result.toAddress.address,
+      result.toAddress.isExchange,
+      result.trxHash,
+      formatNumber_(result.trxValue)
+    ]
+  }))
+}
+
+function ethTopTransactions_ (slug, from, to, limit, transactionType) {
+  var results = getApiClient_().fetchEthTopTransactions(slug, from, to, limit, transactionType)
+  assertHasData_(results)
+
+  var headers = [
+    'Date',
+    'From Address',
+    'From Is Exchange',
+    'To Address',
+    'To Is Exchange',
+    'Transaction Hash',
+    'Transaction Value'
+  ]
+
+  return [headers].concat(results.ethTopTransactions.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
       result.fromAddress.address,
