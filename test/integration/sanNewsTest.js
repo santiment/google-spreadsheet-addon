@@ -8,11 +8,17 @@ const {
 const {
   slug,
   ethereumSlug,
-  from,
-  to,
   historicDataFrom,
   historicDataTo
 } = require('../setup.js')
+
+/*
+It is not certain that there would be news
+between the two dates, that's why the dates
+are not dynamically produced
+*/
+const from = new Date(2019, 6, 15, 0, 0, 0)
+const to = new Date(2019, 6, 31, 0, 0, 0)
 
 describe('SAN_NEWS', () => {
   const size = 5
