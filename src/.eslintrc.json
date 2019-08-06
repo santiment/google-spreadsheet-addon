@@ -79,6 +79,7 @@
     "socialDominance_": "readonly",
     "tokenTopTransactions_": "readonly",
     "ethTopTransactions_": "readonly",
-    "ethSpentOverTime_": "readonly"
+    "ethSpentOverTime_": "readonly",
+    "topHoldersPercentOfTotalSupply_": "readonly"
   }
 }

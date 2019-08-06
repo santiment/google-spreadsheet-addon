@@ -227,3 +227,26 @@ function ethSpentOverTime_ (slug, from, to) {
     ]
   }))
 }
+
+function topHoldersPercentOfTotalSupply_ (slug, from, to, numberOfHolders) {
+  assertCanAccessHistoricData_(from, slug)
+  var results = getApiClient_().fetchTopHoldersPercentOfTotalSupply(slug, from, to, numberOfHolders)
+
+  assertHasData_(results)
+
+  var headers = [
+    'Date',
+    'In Exchanges',
+    'Outside Exchanges',
+    'In Top Holders Total'
+  ]
+
+  return [headers].concat(results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.inExchanges),
+      formatNumber_(result.outsideExchanges),
+      formatNumber_(result.inTopHoldersTotal)
+    ]
+  }))
+}

@@ -6,6 +6,7 @@ const to = new Date(2019, 7, 24, 0, 0, 0)
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
 const limit = 2
 const transactionType = 'ALL'
+const numberOfHolders = 10
 
 describe('historicalBalance', () => {
   it('returns historical balance of an address', () => {
@@ -29,7 +30,6 @@ describe('historicalBalance', () => {
         }
       ]
     )
-
     const response = san.historicalBalance_(slug, from, to, ethAddress)
 
     expect(response).to.deep.eq(
@@ -321,5 +321,98 @@ describe('ethSpentOverTime_', () => {
   it('throws "No data" on null response', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchEthSpentOverTime').returns(null)
     expect(() => san.ethSpentOverTime_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('topHoldersPercentOfTotalSupply_', () => {
+  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
+
+  it('returns top holders percentages of total supply', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTopHoldersPercentOfTotalSupply').returns(
+      [
+        {
+          datetime: '2019-07-21',
+          inExchanges: 62.37616015165964,
+          outsideExchanges: 25.214394751057107,
+          inTopHoldersTotal: 87.59055490271675
+        },
+        {
+          datetime: '2019-07-22',
+          inExchanges: 62.37739334423916,
+          outsideExchanges: 25.214394751057107,
+          inTopHoldersTotal: 87.59178809529627
+        },
+        {
+          datetime: '2019-07-23',
+          inExchanges: 62.376443970234895,
+          outsideExchanges: 25.214394751057107,
+          inTopHoldersTotal: 87.590838721292
+        },
+        {
+          datetime: '2019-07-24',
+          inExchanges: 62.376443970234895,
+          outsideExchanges: 25.214394751057107,
+          inTopHoldersTotal: 87.590838721292
+        }
+      ]
+    )
+
+    const response = san.topHoldersPercentOfTotalSupply_(slug, from, to, numberOfHolders)
+
+    expect(response).to.deep.eq(
+      [
+        [
+          'Date',
+          'In Exchanges',
+          'Outside Exchanges',
+          'In Top Holders Total'
+        ],
+        [
+          '2019-07-21',
+          62.37616015165964,
+          25.214394751057107,
+          87.59055490271675
+        ],
+        [
+          '2019-07-22',
+          62.37739334423916,
+          25.214394751057107,
+          87.59178809529627
+        ],
+        [
+          '2019-07-23',
+          62.376443970234895,
+          25.214394751057107,
+          87.590838721292
+        ],
+        [
+          '2019-07-24',
+          62.376443970234895,
+          25.214394751057107,
+          87.590838721292
+        ]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTopHoldersPercentOfTotalSupply').returns([])
+    const response = san.topHoldersPercentOfTotalSupply_(slug, from, to, numberOfHolders)
+
+    expect(response).to.deep.eq(
+      [
+        [
+          'Date',
+          'In Exchanges',
+          'Outside Exchanges',
+          'In Top Holders Total'
+        ]
+      ]
+    )
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTopHoldersPercentOfTotalSupply').returns(null)
+    expect(() => san.topHoldersPercentOfTotalSupply_(slug, from, to, numberOfHolders)).to.throw('No data')
   })
 })

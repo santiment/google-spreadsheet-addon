@@ -139,6 +139,9 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_ETH_SPENT_OVER_TIME">SAN_ETH_SPENT_OVER_TIME(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>ETH spent for each interval from the project's team wallet and time period</p>
 </dd>
+<dt><a href="#SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY">SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(projectSlug, from, to, numberOfHolders)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the top holders' percent of total supply - in exchanges, outside exchanges and combined.</p>
+</dd>
 </dl>
 
 <a name="SAN_PRICES"></a>
@@ -694,3 +697,19 @@ ETH spent for each interval from the project's team wallet and time period
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY"></a>
+
+## SAN\_TOP\_HOLDERS\_PERCENT\_OF\_TOTAL\_SUPPLY(projectSlug, from, to, numberOfHolders) ⇒ <code>Array</code>
+Returns the top holders' percent of total supply - in exchanges, outside exchanges and combined.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - percentage of the total supply.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| numberOfHolders | <code>number</code> | Take top number of holders into account when calculating. |
