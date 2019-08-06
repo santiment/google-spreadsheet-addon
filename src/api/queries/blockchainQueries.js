@@ -226,3 +226,19 @@ ApiClient_.prototype.fetchEthTopTransactions = function (slug, from, to, limit, 
 
   return this.conn.graphQLQuery(query, 'projectBySlug')
 }
+
+ApiClient_.prototype.fetchEthSpentOverTime = function (slug, from, to) {
+  var query = {
+    'query': '{ projectBySlug(slug: "' + slug + '"){\
+        ethSpentOverTime(from: "' + toUTC_(from) + '",\
+                         to: "' + toUTC_(to) + '",\
+                         interval: "1d"){\
+          datetime\
+          ethSpent\
+        }\
+      }\
+    }'
+  }
+
+  return this.conn.graphQLQuery(query, 'projectBySlug')
+}

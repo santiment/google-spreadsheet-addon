@@ -251,3 +251,75 @@ describe('ethTopTransactions_', () => {
     expect(() => san.ethTopTransactions_(slug, from, to, limit, transactionType)).to.throw('No data')
   })
 })
+
+describe('ethSpentOverTime_', () => {
+  it('returns eth spent over a given time course', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthSpentOverTime').returns(
+      {
+        ethSpentOverTime: [{
+          datetime: '2019-07-21T12:40:34.000000Z',
+          ethSpent: 113.6400629999956
+        },
+        {
+          datetime: '2019-07-22T12:40:34.000000Z',
+          ethSpent: 0
+        },
+        {
+          datetime: '2019-07-23T12:40:34.000000Z',
+          ethSpent: 0
+        },
+        {
+          datetime: '2019-07-24T12:40:34.000000Z',
+          ethSpent: 0
+        }
+        ]
+      }
+    )
+
+    const response = san.ethSpentOverTime_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        [
+          'Date',
+          'ETH Spent'
+        ],
+        [
+          '2019-07-21',
+          113.6400629999956
+        ],
+        [
+          '2019-07-22',
+          0
+        ],
+        [
+          '2019-07-23',
+          0
+        ],
+        [
+          '2019-07-24',
+          0
+        ]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthSpentOverTime').returns(
+      {
+        ethSpentOverTime: []
+      }
+    )
+    const response = san.ethSpentOverTime_(slug, from, to)
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'ETH Spent']
+      ]
+    )
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchEthSpentOverTime').returns(null)
+    expect(() => san.ethSpentOverTime_(slug, from, to)).to.throw('No data')
+  })
+})
