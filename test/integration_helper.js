@@ -6,13 +6,6 @@ const assertNumberOfRecords = (records, number) => {
   expect(records).to.have.lengthOf.within(includingHeader, includingHeaderAndLastDay)
 }
 
-const testHistoricDataIsForbidden = (func, ...args) => {
-  it('returns a message when requested data is historic and no api key is present', () => {
-    const result = func(...args)
-    expect(result).to.deep.eq([san.HISTORIC_DATA_FORBIDDEN_MSG])
-  })
-}
-
 const testHandlesNullData = (stubName, func, ...args) => {
   it('returns a message when there is no data', () => {
     sandbox.stub(san.ApiClient_.prototype, stubName).returns(null)
@@ -24,6 +17,5 @@ const testHandlesNullData = (stubName, func, ...args) => {
 
 module.exports = {
   assertNumberOfRecords: assertNumberOfRecords,
-  testHistoricDataIsForbidden: testHistoricDataIsForbidden,
   testHandlesNullData: testHandlesNullData
 }

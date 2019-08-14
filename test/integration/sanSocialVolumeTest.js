@@ -1,26 +1,9 @@
-const {
-  testHistoricDataIsForbidden,
-  testHandlesNullData
-} = require('../integration_helper.js')
-
-const {
-  slug,
-  ethereumSlug,
-  from,
-  to,
-  historicDataFrom,
-  historicDataTo
-} = require('../setup.js')
+const { testHandlesNullData } = require('../integration_helper.js')
+const { slug, from, to } = require('../setup.js')
 
 describe('SAN_SOCIAL_VOLUME', () => {
   const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'
 
-  testHistoricDataIsForbidden(
-    san.SAN_SOCIAL_VOLUME,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo,
-    socialVolumeType)
   testHandlesNullData(
     'fetchSocialVolume',
     san.SAN_SOCIAL_VOLUME,

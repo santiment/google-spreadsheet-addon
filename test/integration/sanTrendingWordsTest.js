@@ -1,17 +1,6 @@
 const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHistoricDataIsForbidden,
-  testHandlesNullData
-} = require('../integration_helper.js')
-
-const {
-  from,
-  to,
-  historicDataFrom,
-  historicDataTo,
-  numberOfDays
-} = require('../setup.js')
+const { testHandlesNullData } = require('../integration_helper.js')
+const { from, to, numberOfDays } = require('../setup.js')
 
 describe('SAN_TRENDING_WORDS', () => {
   const sources = ['TELEGRAM', 'PROFESSIONAL_TRADERS_CHAT', 'REDDIT', 'ALL']
@@ -48,13 +37,6 @@ describe('SAN_TRENDING_WORDS', () => {
     expect(results.length).to.equal((numberOfDays + 1) * size + 1) // last day + headers
   })
 
-  testHistoricDataIsForbidden(
-    san.SAN_TRENDING_WORDS,
-    'ALL',
-    size,
-    hour,
-    historicDataFrom,
-    historicDataTo)
   testHandlesNullData(
     'fetchTrendingWords',
     san.SAN_TRENDING_WORDS,

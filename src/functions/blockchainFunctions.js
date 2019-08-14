@@ -1,5 +1,4 @@
 function activeAddresses_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchActiveAddresses(slug, from, to)
   assertHasData_(results)
 
@@ -14,7 +13,6 @@ function activeAddresses_ (slug, from, to) {
 }
 
 function activeDeposits_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchActiveDeposits(slug, from, to)
   assertHasData_(results)
 
@@ -29,7 +27,6 @@ function activeDeposits_ (slug, from, to) {
 }
 
 function transactionVolume_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchTransactionVolume(slug, from, to)
   assertHasData_(results)
 
@@ -44,7 +41,6 @@ function transactionVolume_ (slug, from, to) {
 }
 
 function networkGrowth_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchNetworkGrowth(slug, from, to)
   assertHasData_(results)
 
@@ -59,7 +55,6 @@ function networkGrowth_ (slug, from, to) {
 }
 
 function tokenCirculation_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchTokenCirculation(slug, from, to)
   assertHasData_(results)
 
@@ -74,7 +69,6 @@ function tokenCirculation_ (slug, from, to) {
 }
 
 function tokenAgeConsumed_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchTokenAgeConsumed(slug, from, to)
   assertHasData_(results)
 
@@ -89,7 +83,6 @@ function tokenAgeConsumed_ (slug, from, to) {
 }
 
 function mvrvRatio_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchMvrvRatio(slug, from, to)
   assertHasData_(results)
 
@@ -103,7 +96,6 @@ function mvrvRatio_ (slug, from, to) {
 }
 
 function nvtRatio_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchNvtRatio(slug, from, to)
   assertHasData_(results)
 
@@ -119,7 +111,6 @@ function nvtRatio_ (slug, from, to) {
 }
 
 function realizedValue_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchRealizedValue(slug, from, to)
   assertHasData_(results)
 
@@ -133,7 +124,6 @@ function realizedValue_ (slug, from, to) {
 }
 
 function exchangeFundsFlow_ (slug, from, to) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchExchangeFundsFlow(slug, from, to)
   assertHasData_(results)
 
@@ -229,7 +219,6 @@ function ethSpentOverTime_ (slug, from, to) {
 }
 
 function topHoldersPercentOfTotalSupply_ (slug, from, to, numberOfHolders) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchTopHoldersPercentOfTotalSupply(slug, from, to, numberOfHolders)
 
   assertHasData_(results)

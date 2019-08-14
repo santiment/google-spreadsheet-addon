@@ -1,5 +1,4 @@
 function news_ (tag, from, to, size) {
-  assertCanAccessHistoricData_(from, tag)
   var results = getApiClient_().fetchNews(tag, from, to, size)
   assertHasData_(results)
 
@@ -25,7 +24,6 @@ function socialVolumeProjects_ () {
 }
 
 function socialVolume_ (slug, from, to, socialVolumeType) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchSocialVolume(slug, from, to, socialVolumeType)
   assertHasData_(results)
 
@@ -40,7 +38,6 @@ function socialVolume_ (slug, from, to, socialVolumeType) {
 }
 
 function trendingWords_ (source, size, hour, from, to) {
-  assertCanAccessHistoricData_(from, null)
   var results = getApiClient_().fetchTrendingWords(source, size, hour, from, to)
   assertHasData_(results)
 
@@ -74,7 +71,6 @@ function historyTwitterData_ (slug, from, to) {
 }
 
 function socialDominance_ (slug, from, to, social) {
-  assertCanAccessHistoricData_(from, slug)
   var results = getApiClient_().fetchSocialDominance(slug, from, to, social)
   assertHasData_(results)
 

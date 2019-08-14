@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -29,7 +25,6 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHistoricDataIsForbidden(san.SAN_ACTIVE_ADDRESSES, ethereumSlug, historicDataFrom, historicDataTo)
   testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {

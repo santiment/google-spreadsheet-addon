@@ -9,8 +9,6 @@ const to = new Date(2019, 0, 3, 0, 0, 0)
 describe('dailyClosingPrice_', () => {
   const day = new Date(2019, 0, 1, 0, 0, 0)
 
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('requests the closing price for the end of the day', () => {
     const beginningOfDaytoEndOfDay = sandbox.stub(san, 'beginningOfDaytoEndOfDay_')
     sandbox.stub(san.ApiClient_.prototype, 'fetchDailyClosingPrice').returns(
@@ -48,8 +46,6 @@ describe('dailyClosingPrice_', () => {
 })
 
 describe('priceAbsoluteChange_', () => {
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('includes the last day of the period', () => {
     const beginningOfDaytoEndOfDay = sandbox.stub(san, 'beginningOfDaytoEndOfDay_')
     sandbox.stub(san.ApiClient_.prototype, 'fetchOhlc').returns(
@@ -135,8 +131,6 @@ describe('priceAbsoluteChange_', () => {
 })
 
 describe('pricePercentChange_', () => {
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('includes the last day of the period', () => {
     const beginningOfDaytoEndOfDay = sandbox.stub(san, 'beginningOfDaytoEndOfDay_')
     sandbox.stub(san.ApiClient_.prototype, 'fetchOhlc').returns(

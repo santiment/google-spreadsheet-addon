@@ -1,5 +1,3 @@
-var HISTORIC_DATA_THRESHOLD = 90
-
 function setUserProperty_ (key, value) {
   PropertiesService.getUserProperties().setProperty(key, value)
 }
@@ -12,18 +10,8 @@ function deleteUserProperty_ (key) {
   PropertiesService.getUserProperties().deleteProperty(key)
 }
 
-function requestedDataIsHistoric_ (from) {
-  var oneDay = 24 * 60 * 60 * 1000
-  var timeSpan = ((new Date()) - from) / oneDay
-  return timeSpan > HISTORIC_DATA_THRESHOLD
-}
-
 function assertHasData_ (data) {
   if (data === null || data === []) throw new NoDataError_()
-}
-
-function assertCanAccessHistoricData_ (from, slug) {
-  if (requestedDataIsHistoric_(from) && !hasApiKeyProperty_() && slug !== 'santiment') throw new HistoricDataForbiddenError_()
 }
 
 function formatDatetimeField_ (field) {

@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -29,11 +25,6 @@ describe('SAN_GITHUB_ACTIVITY', () => {
   const activities = response[1]
 
   testFieldTypes(activities, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_GITHUB_ACTIVITY,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
   testHandlesNullData(
     'fetchGithubActivity',
     san.SAN_GITHUB_ACTIVITY,

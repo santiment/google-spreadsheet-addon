@@ -1,19 +1,15 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   fiatCurrency,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -32,12 +28,7 @@ describe('SAN_PRICE_VOLUME_DIFF', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_PRICE_VOLUME_DIFF,
-    fiatCurrency,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
+
   testHandlesNullData(
     'fetchPriceVolumeDiff',
     san.SAN_PRICE_VOLUME_DIFF,
