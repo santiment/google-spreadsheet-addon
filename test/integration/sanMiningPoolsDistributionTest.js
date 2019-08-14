@@ -1,7 +1,6 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
@@ -10,8 +9,6 @@ const {
   ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -25,10 +22,6 @@ describe('SAN_MINING_POOLS_DISTRIBUTION', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_MINING_POOLS_DISTRIBUTION,
-    historicDataFrom,
-    historicDataTo)
   testHandlesNullData(
     'fetchMiningPoolsDistribution',
     san.SAN_MINING_POOLS_DISTRIBUTION,

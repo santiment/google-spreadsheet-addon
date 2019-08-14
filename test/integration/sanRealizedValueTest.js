@@ -1,18 +1,6 @@
 const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHistoricDataIsForbidden,
-  testHandlesNullData
-} = require('../integration_helper.js')
-
-const {
-  slug,
-  ethereumSlug,
-  from,
-  to,
-  historicDataFrom,
-  historicDataTo
-} = require('../setup.js')
+const { testHandlesNullData } = require('../integration_helper.js')
+const { slug, from, to } = require('../setup.js')
 
 describe('SAN_REALIZED_VALUE', () => {
   const expected = { date: 'string', realizedValue: 'number' }
@@ -22,11 +10,7 @@ describe('SAN_REALIZED_VALUE', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_REALIZED_VALUE,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
+
   testHandlesNullData(
     'fetchRealizedValue',
     san.SAN_REALIZED_VALUE,

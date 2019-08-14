@@ -1,18 +1,6 @@
 const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHistoricDataIsForbidden,
-  testHandlesNullData
-} = require('../integration_helper.js')
-
-const {
-  slug,
-  ethereumSlug,
-  from,
-  to,
-  historicDataFrom,
-  historicDataTo
-} = require('../setup.js')
+const { testHandlesNullData } = require('../integration_helper.js')
+const { slug, from, to } = require('../setup.js')
 
 describe('SAN_TOKEN_CIRCULATION', () => {
   const expected = {
@@ -25,11 +13,7 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_TOKEN_CIRCULATION,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
+
   testHandlesNullData(
     'fetchTokenCirculation',
     san.SAN_TOKEN_CIRCULATION,

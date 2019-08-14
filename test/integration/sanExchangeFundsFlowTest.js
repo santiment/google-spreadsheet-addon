@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -29,11 +25,6 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_EXCHANGE_FUNDS_FLOW,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
   testHandlesNullData(
     'fetchExchangeFundsFlow',
     san.SAN_EXCHANGE_FUNDS_FLOW,

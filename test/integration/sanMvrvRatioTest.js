@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -26,11 +22,6 @@ describe('SAN_MVRV_RATIO', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_MVRV_RATIO,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo)
   testHandlesNullData(
     'fetchMvrvRatio',
     san.SAN_MVRV_RATIO,

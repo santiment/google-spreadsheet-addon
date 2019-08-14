@@ -325,8 +325,6 @@ describe('ethSpentOverTime_', () => {
 })
 
 describe('topHoldersPercentOfTotalSupply_', () => {
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('returns top holders percentages of total supply', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchTopHoldersPercentOfTotalSupply').returns(
       [
@@ -418,8 +416,6 @@ describe('topHoldersPercentOfTotalSupply_', () => {
 })
 
 describe('realizedValue_', () => {
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('returns realized values', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns(
       [
@@ -469,8 +465,6 @@ describe('realizedValue_', () => {
 })
 
 describe('tokenCirculation_', () => {
-  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
-
   it('returns token circulation', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchTokenCirculation').returns(
       [

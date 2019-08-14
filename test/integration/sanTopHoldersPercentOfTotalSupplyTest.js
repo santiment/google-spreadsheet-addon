@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -28,18 +24,13 @@ describe('SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
+
   testHandlesNullData(
     'fetchTopHoldersPercentOfTotalSupply',
     san.SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY,
     slug,
     from,
     to,
-    numberOfHolders)
-  testHistoricDataIsForbidden(
-    san.SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo,
     numberOfHolders)
 
   it('has proper headers', () => {

@@ -1,16 +1,6 @@
 const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHistoricDataIsForbidden,
-  testHandlesNullData
-} = require('../integration_helper.js')
-
-const {
-  slug,
-  ethereumSlug,
-  historicDataFrom,
-  historicDataTo
-} = require('../setup.js')
+const { testHandlesNullData } = require('../integration_helper.js')
+const { slug } = require('../setup.js')
 
 /*
 It is not certain that there would be news
@@ -36,12 +26,6 @@ describe('SAN_NEWS', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHistoricDataIsForbidden(
-    san.SAN_NEWS,
-    ethereumSlug,
-    historicDataFrom,
-    historicDataTo,
-    size)
   testHandlesNullData(
     'fetchNews',
     san.SAN_NEWS,

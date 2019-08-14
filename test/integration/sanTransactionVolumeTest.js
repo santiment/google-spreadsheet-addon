@@ -1,18 +1,14 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHistoricDataIsForbidden,
   testHandlesNullData,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
 const {
   slug,
-  ethereumSlug,
   from,
   to,
-  historicDataFrom,
-  historicDataTo,
   days,
   numberOfDays,
   formatDate
@@ -29,7 +25,7 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   const volumes = response[1]
 
   testFieldTypes(volumes, expected)
-  testHistoricDataIsForbidden(san.SAN_TRANSACTION_VOLUME, ethereumSlug, historicDataFrom, historicDataTo)
+
   testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, slug, from, to)
 
   it('has proper headers', () => {

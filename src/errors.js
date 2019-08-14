@@ -1,8 +1,5 @@
 var NO_DATA_MSG = 'No data'
 
-var HISTORIC_DATA_FORBIDDEN_MSG =
-  'Get premium membership on the following link: https://santiment.net/sansheets/'
-
 var INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
 
 var SERVER_ERROR_MSG = 'Server error!'
@@ -31,11 +28,6 @@ function UnsupportedError_ (message) {
   this.message = message
 }
 
-function HistoricDataForbiddenError_ () {
-  this.name = 'HistoricDataForbiddenError'
-  this.message = HISTORIC_DATA_FORBIDDEN_MSG
-}
-
 NoDataError_.prototype = Object.create(Error.prototype)
 NoDataError_.prototype.constructor = NoDataError_
 
@@ -47,9 +39,6 @@ ServerError_.prototype.constructor = ServerError_
 
 UnsupportedError_.prototype = Object.create(Error.prototype)
 UnsupportedError_.prototype.constructor = UnsupportedError_
-
-HistoricDataForbiddenError_.prototype = Object.create(Error.prototype)
-HistoricDataForbiddenError_.prototype.constructor = HistoricDataForbiddenError_
 
 function handleErrors_ (func) {
   return function () {
