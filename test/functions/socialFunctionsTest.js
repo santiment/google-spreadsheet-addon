@@ -1,6 +1,7 @@
 require('../helper.js')
 
 const slug = 'santiment'
+const ethereumSlug = 'ethereum'
 const from = new Date(2019, 7, 21, 0, 0, 0)
 const to = new Date(2019, 7, 24, 0, 0, 0)
 const source = 'ALL'
@@ -107,5 +108,53 @@ describe('socialDominance_', () => {
   it('throws "No data" on null response', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchSocialDominance').returns(null)
     expect(() => san.socialDominance_(slug, from, to, source)).to.throw('No data')
+  })
+})
+
+describe('socialVolume_', () => {
+  it('returns the social volume of a slug', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchSocialVolume').returns(
+      [
+        {
+          datetime: '2019-07-21T00:00:00Z',
+          mentionsCount: 138
+        },
+        {
+          datetime: '2019-07-22T00:00:00Z',
+          mentionsCount: 185
+        },
+        {
+          datetime: '2019-07-23T00:00:00Z',
+          mentionsCount: 175
+        }
+      ]
+    )
+
+    const response = san.socialVolume_(ethereumSlug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(response).to.deep.eq(
+      [
+        [ 'Date', 'Mentions Count' ],
+        [ '2019-07-21', 138 ],
+        [ '2019-07-22', 185 ],
+        [ '2019-07-23', 175 ]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchSocialVolume').returns([])
+    const response = san.socialVolume_(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Mentions Count']
+      ]
+    )
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchSocialVolume').returns(null)
+    expect(() => san.socialVolume_(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')).to.throw('No data')
   })
 })
