@@ -416,3 +416,54 @@ describe('topHoldersPercentOfTotalSupply_', () => {
     expect(() => san.topHoldersPercentOfTotalSupply_(slug, from, to, numberOfHolders)).to.throw('No data')
   })
 })
+
+describe('realizedValue_', () => {
+  beforeEach(() => sandbox.stub(san, 'assertCanAccessHistoricData_').returns(true))
+
+  it('returns realized values', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns(
+      [
+        {
+          datetime: '2019-07-21T00:00:00Z',
+          realizedValue: 87616798.20443447
+        },
+        {
+          datetime: '2019-07-22T00:00:00Z',
+          realizedValue: 87617111.58761407
+        },
+        {
+          datetime: '2019-07-23T00:00:00Z',
+          realizedValue: 87621416.00641334
+        },
+        {
+          datetime: '2019-07-24T00:00:00Z',
+          realizedValue: 87616964.84366466
+        }
+      ]
+    )
+
+    const response = san.realizedValue_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Realized Value'],
+        ['2019-07-21', 87616798.20443447],
+        ['2019-07-22', 87617111.58761407],
+        ['2019-07-23', 87621416.00641334],
+        ['2019-07-24', 87616964.84366466]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns([])
+    const response = san.realizedValue_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Realized Value']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns(null)
+    expect(() => san.realizedValue_(slug, from, to)).to.throw('No data')
+  })
+})
