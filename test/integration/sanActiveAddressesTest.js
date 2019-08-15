@@ -32,13 +32,20 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
+  it('returns error when invalid parameters are inputed', () => {
+    const response = san.SAN_ACTIVE_ADDRESSES(slug, 5, 6)
+    expect(response).to.deep.eq(['Invalid Number! It should be a DATE.'])
+  })
+
   it('returns a record per every day', () => {
     const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
 
     assertNumberOfRecords(addresses, numberOfDays)
 
     for (let [index, day] of days.entries()) {
-      expect(addresses[index + 1][0]).to.equal(formatDate(day))
+      if (day in addresses[index + 1]) {
+        expect(addresses[index + 1][0]).to.equal(formatDate(day))
+      }
     }
   })
 })

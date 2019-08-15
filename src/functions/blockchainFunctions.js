@@ -1,4 +1,10 @@
 function activeAddresses_ (slug, from, to) {
+  var dictFromParams = {}
+  dictFromParams[typeof (slug)] = 'string'
+  dictFromParams[from.constructor.name] = 'Date'
+  dictFromParams[to.constructor.name] = 'Date'
+  assertParameters_(dictFromParams)
+
   var results = getApiClient_().fetchActiveAddresses(slug, from, to)
   assertHasData_(results)
 
