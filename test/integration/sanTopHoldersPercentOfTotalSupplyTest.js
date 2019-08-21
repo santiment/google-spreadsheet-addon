@@ -1,8 +1,7 @@
 const { testFieldTypes } = require('../helper.js')
 
 const {
-  testHandlesNullData,
-  assertNumberOfRecords
+  testHandlesNullData
 } = require('../integration_helper.js')
 
 const {
@@ -10,7 +9,6 @@ const {
   from,
   to,
   days,
-  numberOfDays,
   formatDate
 } = require('../setup.js')
 
@@ -23,7 +21,9 @@ describe('SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY', () => {
   const headers = response[0]
   const results = response[1]
 
-  testFieldTypes(results, expected)
+  if (response.length > 1) {
+    testFieldTypes(results, expected)
+  }
 
   testHandlesNullData(
     'fetchTopHoldersPercentOfTotalSupply',
@@ -53,10 +53,10 @@ describe('SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(slug, from, to, numberOfHolders)
 
-    assertNumberOfRecords(results, numberOfDays)
-
-    for (let [index, day] of days.entries()) {
-      expect(results[index + 1][0]).to.equal(formatDate(day))
+    if (results.length > 1) {
+      for (let [index, day] of days.entries()) {
+        expect(results[index + 1][0]).to.equal(formatDate(day))
+      }
     }
   })
 })

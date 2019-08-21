@@ -512,3 +512,448 @@ describe('tokenCirculation_', () => {
     expect(() => san.tokenCirculation_(slug, from, to)).to.throw('No data')
   })
 })
+
+describe('activeAddresses_', () => {
+  it('returns active addresses', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          activeAddresses: 25
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          activeAddresses: 26
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          activeAddresses: 23
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          activeAddresses: 16
+        }
+      ]
+    )
+
+    const response = san.activeAddresses_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Active Addresses'],
+        ['2019-05-23', 25],
+        ['2019-05-24', 26],
+        ['2019-05-25', 23],
+        ['2019-05-26', 16]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns([])
+    const response = san.activeAddresses_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Active Addresses']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns(null)
+    expect(() => san.activeAddresses_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('activeDeposits_', () => {
+  it('returns active deposits', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveDeposits').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          activeDeposits: 4
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          activeDeposits: 5
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          activeDeposits: 5
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          activeDeposits: 1
+        }
+      ]
+    )
+
+    const response = san.activeDeposits_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Active Deposits'],
+        ['2019-05-23', 4],
+        ['2019-05-24', 5],
+        ['2019-05-25', 5],
+        ['2019-05-26', 1]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveDeposits').returns([])
+    const response = san.activeDeposits_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Active Deposits']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveDeposits').returns(null)
+    expect(() => san.activeDeposits_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('transactionVolume_', () => {
+  it('returns transaction volume', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          transactionVolume: 59298.652674
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          transactionVolume: 47997.647928
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          transactionVolume: 35290.122019
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          transactionVolume: 67490.318502
+        }
+      ]
+    )
+
+    const response = san.transactionVolume_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Transaction Volume'],
+        ['2019-05-23', 59298.652674],
+        ['2019-05-24', 47997.647928],
+        ['2019-05-25', 35290.122019],
+        ['2019-05-26', 67490.318502]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns([])
+    const response = san.transactionVolume_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Transaction Volume']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns(null)
+    expect(() => san.transactionVolume_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('networkGrowth_', () => {
+  it('returns the network growth', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNetworkGrowth').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          newAddresses: 6
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          newAddresses: 10
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          newAddresses: 7
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          newAddresses: 4
+        }
+      ]
+    )
+
+    const response = san.networkGrowth_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'New Addresses'],
+        ['2019-05-23', 6],
+        ['2019-05-24', 10],
+        ['2019-05-25', 7],
+        ['2019-05-26', 4]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNetworkGrowth').returns([])
+    const response = san.networkGrowth_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'New Addresses']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNetworkGrowth').returns(null)
+    expect(() => san.networkGrowth_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('tokenAgeConsumed_', () => {
+  it('returns the consumed token age', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTokenAgeConsumed').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          tokenAgeConsumed: 1.712301e+10
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          tokenAgeConsumed: 4.848616e+09
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          tokenAgeConsumed: 4.767649e+10
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          tokenAgeConsumed: 4.910034e+10
+        }
+      ]
+    )
+
+    const response = san.tokenAgeConsumed_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Token Age Consumed'],
+        ['2019-05-23', 1.712301e+10],
+        ['2019-05-24', 4.848616e+09],
+        ['2019-05-25', 4.767649e+10],
+        ['2019-05-26', 4.910034e+10]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTokenAgeConsumed').returns([])
+    const response = san.tokenAgeConsumed_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Token Age Consumed']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTokenAgeConsumed').returns(null)
+    expect(() => san.tokenAgeConsumed_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('mvrvRatio_', () => {
+  it('returns the mvrv ratio', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          ratio: 0.744677
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          ratio: 0.752935
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          ratio: 0.681017
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          ratio: 0.691461
+        }
+      ]
+    )
+
+    const response = san.mvrvRatio_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'Ratio'],
+        ['2019-05-23', 0.744677],
+        ['2019-05-24', 0.752935],
+        ['2019-05-25', 0.681017],
+        ['2019-05-26', 0.691461]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns([])
+    const response = san.mvrvRatio_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'Ratio']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns(null)
+    expect(() => san.mvrvRatio_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('nvtRatio_', () => {
+  it('returns the nvt ratio', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNvtRatio').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          nvtRatioTxVolume: 1056.691305,
+          nvtRatioCirculation: 1344.236147
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          nvtRatioTxVolume: 1305.488360,
+          nvtRatioCirculation: 1526.319672
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          nvtRatioTxVolume: 1775.578182,
+          nvtRatioCirculation: 4356.312507
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          nvtRatioTxVolume: 928.434953,
+          nvtRatioCirculation: 1188.246389
+        }
+      ]
+    )
+
+    const response = san.nvtRatio_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation'],
+        ['2019-05-23', 1056.691305, 1344.236147],
+        ['2019-05-24', 1305.488360, 1526.319672],
+        ['2019-05-25', 1775.578182, 4356.312507],
+        ['2019-05-26', 928.434953, 1188.246389]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNvtRatio').returns([])
+    const response = san.nvtRatio_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNvtRatio').returns(null)
+    expect(() => san.nvtRatio_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('exchangeFundsFlow_', () => {
+  it('returns the exchange flow of funds', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          inOutDifference: -42337.741631
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          inOutDifference: 2490.000083
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          inOutDifference: 13268.418048
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          inOutDifference: -2523.422196
+        }
+      ]
+    )
+
+    const response = san.exchangeFundsFlow_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'In/Out Difference'],
+        ['2019-05-23', -42337.741631],
+        ['2019-05-24', 2490.000083],
+        ['2019-05-25', 13268.418048],
+        ['2019-05-26', -2523.422196]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns([])
+    const response = san.exchangeFundsFlow_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'In/Out Difference']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns(null)
+    expect(() => san.exchangeFundsFlow_(slug, from, to)).to.throw('No data')
+  })
+})
+
+describe('exchangeFundsFlow_', () => {
+  it('returns the exchange flow of funds', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns(
+      [
+        {
+          datetime: '2019-05-23T00:00:00Z',
+          inOutDifference: -42337.741631
+        },
+        {
+          datetime: '2019-05-24T00:00:00Z',
+          inOutDifference: 2490.000083
+        },
+        {
+          datetime: '2019-05-25T00:00:00Z',
+          inOutDifference: 13268.418048
+        },
+        {
+          datetime: '2019-05-26T00:00:00Z',
+          inOutDifference: -2523.422196
+        }
+      ]
+    )
+
+    const response = san.exchangeFundsFlow_(slug, from, to)
+
+    expect(response).to.deep.eq(
+      [
+        ['Date', 'In/Out Difference'],
+        ['2019-05-23', -42337.741631],
+        ['2019-05-24', 2490.000083],
+        ['2019-05-25', 13268.418048],
+        ['2019-05-26', -2523.422196]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns([])
+    const response = san.exchangeFundsFlow_(slug, from, to)
+
+    expect(response).to.deep.eq([['Date', 'In/Out Difference']])
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchExchangeFundsFlow').returns(null)
+    expect(() => san.exchangeFundsFlow_(slug, from, to)).to.throw('No data')
+  })
+})

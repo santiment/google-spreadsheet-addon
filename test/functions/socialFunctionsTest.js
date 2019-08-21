@@ -158,3 +158,62 @@ describe('socialVolume_', () => {
     expect(() => san.socialVolume_(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')).to.throw('No data')
   })
 })
+
+describe('news_', () => {
+  it('returns news for a slug', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNews').returns(
+      [
+        {
+          datetime: '2019-07-06T23:06:36Z',
+          title: 'Santiment Network Token Reaches 1-Day Volume of $17,181.00 (SAN)...',
+          description: 'Santiment Network Token Reaches 1-Day Volume of $17,181.00...',
+          sourceName: 'Mayfield Recorder',
+          url: 'https://mayfieldrecorder.com/2019/07/06/santiment-network-token-re...'
+        },
+        {
+          datetime: '2019-07-07T23:11:03Z',
+          title: 'Santiment Network Token 24-Hour Trading Volume Reaches $26,130.0...',
+          description: 'Santiment Network Token 24-Hour Trading Volume Reaches $26...',
+          sourceName: 'Mayfield Recorder',
+          url: 'https://mayfieldrecorder.com/2019/07/07/santiment-network-token-24...'
+        }
+      ]
+    )
+
+    const response = san.news_(ethereumSlug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(response).to.deep.eq(
+      [
+        [ 'Date', 'Title', 'Source', 'URL', 'Description' ],
+        [ '2019-07-06',
+          'Santiment Network Token Reaches 1-Day Volume of $17,181.00 (SAN)...',
+          'Mayfield Recorder',
+          'https://mayfieldrecorder.com/2019/07/06/santiment-network-token-re...',
+          'Santiment Network Token Reaches 1-Day Volume of $17,181.00...'
+        ],
+        [ '2019-07-07',
+          'Santiment Network Token 24-Hour Trading Volume Reaches $26,130.0...',
+          'Mayfield Recorder',
+          'https://mayfieldrecorder.com/2019/07/07/santiment-network-token-24...',
+          'Santiment Network Token 24-Hour Trading Volume Reaches $26...'
+        ]
+      ]
+    )
+  })
+
+  it('returns headers only on empty array response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNews').returns([])
+    const response = san.news_(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')
+
+    expect(response).to.deep.eq(
+      [
+        [ 'Date', 'Title', 'Source', 'URL', 'Description' ]
+      ]
+    )
+  })
+
+  it('throws "No data" on null response', () => {
+    sandbox.stub(san.ApiClient_.prototype, 'fetchNews').returns(null)
+    expect(() => san.news_(slug, from, to, 'TELEGRAM_CHATS_OVERVIEW')).to.throw('No data')
+  })
+})

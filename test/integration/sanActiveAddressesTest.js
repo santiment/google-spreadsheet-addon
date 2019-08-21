@@ -38,7 +38,9 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
     assertNumberOfRecords(addresses, numberOfDays)
 
     for (let [index, day] of days.entries()) {
-      expect(addresses[index + 1][0]).to.equal(formatDate(day))
+      if (day in addresses[index + 1]) {
+        expect(addresses[index + 1][0]).to.equal(formatDate(day))
+      }
     }
   })
 })
