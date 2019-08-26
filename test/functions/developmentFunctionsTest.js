@@ -31,26 +31,11 @@ describe('githubActivity_', () => {
 
     expect(response).to.deep.eq(
       [
-        [
-          'Date',
-          'Activity'
-        ],
-        [
-          '2019-07-21',
-          7
-        ],
-        [
-          '2019-07-22',
-          122
-        ],
-        [
-          '2019-07-23',
-          122
-        ],
-        [
-          '2019-07-24',
-          101
-        ]
+        [ 'Date', 'Activity' ],
+        [ '2019-07-21', 7 ],
+        [ '2019-07-22', 122 ],
+        [ '2019-07-23', 122 ],
+        [ '2019-07-24', 101 ]
       ]
     )
   })
@@ -61,10 +46,7 @@ describe('githubActivity_', () => {
 
     expect(response).to.deep.eq(
       [
-        [
-          'Date',
-          'Activity'
-        ]
+        [ 'Date', 'Activity' ]
       ]
     )
   })
@@ -102,26 +84,11 @@ describe('devActivity_', () => {
 
     expect(response).to.deep.eq(
       [
-        [
-          'Date',
-          'Activity'
-        ],
-        [
-          '2019-07-21',
-          7
-        ],
-        [
-          '2019-07-22',
-          121
-        ],
-        [
-          '2019-07-23',
-          120
-        ],
-        [
-          '2019-07-24',
-          91
-        ]
+        [ 'Date', 'Activity' ],
+        [ '2019-07-21', 7 ],
+        [ '2019-07-22', 121 ],
+        [ '2019-07-23', 120 ],
+        [ '2019-07-24', 91 ]
       ]
     )
   })
@@ -132,10 +99,7 @@ describe('devActivity_', () => {
 
     expect(response).to.deep.eq(
       [
-        [
-          'Date',
-          'Activity'
-        ]
+        [ 'Date', 'Activity' ]
       ]
     )
   })

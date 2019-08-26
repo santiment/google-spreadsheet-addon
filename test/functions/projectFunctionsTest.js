@@ -38,9 +38,43 @@ describe('allProjects_', () => {
 
     expect(response).to.deep.eq(
       [
-        [ 'Ticker', 'Name', 'Slug', 'USD Price', 'USD Marketcap', 'USD Volume', 'USD Balance', 'ETH Balance', 'ETH Spent 30D', 'ETH Spent 7D', 'ETH Spent 1D' ],
-        [ 'ZCN', '0chain', '0chain', 0.05219461322, 2093847.7682393144, 1256.94376462815, 0, 0, 0, 0, 0 ],
-        [ 'ZRX', '0x', '0x', 0.178958333705, 107460158.1554692, 14141933.4691686, 2319334.639906516, 12217.678594594596, 0, 0, 0 ]
+        [
+          'Ticker',
+          'Name',
+          'Slug',
+          'USD Price',
+          'USD Marketcap',
+          'USD Volume',
+          'USD Balance',
+          'ETH Balance',
+          'ETH Spent 30D',
+          'ETH Spent 7D',
+          'ETH Spent 1D'
+        ],
+        [ 'ZCN',
+          '0chain',
+          '0chain',
+          0.05219461322,
+          2093847.7682393144,
+          1256.94376462815,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [ 'ZRX',
+          '0x',
+          '0x',
+          0.178958333705,
+          107460158.1554692,
+          14141933.4691686,
+          2319334.639906516,
+          12217.678594594596,
+          0,
+          0,
+          0
+        ]
       ]
     )
   })
@@ -84,9 +118,46 @@ describe('erc20Projects_', () => {
 
     expect(response).to.deep.eq(
       [
-        [ 'Ticker', 'Name', 'Slug', 'USD Price', 'USD Marketcap', 'USD Volume', 'USD Balance', 'ETH Balance', 'ETH Spent 30D', 'ETH Spent 7D', 'ETH Spent 1D', 'Main Contract Address' ],
-        [ 'ZCN', '0chain', '0chain', 0.0523334497439, 2099417.35727895, 1260.18004977532, 0, 0, 0, 0, 0, '0xb9ef770b6a5e12e45983c5d80545258aa38f3b78' ],
-        [ 'ZRX', '0x', '0x', 0.180273094681, 108249640.37455656, 14263628.1570071, 2327365.1751939454, 12217.678594594596, 0, 0, 0, '0xe41d2489571d322189246dafa5ebde1f4699f498' ]
+        [
+          'Ticker',
+          'Name',
+          'Slug',
+          'USD Price',
+          'USD Marketcap',
+          'USD Volume',
+          'USD Balance',
+          'ETH Balance',
+          'ETH Spent 30D',
+          'ETH Spent 7D',
+          'ETH Spent 1D',
+          'Main Contract Address'
+        ],
+        [ 'ZCN',
+          '0chain',
+          '0chain',
+          0.0523334497439,
+          2099417.35727895,
+          1260.18004977532,
+          0,
+          0,
+          0,
+          0,
+          0,
+          '0xb9ef770b6a5e12e45983c5d80545258aa38f3b78'
+        ],
+        [ 'ZRX',
+          '0x',
+          '0x',
+          0.180273094681,
+          108249640.37455656,
+          14263628.1570071,
+          2327365.1751939454,
+          12217.678594594596,
+          0,
+          0,
+          0,
+          '0xe41d2489571d322189246dafa5ebde1f4699f498'
+        ]
       ]
     )
   })
@@ -134,7 +205,22 @@ describe('fetchProjectFundamentals_', () => {
           'Available Supply',
           'Average Dev Activity 30D'
         ],
-        [ 'SAN', 'Santiment', 'santiment', 9155789.4, 0, 29583.389448238777, 5635387.2655066, 0.47166911299, 15310.6778037951, 29554961.588902876, 0.319887, -10.7174, 21.95, 62660370.9569795, 71.5 ]
+        [ 'SAN',
+          'Santiment',
+          'santiment',
+          9155789.4,
+          0,
+          29583.389448238777,
+          5635387.2655066,
+          0.47166911299,
+          15310.6778037951,
+          29554961.588902876,
+          0.319887,
+          -10.7174,
+          21.95,
+          62660370.9569795,
+          71.5
+        ]
       ]
     )
   })
@@ -176,7 +262,19 @@ describe('projectSocialData_', () => {
           'Reddit Link',
           'Chat Link'
         ],
-        [ 'SAN', 'Santiment', 'santiment', 'https://santiment.net/', 'https://docs.google.com/document/d/1hHmJQWrPrObSgCA8kTbk-4LgqGbYzukQAjtg5b8jwc0/view', 'https://www.facebook.com/santimentfeed/', 'https://santiment.net/blog/', null, 'https://github.com/santiment', 'https://twitter.com/santimentfeed', 'https://www.reddit.com/r/santiment/', 'https://discord.gg/6fMxk82' ]
+        [ 'SAN',
+          'Santiment',
+          'santiment',
+          'https://santiment.net/',
+          'https://docs.google.com/document/d/1hHmJQWrPrObSgCA8kTbk-4LgqGbYzukQAjtg5b8jwc0/view',
+          'https://www.facebook.com/santimentfeed/',
+          'https://santiment.net/blog/',
+          null,
+          'https://github.com/santiment',
+          'https://twitter.com/santimentfeed',
+          'https://www.reddit.com/r/santiment/',
+          'https://discord.gg/6fMxk82'
+        ]
       ]
     )
   })
