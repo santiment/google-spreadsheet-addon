@@ -8,7 +8,7 @@ const limit = 2
 const transactionType = 'ALL'
 const numberOfHolders = 10
 
-describe('historicalBalance', () => {
+describe('historicalBalance_', () => {
   it('returns historical balance of an address', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchHistoricalBalance').returns(
       [
@@ -280,26 +280,11 @@ describe('ethSpentOverTime_', () => {
 
     expect(response).to.deep.eq(
       [
-        [
-          'Date',
-          'ETH Spent'
-        ],
-        [
-          '2019-07-21',
-          113.6400629999956
-        ],
-        [
-          '2019-07-22',
-          0
-        ],
-        [
-          '2019-07-23',
-          0
-        ],
-        [
-          '2019-07-24',
-          0
-        ]
+        [ 'Date', 'ETH Spent' ],
+        [ '2019-07-21', 113.6400629999956 ],
+        [ '2019-07-22', 0 ],
+        [ '2019-07-23', 0 ],
+        [ '2019-07-24', 0 ]
       ]
     )
   })
