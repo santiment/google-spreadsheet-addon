@@ -8,7 +8,7 @@ const limit = 2
 const transactionType = 'ALL'
 const numberOfHolders = 10
 
-describe('historicalBalance', () => {
+describe('historicalBalance_', () => {
   it('returns historical balance of an address', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchHistoricalBalance').returns(
       [
