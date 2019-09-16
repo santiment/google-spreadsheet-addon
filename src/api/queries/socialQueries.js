@@ -20,14 +20,13 @@ ApiClient_.prototype.fetchSocialVolume = function (slug, from, to, socialVolumeT
   return this.conn.graphQLQuery(query, 'socialVolume')
 }
 
-ApiClient_.prototype.fetchTrendingWords = function (source, size, hour, from, to) {
+ApiClient_.prototype.fetchEmergingTrends = function (size, from, to) {
   var query = {
     'query': '{\
-       trendingWords(source: ' + source + ',\
-                     size: ' + size + ',\
-                     hour: ' + hour + ',\
+       getTrendingWords(size: ' + size + ',\
                      from: "' + toUTC_(from) + '",\
-                     to: "' + toUTC_(to) + '") {\
+                     to: "' + toUTC_(to) + '",\
+                     interval: "1d") {\
          datetime\
          topWords {\
            score\
@@ -37,7 +36,7 @@ ApiClient_.prototype.fetchTrendingWords = function (source, size, hour, from, to
     }'
   }
 
-  return this.conn.graphQLQuery(query, 'trendingWords')
+  return this.conn.graphQLQuery(query, 'getTrendingWords')
 }
 
 ApiClient_.prototype.fetchNews = function (tag, from, to, size) {

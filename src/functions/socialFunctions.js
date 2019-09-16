@@ -37,8 +37,8 @@ function socialVolume_ (slug, from, to, socialVolumeType) {
   }))
 }
 
-function trendingWords_ (source, size, hour, from, to) {
-  var results = getApiClient_().fetchTrendingWords(source, size, hour, from, to)
+function emergingTrends_ (size, from, to) {
+  var results = getApiClient_().fetchEmergingTrends(size, from, to)
   assertHasData_(results)
 
   var headers = ['Date', 'Word', 'Score']
