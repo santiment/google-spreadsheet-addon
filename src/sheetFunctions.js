@@ -244,23 +244,16 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
 }
 
 /**
- * Returns list of trending words and their corresponding trend score.
+ * Returns list of emerging trends and their corresponding trend score.
  *
- * @param {string} source One of the following:
- * TELEGRAM
- * PROFESSIONAL_TRADERS_CHAT
- * REDDIT
- * ALL
  * @param {number} size An integer showing how many words should be included in the top list (max 100).
- * @param {number} hour An integer showing the hour of the day when the calculation was executed.
- * The trending words are currently generated only 3 times a day - 01:00 UTC, 08:00 UTC and 14:00 UTC. Example: 1
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
  * @returns {Array} of trending words and their score.
  * @customfunction
  */
-function SAN_TRENDING_WORDS (source, size, hour, from, to) {
-  return handleErrors_(trendingWords_)(source, size, hour, from, to)
+function SAN_EMERGING_TRENDS (size, from, to) {
+  return handleErrors_(emergingTrends_)(size, from, to)
 }
 
 /**

@@ -64,7 +64,7 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <dt><a href="#SAN_TOKEN_CIRCULATION">SAN_TOKEN_CIRCULATION(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns token circulation for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_TRENDING_WORDS">SAN_TRENDING_WORDS(source, size, hour, from, to)</a> ⇒ <code>Array</code></dt>
+<dt><a href="#SAN_EMERGING_TRENDS">SAN_EMERGING_TRENDS(size, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns list of trending words and their corresponding trend score.</p>
 </dd>
 <dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
@@ -380,9 +380,9 @@ Returns token circulation for a given slug and time interval.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
-<a name="SAN_TRENDING_WORDS"></a>
+<a name="SAN_EMERGING_TRENDS"></a>
 
-## SAN\_TRENDING\_WORDS(source, size, hour, from, to) ⇒ <code>Array</code>
+## SAN\_EMERGING\_TRENDS(size, from, to) ⇒ <code>Array</code>
 Returns list of trending words and their corresponding trend score.
 
 **Kind**: global function  
@@ -391,9 +391,7 @@ Returns list of trending words and their corresponding trend score.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| source | <code>string</code> | One of the following: TELEGRAM PROFESSIONAL_TRADERS_CHAT REDDIT ALL |
 | size | <code>number</code> | An integer showing how many words should be included in the top list (max 100). |
-| hour | <code>number</code> | An integer showing the hour of the day when the calculation was executed. The trending words are currently generated only 3 times a day - 01:00 UTC, 08:00 UTC and 14:00 UTC. Example: 1 |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
