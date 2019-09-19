@@ -261,3 +261,20 @@ ApiClient_.prototype.fetchTopHoldersPercentOfTotalSupply = function (slug, from,
 
   return this.conn.graphQLQuery(query, 'topHoldersPercentOfTotalSupply')
 }
+
+ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to) {
+  var query = {
+    'query': '{\
+       getMetric(metric: "' + metric + '") {\
+          timeseriesData(from: "' + toUTC_(from) + '",\
+                         to: "' + toUTC_(to) + '",\
+                         slug: "' + slug + '"){\
+                            datetime\
+                            value\
+          }\
+      }\
+    }'
+  }
+
+  return this.conn.graphQLQuery(query, 'getMetric')
+}

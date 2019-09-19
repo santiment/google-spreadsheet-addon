@@ -1,7 +1,8 @@
 const path = require('path')
 const fs = require('fs')
-const { data, timeBound } = require('./generatorHelper.js')
+const { data, timeBound } = require('./getMetricFunctions.js')
 const fsPromises = fs.promises
+const fsExtra = require('fs-extra')
 
 async function generateGetMetric () {
   return new Promise((resolve, reject) => {
@@ -11,6 +12,9 @@ async function generateGetMetric () {
         generatedDoc += allTimeBoundTemplates(object)
       }
       let file = path.join(`${__dirname}`, `../src/getMetric.js`)
+      if (fs.existsSync(file)) {
+        fsExtra.removeSync(file)
+      }
       resolve(fsPromises.writeFile(file, generatedDoc))
     } catch (error) {
       reject(error)
@@ -50,10 +54,16 @@ function fillTemplate (metric, description, fiatCurrency, timeBoundSuffix) {
 * @returns {number} absolute price change.
 * @customfunction
 */
-function SAN_${metric.toUpperCase()}${fiatCurrency.toUpperCase()}${timeBoundSuffix.toUpperCase()}(projectSlug, from, to) {
-  return handleErrors_(getMetric)('${metric}${fiatCurrency}${timeBoundSuffix}', projectSlug, from, to)
+function SAN_${metric.toUpperCase()}${fiatCurrency.toUpperCase()}${timeBoundSuffix.toUpperCase()} (projectSlug, from, to) {
+  return handleErrors_(getMetric_)('${metric}${fiatCurrency}${timeBoundSuffix}', projectSlug, from, to)
 }
 `
+}
+
+for (let i = 0; i < process.argv.length; i++) {
+  if (process.argv[i] === 'generateGetMetric') {
+    generateGetMetric()
+  }
 }
 
 module.exports = {

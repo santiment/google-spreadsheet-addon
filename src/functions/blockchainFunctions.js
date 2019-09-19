@@ -239,3 +239,16 @@ function topHoldersPercentOfTotalSupply_ (slug, from, to, numberOfHolders) {
     ]
   }))
 }
+
+function getMetric_ (metric, slug, from, to) {
+  var results = getApiClient_().fetchGetMetric(metric, slug, from, to)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Value']
+  return [headers].concat(results.timeseriesData.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.value)
+    ]
+  }))
+}
