@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const { data, timeBound } = require('./getMetricFunctions.js')
+const data = require('./getMetricFunctions.js')
 const fsPromises = fs.promises
 const fsExtra = require('fs-extra')
 
@@ -8,7 +8,7 @@ async function generateGetMetric () {
   return new Promise((resolve, reject) => {
     try {
       let generatedDoc = ''
-      for (const object of data) {
+      for (const object of data.data) {
         generatedDoc += allTimeBoundTemplates(object)
       }
       let file = path.join(`${__dirname}`, `../src/getMetric.js`)
@@ -27,36 +27,32 @@ function allTimeBoundTemplates (object) {
   if (!('fiatCurrency' in object)) {
     object.fiatCurrency = ''
   }
-  if (!('timeBoundSuffix' in object)) {
-    object.timeBound = ['']
-  }
-  for (const timeBoundSuffix of timeBound) {
-    generatedString += fillTemplate(object.metric, object.description, object.fiatCurrency, timeBoundSuffix)
-  }
+  generatedString += fillTemplate(object.metric, object.description, object.fiatCurrency)
+
   return generatedString
 }
 
-function fillTemplate (metric, description, fiatCurrency, timeBoundSuffix) {
+function fillTemplate (metric, description, fiatCurrency) {
   if (!(fiatCurrency === '')) {
     fiatCurrency = '_' + fiatCurrency
   }
-  if (!(timeBoundSuffix === '')) {
-    timeBoundSuffix = '_' + timeBoundSuffix
-  }
 
   return `/**
-* ${description}
+* Gets the ${description}
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} absolute price change.
+* @param {string} timeBound The metric is calculated only by taking into account the
+* tokens and coins that have moved in the past number of years or days.
+* @returns {number} returns ${description}.
 * @customfunction
 */
-function SAN_${metric.toUpperCase()}${fiatCurrency.toUpperCase()}${timeBoundSuffix.toUpperCase()} (projectSlug, from, to) {
-  return handleErrors_(getMetric_)('${metric}${fiatCurrency}${timeBoundSuffix}', projectSlug, from, to)
+function SAN_${metric.toUpperCase()}${fiatCurrency.toUpperCase()} (projectSlug, from, to, timeBound) {
+  return handleErrors_(getMetric_)('${metric}${fiatCurrency}', projectSlug, from, to, timeBound)
 }
+
 `
 }
 
