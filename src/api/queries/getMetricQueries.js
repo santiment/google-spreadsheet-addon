@@ -1,5 +1,5 @@
 ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, timeBoundSuffix) {
-  var timeBound = ['', '1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
+  var timeBound = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
   var timeBoundMetrics = [
     'mean_realized_price_usd',
     'mvrv_usd',
@@ -11,7 +11,7 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, timeBoun
     if ((timeBound.indexOf(timeBoundSuffix) !== -1) && (timeBoundMetrics.indexOf(metric) !== -1)) {
       var reworkedTimeBound = '_' + timeBoundSuffix
     } else {
-      throw Error
+      throw new Error('Timebound Suffix invalid or metric not timebound')
     }
   } else {
     reworkedTimeBound = ''
@@ -22,7 +22,8 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, timeBoun
        getMetric(metric: "' + metric + reworkedTimeBound + '") {\
           timeseriesData(from: "' + toUTC_(from) + '",\
                          to: "' + toUTC_(to) + '",\
-                         slug: "' + slug + '"){\
+                         slug: "' + slug + '"\
+                         interval: "1d"){\
                             datetime\
                             value\
           }\

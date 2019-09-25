@@ -4,10 +4,10 @@ function activeAddresses_ (slug, from, to) {
 
   var headers = ['Date', 'Active Addresses']
 
-  return [headers].concat(results.map(function (result) {
+  return [headers].concat(results.timeseriesData.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeAddresses)
+      formatNumber_(result.value)
     ]
   }))
 }
@@ -22,20 +22,6 @@ function activeDeposits_ (slug, from, to) {
     return [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.activeDeposits)
-    ]
-  }))
-}
-
-function transactionVolume_ (slug, from, to) {
-  var results = getApiClient_().fetchTransactionVolume(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Transaction Volume']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.transactionVolume)
     ]
   }))
 }
@@ -60,10 +46,10 @@ function tokenCirculation_ (slug, from, to) {
 
   var headers = ['Date', 'Token Circulation']
 
-  return [headers].concat(results.map(function (result) {
+  return [headers].concat(results.timeseriesData.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.tokenCirculation)
+      formatNumber_(result.value)
     ]
   }))
 }
@@ -87,10 +73,10 @@ function mvrvRatio_ (slug, from, to) {
   assertHasData_(results)
 
   var headers = ['Date', 'Ratio']
-  return [headers].concat(results.map(function (result) {
+  return [headers].concat(results.timeseriesData.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.ratio)
+      formatNumber_(result.value)
     ]
   }))
 }
@@ -115,10 +101,10 @@ function realizedValue_ (slug, from, to) {
   assertHasData_(results)
 
   var headers = ['Date', 'Realized Value']
-  return [headers].concat(results.map(function (result) {
+  return [headers].concat(results.timeseriesData.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.realizedValue)
+      formatNumber_(result.value)
     ]
   }))
 }

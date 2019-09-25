@@ -1,5 +1,5 @@
 function getMetric_ (metric, slug, from, to, timeBound) {
-  if (typeof (timeBound) === 'undefined') {
+  if ((typeof (timeBound) === 'undefined') || (timeBound === null)) {
     var reworkedTimeBound = ''
   } else {
     reworkedTimeBound = timeBound

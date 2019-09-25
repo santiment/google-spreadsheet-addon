@@ -1,4 +1,3 @@
-const { generateGetMetric } = require('../../generators/getMetric.js')
 const chai = require('chai')
 const expect = chai.expect
 
@@ -19,7 +18,6 @@ const {
 } = require('../setup.js')
 
 describe('mvrv_long_short_diff metric', async () => {
-  await generateGetMetric()
   const expected = {
     date: 'string',
     value: 'number'
@@ -43,7 +41,6 @@ describe('mvrv_long_short_diff metric', async () => {
 
   it('returns a record per every day', () => {
     const results = san.SAN_MVRV_USD_LONG_SHORT_DIFF(slug, from, to)
-
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

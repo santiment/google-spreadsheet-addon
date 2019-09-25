@@ -1,4 +1,3 @@
-const { generateGetMetric } = require('../../generators/getMetric.js')
 const chai = require('chai')
 const expect = chai.expect
 
@@ -19,7 +18,6 @@ const {
 } = require('../setup.js')
 
 describe('age_destroyed metric', async () => {
-  await generateGetMetric()
   const expected = {
     date: 'string',
     value: 'number'
@@ -28,6 +26,7 @@ describe('age_destroyed metric', async () => {
   const response = san.SAN_AGE_DESTROYED(slug, from, to)
   const headers = response[0]
   const results = response[1]
+
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchGetMetric',

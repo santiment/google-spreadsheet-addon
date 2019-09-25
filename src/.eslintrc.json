@@ -47,7 +47,6 @@
     "setUserProperty_": "readonly",
     "deleteUserProperty_": "readonly",
     "erc20Projects_": "readonly",
-    "transactionVolume_": "readonly",
     "ohlc_": "readonly",
     "priceVolumeDiff_": "readonly",
     "socialVolumeProjects_": "readonly",

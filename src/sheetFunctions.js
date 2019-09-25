@@ -86,23 +86,6 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
 }
 
 /**
- * Gets the transaction volume for the specified asset, during a given time interval.
- * "Transaction Volume" refers to the total number of tokens within all
- * transfers that have occurred on a blockchain.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of transaction volumes.
- * @customfunction
- */
-function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
-  return handleErrors_(transactionVolume_)(projectSlug, from, to)
-}
-
-/**
  * Gets the open, high, low, and close price values for the specified asset,
  * during a given time interval.
  *

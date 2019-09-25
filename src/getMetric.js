@@ -6,7 +6,7 @@
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily average marketcap.
 * @customfunction
 */
@@ -22,7 +22,7 @@ function SAN_DAILY_AVG_MARKETCAP_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily average price.
 * @customfunction
 */
@@ -38,7 +38,7 @@ function SAN_DAILY_AVG_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily closing marketcap.
 * @customfunction
 */
@@ -54,7 +54,7 @@ function SAN_DAILY_CLOSING_MARKETCAP_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily closing price.
 * @customfunction
 */
@@ -70,7 +70,7 @@ function SAN_DAILY_CLOSING_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily high price.
 * @customfunction
 */
@@ -86,7 +86,7 @@ function SAN_DAILY_HIGH_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily low price.
 * @customfunction
 */
@@ -102,7 +102,7 @@ function SAN_DAILY_LOW_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily opening price.
 * @customfunction
 */
@@ -118,7 +118,7 @@ function SAN_DAILY_OPENING_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily trading volume.
 * @customfunction
 */
@@ -134,7 +134,7 @@ function SAN_DAILY_TRADING_VOLUME_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the daily active addresses.
 * @customfunction
 */
@@ -150,7 +150,7 @@ function SAN_DAILY_ACTIVE_ADDRESSES (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the mean realised price.
 * @customfunction
 */
@@ -166,7 +166,7 @@ function SAN_MEAN_REALIZED_PRICE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the difference between MVRV.
 * @customfunction
 */
@@ -182,7 +182,7 @@ function SAN_MVRV_USD_LONG_SHORT_DIFF (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the MVRV.
 * @customfunction
 */
@@ -198,7 +198,7 @@ function SAN_MVRV_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the token circulation.
 * @customfunction
 */
@@ -214,7 +214,7 @@ function SAN_CIRCULATION (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the token's mean age.
 * @customfunction
 */
@@ -230,7 +230,7 @@ function SAN_MEAN_AGE (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns a token's realised value.
 * @customfunction
 */
@@ -246,7 +246,7 @@ function SAN_REALIZED_VALUE_USD (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the token's velocity.
 * @customfunction
 */
@@ -262,28 +262,12 @@ function SAN_VELOCITY (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the transaction volume.
 * @customfunction
 */
 function SAN_TRANSACTION_VOLUME (projectSlug, from, to, timeBound) {
   return handleErrors_(getMetric_)('transaction_volume', projectSlug, from, to, timeBound)
-}
-
-/**
-* Gets the the transaction volume for every 5 minutes
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
-* @returns {number} returns the transaction volume for every 5 minutes.
-* @customfunction
-*/
-function SAN_TRANSACTION_VOLUME_5MIN (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('transaction_volume_5min', projectSlug, from, to, timeBound)
 }
 
 /**
@@ -294,7 +278,7 @@ function SAN_TRANSACTION_VOLUME_5MIN (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the exchange inflow.
 * @customfunction
 */
@@ -310,7 +294,7 @@ function SAN_EXCHANGE_INFLOW (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the exchange outflow.
 * @customfunction
 */
@@ -326,7 +310,7 @@ function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the exchange balance.
 * @customfunction
 */
@@ -342,28 +326,12 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the token's age destroyed.
 * @customfunction
 */
 function SAN_AGE_DESTROYED (projectSlug, from, to, timeBound) {
   return handleErrors_(getMetric_)('age_destroyed', projectSlug, from, to, timeBound)
-}
-
-/**
-* Gets the the token's age destroyed for every 5 minutes
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
-* @returns {number} returns the token's age destroyed for every 5 minutes.
-* @customfunction
-*/
-function SAN_AGE_DESTROYED_5MIN (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('age_destroyed_5min', projectSlug, from, to, timeBound)
 }
 
 /**
@@ -374,7 +342,7 @@ function SAN_AGE_DESTROYED_5MIN (projectSlug, from, to, timeBound) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns the Network Value to Transaction ratio.
 * @customfunction
 */

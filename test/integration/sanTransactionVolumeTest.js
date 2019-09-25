@@ -1,3 +1,6 @@
+const chai = require('chai')
+const expect = chai.expect
+
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -14,32 +17,35 @@ const {
   formatDate
 } = require('../setup.js')
 
-describe('SAN_TRANSACTION_VOLUME', () => {
+describe('transaction_volume metric', async () => {
   const expected = {
     date: 'string',
-    transactionVolume: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_TRANSACTION_VOLUME(slug, from, to)
   const headers = response[0]
-  const volumes = response[1]
-
-  testFieldTypes(volumes, expected)
-
-  testHandlesNullData('fetchTransactionVolume', san.SAN_TRANSACTION_VOLUME, slug, from, to)
+  const results = response[1]
+  testFieldTypes(results, expected)
+  testHandlesNullData(
+    'fetchGetMetric',
+    san.SAN_TRANSACTION_VOLUME,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Transaction Volume']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
   it('returns a record per every day', () => {
-    const transcationVolumes = san.SAN_TRANSACTION_VOLUME(slug, from, to)
+    const results = san.SAN_TRANSACTION_VOLUME(slug, from, to)
 
-    assertNumberOfRecords(transcationVolumes, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {
-      expect(transcationVolumes[index + 1][0]).to.equal(formatDate(day))
+      expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
 })

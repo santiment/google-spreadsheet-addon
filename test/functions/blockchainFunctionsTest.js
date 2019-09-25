@@ -403,24 +403,26 @@ describe('topHoldersPercentOfTotalSupply_', () => {
 describe('realizedValue_', () => {
   it('returns realized values', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns(
-      [
-        {
-          datetime: '2019-07-21T00:00:00Z',
-          realizedValue: 87616798.20443447
-        },
-        {
-          datetime: '2019-07-22T00:00:00Z',
-          realizedValue: 87617111.58761407
-        },
-        {
-          datetime: '2019-07-23T00:00:00Z',
-          realizedValue: 87621416.00641334
-        },
-        {
-          datetime: '2019-07-24T00:00:00Z',
-          realizedValue: 87616964.84366466
-        }
-      ]
+      {
+        timeseriesData: [
+          {
+            datetime: '2019-07-21T00:00:00Z',
+            value: 87616798.20443447
+          },
+          {
+            datetime: '2019-07-22T00:00:00Z',
+            value: 87617111.58761407
+          },
+          {
+            datetime: '2019-07-23T00:00:00Z',
+            value: 87621416.00641334
+          },
+          {
+            datetime: '2019-07-24T00:00:00Z',
+            value: 87616964.84366466
+          }
+        ]
+      }
     )
 
     const response = san.realizedValue_(slug, from, to)
@@ -437,7 +439,7 @@ describe('realizedValue_', () => {
   })
 
   it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns([])
+    sandbox.stub(san.ApiClient_.prototype, 'fetchRealizedValue').returns({ timeseriesData: [] })
     const response = san.realizedValue_(slug, from, to)
 
     expect(response).to.deep.eq([['Date', 'Realized Value']])
@@ -452,24 +454,26 @@ describe('realizedValue_', () => {
 describe('tokenCirculation_', () => {
   it('returns token circulation', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchTokenCirculation').returns(
-      [
-        {
-          datetime: '2019-07-21T00:00:00Z',
-          tokenCirculation: 194.16045212
-        },
-        {
-          datetime: '2019-07-22T00:00:00Z',
-          tokenCirculation: 3340.636405981125
-        },
-        {
-          datetime: '2019-07-23T00:00:00Z',
-          tokenCirculation: 12853.742194433271
-        },
-        {
-          datetime: '2019-07-24T00:00:00Z',
-          tokenCirculation: 1249.9990937471925
-        }
-      ]
+      {
+        timeseriesData: [
+          {
+            datetime: '2019-07-21T00:00:00Z',
+            value: 194.16045212
+          },
+          {
+            datetime: '2019-07-22T00:00:00Z',
+            value: 3340.636405981125
+          },
+          {
+            datetime: '2019-07-23T00:00:00Z',
+            value: 12853.742194433271
+          },
+          {
+            datetime: '2019-07-24T00:00:00Z',
+            value: 1249.9990937471925
+          }
+        ]
+      }
     )
 
     const response = san.tokenCirculation_(slug, from, to)
@@ -486,7 +490,7 @@ describe('tokenCirculation_', () => {
   })
 
   it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchTokenCirculation').returns([])
+    sandbox.stub(san.ApiClient_.prototype, 'fetchTokenCirculation').returns({ timeseriesData: [] })
     const response = san.tokenCirculation_(slug, from, to)
 
     expect(response).to.deep.eq([['Date', 'Token Circulation']])
@@ -501,24 +505,26 @@ describe('tokenCirculation_', () => {
 describe('activeAddresses_', () => {
   it('returns active addresses', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns(
-      [
-        {
-          datetime: '2019-05-23T00:00:00Z',
-          activeAddresses: 25
-        },
-        {
-          datetime: '2019-05-24T00:00:00Z',
-          activeAddresses: 26
-        },
-        {
-          datetime: '2019-05-25T00:00:00Z',
-          activeAddresses: 23
-        },
-        {
-          datetime: '2019-05-26T00:00:00Z',
-          activeAddresses: 16
-        }
-      ]
+      {
+        timeseriesData: [
+          {
+            datetime: '2019-05-23T00:00:00Z',
+            value: 25
+          },
+          {
+            datetime: '2019-05-24T00:00:00Z',
+            value: 26
+          },
+          {
+            datetime: '2019-05-25T00:00:00Z',
+            value: 23
+          },
+          {
+            datetime: '2019-05-26T00:00:00Z',
+            value: 16
+          }
+        ]
+      }
     )
 
     const response = san.activeAddresses_(slug, from, to)
@@ -535,7 +541,7 @@ describe('activeAddresses_', () => {
   })
 
   it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns([])
+    sandbox.stub(san.ApiClient_.prototype, 'fetchActiveAddresses').returns({ timeseriesData: [] })
     const response = san.activeAddresses_(slug, from, to)
 
     expect(response).to.deep.eq([['Date', 'Active Addresses']])
@@ -593,55 +599,6 @@ describe('activeDeposits_', () => {
   it('throws "No data" on null response', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchActiveDeposits').returns(null)
     expect(() => san.activeDeposits_(slug, from, to)).to.throw('No data')
-  })
-})
-
-describe('transactionVolume_', () => {
-  it('returns transaction volume', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns(
-      [
-        {
-          datetime: '2019-05-23T00:00:00Z',
-          transactionVolume: 59298.652674
-        },
-        {
-          datetime: '2019-05-24T00:00:00Z',
-          transactionVolume: 47997.647928
-        },
-        {
-          datetime: '2019-05-25T00:00:00Z',
-          transactionVolume: 35290.122019
-        },
-        {
-          datetime: '2019-05-26T00:00:00Z',
-          transactionVolume: 67490.318502
-        }
-      ]
-    )
-
-    const response = san.transactionVolume_(slug, from, to)
-
-    expect(response).to.deep.eq(
-      [
-        ['Date', 'Transaction Volume'],
-        ['2019-05-23', 59298.652674],
-        ['2019-05-24', 47997.647928],
-        ['2019-05-25', 35290.122019],
-        ['2019-05-26', 67490.318502]
-      ]
-    )
-  })
-
-  it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns([])
-    const response = san.transactionVolume_(slug, from, to)
-
-    expect(response).to.deep.eq([['Date', 'Transaction Volume']])
-  })
-
-  it('throws "No data" on null response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchTransactionVolume').returns(null)
-    expect(() => san.transactionVolume_(slug, from, to)).to.throw('No data')
   })
 })
 
@@ -746,24 +703,26 @@ describe('tokenAgeConsumed_', () => {
 describe('mvrvRatio_', () => {
   it('returns the mvrv ratio', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns(
-      [
-        {
-          datetime: '2019-05-23T00:00:00Z',
-          ratio: 0.744677
-        },
-        {
-          datetime: '2019-05-24T00:00:00Z',
-          ratio: 0.752935
-        },
-        {
-          datetime: '2019-05-25T00:00:00Z',
-          ratio: 0.681017
-        },
-        {
-          datetime: '2019-05-26T00:00:00Z',
-          ratio: 0.691461
-        }
-      ]
+      {
+        timeseriesData: [
+          {
+            datetime: '2019-05-23T00:00:00Z',
+            value: 0.744677
+          },
+          {
+            datetime: '2019-05-24T00:00:00Z',
+            value: 0.752935
+          },
+          {
+            datetime: '2019-05-25T00:00:00Z',
+            value: 0.681017
+          },
+          {
+            datetime: '2019-05-26T00:00:00Z',
+            value: 0.691461
+          }
+        ]
+      }
     )
 
     const response = san.mvrvRatio_(slug, from, to)
@@ -780,7 +739,7 @@ describe('mvrvRatio_', () => {
   })
 
   it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns([])
+    sandbox.stub(san.ApiClient_.prototype, 'fetchMvrvRatio').returns({ timeseriesData: [] })
     const response = san.mvrvRatio_(slug, from, to)
 
     expect(response).to.deep.eq([['Date', 'Ratio']])

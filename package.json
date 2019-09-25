@@ -6,9 +6,9 @@
   "scripts": {
     "docs": "jsdoc2md src/sheetFunctions.js > doc/sheet_functions.md",
     "push": "clasp push -f",
-    "pretest": "eslint . ; npm run generate",
+    "pretest": "eslint . && npm run generate",
     "test": "mocha",
-    "generate": "node generators/getMetric.js generateGetMetric"
+    "generate": "node -e 'require(\"./generators/getMetric.js\").generateGetMetric()'"
   },
   "repository": {
     "type": "git",

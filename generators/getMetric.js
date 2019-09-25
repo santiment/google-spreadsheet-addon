@@ -1,40 +1,33 @@
 const path = require('path')
 const fs = require('fs')
-const data = require('./getMetricFunctions.js')
-const fsPromises = fs.promises
+const metrics = require('./getMetricFunctions.js')
 const fsExtra = require('fs-extra')
 
-async function generateGetMetric () {
-  return new Promise((resolve, reject) => {
-    try {
-      let generatedDoc = ''
-      for (const object of data.data) {
-        generatedDoc += allTimeBoundTemplates(object)
-      }
-      let file = path.join(`${__dirname}`, `../src/getMetric.js`)
-      if (fs.existsSync(file)) {
-        fsExtra.removeSync(file)
-      }
-      resolve(fsPromises.writeFile(file, generatedDoc))
-    } catch (error) {
-      reject(error)
-    }
-  })
+function generateGetMetric () {
+  let generatedDoc = ''
+  for (const object of metrics.metricsList) {
+    generatedDoc += allTimeBoundTemplates(object)
+  }
+  let file = path.join(`${__dirname}`, `../src/getMetric.js`)
+  if (fs.existsSync(file)) {
+    fsExtra.removeSync(file)
+  }
+  return fs.writeFileSync(file, generatedDoc)
 }
 
 function allTimeBoundTemplates (object) {
   let generatedString = ''
-  if (!('fiatCurrency' in object)) {
-    object.fiatCurrency = ''
+  if (!('currency' in object)) {
+    object.currency = ''
   }
-  generatedString += fillTemplate(object.metric, object.description, object.fiatCurrency)
+  generatedString += fillTemplate(object.metric, object.description, object.currency)
 
   return generatedString
 }
 
-function fillTemplate (metric, description, fiatCurrency) {
-  if (!(fiatCurrency === '')) {
-    fiatCurrency = '_' + fiatCurrency
+function fillTemplate (metric, description, currency) {
+  if (currency !== '') {
+    metric += ('_' + currency)
   }
 
   return `/**
@@ -45,21 +38,15 @@ function fillTemplate (metric, description, fiatCurrency) {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens and coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years or days.
 * @returns {number} returns ${description}.
 * @customfunction
 */
-function SAN_${metric.toUpperCase()}${fiatCurrency.toUpperCase()} (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('${metric}${fiatCurrency}', projectSlug, from, to, timeBound)
+function SAN_${metric.toUpperCase()} (projectSlug, from, to, timeBound) {
+  return handleErrors_(getMetric_)('${metric}', projectSlug, from, to, timeBound)
 }
 
 `
-}
-
-for (let i = 0; i < process.argv.length; i++) {
-  if (process.argv[i] === 'generateGetMetric') {
-    generateGetMetric()
-  }
 }
 
 module.exports = {

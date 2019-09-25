@@ -1,4 +1,3 @@
-const { generateGetMetric } = require('../../generators/getMetric.js')
 const chai = require('chai')
 const expect = chai.expect
 
@@ -19,7 +18,6 @@ const {
 } = require('../setup.js')
 
 describe('daily_opening_price_usd metric', async () => {
-  await generateGetMetric()
   const expected = {
     date: 'string',
     value: 'number'
