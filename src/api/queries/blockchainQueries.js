@@ -1,20 +1,3 @@
-ApiClient_.prototype.fetchActiveAddresses = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       getMetric(metric: "daily_active_addresses") {\
-          timeseriesData(from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
-                         slug: "' + slug + '"){\
-                            datetime\
-                            value\
-          }\
-      }\
-    }'
-  }
-
-  return this.conn.graphQLQuery(query, 'getMetric')
-}
-
 ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
   var query = {
     'query': '{\
@@ -63,23 +46,6 @@ ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
 }
 
-ApiClient_.prototype.fetchTokenCirculation = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       getMetric(metric: "circulation_1d") {\
-          timeseriesData(from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
-                         slug: "' + slug + '"){\
-                            datetime\
-                            value\
-          }\
-      }\
-    }'
-  }
-
-  return this.conn.graphQLQuery(query, 'getMetric')
-}
-
 ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   var query = {
     'query': '{\
@@ -94,57 +60,6 @@ ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   }
 
   return this.conn.graphQLQuery(query, 'tokenAgeConsumed')
-}
-
-ApiClient_.prototype.fetchMvrvRatio = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       getMetric(metric: "mvrv_usd") {\
-          timeseriesData(from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
-                         slug: "' + slug + '"){\
-                            datetime\
-                            value\
-          }\
-      }\
-    }'
-  }
-
-  return this.conn.graphQLQuery(query, 'getMetric')
-}
-
-ApiClient_.prototype.fetchNvtRatio = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       nvtRatio(slug: "' + slug + '",\
-                from: "' + toUTC_(from) + '",\
-                to: "' + toUTC_(to) + '",\
-                interval: "1d") {\
-         nvtRatioTxVolume\
-         nvtRatioCirculation\
-         datetime\
-       }\
-     }'
-  }
-
-  return this.conn.graphQLQuery(query, 'nvtRatio')
-}
-
-ApiClient_.prototype.fetchRealizedValue = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       getMetric(metric: "realized_value_usd") {\
-          timeseriesData(from: "' + toUTC_(from) + '",\
-                         to: "' + toUTC_(to) + '",\
-                         slug: "' + slug + '"){\
-                            datetime\
-                            value\
-          }\
-      }\
-    }'
-  }
-
-  return this.conn.graphQLQuery(query, 'getMetric')
 }
 
 ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address) {

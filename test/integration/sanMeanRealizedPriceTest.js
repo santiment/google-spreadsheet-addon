@@ -12,24 +12,25 @@ const {
   slug,
   from,
   to,
+  currency,
   days,
   numberOfDays,
   formatDate
 } = require('../setup.js')
 
-describe('mean_realized_price_usd metric', async () => {
+describe('mean_realized_price_usd metric', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_MEAN_REALIZED_PRICE_USD(slug, from, to)
+  const response = san.SAN_MEAN_REALIZED_PRICE(slug, from, to)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchGetMetric',
-    san.SAN_MEAN_REALIZED_PRICE_USD,
+    san.SAN_MEAN_REALIZED_PRICE,
     slug,
     from,
     to)
@@ -40,10 +41,11 @@ describe('mean_realized_price_usd metric', async () => {
   })
 
   testTimeBound(
-    san.SAN_MEAN_REALIZED_PRICE_USD,
+    san.SAN_MEAN_REALIZED_PRICE,
     slug,
     from,
     to,
+    currency,
     days,
     numberOfDays,
     formatDate

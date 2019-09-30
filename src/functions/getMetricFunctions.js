@@ -1,11 +1,5 @@
-function getMetric_ (metric, slug, from, to, timeBound) {
-  if ((typeof (timeBound) === 'undefined') || (timeBound === null)) {
-    var reworkedTimeBound = ''
-  } else {
-    reworkedTimeBound = timeBound
-  }
-
-  var results = getApiClient_().fetchGetMetric(metric, slug, from, to, reworkedTimeBound)
+function getMetric_ (metric, slug, from, to, options) {
+  var results = getApiClient_().fetchGetMetric(metric, slug, from, to, options)
   assertHasData_(results)
 
   var headers = ['Date', 'Value']

@@ -15,13 +15,18 @@ const testHandlesNullData = (stubName, func, ...args) => {
   })
 }
 
-const testTimeBound = (metric, slug, from, to, days, numberOfDays, formatDate) => {
-  var timeBound = ['', '1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
+const testTimeBound = (metric, slug, from, to, currency, days, numberOfDays, formatDate) => {
+  const timeBound = ['', '1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
   for (const timeBoundSuffix of timeBound) {
     it(`returns a record per every day ${timeBoundSuffix}`, () => {
-      const results = metric(slug, from, to, timeBoundSuffix)
-      assertNumberOfRecords(results, numberOfDays)
+      let results = ''
+      if (currency !== '') {
+        results = metric(slug, from, to, currency, timeBoundSuffix)
+      } else {
+        results = metric(slug, from, to, timeBoundSuffix)
+      }
 
+      assertNumberOfRecords(results, numberOfDays)
       for (let [index, day] of days.entries()) {
         expect(results[index + 1][0]).to.equal(formatDate(day))
       }

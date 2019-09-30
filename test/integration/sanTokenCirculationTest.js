@@ -1,6 +1,7 @@
 const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { slug, from, to } = require('../setup.js')
+const { testHandlesNullData, testTimeBound } = require('../integration_helper.js')
+const { slug, from, to, days, numberOfDays, formatDate } = require('../setup.js')
+const currency = ''
 
 describe('SAN_TOKEN_CIRCULATION', () => {
   const expected = {
@@ -15,14 +16,25 @@ describe('SAN_TOKEN_CIRCULATION', () => {
   testFieldTypes(results, expected)
 
   testHandlesNullData(
-    'fetchTokenCirculation',
+    'fetchGetMetric',
     san.SAN_TOKEN_CIRCULATION,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Token Circulation']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
+
+  testTimeBound(
+    san.SAN_TOKEN_CIRCULATION,
+    slug,
+    from,
+    to,
+    currency,
+    days,
+    numberOfDays,
+    formatDate
+  )
 })

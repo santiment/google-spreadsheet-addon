@@ -25,10 +25,10 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHandlesNullData('fetchActiveAddresses', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
+  testHandlesNullData('fetchGetMetric', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Active Addresses']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

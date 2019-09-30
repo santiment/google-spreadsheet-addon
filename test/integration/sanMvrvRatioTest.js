@@ -2,6 +2,7 @@ const { testFieldTypes } = require('../helper.js')
 
 const {
   testHandlesNullData,
+  testTimeBound,
   assertNumberOfRecords
 } = require('../integration_helper.js')
 
@@ -9,6 +10,7 @@ const {
   slug,
   from,
   to,
+  currency,
   days,
   numberOfDays,
   formatDate
@@ -20,17 +22,16 @@ describe('SAN_MVRV_RATIO', () => {
   const response = san.SAN_MVRV_RATIO(slug, from, to)
   const headers = response[0]
   const results = response[1]
-
   testFieldTypes(results, expected)
   testHandlesNullData(
-    'fetchMvrvRatio',
+    'fetchGetMetric',
     san.SAN_MVRV_RATIO,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Ratio']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
@@ -43,4 +44,15 @@ describe('SAN_MVRV_RATIO', () => {
       expect(results[index + 1][0]).to.equal(formatDate(day))
     }
   })
+
+  testTimeBound(
+    san.SAN_MVRV_RATIO,
+    slug,
+    from,
+    to,
+    currency,
+    days,
+    numberOfDays,
+    formatDate
+  )
 })

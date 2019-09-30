@@ -1,17 +1,3 @@
-function activeAddresses_ (slug, from, to) {
-  var results = getApiClient_().fetchActiveAddresses(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Active Addresses']
-
-  return [headers].concat(results.timeseriesData.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.value)
-    ]
-  }))
-}
-
 function activeDeposits_ (slug, from, to) {
   var results = getApiClient_().fetchActiveDeposits(slug, from, to)
   assertHasData_(results)
@@ -40,20 +26,6 @@ function networkGrowth_ (slug, from, to) {
   }))
 }
 
-function tokenCirculation_ (slug, from, to) {
-  var results = getApiClient_().fetchTokenCirculation(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Token Circulation']
-
-  return [headers].concat(results.timeseriesData.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.value)
-    ]
-  }))
-}
-
 function tokenAgeConsumed_ (slug, from, to) {
   var results = getApiClient_().fetchTokenAgeConsumed(slug, from, to)
   assertHasData_(results)
@@ -64,47 +36,6 @@ function tokenAgeConsumed_ (slug, from, to) {
     return [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.tokenAgeConsumed)
-    ]
-  }))
-}
-
-function mvrvRatio_ (slug, from, to) {
-  var results = getApiClient_().fetchMvrvRatio(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Ratio']
-  return [headers].concat(results.timeseriesData.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.value)
-    ]
-  }))
-}
-
-function nvtRatio_ (slug, from, to) {
-  var results = getApiClient_().fetchNvtRatio(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'NVT Ratio Transaction Volume', 'NVT Ratio Circulation']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.nvtRatioTxVolume),
-      formatNumber_(result.nvtRatioCirculation)
-    ]
-  }))
-}
-
-function realizedValue_ (slug, from, to) {
-  var results = getApiClient_().fetchRealizedValue(slug, from, to)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Realized Value']
-  return [headers].concat(results.timeseriesData.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.value)
     ]
   }))
 }

@@ -23,13 +23,13 @@ describe('mvrv_long_short_diff metric', async () => {
     value: 'number'
   }
 
-  const response = san.SAN_MVRV_USD_LONG_SHORT_DIFF(slug, from, to)
+  const response = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchGetMetric',
-    san.SAN_MVRV_USD_LONG_SHORT_DIFF,
+    san.SAN_MVRV_LONG_SHORT_DIFF,
     slug,
     from,
     to)
@@ -40,7 +40,7 @@ describe('mvrv_long_short_diff metric', async () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_MVRV_USD_LONG_SHORT_DIFF(slug, from, to)
+    const results = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

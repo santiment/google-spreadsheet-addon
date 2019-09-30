@@ -1,3 +1,6 @@
+const chai = require('chai')
+const expect = chai.expect
+
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -14,31 +17,25 @@ const {
   formatDate
 } = require('../setup.js')
 
-describe('SAN_NVT_RATIO', () => {
+describe('nvt metric', async () => {
   const expected = {
     date: 'string',
-    nvtRatioTxVolume: 'number',
-    nvtRatioCirculation: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_NVT_RATIO(slug, from, to)
   const headers = response[0]
   const results = response[1]
-
   testFieldTypes(results, expected)
   testHandlesNullData(
-    'fetchNvtRatio',
+    'fetchGetMetric',
     san.SAN_NVT_RATIO,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = [
-      'Date',
-      'NVT Ratio Transaction Volume',
-      'NVT Ratio Circulation'
-    ]
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
