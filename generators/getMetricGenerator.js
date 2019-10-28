@@ -1,7 +1,4 @@
-const path = require('path')
-const fs = require('fs')
 const { metricsList } = require('./getMetricFunctions')
-const fsExtra = require('fs-extra')
 
 const CURRENCY_DESCRIPTION = `
 * @param {string} currency The metric is calculated, using a currency of choice.
@@ -11,19 +8,16 @@ const TIMEBOUND_DESCRIPTION = `
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.`
 
-function generateGetMetric () {
+function generate () {
   let generatedDoc = ''
   for (const metric of metricsList) {
-    generatedDoc += generateFunctionString(metric)
+    generatedDoc += generateFunctionString_(metric)
   }
-  let file = path.join(`${__dirname}`, `../src/getMetric.js`)
-  if (fs.existsSync(file)) {
-    fsExtra.removeSync(file)
-  }
-  return fs.writeFileSync(file, generatedDoc)
+
+  return generatedDoc
 }
 
-function generateFunctionString (metric) {
+function generateFunctionString_ (metric) {
   metric.hasCurrency = metric.hasCurrency || false
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
@@ -35,7 +29,7 @@ function generateFunctionString (metric) {
 
 function fillTemplate (metric, sheetMetricName, description, currency, timeBound) {
   let [options, bonusDescription, functionArguments] =
-    optionsGenerator(currency, timeBound)
+    optionsGenerator_(currency, timeBound)
 
   return `/**
 * Gets ${description}
@@ -54,7 +48,7 @@ function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
 `
 }
 
-function optionsGenerator (hasCurrency, hasTimeBound) {
+function optionsGenerator_ (hasCurrency, hasTimeBound) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
@@ -80,6 +74,6 @@ function optionsGenerator (hasCurrency, hasTimeBound) {
 }
 
 module.exports = {
-  generateGetMetric: generateGetMetric,
+  generate: generate,
   fillTemplate: fillTemplate
 }

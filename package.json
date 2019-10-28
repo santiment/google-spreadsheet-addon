@@ -8,7 +8,7 @@
     "push": "clasp push -f",
     "pretest": "eslint . && npm run generate",
     "test": "mocha",
-    "generate": "node -e 'require(\"./generators/getMetric.js\").generateGetMetric()'"
+    "generate": "node ./generators/mainGenerator.js"
   },
   "repository": {
     "type": "git",

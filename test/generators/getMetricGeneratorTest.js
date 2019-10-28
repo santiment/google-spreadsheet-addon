@@ -1,6 +1,4 @@
-const { fillTemplate } = require('../generators/getMetric.js')
-const chai = require('chai')
-const expect = chai.expect
+const { fillTemplate } = require('../../generators/getMetricGenerator.js')
 
 describe('getMetric', () => {
   it('returns fills the template accordingly when there is a timebound', () => {
