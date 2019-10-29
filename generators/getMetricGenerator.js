@@ -1,8 +1,8 @@
 const { metricsList } = require('./getMetricFunctions')
 
 const CURRENCY_DESCRIPTION = `
-* @param {string} currency The metric is calculated, using a currency of choice.
-* Available currencies: USD`
+* @param {string} currency The metric is calculated using a currency of choice.
+* Available currencies: (currencies)`
 
 const TIMEBOUND_DESCRIPTION = `
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -18,11 +18,11 @@ function generate () {
 }
 
 function generateFunctionString_ (metric) {
-  metric.hasCurrency = metric.hasCurrency || false
+  metric.supportedCurrencies = metric.supportedCurrencies || []
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
   let generatedString =
-    fillTemplate(metric.metric, metric.sheetMetricName, metric.description, metric.hasCurrency, metric.hasTimeBound)
+    fillTemplate(metric.metric, metric.sheetMetricName, metric.description, metric.supportedCurrencies, metric.hasTimeBound)
 
   return generatedString
 }
@@ -32,7 +32,7 @@ function fillTemplate (metric, sheetMetricName, description, currency, timeBound
     optionsGenerator_(currency, timeBound)
 
   return `/**
-* Gets ${description}
+* Returns ${description}
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -48,14 +48,14 @@ function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
 `
 }
 
-function optionsGenerator_ (hasCurrency, hasTimeBound) {
+function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
     options: []
   }
-  if (hasCurrency === true) {
-    returnedValues.description.push(CURRENCY_DESCRIPTION)
+  if (supportedCurrencies.length > 0) {
+    returnedValues.description.push(CURRENCY_DESCRIPTION.replace('(currencies)', supportedCurrencies.join(', ').toUpperCase()))
     returnedValues.arguments.push('currency')
     returnedValues.options.push('currency: currency')
   }

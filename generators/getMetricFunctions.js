@@ -2,30 +2,30 @@ const metricsList = [
   {
     metric: 'daily_avg_marketcap',
     description: 'the daily average marketcap',
-    hasCurrency: true
+    supportedCurrencies: ['usd']
   },
   {
     metric: 'daily_closing_marketcap',
     description: 'the daily closing marketcap',
-    hasCurrency: true
+    supportedCurrencies: ['usd']
   },
   { metric: 'daily_active_addresses', sheetMetricName: 'active_addresses', description: 'the daily active addresses' },
   {
     metric: 'mean_realized_price',
-    description: 'the mean realised price',
-    hasCurrency: true,
+    description: 'the mean realized price',
+    supportedCurrencies: ['usd'],
     hasTimeBound: true
   },
   {
     metric: 'mvrv_long_short_diff',
     description: 'the difference between MVRV',
-    hasCurrency: true
+    supportedCurrencies: ['usd']
   },
   {
     metric: 'mvrv',
     sheetMetricName: 'mvrv_ratio',
     description: 'the MVRV',
-    hasCurrency: true,
+    supportedCurrencies: ['usd'],
     hasTimeBound: true
   },
   {
@@ -37,8 +37,8 @@ const metricsList = [
   { metric: 'mean_age', description: 'the token\'s mean age' },
   {
     metric: 'realized_value',
-    description: 'the token\'s realised value',
-    hasCurrency: true,
+    description: 'the token\'s realized value',
+    supportedCurrencies: ['usd'],
     hasTimeBound: true
   },
   { metric: 'velocity', description: 'the token\'s velocity' },
@@ -47,7 +47,11 @@ const metricsList = [
   { metric: 'exchange_outflow', description: 'the exchange outflow' },
   { metric: 'exchange_balance', description: 'the exchange balance' },
   { metric: 'age_destroyed', description: 'the token\'s age destroyed' },
-  { metric: 'nvt', sheetMetricName: 'nvt_ratio', description: 'the Network Value to Transaction ratio' }
+  {
+    metric: 'nvt',
+    sheetMetricName: 'nvt_ratio',
+    description: 'NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)'
+  }
 ]
 
 module.exports = {

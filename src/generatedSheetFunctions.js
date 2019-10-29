@@ -1,11 +1,11 @@
 /**
-* Gets the daily average marketcap
+* Returns the daily average marketcap
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @returns {number} returns the daily average marketcap.
 * @customfunction
@@ -15,13 +15,13 @@ function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency) {
 }
 
 /**
-* Gets the daily closing marketcap
+* Returns the daily closing marketcap
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @returns {number} returns the daily closing marketcap.
 * @customfunction
@@ -31,7 +31,7 @@ function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency) {
 }
 
 /**
-* Gets the daily active addresses
+* Returns the daily active addresses
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -45,17 +45,17 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
 }
 
 /**
-* Gets the mean realised price
+* Returns the mean realized price
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the mean realised price.
+* @returns {number} returns the mean realized price.
 * @customfunction
 */
 function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
@@ -63,13 +63,13 @@ function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
 }
 
 /**
-* Gets the difference between MVRV
+* Returns the difference between MVRV
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @returns {number} returns the difference between MVRV.
 * @customfunction
@@ -79,13 +79,13 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
 }
 
 /**
-* Gets the MVRV
+* Returns the MVRV
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
@@ -97,7 +97,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {
 }
 
 /**
-* Gets the token circulation
+* Returns the token circulation
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -113,7 +113,7 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound) {
 }
 
 /**
-* Gets the token's mean age
+* Returns the token's mean age
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -127,17 +127,17 @@ function SAN_MEAN_AGE (projectSlug, from, to) {
 }
 
 /**
-* Gets the token's realised value
+* Returns the token's realized value
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} currency The metric is calculated, using a currency of choice.
+* @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the token's realised value.
+* @returns {number} returns the token's realized value.
 * @customfunction
 */
 function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound) {
@@ -145,7 +145,7 @@ function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound) {
 }
 
 /**
-* Gets the token's velocity
+* Returns the token's velocity
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -159,7 +159,7 @@ function SAN_VELOCITY (projectSlug, from, to) {
 }
 
 /**
-* Gets the transaction volume
+* Returns the transaction volume
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -173,7 +173,7 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
 }
 
 /**
-* Gets the exchange inflow
+* Returns the exchange inflow
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -187,7 +187,7 @@ function SAN_EXCHANGE_INFLOW (projectSlug, from, to) {
 }
 
 /**
-* Gets the exchange outflow
+* Returns the exchange outflow
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -201,7 +201,7 @@ function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to) {
 }
 
 /**
-* Gets the exchange balance
+* Returns the exchange balance
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -215,7 +215,7 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to) {
 }
 
 /**
-* Gets the token's age destroyed
+* Returns the token's age destroyed
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -229,13 +229,13 @@ function SAN_AGE_DESTROYED (projectSlug, from, to) {
 }
 
 /**
-* Gets the Network Value to Transaction ratio
+* Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the Network Value to Transaction ratio.
+* @returns {number} returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume).
 * @customfunction
 */
 function SAN_NVT_RATIO (projectSlug, from, to) {
