@@ -1,6 +1,3 @@
-const chai = require('chai')
-const expect = chai.expect
-
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -18,26 +15,28 @@ const {
   formatDate
 } = require('../setup.js')
 
-describe('mean_realized_price_usd metric', () => {
-  const expected = {
-    date: 'string',
-    value: 'number'
-  }
+describe('SAN_MEAN_REALIZED_PRICE', () => {
+  it('works properly when no currency and no timebound suffix are given', () => {
+    const expected = {
+      date: 'string',
+      value: 'number'
+    }
 
-  const response = san.SAN_MEAN_REALIZED_PRICE(slug, from, to)
-  const headers = response[0]
-  const results = response[1]
-  testFieldTypes(results, expected)
-  testHandlesNullData(
-    'fetchGetMetric',
-    san.SAN_MEAN_REALIZED_PRICE,
-    slug,
-    from,
-    to)
+    const response = san.SAN_MEAN_REALIZED_PRICE(slug, from, to)
+    const headers = response[0]
+    const results = response[1]
+    testFieldTypes(results, expected)
+    testHandlesNullData(
+      'fetchGetMetric',
+      san.SAN_MEAN_REALIZED_PRICE,
+      slug,
+      from,
+      to)
 
-  it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Value']
-    expect(headers).to.deep.equal(expectedHeaders)
+    it('has proper headers', () => {
+      const expectedHeaders = ['Date', 'Value']
+      expect(headers).to.deep.equal(expectedHeaders)
+    })
   })
 
   testTimeBound(

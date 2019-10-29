@@ -1,6 +1,3 @@
-const chai = require('chai')
-const expect = chai.expect
-
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -18,7 +15,7 @@ const {
   formatDate
 } = require('../setup.js')
 
-describe('daily_closing_marketcap_usd metric', async () => {
+describe('SAN_DAILY_CLOSING_MARKETCAP', () => {
   const expected = {
     date: 'string',
     value: 'number'

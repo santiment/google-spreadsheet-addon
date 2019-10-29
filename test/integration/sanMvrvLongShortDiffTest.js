@@ -1,6 +1,3 @@
-const chai = require('chai')
-const expect = chai.expect
-
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -12,18 +9,19 @@ const {
   slug,
   from,
   to,
+  currency,
   days,
   numberOfDays,
   formatDate
 } = require('../setup.js')
 
-describe('mvrv_long_short_diff metric', async () => {
+describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
+  const response = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to, currency)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
@@ -32,7 +30,8 @@ describe('mvrv_long_short_diff metric', async () => {
     san.SAN_MVRV_LONG_SHORT_DIFF,
     slug,
     from,
-    to)
+    to,
+    currency)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -40,7 +39,7 @@ describe('mvrv_long_short_diff metric', async () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
+    const results = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to, currency)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

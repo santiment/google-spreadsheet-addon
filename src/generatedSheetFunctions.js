@@ -79,7 +79,7 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
 }
 
 /**
-* Returns the MVRV
+* Returns MVRV(Market-Value-to-Realized-Value)
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -89,7 +89,7 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the MVRV.
+* @returns {number} returns MVRV(Market-Value-to-Realized-Value).
 * @customfunction
 */
 function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {

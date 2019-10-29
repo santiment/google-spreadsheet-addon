@@ -1,6 +1,3 @@
-const chai = require('chai')
-const expect = chai.expect
-
 const { testFieldTypes } = require('../helper.js')
 
 const {
@@ -17,7 +14,7 @@ const {
   formatDate
 } = require('../setup.js')
 
-describe('exchange_outflow metric', async () => {
+describe('SAN_EXCHANGE_OUTFLOW', () => {
   const expected = {
     date: 'string',
     value: 'number'

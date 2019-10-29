@@ -24,7 +24,7 @@ const metricsList = [
   {
     metric: 'mvrv',
     sheetMetricName: 'mvrv_ratio',
-    description: 'the MVRV',
+    description: 'MVRV(Market-Value-to-Realized-Value)',
     supportedCurrencies: ['usd'],
     hasTimeBound: true
   },

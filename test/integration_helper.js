@@ -26,6 +26,15 @@ const testTimeBound = (metric, slug, from, to, currency, days, numberOfDays, for
         results = metric(slug, from, to, timeBoundSuffix)
       }
 
+      testHandlesNullData(
+        'fetchGetMetric',
+        metric,
+        from,
+        to,
+        currency,
+        timeBound
+      )
+
       assertNumberOfRecords(results, numberOfDays)
       for (let [index, day] of days.entries()) {
         expect(results[index + 1][0]).to.equal(formatDate(day))
