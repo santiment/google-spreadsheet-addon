@@ -26,7 +26,8 @@ const metricsList = [
     sheetMetricName: 'mvrv_ratio',
     description: 'MVRV(Market-Value-to-Realized-Value)',
     supportedCurrencies: ['usd'],
-    hasTimeBound: true
+    hasTimeBound: true,
+    returns: 'of ratios'
   },
   {
     metric: 'circulation',
@@ -50,7 +51,14 @@ const metricsList = [
   {
     metric: 'nvt',
     sheetMetricName: 'nvt_ratio',
-    description: 'NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)'
+    description: `NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+* Since Daily Transaction Volume gets rather noisy and easy to manipulate
+* by transferring the same tokens through couple of addresses over and over again,
+* it’s not an ideal measure of a network’s economic activity.
+* That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
+* which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
+`,
+    returns: 'of NVT ratios'
   }
 ]
 

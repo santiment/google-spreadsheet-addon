@@ -7,7 +7,7 @@
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
-* @returns {number} returns the daily average marketcap.
+* @returns {Array} returns the daily average marketcap.
 * @customfunction
 */
 function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency) {
@@ -23,7 +23,7 @@ function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency) {
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
-* @returns {number} returns the daily closing marketcap.
+* @returns {Array} returns the daily closing marketcap.
 * @customfunction
 */
 function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency) {
@@ -37,7 +37,7 @@ function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the daily active addresses.
+* @returns {Array} returns the daily active addresses.
 * @customfunction
 */
 function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
@@ -55,7 +55,7 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the mean realized price.
+* @returns {Array} returns the mean realized price.
 * @customfunction
 */
 function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
@@ -71,7 +71,7 @@ function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
-* @returns {number} returns the difference between MVRV.
+* @returns {Array} returns the difference between MVRV.
 * @customfunction
 */
 function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
@@ -89,7 +89,7 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns MVRV(Market-Value-to-Realized-Value).
+* @returns {Array} returns of ratios.
 * @customfunction
 */
 function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {
@@ -105,7 +105,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the token circulation.
+* @returns {Array} returns the token circulation.
 * @customfunction
 */
 function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound) {
@@ -119,7 +119,7 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the token's mean age.
+* @returns {Array} returns the token's mean age.
 * @customfunction
 */
 function SAN_MEAN_AGE (projectSlug, from, to) {
@@ -137,7 +137,7 @@ function SAN_MEAN_AGE (projectSlug, from, to) {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
-* @returns {number} returns the token's realized value.
+* @returns {Array} returns the token's realized value.
 * @customfunction
 */
 function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound) {
@@ -151,7 +151,7 @@ function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the token's velocity.
+* @returns {Array} returns the token's velocity.
 * @customfunction
 */
 function SAN_VELOCITY (projectSlug, from, to) {
@@ -165,7 +165,7 @@ function SAN_VELOCITY (projectSlug, from, to) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the transaction volume.
+* @returns {Array} returns the transaction volume.
 * @customfunction
 */
 function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
@@ -179,7 +179,7 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the exchange inflow.
+* @returns {Array} returns the exchange inflow.
 * @customfunction
 */
 function SAN_EXCHANGE_INFLOW (projectSlug, from, to) {
@@ -193,7 +193,7 @@ function SAN_EXCHANGE_INFLOW (projectSlug, from, to) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the exchange outflow.
+* @returns {Array} returns the exchange outflow.
 * @customfunction
 */
 function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to) {
@@ -207,7 +207,7 @@ function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the exchange balance.
+* @returns {Array} returns the exchange balance.
 * @customfunction
 */
 function SAN_EXCHANGE_BALANCE (projectSlug, from, to) {
@@ -221,7 +221,7 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to) {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns the token's age destroyed.
+* @returns {Array} returns the token's age destroyed.
 * @customfunction
 */
 function SAN_AGE_DESTROYED (projectSlug, from, to) {
@@ -230,12 +230,18 @@ function SAN_AGE_DESTROYED (projectSlug, from, to) {
 
 /**
 * Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+* Since Daily Transaction Volume gets rather noisy and easy to manipulate
+* by transferring the same tokens through couple of addresses over and over again,
+* it’s not an ideal measure of a network’s economic activity.
+* That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
+* which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
+
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {number} returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume).
+* @returns {Array} returns of NVT ratios.
 * @customfunction
 */
 function SAN_NVT_RATIO (projectSlug, from, to) {

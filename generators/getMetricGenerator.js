@@ -21,13 +21,14 @@ function generateFunctionString_ (metric) {
   metric.supportedCurrencies = metric.supportedCurrencies || []
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
+  metric.returns = metric.returns || metric.description
   let generatedString =
-    fillTemplate(metric.metric, metric.sheetMetricName, metric.description, metric.supportedCurrencies, metric.hasTimeBound)
+    fillTemplate(metric.metric, metric.sheetMetricName, metric.description, metric.returns, metric.supportedCurrencies, metric.hasTimeBound)
 
   return generatedString
 }
 
-function fillTemplate (metric, sheetMetricName, description, currency, timeBound) {
+function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound) {
   let [options, bonusDescription, functionArguments] =
     optionsGenerator_(currency, timeBound)
 
@@ -38,7 +39,7 @@ function fillTemplate (metric, sheetMetricName, description, currency, timeBound
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
-* @returns {number} returns ${description}.
+* @returns {Array} returns ${returns}.
 * @customfunction
 */
 function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
