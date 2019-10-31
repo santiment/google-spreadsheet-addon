@@ -1,18 +1,8 @@
 const { testFieldTypes } = require('../helper.js')
 
-const {
-  testHandlesNullData,
-  assertNumberOfRecords
-} = require('../integration_helper.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../integration_helper.js')
 
-const {
-  slug,
-  from,
-  to,
-  days,
-  numberOfDays,
-  formatDate
-} = require('../setup.js')
+const { slug, from, to, numberOfDays, days } = require('../setup.js')
 
 describe('SAN_ACTIVE_ADDRESSES', () => {
   const expected = {
@@ -37,10 +27,6 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
 
     assertNumberOfRecords(addresses, numberOfDays)
 
-    for (let [index, day] of days.entries()) {
-      if (day in addresses[index + 1]) {
-        expect(addresses[index + 1][0]).to.equal(formatDate(day))
-      }
-    }
+    assertDaysMatch(addresses, days)
   })
 })

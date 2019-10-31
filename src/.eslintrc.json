@@ -56,7 +56,6 @@
     "devActivity_": "readonly",
     "networkGrowth_": "readonly",
     "exchangeFundsFlow_": "readonly",
-    "tokenCirculation_": "readonly",
     "emergingTrends_": "readonly",
     "fetchProjectFundamentals_": "readonly",
     "projectSocialData_": "readonly",

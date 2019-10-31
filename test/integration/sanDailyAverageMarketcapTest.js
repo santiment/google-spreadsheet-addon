@@ -2,7 +2,8 @@ const { testFieldTypes } = require('../helper.js')
 
 const {
   testHandlesNullData,
-  assertNumberOfRecords
+  assertNumberOfRecords,
+  assertDaysMatch
 } = require('../integration_helper.js')
 
 const {
@@ -10,9 +11,8 @@ const {
   from,
   to,
   currency,
-  days,
   numberOfDays,
-  formatDate
+  days
 } = require('../setup.js')
 
 describe('SAN_DAILY_AVG_MARKETCAP', () => {
@@ -42,9 +42,7 @@ describe('SAN_DAILY_AVG_MARKETCAP', () => {
 
     assertNumberOfRecords(results, numberOfDays)
 
-    for (let [index, day] of days.entries()) {
-      expect(results[index + 1][0]).to.equal(formatDate(day))
-    }
+    assertDaysMatch(results, days)
   })
 
   it('returns a record per every day with currency argument', () => {
@@ -52,8 +50,6 @@ describe('SAN_DAILY_AVG_MARKETCAP', () => {
 
     assertNumberOfRecords(results, numberOfDays)
 
-    for (let [index, day] of days.entries()) {
-      expect(results[index + 1][0]).to.equal(formatDate(day))
-    }
+    assertDaysMatch(results, days)
   })
 })

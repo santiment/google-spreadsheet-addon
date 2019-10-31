@@ -1,19 +1,8 @@
 const { testFieldTypes } = require('../helper.js')
 
-const {
-  testHandlesNullData,
-  assertNumberOfRecords
-} = require('../integration_helper.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../integration_helper.js')
 
-const {
-  slug,
-  from,
-  to,
-  currency,
-  days,
-  numberOfDays,
-  formatDate
-} = require('../setup.js')
+const { slug, from, to, currency, numberOfDays, days } = require('../setup.js')
 
 describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
   const expected = {
@@ -42,8 +31,6 @@ describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
     const results = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to, currency)
     assertNumberOfRecords(results, numberOfDays)
 
-    for (let [index, day] of days.entries()) {
-      expect(results[index + 1][0]).to.equal(formatDate(day))
-    }
+    assertDaysMatch(results, days)
   })
 })
