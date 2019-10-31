@@ -4,7 +4,7 @@
   "description": "Google spreadsheet add-on for consuming Santiment data",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc2md src/sheetFunctions.js > doc/sheet_functions.md",
+    "docs": "node ./generateDoc.js",
     "push": "clasp push -f",
     "pretest": "eslint . && npm run generate",
     "test": "mocha",
