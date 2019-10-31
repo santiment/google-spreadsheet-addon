@@ -1,5 +1,5 @@
-var timeBound = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
-var currencies = ['usd']
+var TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
+var CURRENCIES = ['usd']
 
 function currencyOptionChecker_ (options) {
   if ('currency' in options) {
@@ -26,11 +26,11 @@ append '_<currency>' and/or _<number><[d|y]> at the end of the name.
 function metricNameGenerator_ (metric, options) {
   var metricName = metric
 
-  if (currencies.indexOf(options.currency) >= 0) {
+  if (CURRENCIES.indexOf(options.currency) >= 0) {
     metricName += ('_' + options.currency)
   }
 
-  if (options.timeBound !== '' && timeBound.indexOf(options.timeBound) >= 0) {
+  if (options.timeBound !== '' && TIME_BOUNDS.indexOf(options.timeBound) >= 0) {
     metricName += ('_' + options.timeBound)
   }
 
