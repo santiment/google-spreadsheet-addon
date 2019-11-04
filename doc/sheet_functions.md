@@ -2,7 +2,9 @@
 
 <dl>
 <dt><a href="#SAN_ACTIVE_ADDRESSES">SAN_ACTIVE_ADDRESSES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the daily active addresses</p>
+<dd><p>Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses&quot; refers to the number of unique addresses that
+participated in transactions on a blockchain.</p>
 </dd>
 <dt><a href="#SAN_ACTIVE_DEPOSITS">SAN_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
@@ -17,10 +19,10 @@ volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day.</p>
 </dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the daily average marketcap</p>
+<dd><p>Returns the daily average marketcap.</p>
 </dd>
 <dt><a href="#SAN_DAILY_CLOSING_MARKETCAP">SAN_DAILY_CLOSING_MARKETCAP(projectSlug, from, to, currency)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the daily closing marketcap</p>
+<dd><p>Returns the daily closing marketcap.</p>
 </dd>
 <dt><a href="#SAN_DAILY_CLOSING_PRICE">SAN_DAILY_CLOSING_PRICE(projectSlug, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the closing price for a given day.</p>
@@ -44,17 +46,17 @@ ETH spent in the last 7 days, ETH spent in the last day and main contract addres
 <dd><p>Top ETH transactions for project&#39;s team wallets.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_BALANCE">SAN_EXCHANGE_BALANCE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the exchange balance</p>
+<dd><p>Returns the exchange balance.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_FUNDS_FLOW">SAN_EXCHANGE_FUNDS_FLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetches the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_INFLOW">SAN_EXCHANGE_INFLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the exchange inflow</p>
+<dd><p>Returns the exchange inflow.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW">SAN_EXCHANGE_OUTFLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the exchange outflow</p>
+<dd><p>Returns the exchange outflow.</p>
 </dd>
 <dt><a href="#SAN_GAS_USED">SAN_GAS_USED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns used Gas by a blockchain.
@@ -74,10 +76,10 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dd><p>Returns the latest price for a given asset in a desired currency.</p>
 </dd>
 <dt><a href="#SAN_MEAN_AGE">SAN_MEAN_AGE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the token&#39;s mean age</p>
+<dd><p>Returns the token&#39;s mean age.</p>
 </dd>
 <dt><a href="#SAN_MEAN_REALIZED_PRICE">SAN_MEAN_REALIZED_PRICE(projectSlug, from, to, currency, timeBound)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the mean realized price</p>
+<dd><p>Returns the mean realized price.</p>
 </dd>
 <dt><a href="#SAN_MINERS_BALANCE">SAN_MINERS_BALANCE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns miners balances over time
@@ -89,10 +91,10 @@ What part of the miners are using top3, top10 and all the other pools.
 Currently only ETH is supported.</p>
 </dd>
 <dt><a href="#SAN_MVRV_LONG_SHORT_DIFF">SAN_MVRV_LONG_SHORT_DIFF(projectSlug, from, to, currency)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the difference between MVRV</p>
+<dd><p>Returns the difference between MVRV.</p>
 </dd>
 <dt><a href="#SAN_MVRV_RATIO">SAN_MVRV_RATIO(projectSlug, from, to, currency, timeBound)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns MVRV(Market-Value-to-Realized-Value)</p>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
 </dd>
 <dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the number of new addresses being created on the project network
@@ -107,7 +109,8 @@ Since Daily Transaction Volume gets rather noisy and easy to manipulate
 by transferring the same tokens through couple of addresses over and over again,
 it’s not an ideal measure of a network’s economic activity.
 That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.</p>
+which filters out excess transactions and provides a cleaner overview of a blockchain’s
+daily transaction throughput.</p>
 </dd>
 <dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets the open, high, low, and close price values for the specified asset,
@@ -134,7 +137,9 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 <dd><p>Fetch social data for a specified project.</p>
 </dd>
 <dt><a href="#SAN_REALIZED_VALUE">SAN_REALIZED_VALUE(projectSlug, from, to, currency, timeBound)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the token&#39;s realized value</p>
+<dd><p>Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, from, to, source)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the % of the social dominance a given project has over time in a given social channel.</p>
@@ -152,7 +157,7 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <p>Grouping by interval works by summing all records in the interval.</p>
 </dd>
 <dt><a href="#SAN_TOKEN_CIRCULATION">SAN_TOKEN_CIRCULATION(projectSlug, from, to, timeBound)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the token circulation</p>
+<dd><p>Returns token circulation for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
 <dd><p>Top token transactions for a given slug</p>
@@ -161,20 +166,24 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dd><p>Returns the top holders&#39; percent of total supply - in exchanges, outside exchanges and combined.</p>
 </dd>
 <dt><a href="#SAN_TRANSACTION_VOLUME">SAN_TRANSACTION_VOLUME(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the transaction volume</p>
+<dd><p>Gets the transaction volume for the specified asset, during a given time interval.
+Transaction Volume&quot; refers to the total number of tokens within all
+transfers that have occurred on a blockchain.</p>
 </dd>
 <dt><a href="#SAN_VELOCITY">SAN_VELOCITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the token&#39;s velocity</p>
+<dd><p>Returns the token&#39;s velocity.</p>
 </dd>
 </dl>
 
 <a name="SAN_ACTIVE_ADDRESSES"></a>
 
 ## SAN\_ACTIVE\_ADDRESSES(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the daily active addresses
+Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses" refers to the number of unique addresses that
+participated in transactions on a blockchain.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the daily active addresses.  
+**Returns**: <code>Array</code> - of daily active addresses numbers.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -204,7 +213,7 @@ Returns number of unique deposit addresses that have been active for a project.
 Returns the token's age destroyed
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the token's age destroyed.  
+**Returns**: <code>Array</code> - of age destroyed values.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -227,10 +236,10 @@ ETH spent in the last 7 days, ETH spent in the last day.
 <a name="SAN_DAILY_AVG_MARKETCAP"></a>
 
 ## SAN\_DAILY\_AVG\_MARKETCAP(projectSlug, from, to, currency) ⇒ <code>Array</code>
-Returns the daily average marketcap
+Returns the daily average marketcap.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the daily average marketcap.  
+**Returns**: <code>Array</code> - of daily average marketcaps.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -243,10 +252,10 @@ Returns the daily average marketcap
 <a name="SAN_DAILY_CLOSING_MARKETCAP"></a>
 
 ## SAN\_DAILY\_CLOSING\_MARKETCAP(projectSlug, from, to, currency) ⇒ <code>Array</code>
-Returns the daily closing marketcap
+Returns the daily closing marketcap.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the daily closing marketcap.  
+**Returns**: <code>Array</code> - of daily closing marketcaps.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -346,10 +355,10 @@ Top ETH transactions for project's team wallets.
 <a name="SAN_EXCHANGE_BALANCE"></a>
 
 ## SAN\_EXCHANGE\_BALANCE(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the exchange balance
+Returns the exchange balance.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the exchange balance.  
+**Returns**: <code>Array</code> - of exchange balances.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -377,10 +386,10 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <a name="SAN_EXCHANGE_INFLOW"></a>
 
 ## SAN\_EXCHANGE\_INFLOW(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the exchange inflow
+Returns the exchange inflow.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the exchange inflow.  
+**Returns**: <code>Array</code> - of exchange inflows.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -392,10 +401,10 @@ Returns the exchange inflow
 <a name="SAN_EXCHANGE_OUTFLOW"></a>
 
 ## SAN\_EXCHANGE\_OUTFLOW(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the exchange outflow
+Returns the exchange outflow.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the exchange outflow.  
+**Returns**: <code>Array</code> - of exchange outflows.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -484,10 +493,10 @@ Returns the latest price for a given asset in a desired currency.
 <a name="SAN_MEAN_AGE"></a>
 
 ## SAN\_MEAN\_AGE(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the token's mean age
+Returns the token's mean age.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the token's mean age.  
+**Returns**: <code>Array</code> - of mean age values.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -499,10 +508,10 @@ Returns the token's mean age
 <a name="SAN_MEAN_REALIZED_PRICE"></a>
 
 ## SAN\_MEAN\_REALIZED\_PRICE(projectSlug, from, to, currency, timeBound) ⇒ <code>Array</code>
-Returns the mean realized price
+Returns the mean realized price.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the mean realized price.  
+**Returns**: <code>Array</code> - of mean realized prices.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -549,10 +558,10 @@ Currently only ETH is supported.
 <a name="SAN_MVRV_LONG_SHORT_DIFF"></a>
 
 ## SAN\_MVRV\_LONG\_SHORT\_DIFF(projectSlug, from, to, currency) ⇒ <code>Array</code>
-Returns the difference between MVRV
+Returns the difference between MVRV.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the difference between MVRV.  
+**Returns**: <code>Array</code> - of MVRV differences.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -565,10 +574,10 @@ Returns the difference between MVRV
 <a name="SAN_MVRV_RATIO"></a>
 
 ## SAN\_MVRV\_RATIO(projectSlug, from, to, currency, timeBound) ⇒ <code>Array</code>
-Returns MVRV(Market-Value-to-Realized-Value)
+Returns MVRV(Market-Value-to-Realized-Value).
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns of ratios.  
+**Returns**: <code>Array</code> - of MVRV ratios.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -619,10 +628,11 @@ Since Daily Transaction Volume gets rather noisy and easy to manipulate
 by transferring the same tokens through couple of addresses over and over again,
 it’s not an ideal measure of a network’s economic activity.
 That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
+which filters out excess transactions and provides a cleaner overview of a blockchain’s
+daily transaction throughput.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns of NVT ratios.  
+**Returns**: <code>Array</code> - of NVT ratios  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -739,10 +749,12 @@ Fetch social data for a specified project.
 <a name="SAN_REALIZED_VALUE"></a>
 
 ## SAN\_REALIZED\_VALUE(projectSlug, from, to, currency, timeBound) ⇒ <code>Array</code>
-Returns the token's realized value
+Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the token's realized value.  
+**Returns**: <code>Array</code> - of realized values.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -815,10 +827,10 @@ Grouping by interval works by summing all records in the interval.
 <a name="SAN_TOKEN_CIRCULATION"></a>
 
 ## SAN\_TOKEN\_CIRCULATION(projectSlug, from, to, timeBound) ⇒ <code>Array</code>
-Returns the token circulation
+Returns token circulation for a given slug and time interval.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the token circulation.  
+**Returns**: <code>Array</code> - of token circulation values.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -863,10 +875,12 @@ Returns the top holders' percent of total supply - in exchanges, outside exchang
 <a name="SAN_TRANSACTION_VOLUME"></a>
 
 ## SAN\_TRANSACTION\_VOLUME(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the transaction volume
+Gets the transaction volume for the specified asset, during a given time interval.
+Transaction Volume" refers to the total number of tokens within all
+transfers that have occurred on a blockchain.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the transaction volume.  
+**Returns**: <code>Array</code> - of transaction volumes.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -878,10 +892,10 @@ Returns the transaction volume
 <a name="SAN_VELOCITY"></a>
 
 ## SAN\_VELOCITY(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the token's velocity
+Returns the token's velocity.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - returns the token's velocity.  
+**Returns**: <code>Array</code> - of token velocity values.  
 **Customfunction**:   
 
 | Param | Type | Description |
