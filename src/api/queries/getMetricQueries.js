@@ -2,17 +2,9 @@ var TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', 
 var SUPPORTED_CURRENCIES = ['USD']
 var DEFAULT_CURRENCY = 'USD'
 
-function currencyOptionChecker_ (options) {
+function prepareOptions_ (options) {
   if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
-}
-
-function timeboundOptionChecker_ (options) {
   if ('timeBound' in options) { options.timeBound = options.timeBound || '' }
-}
-
-function optionsChecker_ (options) {
-  currencyOptionChecker_(options)
-  timeboundOptionChecker_(options)
 }
 
 function supportedCurrencies_ () {
@@ -40,7 +32,7 @@ function metricNameGenerator_ (metric, options) {
 }
 
 ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, options) {
-  optionsChecker_(options)
+  prepareOptions_(options)
   var metricName = metricNameGenerator_(metric, options)
   var query = {
     'query': '{\

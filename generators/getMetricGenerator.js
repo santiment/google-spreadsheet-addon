@@ -47,7 +47,7 @@ ${description}
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
-* @returns {Array} ${returns}
+* @returns {Array} of ${returns}
 * @customfunction
 */
 function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
@@ -85,13 +85,7 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
 }
 
 function prepareDescription_ (description) {
-  return description.flatMap((el, index) => {
-    if (index === description.length - 1) {
-      return '* '.concat(el)
-    } else {
-      return '* '.concat(el).concat('\n')
-    }
-  }).join('')
+  return description.map((el) => '* '.concat(el)).join('\n')
 }
 
 module.exports = {

@@ -2,13 +2,13 @@ const metricsList = [
   {
     metric: 'daily_avg_marketcap',
     description: ['Returns the daily average marketcap.'],
-    returns: 'of daily average marketcaps.',
+    returns: 'daily average marketcaps.',
     supportedCurrencies: ['USD']
   },
   {
     metric: 'daily_closing_marketcap',
     description: ['Returns the daily closing marketcap.'],
-    returns: 'of daily closing marketcaps.',
+    returns: 'daily closing marketcaps.',
     supportedCurrencies: ['USD']
   },
   {
@@ -19,26 +19,26 @@ const metricsList = [
       'Active Addresses" refers to the number of unique addresses that',
       'participated in transactions on a blockchain.'
     ],
-    returns: 'of daily active addresses numbers.'
+    returns: 'daily active addresses numbers.'
   },
   {
     metric: 'mean_realized_price',
     description: ['Returns the mean realized price.'],
-    returns: 'of mean realized prices.',
+    returns: 'mean realized prices.',
     supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
   {
     metric: 'mvrv_long_short_diff',
     description: ['Returns the difference between MVRV.'],
-    returns: 'of MVRV differences.',
+    returns: 'MVRV differences.',
     supportedCurrencies: ['USD']
   },
   {
     metric: 'mvrv',
     sheetMetricName: 'mvrv_ratio',
     description: ['Returns MVRV(Market-Value-to-Realized-Value).'],
-    returns: 'of MVRV ratios.',
+    returns: 'MVRV ratios.',
     supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
@@ -46,13 +46,13 @@ const metricsList = [
     metric: 'circulation',
     sheetMetricName: 'token_circulation',
     description: ['Returns token circulation for a given slug and time interval.'],
-    returns: 'of token circulation values.',
+    returns: 'token circulation values.',
     hasTimeBound: true
   },
   {
     metric: 'mean_age',
     description: ['Returns the token\'s mean age.'],
-    returns: 'of mean age values.' },
+    returns: 'mean age values.' },
   {
     metric: 'realized_value',
     description: [
@@ -60,14 +60,14 @@ const metricsList = [
       'The realized value across the whole network is computed by summing the realized values',
       'of all wallets holding tokens at the moment.'
     ],
-    returns: 'of realized values.',
+    returns: 'realized values.',
     supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
   {
     metric: 'velocity',
     description: ['Returns the token\'s velocity.'],
-    returns: 'of token velocity values.'
+    returns: 'token velocity values.'
   },
   {
     metric: 'transaction_volume',
@@ -76,27 +76,27 @@ const metricsList = [
       'Transaction Volume" refers to the total number of tokens within all',
       'transfers that have occurred on a blockchain.'
     ],
-    returns: 'of transaction volumes.'
+    returns: 'transaction volumes.'
   },
   {
     metric: 'exchange_inflow',
     description: ['Returns the exchange inflow.'],
-    returns: 'of exchange inflows.'
+    returns: 'exchange inflows.'
   },
   {
     metric: 'exchange_outflow',
     description: ['Returns the exchange outflow.'],
-    returns: 'of exchange outflows.'
+    returns: 'exchange outflows.'
   },
   {
     metric: 'exchange_balance',
     description: ['Returns the exchange balance.'],
-    returns: 'of exchange balances.'
+    returns: 'exchange balances.'
   },
   {
     metric: 'age_destroyed',
     description: ['Returns the token\'s age destroyed'],
-    returns: 'of age destroyed values.'
+    returns: 'age destroyed values.'
   },
   {
     metric: 'nvt',
@@ -110,7 +110,7 @@ const metricsList = [
       'which filters out excess transactions and provides a cleaner overview of a blockchain’s',
       'daily transaction throughput.'
     ],
-    returns: 'of NVT ratios'
+    returns: 'NVT ratios'
   }
 ]
 
