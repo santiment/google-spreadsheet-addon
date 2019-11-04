@@ -45,6 +45,12 @@ and then run the tests:
 $ docker run -t google-spreadsheet-addon-tests
 ```
 
+### Generate documentation
+
+```bash
+$ npm run docs
+```
+
 ### Pushing to webeditor
 
 ```bash

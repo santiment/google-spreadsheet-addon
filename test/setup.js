@@ -17,6 +17,8 @@ const to = endOfYesterday()
 const from = startOfDay(subDays(to, numberOfDays))
 const days = eachDay(from, subDays(to, 1)) // last day should not be included (has not started yet)
 
+const currency = 'usd'
+
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
 
 module.exports = {
@@ -28,5 +30,6 @@ module.exports = {
   days: days,
   numberOfDays: numberOfDays,
   formatDate: formatDate,
-  ethAddress: ethAddress
+  ethAddress: ethAddress,
+  currency: currency
 }

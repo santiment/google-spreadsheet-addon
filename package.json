@@ -4,10 +4,11 @@
   "description": "Google spreadsheet add-on for consuming Santiment data",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc2md src/sheetFunctions.js > doc/sheet_functions.md",
+    "docs": "node ./generateDoc.js",
     "push": "clasp push -f",
-    "pretest": "eslint .",
-    "test": "mocha"
+    "pretest": "eslint . && npm run generate",
+    "test": "mocha",
+    "generate": "node ./generators/mainGenerator.js"
   },
   "repository": {
     "type": "git",
@@ -32,9 +33,11 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "fs-extra": "^8.1.0",
     "gas-local": "^1.3.1",
     "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^5.2",
+    "path": "^0.12.7",
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "sugar": "^2.0.4",

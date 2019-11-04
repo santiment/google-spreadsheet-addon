@@ -67,41 +67,6 @@ function SAN_ALL_PROJECTS () {
 function SAN_ERC20_PROJECTS () {
   return handleErrors_(erc20Projects_)()
 }
-
-/**
- * Gets the active addresses for the specified asset, during a given time interval.
- * "Active Addresses" refers to the number of unique addresses that
- * participated in transactions on a blockchain.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of number of active addresses.
- * @customfunction
- */
-function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
-  return handleErrors_(activeAddresses_)(projectSlug, from, to)
-}
-
-/**
- * Gets the transaction volume for the specified asset, during a given time interval.
- * "Transaction Volume" refers to the total number of tokens within all
- * transfers that have occurred on a blockchain.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of transaction volumes.
- * @customfunction
- */
-function SAN_TRANSACTION_VOLUME (projectSlug, from, to) {
-  return handleErrors_(transactionVolume_)(projectSlug, from, to)
-}
-
 /**
  * Gets the open, high, low, and close price values for the specified asset,
  * during a given time interval.
@@ -229,21 +194,6 @@ function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
 }
 
 /**
- * Returns token circulation for a given slug and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of token circulation.
- * @customfunction
- */
-function SAN_TOKEN_CIRCULATION (projectSlug, from, to) {
-  return handleErrors_(tokenCirculation_)(projectSlug, from, to)
-}
-
-/**
  * Returns list of emerging trends and their corresponding trend score.
  *
  * @param {number} size An integer showing how many words should be included in the top list (max 100).
@@ -301,39 +251,6 @@ function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
 }
 
 /**
- * Returns MVRV(Market-Value-to-Realized-Value)
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of ratios.
- * @customfunction
- */
-function SAN_MVRV_RATIO (projectSlug, from, to) {
-  return handleErrors_(mvrvRatio_)(projectSlug, from, to)
-}
-
-/**
- * Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
- * Since Daily Transaction Volume gets rather noisy and easy to manipulate
- * by transferring the same tokens through couple of addresses over and over again,
- * it’s not an ideal measure of a network’s economic activity.
- * That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
- * which filters out excess transactions and provides a cleaner overview of a blockchain’s daily transaction throughput.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of NVT ratios.
- * @customfunction
- */
-function SAN_NVT_RATIO (projectSlug, from, to) {
-  return handleErrors_(nvtRatio_)(projectSlug, from, to)
-}
-
-/**
  * Returns number of unique deposit addresses that have been active for a project.
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -345,22 +262,6 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
  */
 function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
   return handleErrors_(activeDeposits_)(projectSlug, from, to)
-}
-
-/**
- * Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
- * The realized value across the whole network is computed by summing the realized values
- * of all wallets holding tokens at the moment.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of realized values.
- * @customfunction
- */
-function SAN_REALIZED_VALUE (projectSlug, from, to) {
-  return handleErrors_(realizedValue_)(projectSlug, from, to)
 }
 
 /**

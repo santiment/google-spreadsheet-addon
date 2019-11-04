@@ -4,18 +4,22 @@ const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require(
 
 const { slug, from, to, numberOfDays, days } = require('../setup.js')
 
-describe('SAN_ACTIVE_ADDRESSES', () => {
+describe('SAN_EXCHANGE_OUTFLOW', () => {
   const expected = {
     date: 'string',
-    activeAddresses: 'number'
+    value: 'number'
   }
 
-  const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
+  const response = san.SAN_EXCHANGE_OUTFLOW(slug, from, to)
   const headers = response[0]
-  const addresses = response[1]
-
-  testFieldTypes(addresses, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_ACTIVE_ADDRESSES, slug, from, to)
+  const results = response[1]
+  testFieldTypes(results, expected)
+  testHandlesNullData(
+    'fetchGetMetric',
+    san.SAN_EXCHANGE_OUTFLOW,
+    slug,
+    from,
+    to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -23,10 +27,10 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
+    const results = san.SAN_EXCHANGE_OUTFLOW(slug, from, to)
 
-    assertNumberOfRecords(addresses, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(addresses, days)
+    assertDaysMatch(results, days)
   })
 })

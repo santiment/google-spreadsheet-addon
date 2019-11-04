@@ -1,22 +1,32 @@
 const { testFieldTypes } = require('../helper.js')
 
-const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../integration_helper.js')
+const {
+  testHandlesNullData,
+  assertNumberOfRecords
+} = require('../integration_helper.js')
 
-const { slug, from, to, numberOfDays, days } = require('../setup.js')
+const {
+  slug,
+  from,
+  to,
+  days,
+  numberOfDays,
+  formatDate
+} = require('../setup.js')
 
-describe('SAN_TRANSACTION_VOLUME', () => {
+describe('SAN_EXCHANGE_BALANCE', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_TRANSACTION_VOLUME(slug, from, to)
+  const response = san.SAN_EXCHANGE_BALANCE(slug, from, to)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchGetMetric',
-    san.SAN_TRANSACTION_VOLUME,
+    san.SAN_EXCHANGE_BALANCE,
     slug,
     from,
     to)
@@ -27,10 +37,12 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_TRANSACTION_VOLUME(slug, from, to)
+    const results = san.SAN_EXCHANGE_BALANCE(slug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(results, days)
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
   })
 })
