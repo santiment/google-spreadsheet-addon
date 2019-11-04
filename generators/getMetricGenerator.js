@@ -64,7 +64,9 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
     options: []
   }
   if (supportedCurrencies.length > 0) {
-    returnedValues.description.push(CURRENCY_DESCRIPTION.replace('(currencies)', supportedCurrencies.join(', ').toUpperCase()))
+    returnedValues.description.push(
+      CURRENCY_DESCRIPTION.replace('(currencies)', supportedCurrencies.join(', '))
+    )
     returnedValues.arguments.push('currency')
     returnedValues.options.push('currency: currency')
   }

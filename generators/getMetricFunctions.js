@@ -3,13 +3,13 @@ const metricsList = [
     metric: 'daily_avg_marketcap',
     description: ['Returns the daily average marketcap.'],
     returns: 'of daily average marketcaps.',
-    supportedCurrencies: ['usd']
+    supportedCurrencies: ['USD']
   },
   {
     metric: 'daily_closing_marketcap',
     description: ['Returns the daily closing marketcap.'],
     returns: 'of daily closing marketcaps.',
-    supportedCurrencies: ['usd']
+    supportedCurrencies: ['USD']
   },
   {
     metric: 'daily_active_addresses',
@@ -25,21 +25,21 @@ const metricsList = [
     metric: 'mean_realized_price',
     description: ['Returns the mean realized price.'],
     returns: 'of mean realized prices.',
-    supportedCurrencies: ['usd'],
+    supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
   {
     metric: 'mvrv_long_short_diff',
     description: ['Returns the difference between MVRV.'],
     returns: 'of MVRV differences.',
-    supportedCurrencies: ['usd']
+    supportedCurrencies: ['USD']
   },
   {
     metric: 'mvrv',
     sheetMetricName: 'mvrv_ratio',
     description: ['Returns MVRV(Market-Value-to-Realized-Value).'],
     returns: 'of MVRV ratios.',
-    supportedCurrencies: ['usd'],
+    supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
   {
@@ -61,7 +61,7 @@ const metricsList = [
       'of all wallets holding tokens at the moment.'
     ],
     returns: 'of realized values.',
-    supportedCurrencies: ['usd'],
+    supportedCurrencies: ['USD'],
     hasTimeBound: true
   },
   {

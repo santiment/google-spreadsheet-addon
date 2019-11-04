@@ -9,7 +9,7 @@ describe('getMetric', () => {
         'test_metric_sheet_name',
         ['Returns test description.'],
         'of test returns.',
-        ['usd'],
+        ['USD'],
         true
       )
 
@@ -74,7 +74,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to) {
         'test_metric_sheet_name',
         ['Returns test description.'],
         'of test returns.',
-        ['usd'],
+        ['USD'],
         false
       )
 

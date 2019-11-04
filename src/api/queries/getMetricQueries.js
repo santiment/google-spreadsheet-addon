@@ -1,21 +1,22 @@
 var TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
-var CURRENCIES = ['usd']
+var SUPPORTED_CURRENCIES = ['USD']
+var DEFAULT_CURRENCY = 'USD'
 
 function currencyOptionChecker_ (options) {
-  if ('currency' in options) {
-    options.currency = options.currency || 'usd'
-  }
+  if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
 }
 
 function timeboundOptionChecker_ (options) {
-  if ('timeBound' in options) {
-    options.timeBound = options.timeBound || ''
-  }
+  if ('timeBound' in options) { options.timeBound = options.timeBound || '' }
 }
 
 function optionsChecker_ (options) {
   currencyOptionChecker_(options)
   timeboundOptionChecker_(options)
+}
+
+function supportedCurrencies_ () {
+  return SUPPORTED_CURRENCIES.map(function (currency) { return currency.toLowerCase() })
 }
 
 /*
@@ -25,9 +26,10 @@ append '_<currency>' and/or _<number><[d|y]> at the end of the name.
 */
 function metricNameGenerator_ (metric, options) {
   var metricName = metric
+  var requestedCurrency = (options.currency || '').toLowerCase()
 
-  if (CURRENCIES.indexOf(options.currency) >= 0) {
-    metricName += ('_' + options.currency)
+  if ((supportedCurrencies_()).indexOf(requestedCurrency) >= 0) {
+    metricName += ('_' + requestedCurrency)
   }
 
   if (options.timeBound !== '' && TIME_BOUNDS.indexOf(options.timeBound) >= 0) {
@@ -47,8 +49,8 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, options)
                          to: "' + toUTC_(to) + '",\
                          slug: "' + slug + '",\
                          interval: "1d"){\
-                            datetime\
-                            value\
+                           datetime\
+                           value\
           }\
       }\
     }'
