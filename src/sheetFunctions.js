@@ -1,5 +1,5 @@
 /**
- * Gets the prices for the specified asset, during a given time interval.
+ * Returns the prices for the specified asset, during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -44,7 +44,7 @@ function SAN_PRICE_PERCENT_CHANGE (projectSlug, from, to) {
 }
 
 /**
- * Gets an array of all assets for which Santiment has data.
+ * Returns an array of all assets for which Santiment has data.
  * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
  * ETH spent in the last 7 days, ETH spent in the last day.
@@ -57,7 +57,7 @@ function SAN_ALL_PROJECTS () {
 }
 
 /**
- * Gets an array of all ERC20 assets for which Santiment has data.
+ * Returns an array of all ERC20 assets for which Santiment has data.
  * Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
  * volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
  * ETH spent in the last 7 days, ETH spent in the last day and main contract address.
@@ -67,8 +67,9 @@ function SAN_ALL_PROJECTS () {
 function SAN_ERC20_PROJECTS () {
   return handleErrors_(erc20Projects_)()
 }
+
 /**
- * Gets the open, high, low, and close price values for the specified asset,
+ * Returns the open, high, low, and close price values for the specified asset,
  * during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
@@ -84,7 +85,7 @@ function SAN_OHLC (projectSlug, from, to) {
 }
 
 /**
- * Gets the price-volume difference technical indicator for a given asset,
+ * Returns the price-volume difference technical indicator for a given asset,
  * currency and time interval. This indicator measures the difference in trend between price and volume,
  * specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
  *
@@ -178,7 +179,7 @@ function SAN_NETWORK_GROWTH (projectSlug, from, to) {
 }
 
 /**
- * Fetches the difference between the tokens that were deposited minus
+ * Returns the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
@@ -220,7 +221,7 @@ function SAN_PROJECT_FUNDAMENTALS (projectSlug) {
 }
 
 /**
- * Fetch social data for a specified project.
+ * Returns social data for a specified project.
  *
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
@@ -367,7 +368,7 @@ function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
 }
 
 /**
- * Fetch the historical count of twitter followers.
+ * Returns the historical count of twitter followers.
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -396,7 +397,7 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source) {
 }
 
 /**
- * Top token transactions for a given slug
+ * Returns top token transactions for a given slug
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -411,7 +412,7 @@ function SAN_TOKEN_TOP_TRANSACTIONS (projectSlug, from, to, limit) {
 }
 
 /**
- * Top ETH transactions for project's team wallets.
+ * Returns top ETH transactions for project's team wallets.
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -427,7 +428,7 @@ function SAN_ETH_TOP_TRANSACTIONS (projectSlug, from, to, limit, transactionType
 }
 
 /**
- * ETH spent for each interval from the project's team wallet and time period
+ * Returns ETH spent for each interval from the project's team wallet and time period
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
