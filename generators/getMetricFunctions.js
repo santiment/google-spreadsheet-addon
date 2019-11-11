@@ -102,12 +102,12 @@ const metricsList = [
     metric: 'nvt',
     sheetMetricName: 'nvt_ratio',
     description: [
-      'Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)',
+      'Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)',
       'Since Daily Transaction Volume gets rather noisy and easy to manipulate',
-      'by transferring the same tokens through couple of addresses over and over again,',
-      'it’s not an ideal measure of a network’s economic activity.',
-      'That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,',
-      'which filters out excess transactions and provides a cleaner overview of a blockchain’s',
+      'by transferring the same tokens through a couple of addresses repeatedly,',
+      'it’s not an ideal measure of a network’s economic activity. That’s why we also',
+      'offer another way to calculate NVT by using Daily Token Circulation.',
+      'This method filters out excess transactions and provides a cleaner overview of a blockchain’s',
       'daily transaction throughput.'
     ],
     returns: 'NVT ratios'
