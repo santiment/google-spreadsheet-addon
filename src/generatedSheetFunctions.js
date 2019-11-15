@@ -309,5 +309,5 @@ function SAN_FUNCTIONS () {
     'SAN_TOKEN_TOP_TRANSACTIONS',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY'
   ]
-  return handleErrors_(listOfFunctions)
+  return listOfFunctions
 }

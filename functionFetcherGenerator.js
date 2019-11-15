@@ -15,7 +15,7 @@ function generate () {
  */
 function SAN_FUNCTIONS () {
   var listOfFunctions = ${generatedListOfFunctions}
-  return handleErrors_(listOfFunctions)
+  return listOfFunctions
 }
 `
   return functionString
