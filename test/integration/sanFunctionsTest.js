@@ -1,4 +1,3 @@
-const { testFieldTypes } = require('../helper.js')
 const listOfFunctions = [
   'SAN_ACTIVE_ADDRESSES',
   'SAN_ACTIVE_DEPOSITS',
@@ -51,16 +50,7 @@ const listOfFunctions = [
 ]
 
 describe('SAN_FUNCTIONS', () => {
-  const expected = {
-    function: 'string'
-  }
-
-  const response = san.SAN_FUNCTIONS()
-  const header = response[0]
-
-  testFieldTypes(header, expected)
-
-  it('returns the needed functions', () => {
+  it('returns all available functions', () => {
     const results = san.SAN_FUNCTIONS()
     expect(results).to.deep.eq(listOfFunctions)
   })

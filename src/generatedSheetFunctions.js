@@ -271,12 +271,12 @@ function SAN_NVT_RATIO (projectSlug, from, to) {
 }
 
 /**
- * Returns all of the available functions, which SanSheets has to offer.
- * @returns {Array} all functions in the addon.
+ * Returns all available functions.
+ * @returns {Array} of function names.
  * @customfunction
  */
 function SAN_FUNCTIONS () {
-  var listOfFunctions = [
+  return [
     'SAN_ACTIVE_ADDRESSES',
     'SAN_ACTIVE_DEPOSITS',
     'SAN_AGE_DESTROYED',
@@ -326,5 +326,4 @@ function SAN_FUNCTIONS () {
     'SAN_TRANSACTION_VOLUME',
     'SAN_VELOCITY'
   ]
-  return listOfFunctions
 }

@@ -1,27 +1,21 @@
 const functionsList = require('../utils/functionsList')
 
 function generate () {
-  let listOfFunctions = []
-  for (let element of functionNames_()) {
-    listOfFunctions.push(`    '${element}'`)
-  }
-  let generatedListOfFunctions = `[\n` + listOfFunctions.join(`,\n`) + `\n  ]`
-  let functionString =
+  const functionNames = functionsList.fetch().map(f => `    '${f.name}'`).join(`,\n`)
+
+  let functionNamesString =
 `/**
- * Returns all of the available functions, which SanSheets has to offer.
- * @returns {Array} all functions in the addon.
+ * Returns all available functions.
+ * @returns {Array} of function names.
  * @customfunction
  */
 function SAN_FUNCTIONS () {
-  var listOfFunctions = ${generatedListOfFunctions}
-  return listOfFunctions
+  return [
+${functionNames}
+  ]
 }
 `
-  return functionString
-}
-
-function functionNames_ () {
-  return functionsList.fetch().map(f => f.name)
+  return functionNamesString
 }
 
 module.exports = {
