@@ -1,9 +1,8 @@
-const jsdoc2md = require('jsdoc-to-markdown')
-const inputFiles = ['./src/sheetFunctions.js']
+const functionsList = require('../utils/functionsList')
 
 function generate () {
   let listOfFunctions = []
-  for (let element of functions_()) {
+  for (let element of functionNames_()) {
     listOfFunctions.push(`    '${element}'`)
   }
   let generatedListOfFunctions = `[\n` + listOfFunctions.join(`,\n`) + `\n  ]`
@@ -21,12 +20,8 @@ function SAN_FUNCTIONS () {
   return functionString
 }
 
-function functions_ () {
-  let doc = jsdoc2md.getTemplateDataSync({ files: inputFiles })
-    .sort(function (a, b) { return a.name.localeCompare(b.name) })
-    .map(x => x.name)
-
-  return doc
+function functionNames_ () {
+  return functionsList.fetch().map(f => f.name)
 }
 
 module.exports = {
