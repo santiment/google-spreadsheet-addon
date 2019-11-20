@@ -5,7 +5,7 @@ const fsExtra = require('fs-extra')
 const OUTPUT_FILE = path.join(`${__dirname}`, '../src/generatedSheetFunctions.js')
 
 const getMetricGenerator = require('./getMetricGenerator')
-const functionFetcherGenerator = require('../functionFetcherGenerator')
+const functionFetcherGenerator = require('./functionFetcherGenerator')
 const generators = [ getMetricGenerator.generate() + functionFetcherGenerator.generate() ]
 
 function generate () {

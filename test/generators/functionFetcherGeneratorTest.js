@@ -1,5 +1,5 @@
 require('../helper.js')
-const { generate } = require('../../functionFetcherGenerator.js')
+const { generate } = require('../../generators/functionFetcherGenerator.js')
 
 describe('functionFetcher', () => {
   it('fills the template accordingly', () => {
