@@ -5,15 +5,12 @@ const fsExtra = require('fs-extra')
 const OUTPUT_FILE = path.join(`${__dirname}`, '../src/generatedSheetFunctions.js')
 
 const getMetricGenerator = require('./getMetricGenerator')
-const generators = [ getMetricGenerator.generate() ]
+const functionFetcherGenerator = require('./functionFetcherGenerator')
+const generators = [ getMetricGenerator.generate() + functionFetcherGenerator.generate() ]
 
 function generate () {
-  for (const generator of generators) { writeOutputFile_(generator) }
-}
-
-function writeOutputFile_ (content) {
   if (fs.existsSync(OUTPUT_FILE)) { fsExtra.removeSync(OUTPUT_FILE) }
-  return fs.writeFileSync(OUTPUT_FILE, content)
+  for (const generator of generators) { fs.writeFileSync(OUTPUT_FILE, generator) }
 }
 
 generate()

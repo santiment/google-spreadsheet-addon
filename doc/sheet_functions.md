@@ -13,7 +13,7 @@ participated in transactions on a blockchain.</p>
 <dd><p>Returns the token&#39;s age destroyed</p>
 </dd>
 <dt><a href="#SAN_ALL_PROJECTS">SAN_ALL_PROJECTS()</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets an array of all assets for which Santiment has data.
+<dd><p>Returns an array of all assets for which Santiment has data.
 Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day.</p>
@@ -34,22 +34,22 @@ ETH spent in the last 7 days, ETH spent in the last day.</p>
 <dd><p>Returns list of emerging trends and their corresponding trend score.</p>
 </dd>
 <dt><a href="#SAN_ERC20_PROJECTS">SAN_ERC20_PROJECTS()</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets an array of all ERC20 assets for which Santiment has data.
+<dd><p>Returns an array of all ERC20 assets for which Santiment has data.
 Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day and main contract address.</p>
 </dd>
 <dt><a href="#SAN_ETH_SPENT_OVER_TIME">SAN_ETH_SPENT_OVER_TIME(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>ETH spent for each interval from the project&#39;s team wallet and time period</p>
+<dd><p>Returns ETH spent for each interval from the project&#39;s team wallet and time period</p>
 </dd>
 <dt><a href="#SAN_ETH_TOP_TRANSACTIONS">SAN_ETH_TOP_TRANSACTIONS(projectSlug, from, to, limit, transactionType)</a> ⇒ <code>Array</code></dt>
-<dd><p>Top ETH transactions for project&#39;s team wallets.</p>
+<dd><p>Returns top ETH transactions for project&#39;s team wallets.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_BALANCE">SAN_EXCHANGE_BALANCE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the exchange balance.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_FUNDS_FLOW">SAN_EXCHANGE_FUNDS_FLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Fetches the difference between the tokens that were deposited minus
+<dd><p>Returns the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_INFLOW">SAN_EXCHANGE_INFLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
@@ -57,6 +57,9 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 </dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW">SAN_EXCHANGE_OUTFLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the exchange outflow.</p>
+</dd>
+<dt><a href="#SAN_FUNCTIONS">SAN_FUNCTIONS()</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns all available functions.</p>
 </dd>
 <dt><a href="#SAN_GAS_USED">SAN_GAS_USED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns used Gas by a blockchain.
@@ -70,7 +73,7 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dd><p>Returns the historical balance for a given ERC20 or ETH address.</p>
 </dd>
 <dt><a href="#SAN_HISTORY_TWITTER_DATA">SAN_HISTORY_TWITTER_DATA(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Fetch the historical count of twitter followers.</p>
+<dd><p>Returns the historical count of twitter followers.</p>
 </dd>
 <dt><a href="#SAN_LATEST_PRICE">SAN_LATEST_PRICE(projectSlug, currency)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the latest price for a given asset in a desired currency.</p>
@@ -113,7 +116,7 @@ which filters out excess transactions and provides a cleaner overview of a block
 daily transaction throughput.</p>
 </dd>
 <dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the open, high, low, and close price values for the specified asset,
+<dd><p>Returns the open, high, low, and close price values for the specified asset,
 during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PRICE_ABSOLUTE_CHANGE">SAN_PRICE_ABSOLUTE_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
@@ -123,18 +126,18 @@ during a given time interval.</p>
 <dd><p>Returns the percent price change for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PRICE_VOLUME_DIFF">SAN_PRICE_VOLUME_DIFF(currency, projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the price-volume difference technical indicator for a given asset,
+<dd><p>Returns the price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.</p>
 </dd>
 <dt><a href="#SAN_PRICES">SAN_PRICES(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Gets the prices for the specified asset, during a given time interval.</p>
+<dd><p>Returns the prices for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetch fundamentals for a specified project.</p>
 </dd>
 <dt><a href="#SAN_PROJECT_SOCIAL_DATA">SAN_PROJECT_SOCIAL_DATA(projectSlug)</a> ⇒ <code>Array</code></dt>
-<dd><p>Fetch social data for a specified project.</p>
+<dd><p>Returns social data for a specified project.</p>
 </dd>
 <dt><a href="#SAN_REALIZED_VALUE">SAN_REALIZED_VALUE(projectSlug, from, to, currency, timeBound)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
@@ -160,7 +163,7 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dd><p>Returns token circulation for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
-<dd><p>Top token transactions for a given slug</p>
+<dd><p>Returns top token transactions for a given slug</p>
 </dd>
 <dt><a href="#SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY">SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(projectSlug, from, to, numberOfHolders)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the top holders&#39; percent of total supply - in exchanges, outside exchanges and combined.</p>
@@ -225,7 +228,7 @@ Returns the token's age destroyed
 <a name="SAN_ALL_PROJECTS"></a>
 
 ## SAN\_ALL\_PROJECTS() ⇒ <code>Array</code>
-Gets an array of all assets for which Santiment has data.
+Returns an array of all assets for which Santiment has data.
 Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day.
@@ -312,7 +315,7 @@ Returns list of emerging trends and their corresponding trend score.
 <a name="SAN_ERC20_PROJECTS"></a>
 
 ## SAN\_ERC20\_PROJECTS() ⇒ <code>Array</code>
-Gets an array of all ERC20 assets for which Santiment has data.
+Returns an array of all ERC20 assets for which Santiment has data.
 Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day and main contract address.
@@ -323,7 +326,7 @@ ETH spent in the last 7 days, ETH spent in the last day and main contract addres
 <a name="SAN_ETH_SPENT_OVER_TIME"></a>
 
 ## SAN\_ETH\_SPENT\_OVER\_TIME(projectSlug, from, to) ⇒ <code>Array</code>
-ETH spent for each interval from the project's team wallet and time period
+Returns ETH spent for each interval from the project's team wallet and time period
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of the ETH, that was spent over a given period of time  
@@ -338,7 +341,7 @@ ETH spent for each interval from the project's team wallet and time period
 <a name="SAN_ETH_TOP_TRANSACTIONS"></a>
 
 ## SAN\_ETH\_TOP\_TRANSACTIONS(projectSlug, from, to, limit, transactionType) ⇒ <code>Array</code>
-Top ETH transactions for project's team wallets.
+Returns top ETH transactions for project's team wallets.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of top transactions  
@@ -370,7 +373,7 @@ Returns the exchange balance.
 <a name="SAN_EXCHANGE_FUNDS_FLOW"></a>
 
 ## SAN\_EXCHANGE\_FUNDS\_FLOW(projectSlug, from, to) ⇒ <code>Array</code>
-Fetches the difference between the tokens that were deposited minus
+Returns the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.
 
 **Kind**: global function  
@@ -413,6 +416,14 @@ Returns the exchange outflow.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
+<a name="SAN_FUNCTIONS"></a>
+
+## SAN\_FUNCTIONS() ⇒ <code>Array</code>
+Returns all available functions.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of function names.  
+**Customfunction**:   
 <a name="SAN_GAS_USED"></a>
 
 ## SAN\_GAS\_USED(projectSlug, from, to) ⇒ <code>Array</code>
@@ -464,7 +475,7 @@ Returns the historical balance for a given ERC20 or ETH address.
 <a name="SAN_HISTORY_TWITTER_DATA"></a>
 
 ## SAN\_HISTORY\_TWITTER\_DATA(projectSlug, from, to) ⇒ <code>Array</code>
-Fetch the historical count of twitter followers.
+Returns the historical count of twitter followers.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - followers count over time.  
@@ -644,7 +655,7 @@ daily transaction throughput.
 <a name="SAN_OHLC"></a>
 
 ## SAN\_OHLC(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the open, high, low, and close price values for the specified asset,
+Returns the open, high, low, and close price values for the specified asset,
 during a given time interval.
 
 **Kind**: global function  
@@ -690,7 +701,7 @@ Returns the percent price change for the specified asset, during a given time in
 <a name="SAN_PRICE_VOLUME_DIFF"></a>
 
 ## SAN\_PRICE\_VOLUME\_DIFF(currency, projectSlug, from, to) ⇒ <code>Array</code>
-Gets the price-volume difference technical indicator for a given asset,
+Returns the price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.
 
@@ -708,7 +719,7 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 <a name="SAN_PRICES"></a>
 
 ## SAN\_PRICES(projectSlug, from, to) ⇒ <code>Array</code>
-Gets the prices for the specified asset, during a given time interval.
+Returns the prices for the specified asset, during a given time interval.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of prices.  
@@ -736,7 +747,7 @@ Fetch fundamentals for a specified project.
 <a name="SAN_PROJECT_SOCIAL_DATA"></a>
 
 ## SAN\_PROJECT\_SOCIAL\_DATA(projectSlug) ⇒ <code>Array</code>
-Fetch social data for a specified project.
+Returns social data for a specified project.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of project's social data.  
@@ -843,7 +854,7 @@ Returns token circulation for a given slug and time interval.
 <a name="SAN_TOKEN_TOP_TRANSACTIONS"></a>
 
 ## SAN\_TOKEN\_TOP\_TRANSACTIONS(projectSlug, from, to, limit) ⇒ <code>Array</code>
-Top token transactions for a given slug
+Returns top token transactions for a given slug
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of top transactions  
