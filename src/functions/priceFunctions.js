@@ -83,19 +83,19 @@ function ohlc_ (slug, from, to) {
 
   var headers = [
     'Date',
-    'Close Price USD',
+    'Open Price USD',
     'High Price USD',
     'Low Price USD',
-    'Open Price USD'
+    'Close Price USD'
   ]
 
   return [headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
-      formatNumber_(result.closePriceUsd),
+      formatNumber_(result.openPriceUsd),
       formatNumber_(result.highPriceUsd),
       formatNumber_(result.lowPriceUsd),
-      formatNumber_(result.openPriceUsd)
+      formatNumber_(result.closePriceUsd)
     ]
   }))
 }

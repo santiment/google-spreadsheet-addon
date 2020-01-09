@@ -17,10 +17,10 @@ const {
 describe('SAN_OHLC', () => {
   const expected = {
     date: 'string',
-    closePriceUsd: 'number',
+    openPriceUsd: 'number',
     highPriceUsd: 'number',
     lowPriceUsd: 'number',
-    openPriceUsd: 'number'
+    closePriceUsd: 'number'
   }
 
   const response = san.SAN_OHLC(slug, from, to)
@@ -33,10 +33,10 @@ describe('SAN_OHLC', () => {
   it('has proper headers', () => {
     const expectedHeaders = [
       'Date',
-      'Close Price USD',
+      'Open Price USD',
       'High Price USD',
       'Low Price USD',
-      'Open Price USD'
+      'Close Price USD'
     ]
 
     expect(headers).to.deep.equal(expectedHeaders)
