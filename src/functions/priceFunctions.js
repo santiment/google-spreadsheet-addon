@@ -81,6 +81,8 @@ function ohlc_ (slug, from, to) {
   var results = getApiClient_().fetchOhlc(slug, from, to)
   assertHasData_(results)
 
+  var warning = ['WARNING! The order has changed from close->high->low->open to open->high->low->close']
+
   var headers = [
     'Date',
     'Open Price USD',
@@ -89,7 +91,7 @@ function ohlc_ (slug, from, to) {
     'Close Price USD'
   ]
 
-  return [headers].concat(results.map(function (result) {
+  return [warning].concat([headers].concat(results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.openPriceUsd),
@@ -97,7 +99,7 @@ function ohlc_ (slug, from, to) {
       formatNumber_(result.lowPriceUsd),
       formatNumber_(result.closePriceUsd)
     ]
-  }))
+  })))
 }
 
 function priceVolumeDiff_ (currency, slug, from, to) {

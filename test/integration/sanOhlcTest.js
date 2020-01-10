@@ -24,9 +24,11 @@ describe('SAN_OHLC', () => {
   }
 
   const response = san.SAN_OHLC(slug, from, to)
-  const headers = response[0]
-  const ohlc = response[1]
+  const warning = response[0]
+  const headers = response[1]
+  const ohlc = response[2]
 
+  expect(warning).to.deep.eq(['WARNING! The order has changed from close->high->low->open to open->high->low->close'])
   testFieldTypes(ohlc, expected)
   testHandlesNullData('fetchOhlc', san.SAN_OHLC, slug, from, to)
 
@@ -45,10 +47,10 @@ describe('SAN_OHLC', () => {
   it('returns a record per every day', () => {
     const ohlc = san.SAN_OHLC(slug, from, to)
 
-    assertNumberOfRecords(ohlc, numberOfDays)
+    assertNumberOfRecords(ohlc, numberOfDays + 1)
 
     for (let [index, day] of days.entries()) {
-      expect(ohlc[index + 1][0]).to.equal(formatDate(day))
+      expect(ohlc[index + 2][0]).to.equal(formatDate(day))
     }
   })
 })
