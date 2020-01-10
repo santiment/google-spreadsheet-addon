@@ -63,7 +63,6 @@
     "gasUsed_": "readonly",
     "miningPoolsDistribution_": "readonly",
     "minersBalance_": "readonly",
-    "news_": "readonly",
     "latestPrice_": "readonly",
     "dailyClosingPrice_": "readonly",
     "historicalBalance_": "readonly",

@@ -103,9 +103,6 @@ Currently only ETH is supported.</p>
 <dd><p>Returns the number of new addresses being created on the project network
 for a given slug and time interval.</p>
 </dd>
-<dt><a href="#SAN_NEWS">SAN_NEWS(tag, from, to, size)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the news for given word</p>
-</dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
 Since Daily Transaction Volume gets rather noisy and easy to manipulate
@@ -614,22 +611,6 @@ for a given slug and time interval.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-
-<a name="SAN_NEWS"></a>
-
-## SAN\_NEWS(tag, from, to, size) ⇒ <code>Array</code>
-Returns the news for given word
-
-**Kind**: global function  
-**Returns**: <code>Array</code> - of news.  
-**Customfunction**:   
-
-| Param | Type | Description |
-| --- | --- | --- |
-| tag | <code>string</code> | Project name, ticker or other crypto related words. |
-| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
-| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| size | <code>number</code> | Size limit of the returned results. Default is 10. |
 
 <a name="SAN_NVT_RATIO"></a>
 

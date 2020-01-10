@@ -1,20 +1,3 @@
-function news_ (tag, from, to, size) {
-  var results = getApiClient_().fetchNews(tag, from, to, size)
-  assertHasData_(results)
-
-  var headers = ['Date', 'Title', 'Source', 'URL', 'Description']
-
-  return [headers].concat(results.map(function (result) {
-    return [
-      formatDatetimeField_(result.datetime),
-      result.title,
-      result.sourceName,
-      result.url,
-      result.description
-    ]
-  }))
-}
-
 function socialVolumeProjects_ () {
   var results = getApiClient_().fetchSocialVolumeProjects()
   assertHasData_(results)
