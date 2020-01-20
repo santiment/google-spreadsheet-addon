@@ -39,25 +39,6 @@ ApiClient_.prototype.fetchEmergingTrends = function (size, from, to) {
   return this.conn.graphQLQuery(query, 'getTrendingWords')
 }
 
-ApiClient_.prototype.fetchNews = function (tag, from, to, size) {
-  var query = {
-    'query': '{\
-       news(tag: "' + tag + '",\
-            from: "' + toUTC_(from) + '",\
-            to: "' + toUTC_(to) + '",\
-            size: ' + size + ') {\
-         datetime\
-         title\
-         sourceName\
-         url\
-         description\
-       }\
-     }'
-  }
-
-  return this.conn.graphQLQuery(query, 'news')
-}
-
 ApiClient_.prototype.fetchHistoryTwitterData = function (slug, from, to) {
   var query = {
     'query': '{\
