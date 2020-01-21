@@ -53,8 +53,9 @@ function historyTwitterData_ (slug, from, to) {
   }))
 }
 
-function socialDominance_ (slug, from, to, social) {
-  var results = getApiClient_().fetchSocialDominance(slug, from, to, social)
+function socialDominance_ (slug, from, to, source) {
+  var sourceArgument = source || 'ALL'
+  var results = getApiClient_().fetchSocialDominance(slug, from, to, sourceArgument)
   assertHasData_(results)
 
   var headers = ['Date', 'Dominance']

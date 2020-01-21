@@ -69,7 +69,8 @@ function historicalBalance_ (slug, from, to, address) {
 }
 
 function tokenTopTransactions_ (slug, from, to, limit) {
-  var results = getApiClient_().fetchTokenTopTransactions(slug, from, to, limit)
+  var limitArgument = limit || 10
+  var results = getApiClient_().fetchTokenTopTransactions(slug, from, to, limitArgument)
   assertHasData_(results)
   var headers = [
     'Date',
@@ -136,7 +137,8 @@ function ethSpentOverTime_ (slug, from, to) {
 }
 
 function topHoldersPercentOfTotalSupply_ (slug, from, to, numberOfHolders) {
-  var results = getApiClient_().fetchTopHoldersPercentOfTotalSupply(slug, from, to, numberOfHolders)
+  var numberOfHoldersArgument = numberOfHolders || 10
+  var results = getApiClient_().fetchTopHoldersPercentOfTotalSupply(slug, from, to, numberOfHoldersArgument)
 
   assertHasData_(results)
 
