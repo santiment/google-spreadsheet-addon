@@ -40,8 +40,17 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
-  it('returns a record per every day', () => {
+  it('returns a record per every day according to the given source', () => {
     const results = san.SAN_SOCIAL_DOMINANCE(slug, from, to, source)
+    assertNumberOfRecords(results, numberOfDays)
+
+    for (let [index, day] of days.entries()) {
+      expect(results[index + 1][0]).to.equal(formatDate(day))
+    }
+  })
+
+  it('returns a record per every day according to the default source', () => {
+    const results = san.SAN_SOCIAL_DOMINANCE(slug, from, to)
     assertNumberOfRecords(results, numberOfDays)
 
     for (let [index, day] of days.entries()) {

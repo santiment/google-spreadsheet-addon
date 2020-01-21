@@ -46,4 +46,16 @@ describe('SAN_TOKEN_TOP_TRANSACTIONS', () => {
     ]
     expect(headers).to.deep.equal(expectedHeaders)
   })
+
+  it('returns the data according to the given limit', () => {
+    const results = san.SAN_TOKEN_TOP_TRANSACTIONS(slug, from, to, 5)
+    // Test if the number of results is equal to the limit (the + 1 is for the headers)
+    expect(results.length).to.equal(5 + 1)
+  })
+
+  it('returns the data according to the default limit', () => {
+    const results = san.SAN_TOKEN_TOP_TRANSACTIONS(slug, from, to)
+    // Test if the number of results is equal to the limit (the + 1 is for the headers)
+    expect(results.length).to.equal(10 + 1)
+  })
 })
