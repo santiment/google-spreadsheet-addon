@@ -17,6 +17,7 @@ You can use all the new ECMAScript features that your local node supports, excep
 
 * node.js >= 6.3.0
 * npm
+* npx : if your npm installation is old and you don't have npx, install it with: `sudo npm i -g npx`
 
 ### Installation
 
@@ -52,6 +53,14 @@ $ npm run docs
 ```
 
 ### Pushing to webeditor
+
+You first need to log into [clasp](https://github.com/google/clasp#login):
+
+```bash
+  $ npx clasp login
+```
+
+Push changes:
 
 ```bash
 $ npm run push
