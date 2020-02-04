@@ -50,9 +50,17 @@ describe('SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY', () => {
     }
   })
 
-  it('returns a record per every day', () => {
+  it('returns a record per every day according to the given number of holders', () => {
     const results = san.SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(slug, from, to, numberOfHolders)
+    if (results.length > 1) {
+      for (let [index, day] of days.entries()) {
+        expect(results[index + 1][0]).to.equal(formatDate(day))
+      }
+    }
+  })
 
+  it('returns a record per every day according to the default number of holders', () => {
+    const results = san.SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(slug, from, to)
     if (results.length > 1) {
       for (let [index, day] of days.entries()) {
         expect(results[index + 1][0]).to.equal(formatDate(day))
