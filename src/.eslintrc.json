@@ -72,6 +72,7 @@
     "ethTopTransactions_": "readonly",
     "ethSpentOverTime_": "readonly",
     "topHoldersPercentOfTotalSupply_": "readonly",
-    "getMetric_": "readonly"
+    "getMetric_": "readonly",
+    "historicalBalanceDedup_": "readonly"
   }
 }

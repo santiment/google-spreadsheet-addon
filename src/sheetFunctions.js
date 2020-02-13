@@ -441,3 +441,18 @@ function SAN_ETH_SPENT_OVER_TIME (projectSlug, from, to) {
 function SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY (projectSlug, from, to, numberOfHolders) {
   return handleErrors_(topHoldersPercentOfTotalSupply_)(projectSlug, from, to, numberOfHolders)
 }
+
+/**
+ * Returns the historical balance for a given ERC20 or ETH address.
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} address ERC20 or ETH address.
+ * @returns {Array} of balances.
+ * @customfunction
+ */
+function SAN_HISTORICAL_BALANCE_DEDUP (projectSlug, from, to, address) {
+  return handleErrors_(historicalBalanceDedup_)(projectSlug, from, to, address)
+}

@@ -158,3 +158,26 @@ function topHoldersPercentOfTotalSupply_ (slug, from, to, numberOfHolders) {
     ]
   }))
 }
+
+function historicalBalanceDedup_ (slug, from, to, address) {
+  var results = getApiClient_().fetchHistoricalBalance(slug, from, to, address)
+  assertHasData_(results)
+
+  var headers = ['Date', 'Balance']
+
+  var resultsArray = results.map(function (result) {
+    return [
+      formatDatetimeField_(result.datetime),
+      formatNumber_(result.balance)
+    ]
+  })
+
+  for (var i = 1; i < resultsArray.length - 1; i++) {
+    if (resultsArray[i][1] === resultsArray[i - 1][1]) {
+      resultsArray.splice(i, 1)
+      i--
+    }
+  }
+
+  return [headers].concat(resultsArray)
+}
