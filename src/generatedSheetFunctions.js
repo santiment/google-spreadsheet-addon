@@ -138,6 +138,21 @@ function SAN_MEAN_AGE (projectSlug, from, to) {
 
 
 /**
+* Returns the token's mean dollar invested age.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @returns {Array} of mean dollar invested age values.
+* @customfunction
+*/
+function SAN_MEAN_DOLLAR_INVESTED_AGE (projectSlug, from, to) {
+  return handleErrors_(getMetric_)('mean_dollar_invested_age', projectSlug, from, to, {  })
+}
+
+
+/**
 * Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
 * The realized value across the whole network is computed by summing the realized values
 * of all wallets holding tokens at the moment.

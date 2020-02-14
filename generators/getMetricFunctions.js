@@ -52,7 +52,13 @@ const metricsList = [
   {
     metric: 'mean_age',
     description: ['Returns the token\'s mean age.'],
-    returns: 'mean age values.' },
+    returns: 'mean age values.'
+  },
+  {
+    metric: 'mean_dollar_invested_age',
+    description: ['Returns the token\'s mean dollar invested age.'],
+    returns: 'mean dollar invested age values.'
+  },
   {
     metric: 'realized_value',
     description: [
