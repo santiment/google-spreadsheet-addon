@@ -81,6 +81,9 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_MEAN_AGE">SAN_MEAN_AGE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s mean age.</p>
 </dd>
+<dt><a href="#SAN_MEAN_DOLLAR_INVESTED_AGE">SAN_MEAN_DOLLAR_INVESTED_AGE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the token&#39;s mean dollar invested age.</p>
+</dd>
 <dt><a href="#SAN_MEAN_REALIZED_PRICE">SAN_MEAN_REALIZED_PRICE(projectSlug, from, to, currency, timeBound)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the mean realized price.</p>
 </dd>
@@ -104,12 +107,12 @@ Currently only ETH is supported.</p>
 for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
 Since Daily Transaction Volume gets rather noisy and easy to manipulate
-by transferring the same tokens through couple of addresses over and over again,
-it’s not an ideal measure of a network’s economic activity.
-That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 daily transaction throughput.</p>
 </dd>
 <dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
@@ -513,6 +516,21 @@ Returns the token's mean age.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
+<a name="SAN_MEAN_DOLLAR_INVESTED_AGE"></a>
+
+## SAN\_MEAN\_DOLLAR\_INVESTED\_AGE(projectSlug, from, to) ⇒ <code>Array</code>
+Returns the token's mean dollar invested age.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of mean dollar invested age values.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
 <a name="SAN_MEAN_REALIZED_PRICE"></a>
 
 ## SAN\_MEAN\_REALIZED\_PRICE(projectSlug, from, to, currency, timeBound) ⇒ <code>Array</code>
@@ -615,12 +633,12 @@ for a given slug and time interval.
 <a name="SAN_NVT_RATIO"></a>
 
 ## SAN\_NVT\_RATIO(projectSlug, from, to) ⇒ <code>Array</code>
-Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
 Since Daily Transaction Volume gets rather noisy and easy to manipulate
-by transferring the same tokens through couple of addresses over and over again,
-it’s not an ideal measure of a network’s economic activity.
-That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 daily transaction throughput.
 
 **Kind**: global function  
