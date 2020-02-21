@@ -72,6 +72,9 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_HISTORICAL_BALANCE">SAN_HISTORICAL_BALANCE(projectSlug, from, to, address)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the historical balance for a given ERC20 or ETH address.</p>
 </dd>
+<dt><a href="#SAN_HISTORICAL_BALANCE_DEDUP">SAN_HISTORICAL_BALANCE_DEDUP(projectSlug, from, to, address)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the historical balance for a given ERC20 or ETH address.</p>
+</dd>
 <dt><a href="#SAN_HISTORY_TWITTER_DATA">SAN_HISTORY_TWITTER_DATA(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the historical count of twitter followers.</p>
 </dd>
@@ -104,12 +107,12 @@ Currently only ETH is supported.</p>
 for a given slug and time interval.</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
 Since Daily Transaction Volume gets rather noisy and easy to manipulate
-by transferring the same tokens through couple of addresses over and over again,
-it’s not an ideal measure of a network’s economic activity.
-That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 daily transaction throughput.</p>
 </dd>
 <dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
@@ -469,6 +472,22 @@ Returns the historical balance for a given ERC20 or ETH address.
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | address | <code>string</code> | ERC20 or ETH address. |
 
+<a name="SAN_HISTORICAL_BALANCE_DEDUP"></a>
+
+## SAN\_HISTORICAL\_BALANCE\_DEDUP(projectSlug, from, to, address) ⇒ <code>Array</code>
+Returns the historical balance for a given ERC20 or ETH address.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of balances.  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| address | <code>string</code> | ERC20 or ETH address. |
+
 <a name="SAN_HISTORY_TWITTER_DATA"></a>
 
 ## SAN\_HISTORY\_TWITTER\_DATA(projectSlug, from, to) ⇒ <code>Array</code>
@@ -615,12 +634,12 @@ for a given slug and time interval.
 <a name="SAN_NVT_RATIO"></a>
 
 ## SAN\_NVT\_RATIO(projectSlug, from, to) ⇒ <code>Array</code>
-Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Transaction Volume)
+Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
 Since Daily Transaction Volume gets rather noisy and easy to manipulate
-by transferring the same tokens through couple of addresses over and over again,
-it’s not an ideal measure of a network’s economic activity.
-That’s why we calculate NVT using Daily Trx Volume, but also by using Daily Token Circulation instead,
-which filters out excess transactions and provides a cleaner overview of a blockchain’s
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 daily transaction throughput.
 
 **Kind**: global function  

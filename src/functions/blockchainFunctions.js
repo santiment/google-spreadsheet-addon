@@ -165,19 +165,20 @@ function historicalBalanceDedup_ (slug, from, to, address) {
 
   var headers = ['Date', 'Balance']
 
-  var resultsArray = results.map(function (result) {
+  var arr = results.map(function (result) {
     return [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.balance)
     ]
   })
 
-  for (var i = 1; i < resultsArray.length - 1; i++) {
-    if (resultsArray[i][1] === resultsArray[i - 1][1]) {
-      resultsArray.splice(i, 1)
-      i--
+  var deduped = []
+  var lastDayIndex = arr.length - 1
+  arr.forEach(function (el, index) {
+    if (deduped.length === 0 || lastDayIndex === index || deduped[deduped.length - 1][1] !== el[1]) {
+      deduped.push(el)
     }
-  }
+  })
 
-  return [headers].concat(resultsArray)
+  return [headers].concat(deduped)
 }

@@ -38,4 +38,12 @@ describe('SAN_HISTORICAL_BALANCE_DEDUP', () => {
       expect(results[i][1]).to.be.within(0, Infinity)
     }
   })
+
+  // Because the first and last result from the interval should always be returned
+  it('returns at least two records', () => {
+    const results = san.SAN_HISTORICAL_BALANCE_DEDUP(slug, from, to, ethAddress)
+
+    // At least 3, because of the headers
+    expect(results.length).to.be.at.least(3)
+  })
 })
