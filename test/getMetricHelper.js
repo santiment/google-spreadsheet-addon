@@ -1,5 +1,5 @@
 const testGetMetricTimeBound = (metric, slug, from, to, currency) => {
-  for (const timeBoundSuffix of san.TIME_BOUNDS) {
+  for (const timeBoundSuffix in san.TIME_BOUNDS) {
     it(`works with ${timeBoundSuffix} as timeBound argument`, () => {
       let response = ''
       if (currency !== '') {

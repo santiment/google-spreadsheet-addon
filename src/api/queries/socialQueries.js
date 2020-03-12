@@ -1,72 +1,63 @@
 ApiClient_.prototype.fetchSocialVolumeProjects = function () {
-  var query = { 'query': '{ socialVolumeProjects }' }
+  const query = { 'query': '{ socialVolumeProjects }' }
   return this.conn.graphQLQuery(query, 'socialVolumeProjects')
 }
 
 ApiClient_.prototype.fetchSocialVolume = function (slug, from, to, socialVolumeType) {
-  var query = {
-    'query': '{\
-       socialVolume(slug: "' + slug + '",\
-                   from: "' + toUTC_(from) + '",\
-                   to: "' + toUTC_(to) + '",\
-                   socialVolumeType: ' + socialVolumeType + ',\
-                   interval: "1d") {\
-         mentionsCount\
-         datetime\
-       }\
-    }'
+  const query = {
+    'query': `{
+       socialVolume(${commonParams(slug, from, to)},
+                   socialVolumeType: ${socialVolumeType}) {
+         mentionsCount
+         datetime
+       }
+    }`
   }
 
   return this.conn.graphQLQuery(query, 'socialVolume')
 }
 
 ApiClient_.prototype.fetchEmergingTrends = function (size, from, to) {
-  var query = {
-    'query': '{\
-       getTrendingWords(size: ' + size + ',\
-                     from: "' + toUTC_(from) + '",\
-                     to: "' + toUTC_(to) + '",\
-                     interval: "1d") {\
-         datetime\
-         topWords {\
-           score\
-           word\
-         }\
-       }\
-    }'
+  const query = {
+    'query': `{
+       getTrendingWords(size: ${size},
+                     ${fromParam(from)},
+                     ${toParam(to)},
+                     ${intervalParam()}) {
+         datetime
+         topWords {
+           score
+           word
+         }
+       }
+    }`
   }
 
   return this.conn.graphQLQuery(query, 'getTrendingWords')
 }
 
 ApiClient_.prototype.fetchHistoryTwitterData = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       historyTwitterData(slug: "' + slug + '",\
-                          from: "' + toUTC_(from) + '",\
-                          to: "' + toUTC_(to) + '",\
-                          interval: "1d") {\
-         datetime\
-         followersCount\
-       }\
-     }'
+  const query = {
+    'query': `{
+       historyTwitterData(${commonParams(slug, from, to)}) {
+         datetime
+         followersCount
+       }
+     }`
   }
 
   return this.conn.graphQLQuery(query, 'historyTwitterData')
 }
 
 ApiClient_.prototype.fetchSocialDominance = function (slug, from, to, source) {
-  var query = {
-    'query': '{\
-       socialDominance(slug: "' + slug + '",\
-                       from: "' + toUTC_(from) + '",\
-                       to: "' + toUTC_(to) + '",\
-                       interval: "1d",\
-                       source: ' + source + ') {\
-         datetime\
-         dominance\
-       }\
-     }'
+  const query = {
+    'query': `{
+       socialDominance(${commonParams(slug, from, to)},
+                       source: ${source}) {
+         datetime
+         dominance
+       }
+     }`
   }
 
   return this.conn.graphQLQuery(query, 'socialDominance')

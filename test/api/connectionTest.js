@@ -4,7 +4,7 @@ require('../helper.js')
 
 describe('api key', () => {
   it('sets api key from property when present', () => {
-    san.setUserProperty_('API_KEY', 'test-api-key')
+    san._setUserProperty_('API_KEY', 'test-api-key')
     const conn = new san.Connection_()
     expect(conn.apiKey).to.equal('test-api-key')
   })
@@ -22,7 +22,7 @@ describe('api key', () => {
 
 describe('headers', () => {
   it('sets an API key from user property in headers', () => {
-    san.setUserProperty_('API_KEY', 'test-api-key')
+    san._setUserProperty_('API_KEY', 'test-api-key')
     const conn = new san.Connection_()
     const requestOptions = conn.buildRequestOptions('')
     expect(requestOptions['headers']['Authorization']).to.equal('Apikey test-api-key')

@@ -9,7 +9,7 @@ const TIMEBOUND_DESCRIPTION = `
 * tokens/coins that have moved in the past number of years or days.`
 
 function generate () {
-  let generatedDoc = ''
+  let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
     generatedDoc += generateFunctionString_(metric)
   }
@@ -68,13 +68,13 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
       CURRENCY_DESCRIPTION.replace('(currencies)', supportedCurrencies.join(', '))
     )
     returnedValues.arguments.push('currency')
-    returnedValues.options.push('currency: currency')
+    returnedValues.options.push('currency')
   }
 
   if (hasTimeBound === true) {
     returnedValues.description.push(TIMEBOUND_DESCRIPTION)
     returnedValues.arguments.push('timeBound')
-    returnedValues.options.push('timeBound: timeBound')
+    returnedValues.options.push('timeBound')
   }
 
   return [

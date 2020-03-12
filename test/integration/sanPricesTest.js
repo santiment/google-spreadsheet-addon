@@ -21,6 +21,8 @@ describe('SAN_PRICES', () => {
     volume: 'number'
   }
 
+  console.log(from)
+  console.log(to)
   const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
   const prices = response[1]

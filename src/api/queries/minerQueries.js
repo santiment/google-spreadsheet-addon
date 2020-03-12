@@ -1,48 +1,39 @@
 ApiClient_.prototype.fetchGasUsed = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       gasUsed(slug: "' + slug + '",\
-               from: "' + toUTC_(from) + '",\
-               to: "' + toUTC_(to) + '",\
-               interval: "1d") {\
-         gasUsed\
-         datetime\
-       }\
-     }'
+  const query = {
+    'query': `{
+       gasUsed(${commonParams(slug, from, to)}) {
+         gasUsed
+         datetime
+       }
+     }`
   }
 
   return this.conn.graphQLQuery(query, 'gasUsed')
 }
 
 ApiClient_.prototype.fetchMiningPoolsDistribution = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       miningPoolsDistribution(slug: "' + slug + '",\
-                               from: "' + toUTC_(from) + '",\
-                               to: "' + toUTC_(to) + '",\
-                               interval: "1d") {\
-         datetime\
-         top3\
-         top10\
-         other\
-       }\
-     }'
+  const query = {
+    'query': `{
+       miningPoolsDistribution(${commonParams(slug, from, to)}) {
+         datetime
+         top3
+         top10
+         other
+       }
+     }`
   }
 
   return this.conn.graphQLQuery(query, 'miningPoolsDistribution')
 }
 
 ApiClient_.prototype.fetchMinersBalance = function (slug, from, to) {
-  var query = {
-    'query': '{\
-       minersBalance(slug: "' + slug + '",\
-                     from: "' + toUTC_(from) + '",\
-                     to: "' + toUTC_(to) + '",\
-                     interval: "1d") {\
-         datetime\
-         balance\
-       }\
-     }'
+  const query = {
+    'query': `{
+       minersBalance(${commonParams(slug, from, to)}) {
+         datetime
+         balance
+       }
+     }`
   }
 
   return this.conn.graphQLQuery(query, 'minersBalance')

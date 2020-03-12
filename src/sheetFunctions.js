@@ -374,7 +374,8 @@ function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @param {string} source The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT
+ * @param {string} source The source, which the dominance is calculated from. Sources are:
+ * ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT
  * @returns {Array} of dominance.
  * @customfunction
  */

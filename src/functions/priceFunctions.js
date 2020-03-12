@@ -1,12 +1,12 @@
 function latestPrice_ (slug, currency) {
-  var supportedCurrencies = ['USD', 'BTC']
+  const supportedCurrencies = ['USD', 'BTC']
 
   if (supportedCurrencies.indexOf(currency.toUpperCase()) === -1) {
-    throw new UnsupportedError_(currency + ' is not supported! Use any of: ' + supportedCurrencies.join('/'))
+    throw new UnsupportedError_(`${currency} is not supported! Use any of: ${supportedCurrencies.join('/')}`)
   }
 
-  var currencyField = 'price' + currency.charAt(0).toUpperCase() + currency.toLowerCase().slice(1)
-  var result = getApiClient_().fetchLatestPrice(slug, currencyField)
+  const currencyField = `${price}${currency.charAt(0).toUpperCase()}${currency.toLowerCase().slice(1)}`
+  const result = getApiClient_().fetchLatestPrice(slug, currencyField)
 
   assertHasData_(result)
 
@@ -14,14 +14,14 @@ function latestPrice_ (slug, currency) {
 }
 
 function dailyClosingPrice_ (slug, day) {
-  var endOfDay = beginningOfDaytoEndOfDay_(day)
+  const endOfDay = beginningOfDaytoEndOfDay_(day)
 
-  var results = getApiClient_().fetchDailyClosingPrice(slug, day, endOfDay)
+  const results = getApiClient_().fetchDailyClosingPrice(slug, day, endOfDay)
   assertHasData_(results)
 
-  var result = results[0]
+  const result = results[0]
 
-  if ( result == null || !result.hasOwnProperty('closePriceUsd')) {
+  if (result == null || !Object.prototype.hasOwnProperty.call(result, 'closePriceUsd')) {
     throw new NoDataError_()
   }
 
@@ -29,33 +29,32 @@ function dailyClosingPrice_ (slug, day) {
 }
 
 function prices_ (slug, from, to) {
-  var results = getApiClient_().fetchPrices(slug, from, to)
+  const results = getApiClient_().fetchPrices(slug, from, to)
   assertHasData_(results)
 
-  var headers = ['Date', 'USD Price', 'Volume']
-
-  return [headers].concat(results.map(function (result) {
-    return [
+  const headers = ['Date', 'USD Price', 'Volume']
+  return [headers].concat(results.map(result =>
+    [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.priceUsd),
       formatNumber_(result.volume)
     ]
-  }))
+  ))
 }
 
 function priceOpenClose_ (slug, from, to) {
-  var endOfDay = beginningOfDaytoEndOfDay_(to)
+  const endOfDay = beginningOfDaytoEndOfDay_(to)
 
-  var results = getApiClient_().fetchOhlc(slug, from, endOfDay)
+  const results = getApiClient_().fetchOhlc(slug, from, endOfDay)
   assertHasData_(results)
 
-  var firstDateResults = results[0]
-  var lastDateResults = results[results.length - 1]
+  const firstDateResults = results[0]
+  const lastDateResults = results[results.length - 1]
 
   if (firstDateResults == null ||
       lastDateResults == null ||
-      !firstDateResults.hasOwnProperty('openPriceUsd') ||
-      !lastDateResults.hasOwnProperty('closePriceUsd')) {
+      !Object.prototype.hasOwnProperty.call(firstDateResults, 'openPriceUsd') ||
+      !Object.prototype.hasOwnProperty.call(lastDateResults, 'closePriceUsd')) {
     throw new NoDataError_()
   }
 
@@ -66,22 +65,22 @@ function priceOpenClose_ (slug, from, to) {
 }
 
 function priceAbsoluteChange_ (slug, from, to) {
-  var prices = priceOpenClose_(slug, from, to)
+  const prices = priceOpenClose_(slug, from, to)
   return prices.close - prices.open
 }
 
 function pricePercentChange_ (slug, from, to) {
-  var prices = priceOpenClose_(slug, from, to)
-  var priceDiff = prices.close - prices.open
+  const prices = priceOpenClose_(slug, from, to)
+  const priceDiff = prices.close - prices.open
 
   return priceDiff * 100 / prices.open
 }
 
 function ohlc_ (slug, from, to) {
-  var results = getApiClient_().fetchOhlc(slug, from, to)
+  const results = getApiClient_().fetchOhlc(slug, from, to)
   assertHasData_(results)
 
-  var headers = [
+  const headers = [
     'Date',
     'Open Price USD',
     'High Price USD',
@@ -89,29 +88,29 @@ function ohlc_ (slug, from, to) {
     'Close Price USD'
   ]
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.openPriceUsd),
       formatNumber_(result.highPriceUsd),
       formatNumber_(result.lowPriceUsd),
       formatNumber_(result.closePriceUsd)
     ]
-  }))
+  ))
 }
 
 function priceVolumeDiff_ (currency, slug, from, to) {
-  var results = getApiClient_().fetchPriceVolumeDiff(currency, slug, from, to)
+  const results = getApiClient_().fetchPriceVolumeDiff(currency, slug, from, to)
   assertHasData_(results)
 
-  var headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
+  const headers = ['Date', 'Price Change', 'Price Volume Diff', 'Volume Change']
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.priceChange),
       formatNumber_(result.priceVolumeDiff),
       formatNumber_(result.volumeChange)
     ]
-  }))
+  ))
 }

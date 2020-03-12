@@ -4,7 +4,7 @@ require('../helper.js')
 
 describe('hasApiKeyProperty_', () => {
   it('returns true when an API key property is present', () => {
-    san.setUserProperty_('API_KEY', 'test_api_key')
+    san._setUserProperty_('API_KEY', 'test_api_key')
     expect(san.hasApiKeyProperty_()).to.be.true
   })
 
@@ -15,7 +15,7 @@ describe('hasApiKeyProperty_', () => {
 
 describe('deleteApiKeyProperty_', () => {
   it('deletes API_KEY property', () => {
-    san.setUserProperty_('API_KEY', 'test_api_key')
+    san._setUserProperty_('API_KEY', 'test_api_key')
     expect(san.getUserProperty_('API_KEY')).to.equal('test_api_key')
 
     san.deleteApiKeyProperty_()

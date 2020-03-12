@@ -19,7 +19,7 @@ describe('fetchCurrentUserPermissions', () => {
 
   it('returns user permissions when an API key is present', () => {
     const apiKey = 'test-api-key'
-    san.setUserProperty_('API_KEY', apiKey)
+    san._setUserProperty_('API_KEY', apiKey)
 
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
     stub.returns({ body: JSON.stringify({ data: { currentUser: { permissions: { spreadsheet: true } } } }), statusCode: 200 })

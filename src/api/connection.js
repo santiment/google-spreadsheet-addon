@@ -1,4 +1,4 @@
-var SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
+const SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
 
 function Connection_ (apiKey, url) {
   if (apiKey == null && hasApiKeyProperty_()) {
@@ -10,7 +10,7 @@ function Connection_ (apiKey, url) {
 }
 
 Connection_.prototype.buildRequestOptions = function (query) {
-  var requestOptions = {
+  const requestOptions = {
     'muteHttpExceptions': true,
     'method': 'post',
     'contentType': 'application/json',
@@ -18,7 +18,7 @@ Connection_.prototype.buildRequestOptions = function (query) {
   }
 
   if (this.apiKey) {
-    requestOptions.headers = { Authorization: 'Apikey ' + this.apiKey }
+    requestOptions.headers = { Authorization: `Apikey ${this.apiKey}` }
   }
 
   return requestOptions
@@ -29,11 +29,11 @@ Connection_.prototype.fetchQuery = function (query) {
 }
 
 Connection_.prototype.buildErrorMessage = function (errors) {
-  var message = ''
+  let message = ''
 
   if (errors instanceof Array) {
-    message = errors.map(function (error) { return error.message }).join(', ')
-  } else if (errors.hasOwnProperty('details')) {
+    message = errors.map(error => error.message).join(', ')
+  } else if (Object.prototype.hasOwnProperty.call(errors, 'details')) {
     message = errors.details
   }
 
@@ -41,7 +41,7 @@ Connection_.prototype.buildErrorMessage = function (errors) {
 }
 
 Connection_.prototype.handleResponse = function (responseCode, responseBody, queryName) {
-  var errors = responseBody.errors
+  const errors = responseBody.errors
 
   switch (responseCode) {
   case 200:
@@ -62,26 +62,26 @@ Connection_.prototype.handleResponse = function (responseCode, responseBody, que
 }
 
 Connection_.prototype.graphQLQuery = function (query, queryName) {
+  const response = this.fetchQuery(query)
   try {
-    var response = this.fetchQuery(query)
-    var responseCode = response.getResponseCode()
-    var responseBody = JSON.parse(response.getContentText())
+    const responseCode = response.getResponseCode()
+    const responseBody = JSON.parse(response.getContentText())
 
-    var logMessage = {
+    const logMessage = {
       type: 'RequestLog',
-      query: query,
-      queryName: queryName
+      query,
+      queryName
     }
 
     logInfo_(logMessage)
 
     return this.handleResponse(responseCode, responseBody, queryName)
   } catch (e) {
-    var error = {
+    const error = {
       type: e.name,
       message: e.message,
-      query: query,
-      queryName: queryName,
+      query,
+      queryName,
       responseCode: response.getResponseCode(),
       responseBody: response.getContentText()
     }

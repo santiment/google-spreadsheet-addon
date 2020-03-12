@@ -1,7 +1,7 @@
 {
   "root": true,
-  "extends": "eslint-config-es5",
-  "parserOptions": {"ecmaVersion": 5},
+  "extends": "eslint-config-es6",
+  "parserOptions": {"ecmaVersion": 6},
   "plugins": ["googleappsscript"],
   "env": { "googleappsscript/googleappsscript": true },
   "rules": {
@@ -11,7 +11,25 @@
     "no-unused-vars": "off",
     "func-names": ["warn", "never"],
     "no-eq-null": "off",
-    "eqeqeq": ["error", "smart"]
+    "eqeqeq": ["error", "smart"],
+    "no-underscore-dangle": "off",
+    "strict": "off",
+    "indent": ["error", 2],
+    "max-len": ["error", 120],
+    "no-param-reassign": "off",
+    "no-mixed-operators": [
+      "error",
+      {
+          "groups": [
+              ["+", "-", "*", "/", "%", "**"],
+              ["&", "|", "^", "~", "<<", ">>", ">>>"],
+              ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
+              ["&&", "||"],
+              ["in", "instanceof"]
+          ],
+          "allowSamePrecedence": true
+      }
+    ]
   },
   "globals": {
     "ApiClient_": "readonly",
@@ -44,7 +62,7 @@
     "allProjects_": "readonly",
     "getApiClient_": "readonly",
     "getUserProperty_": "readonly",
-    "setUserProperty_": "readonly",
+    "_setUserProperty_": "readonly",
     "deleteUserProperty_": "readonly",
     "erc20Projects_": "readonly",
     "ohlc_": "readonly",

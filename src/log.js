@@ -1,7 +1,7 @@
 // Console logs to Stackdriver
 // https://developers.google.com/apps-script/reference/base/console
 
-var errorsWithWarnLevel = ['HistoricDataForbiddenError']
+const errorsWithWarnLevel = ['HistoricDataForbiddenError']
 
 function logWarning_ (message) {
   console.warn(message)
