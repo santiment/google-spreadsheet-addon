@@ -30,7 +30,7 @@ describe('getMetric', () => {
 * @customfunction
 */
 function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency: currency, timeBound: timeBound })
+  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency, timeBound })
 }
 
 `
@@ -93,7 +93,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to) {
 * @customfunction
 */
 function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency: currency })
+  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency })
 }
 
 `
@@ -125,7 +125,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency) {
 * @customfunction
 */
 function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { timeBound: timeBound })
+  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { timeBound })
 }
 
 `

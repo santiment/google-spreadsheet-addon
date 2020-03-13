@@ -36,7 +36,7 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, options)
   const metricName = metricNameGenerator_(metric, options)
   const query = {
     'query': `{
-       getMetric(metric: "${metric}") {
+       getMetric(metric: "${metricName}") {
           timeseriesData(${commonParams(slug, from, to)}){
                            datetime
                            value

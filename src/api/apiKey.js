@@ -21,7 +21,7 @@ function validateCanAccessHistoricData_ (response) {
 }
 
 function setApiKeyProperty_ (key) {
-  _setUserProperty_(API_KEY, key)
+  setUserProperty_(API_KEY, key)
 }
 
 function deleteApiKeyProperty_ () {

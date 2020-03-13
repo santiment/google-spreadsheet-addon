@@ -62,7 +62,7 @@
     "allProjects_": "readonly",
     "getApiClient_": "readonly",
     "getUserProperty_": "readonly",
-    "_setUserProperty_": "readonly",
+    "setUserProperty_": "readonly",
     "deleteUserProperty_": "readonly",
     "erc20Projects_": "readonly",
     "ohlc_": "readonly",

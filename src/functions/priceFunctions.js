@@ -5,7 +5,7 @@ function latestPrice_ (slug, currency) {
     throw new UnsupportedError_(`${currency} is not supported! Use any of: ${supportedCurrencies.join('/')}`)
   }
 
-  const currencyField = `${price}${currency.charAt(0).toUpperCase()}${currency.toLowerCase().slice(1)}`
+  const currencyField = `price${currency.charAt(0).toUpperCase()}${currency.toLowerCase().slice(1)}`
   const result = getApiClient_().fetchLatestPrice(slug, currencyField)
 
   assertHasData_(result)

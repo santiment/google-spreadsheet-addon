@@ -10,12 +10,12 @@ describe('toUTC_', () => {
 
 describe('userProperties', () => {
   it('gets user property', () => {
-    san._setUserProperty_('TEST', 'a test value')
+    san.setUserProperty_('TEST', 'a test value')
     expect(san.getUserProperty_('TEST')).to.equal('a test value')
   })
 
   it('deletes user property', () => {
-    san._setUserProperty_('TEST', 'a test value')
+    san.setUserProperty_('TEST', 'a test value')
     expect(san.getUserProperty_('TEST')).to.equal('a test value')
 
     san.deleteUserProperty_('TEST')

@@ -19,7 +19,9 @@
     "url": "https://github.com/santiment/google-spreadsheet-addon/issues"
   },
   "homepage": "https://github.com/santiment/google-spreadsheet-addon#readme",
-  "dependencies": {},
+  "dependencies": {
+    "eslint-config-es6": "^1.10.3"
+  },
   "devDependencies": {
     "@google/clasp": "^2.2.0",
     "chai": "^4.2",

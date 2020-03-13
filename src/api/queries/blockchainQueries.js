@@ -53,7 +53,7 @@ ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
 ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address) {
   const query = {
     'query': `{
-       historicalBalance(${commonParams(slug, from, to)}) {
+       historicalBalance(${commonParams(slug, from, to)}, address: "${address}") {
          datetime
          balance
        }
