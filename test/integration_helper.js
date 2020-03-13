@@ -19,7 +19,7 @@ const testHandlesNullData = (stubName, func, ...args) => {
     sandbox.stub(san.ApiClient_.prototype, stubName).returns(null)
 
     const result = func(...args)
-    expect(result).to.deep.eq([san.NO_DATA_MSG])
+    expect(result).to.deep.eq(['No data'])
   })
 }
 

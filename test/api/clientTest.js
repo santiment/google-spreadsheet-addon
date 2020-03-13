@@ -11,7 +11,7 @@ describe('fetchCurrentUserPermissions', () => {
     const response = apiClient.fetchCurrentUserPermissions()
 
     expect(response).to.eq(null)
-    expect(stub).to.have.been.calledWith('POST', san.SANTIMENT_GRAPHQL_URL, {
+    expect(stub).to.have.been.calledWith('POST', 'https://api.santiment.net/graphql', {
       headers: {},
       json: { query: '{currentUser {permissions {spreadsheet}}}' }
     })
@@ -28,7 +28,7 @@ describe('fetchCurrentUserPermissions', () => {
     const response = apiClient.fetchCurrentUserPermissions()
 
     expect(response).to.deep.eq({ permissions: { spreadsheet: true } })
-    expect(stub).to.have.been.calledWith('POST', san.SANTIMENT_GRAPHQL_URL, {
+    expect(stub).to.have.been.calledWith('POST', 'https://api.santiment.net/graphql', {
       headers: { Authorization: `Apikey ${apiKey}` },
       json: { query: '{currentUser {permissions {spreadsheet}}}' }
     })

@@ -58,7 +58,7 @@ ApiClient_.prototype.fetchDailyClosingPrice = function (slug, from, to) {
 
 ApiClient_.prototype.fetchLatestPrice = function (slug, currencyField) {
   const query = {
-    'query': `{ projectBySlug(${slugParam(slug)}) {' + currencyField + '}}`
+    'query': `{ projectBySlug(${slugParam(slug)}) { ${currencyField} }}`
   }
 
   return this.conn.graphQLQuery(query, 'projectBySlug')
