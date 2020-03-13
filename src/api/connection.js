@@ -1,4 +1,6 @@
-const SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
+/* eslint-disable no-var */
+
+var SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
 
 function Connection_ (apiKey, url) {
   if (apiKey == null && hasApiKeyProperty_()) {
@@ -69,8 +71,8 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
 
     const logMessage = {
       type: 'RequestLog',
-      query,
-      queryName
+      query: query,
+      queryName: queryName
     }
 
     logInfo_(logMessage)
@@ -80,8 +82,8 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
     const error = {
       type: e.name,
       message: e.message,
-      query,
-      queryName,
+      query: query,
+      queryName: queryName,
       responseCode: response.getResponseCode(),
       responseBody: response.getContentText()
     }

@@ -68,13 +68,13 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
       CURRENCY_DESCRIPTION.replace('(currencies)', supportedCurrencies.join(', '))
     )
     returnedValues.arguments.push('currency')
-    returnedValues.options.push('currency')
+    returnedValues.options.push('currency: currency')
   }
 
   if (hasTimeBound === true) {
     returnedValues.description.push(TIMEBOUND_DESCRIPTION)
     returnedValues.arguments.push('timeBound')
-    returnedValues.options.push('timeBound')
+    returnedValues.options.push('timeBound: timeBound')
   }
 
   return [

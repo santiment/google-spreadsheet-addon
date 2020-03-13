@@ -1,4 +1,6 @@
-const TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
+/* eslint-disable no-var */
+
+var TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
 const SUPPORTED_CURRENCIES = ['USD']
 const DEFAULT_CURRENCY = 'USD'
 

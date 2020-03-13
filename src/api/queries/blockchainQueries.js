@@ -65,7 +65,8 @@ ApiClient_.prototype.fetchHistoricalBalance = function (slug, from, to, address)
 
 ApiClient_.prototype.fetchTokenTopTransactions = function (slug, from, to, limit) {
   const query = {
-    'query': `{ projectBySlug(${slugParam(slug)}){
+    'query': `{
+      projectBySlug(${slugParam(slug)}){
         tokenTopTransactions(${fromParam(from)},
                              ${toParam(to)},
                              limit: ${limit}){
@@ -90,7 +91,8 @@ ApiClient_.prototype.fetchTokenTopTransactions = function (slug, from, to, limit
 
 ApiClient_.prototype.fetchEthTopTransactions = function (slug, from, to, limit, transactionType) {
   const query = {
-    'query': `{ projectBySlug(${slugParam(slug)}){
+    'query': `{
+      projectBySlug(${slugParam(slug)}){
         ethTopTransactions(${fromParam(from)},
                            ${toParam(to)},
                            limit: ${limit},
@@ -116,7 +118,8 @@ ApiClient_.prototype.fetchEthTopTransactions = function (slug, from, to, limit, 
 
 ApiClient_.prototype.fetchEthSpentOverTime = function (slug, from, to) {
   const query = {
-    'query': `{ projectBySlug(${slugParam(slug)}){
+    'query': `{
+      projectBySlug(${slugParam(slug)}){
         ethSpentOverTime(${fromParam(from)},
                          ${toParam(to)},
                          ${intervalParam()}){

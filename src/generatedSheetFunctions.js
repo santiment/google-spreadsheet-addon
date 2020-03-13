@@ -12,7 +12,7 @@
 * @customfunction
 */
 function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency) {
-  return handleErrors_(getMetric_)('daily_avg_marketcap', projectSlug, from, to, { currency })
+  return handleErrors_(getMetric_)('daily_avg_marketcap', projectSlug, from, to, { currency: currency })
 }
 
 
@@ -29,7 +29,7 @@ function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency) {
 * @customfunction
 */
 function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency) {
-  return handleErrors_(getMetric_)('daily_closing_marketcap', projectSlug, from, to, { currency })
+  return handleErrors_(getMetric_)('daily_closing_marketcap', projectSlug, from, to, { currency: currency })
 }
 
 
@@ -65,7 +65,7 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to) {
 * @customfunction
 */
 function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
-  return handleErrors_(getMetric_)('mean_realized_price', projectSlug, from, to, { currency, timeBound })
+  return handleErrors_(getMetric_)('mean_realized_price', projectSlug, from, to, { currency: currency, timeBound: timeBound })
 }
 
 
@@ -82,7 +82,7 @@ function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound) {
 * @customfunction
 */
 function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
-  return handleErrors_(getMetric_)('mvrv_long_short_diff', projectSlug, from, to, { currency })
+  return handleErrors_(getMetric_)('mvrv_long_short_diff', projectSlug, from, to, { currency: currency })
 }
 
 
@@ -101,7 +101,7 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency) {
 * @customfunction
 */
 function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {
-  return handleErrors_(getMetric_)('mvrv', projectSlug, from, to, { currency, timeBound })
+  return handleErrors_(getMetric_)('mvrv', projectSlug, from, to, { currency: currency, timeBound: timeBound })
 }
 
 
@@ -118,7 +118,7 @@ function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound) {
 * @customfunction
 */
 function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('circulation', projectSlug, from, to, { timeBound })
+  return handleErrors_(getMetric_)('circulation', projectSlug, from, to, { timeBound: timeBound })
 }
 
 
@@ -169,7 +169,7 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE (projectSlug, from, to) {
 * @customfunction
 */
 function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound) {
-  return handleErrors_(getMetric_)('realized_value', projectSlug, from, to, { currency, timeBound })
+  return handleErrors_(getMetric_)('realized_value', projectSlug, from, to, { currency: currency, timeBound: timeBound })
 }
 
 

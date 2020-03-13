@@ -1,6 +1,7 @@
 /* eslint-disable prefer-rest-params*/
+/* eslint-disable no-var */
 
-const NO_DATA_MSG = 'No data'
+var NO_DATA_MSG = 'No data'
 
 const INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
 
@@ -51,3 +52,5 @@ function handleErrors_ (func) {
     }
   }
 }
+
+exports = { handleErrors_, NoDataError_ }

@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+
 const API_KEY = 'API_KEY'
 const API_KEY_LOG_TYPE = 'ApiKeyLog'
 const ADD_API_KEY_ACTION = 'AddApiKey'
@@ -29,9 +31,9 @@ function deleteApiKeyProperty_ () {
 }
 
 function obfuscateApiKey_ (key) {
-  return key.replace(/(.{3})(.+)(.{3})/g, (_match, start, middle, end) =>
-    start + Array(middle.length).join('*') + end
-  )
+  return key.replace(/(.{3})(.+)(.{3})/g, function (_match, start, middle, end) {
+    return start + Array(middle.length).join('*') + end
+  })
 }
 
 function addApiKey_ (key, userPermissions) {
