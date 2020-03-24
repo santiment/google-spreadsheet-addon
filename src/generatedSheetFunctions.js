@@ -1,4 +1,4 @@
-
+/* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
 * @param {string} projectSlug Name of the asset at sanbase,

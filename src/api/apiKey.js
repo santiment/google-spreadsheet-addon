@@ -1,11 +1,13 @@
-var API_KEY = 'API_KEY'
-var API_KEY_LOG_TYPE = 'ApiKeyLog'
-var ADD_API_KEY_ACTION = 'AddApiKey'
-var REMOVE_API_KEY_ACTION = 'RemoveApiKey'
-var VALIDATE_API_KEY_ACTION = 'ValidateApiKey'
+/* eslint-disable prefer-arrow-callback */
+
+const API_KEY = 'API_KEY'
+const API_KEY_LOG_TYPE = 'ApiKeyLog'
+const ADD_API_KEY_ACTION = 'AddApiKey'
+const REMOVE_API_KEY_ACTION = 'RemoveApiKey'
+const VALIDATE_API_KEY_ACTION = 'ValidateApiKey'
 
 function fetchUserPermissions_ (key) {
-  var apiClient = new ApiClient_(new Connection_(key))
+  const apiClient = new ApiClient_(new Connection_(key))
   return apiClient.fetchCurrentUserPermissions()
 }
 
@@ -13,7 +15,7 @@ function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
 function hasApiKeyProperty_ () { return !!apiKeyProperty_() }
 
 function validateApiKey_ (response) {
-  return response != null && response.hasOwnProperty('permissions')
+  return response != null && Object.prototype.hasOwnProperty.call(response, 'permissions')
 }
 
 function validateCanAccessHistoricData_ (response) {
@@ -44,7 +46,7 @@ function addApiKey_ (key, userPermissions) {
     return 'API key is not valid and has not been saved!'
   }
 
-  var userMessage
+  let userMessage
   setApiKeyProperty_(key)
 
   if (validateCanAccessHistoricData_(userPermissions) === true) {
@@ -90,7 +92,7 @@ function checkApiKeyStillValid_ (key, userPermissions) {
     return 'API key is not valid!'
   }
 
-  var userMessage
+  let userMessage
 
   if (validateCanAccessHistoricData_(userPermissions) === true) {
     userMessage = 'API key is valid.'

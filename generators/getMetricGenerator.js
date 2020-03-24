@@ -9,7 +9,7 @@ const TIMEBOUND_DESCRIPTION = `
 * tokens/coins that have moved in the past number of years or days.`
 
 function generate () {
-  let generatedDoc = ''
+  let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
     generatedDoc += generateFunctionString_(metric)
   }

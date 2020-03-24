@@ -1,8 +1,11 @@
+/* eslint-disable prefer-rest-params*/
+/* eslint-disable no-var */
+
 var NO_DATA_MSG = 'No data'
 
-var INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
+const INTERNAL_SERVER_ERROR_MSG = 'Internal server error!'
 
-var SERVER_ERROR_MSG = 'Server error!'
+const SERVER_ERROR_MSG = 'Server error!'
 
 function NoDataError_ () {
   this.name = 'NoDataError'
@@ -17,7 +20,7 @@ function InternalServerError_ () {
 function ServerError_ (message) {
   this.name = 'ServerError'
   if (message != null) {
-    this.message = SERVER_ERROR_MSG + ' ' + message
+    this.message = `${SERVER_ERROR_MSG} ${message}`
   } else {
     this.message = SERVER_ERROR_MSG
   }
@@ -49,3 +52,5 @@ function handleErrors_ (func) {
     }
   }
 }
+
+exports = { handleErrors_, NoDataError_ }

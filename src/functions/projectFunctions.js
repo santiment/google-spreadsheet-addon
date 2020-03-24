@@ -1,8 +1,8 @@
 function allProjects_ () {
-  var results = getApiClient_().fetchAllProjects()
+  const results = getApiClient_().fetchAllProjects()
   assertHasData_(results)
 
-  var headers = [
+  const headers = [
     'Ticker',
     'Name',
     'Slug',
@@ -16,8 +16,8 @@ function allProjects_ () {
     'ETH Spent 1D'
   ]
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       result.ticker,
       result.name,
       result.slug,
@@ -30,14 +30,14 @@ function allProjects_ () {
       formatNumber_(result.ethSpent7d),
       formatNumber_(result.ethSpent1d)
     ]
-  }))
+  ))
 }
 
 function erc20Projects_ () {
-  var results = getApiClient_().fetchErc20Projects()
+  const results = getApiClient_().fetchErc20Projects()
   assertHasData_(results)
 
-  var headers = [
+  const headers = [
     'Ticker',
     'Name',
     'Slug',
@@ -52,8 +52,8 @@ function erc20Projects_ () {
     'Main Contract Address'
   ]
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       result.ticker,
       result.name,
       result.slug,
@@ -67,14 +67,14 @@ function erc20Projects_ () {
       formatNumber_(result.ethSpent1d),
       result.mainContractAddress
     ]
-  }))
+  ))
 }
 
 function fetchProjectFundamentals_ (slug) {
-  var result = getApiClient_().fetchProjectFundamentals(slug)
+  const result = getApiClient_().fetchProjectFundamentals(slug)
   assertHasData_(result)
 
-  var headers = [
+  const headers = [
     'Ticker',
     'Name',
     'Slug',
@@ -92,7 +92,7 @@ function fetchProjectFundamentals_ (slug) {
     'Average Dev Activity 30D'
   ]
 
-  var formattedResult = [
+  const formattedResult = [
     result.ticker,
     result.name,
     result.slug,
@@ -114,10 +114,10 @@ function fetchProjectFundamentals_ (slug) {
 }
 
 function projectSocialData_ (slug) {
-  var result = getApiClient_().fetchProjectSocialData(slug)
+  const result = getApiClient_().fetchProjectSocialData(slug)
   assertHasData_(result)
 
-  var headers = [
+  const headers = [
     'Ticker',
     'Name',
     'Slug',
@@ -132,7 +132,7 @@ function projectSocialData_ (slug) {
     'Chat Link'
   ]
 
-  var formattedResult = [
+  const formattedResult = [
     result.ticker,
     result.name,
     result.slug,

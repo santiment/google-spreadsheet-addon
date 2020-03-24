@@ -1,27 +1,27 @@
 function githubActivity_ (slug, from, to) {
-  var results = getApiClient_().fetchGithubActivity(slug, from, to)
+  const results = getApiClient_().fetchGithubActivity(slug, from, to)
   assertHasData_(results)
 
-  var headers = ['Date', 'Activity']
+  const headers = ['Date', 'Activity']
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.activity)
     ]
-  }))
+  ))
 }
 
 function devActivity_ (slug, from, to) {
-  var results = getApiClient_().fetchDevActivity(slug, from, to)
+  const results = getApiClient_().fetchDevActivity(slug, from, to)
   assertHasData_(results)
 
-  var headers = ['Date', 'Activity']
+  const headers = ['Date', 'Activity']
 
-  return [headers].concat(results.map(function (result) {
-    return [
+  return [headers].concat(results.map(result =>
+    [
       formatDatetimeField_(result.datetime),
       formatNumber_(result.activity)
     ]
-  }))
+  ))
 }
