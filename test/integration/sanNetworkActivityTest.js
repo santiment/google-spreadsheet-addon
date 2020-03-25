@@ -25,10 +25,10 @@ describe('SAN_NETWORK_GROWTH', () => {
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchNetworkGrowth', san.SAN_NETWORK_GROWTH, slug, from, to)
+  testHandlesNullData('fetchGetMetric', san.SAN_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'New Addresses']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

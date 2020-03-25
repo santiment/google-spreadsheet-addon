@@ -1,29 +1,3 @@
-ApiClient_.prototype.fetchActiveDeposits = function (slug, from, to) {
-  const query = {
-    'query': `{
-       dailyActiveDeposits(${commonParams(slug, from, to)}) {
-         activeDeposits
-         datetime
-       }
-     }`
-  }
-
-  return this.conn.graphQLQuery(query, 'dailyActiveDeposits')
-}
-
-ApiClient_.prototype.fetchNetworkGrowth = function (slug, from, to) {
-  const query = {
-    'query': `{
-       networkGrowth(${commonParams(slug, from, to)}) {
-         newAddresses
-         datetime
-       }
-     }`
-  }
-
-  return this.conn.graphQLQuery(query, 'networkGrowth')
-}
-
 ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
   const query = {
     'query': `{

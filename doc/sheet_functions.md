@@ -277,7 +277,7 @@ Returns the daily closing marketcap.
 Returns the closing price for a given day.
 
 **Kind**: global function  
-**Returns**: <code>number</code> - closing price.  
+**Returns**: <code>number</code> - closing price.
 **Customfunction**:   
 
 | Param | Type | Description |

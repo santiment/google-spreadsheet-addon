@@ -1,31 +1,3 @@
-function activeDeposits_ (slug, from, to) {
-  const results = getApiClient_().fetchActiveDeposits(slug, from, to)
-  assertHasData_(results)
-
-  const headers = ['Date', 'Active Deposits']
-
-  return [headers].concat(results.map(result =>
-    [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.activeDeposits)
-    ]
-  ))
-}
-
-function networkGrowth_ (slug, from, to) {
-  const results = getApiClient_().fetchNetworkGrowth(slug, from, to)
-  assertHasData_(results)
-
-  const headers = ['Date', 'New Addresses']
-
-  return [headers].concat(results.map(result =>
-    [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.newAddresses)
-    ]
-  ))
-}
-
 function tokenAgeConsumed_ (slug, from, to) {
   const results = getApiClient_().fetchTokenAgeConsumed(slug, from, to)
   assertHasData_(results)

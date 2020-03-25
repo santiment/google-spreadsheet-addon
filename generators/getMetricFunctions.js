@@ -117,6 +117,16 @@ const metricsList = [
       'daily transaction throughput.'
     ],
     returns: 'NVT ratios'
+  },
+  {
+    metric: 'network_growth',
+    description: ['Returns the token\'s network growth'],
+    returns: 'network growth.'
+  },
+  {
+    metric: 'active_deposits',
+    description: ['Returns number of unique deposit addresses that have been active for a project.'],
+    returns: 'deposit address numbers.'
   }
 ]
 
