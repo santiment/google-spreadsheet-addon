@@ -9,7 +9,7 @@ podTemplate(label: 'google-spreadsheet-addon', containers: [
         def scmVars = checkout scm
 
         sh "docker build -t google-spreadsheet-addon-test:${scmVars.GIT_COMMIT} -f Dockerfile-test ."
-        sh "docker run --rm -t google-spreadsheet-addon-test:${scmVars.GIT_COMMIT} npm run test"
+        sh "docker run --rm -t google-spreadsheet-addon-test:${scmVars.GIT_COMMIT} npm run test:unit"
       }
     }
   }
