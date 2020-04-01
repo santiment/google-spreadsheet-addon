@@ -1,7 +1,7 @@
-require('../helper.js')
+require('../support/helper.js')
 
-const { testHandlesNullData } = require('../integration_helper.js')
-const { slug, from, to } = require('../setup.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { slug, from, to } = require('../support/setup.js')
 
 describe('SAN_PRICE_ABSOLUTE_CHANGE', () => {
   testHandlesNullData(

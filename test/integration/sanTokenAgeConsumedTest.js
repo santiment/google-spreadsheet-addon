@@ -1,9 +1,9 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData,
   assertNumberOfRecords
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
 const {
   slug,
@@ -12,7 +12,7 @@ const {
   days,
   numberOfDays,
   formatDate
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_TOKEN_AGE_CONSUMED', () => {
   const expected = { date: 'string', tokenAgeConsumed: 'number' }

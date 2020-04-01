@@ -1,4 +1,4 @@
-require('./helper.js')
+require('../support/helper.js')
 
 it('returns proper message on NoDataError_', () => {
   const func = () => { throw new san.NoDataError_() }

@@ -1,7 +1,7 @@
-const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { testGetMetricTimeBound } = require('../getMetricHelper.js')
-const { slug, from, to, currency } = require('../setup.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
+const { slug, from, to, currency } = require('../support/setup.js')
 
 describe('SAN_MEAN_REALIZED_PRICE', () => {
   it('works properly when no currency and no timebound suffix are given', () => {

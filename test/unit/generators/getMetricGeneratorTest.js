@@ -1,5 +1,6 @@
-require('../helper.js')
-const { fillTemplate } = require('../../generators/getMetricGenerator.js')
+require('../../support/helper.js')
+
+const { fillTemplate } = require('../../../generators/getMetricGenerator.js')
 
 describe('getMetric', () => {
   it('fills the template when there is a currency and timebound', () => {

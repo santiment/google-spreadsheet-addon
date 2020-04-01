@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('../helper.js')
+require('../../support/helper.js')
 
 const slug = 'santiment'
 const from = new Date(2019, 0, 1, 0, 0, 0)

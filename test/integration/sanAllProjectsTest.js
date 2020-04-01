@@ -1,5 +1,5 @@
-const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
 
 describe('SAN_ALL_PROJECTS', () => {
   const expectedFields = {

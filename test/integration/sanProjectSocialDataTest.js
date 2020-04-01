@@ -1,6 +1,6 @@
-const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { slug } = require('../setup.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { slug } = require('../support/setup.js')
 
 describe('SAN_PROJECT_SOCIAL_DATA', () => {
   const expected = {

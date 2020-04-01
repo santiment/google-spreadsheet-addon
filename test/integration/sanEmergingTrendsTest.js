@@ -1,6 +1,6 @@
-const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { from, to, numberOfDays } = require('../setup.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { from, to, numberOfDays } = require('../support/setup.js')
 
 describe('SAN_EMERGING_TRENDS', () => {
   const size = 3

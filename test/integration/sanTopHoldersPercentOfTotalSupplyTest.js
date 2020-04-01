@@ -1,8 +1,8 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
 const {
   slug,
@@ -10,7 +10,7 @@ const {
   to,
   days,
   formatDate
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 const numberOfHolders = 5
 

@@ -1,9 +1,5 @@
-const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHandlesNullData,
-  assertNumberOfRecords
-} = require('../integration_helper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData, assertNumberOfRecords } = require('../support/integrationHelper.js')
 
 const {
   slug,
@@ -12,7 +8,7 @@ const {
   days,
   numberOfDays,
   formatDate
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_DEV_ACTIVITY', () => {
   const expected = {

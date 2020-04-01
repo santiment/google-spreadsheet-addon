@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-require('./helper.js')
+require('../support/helper.js')
 
 const testDeprecationMessage = (oldFunctionName, oldFunctionArgs, newFunctionName) => {
   it(`returns deprecation message for ${oldFunctionName}`, () => {

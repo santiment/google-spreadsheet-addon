@@ -1,14 +1,14 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData,
   assertNumberOfRecords,
   assertDaysMatch
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
-const { testGetMetricTimeBound } = require('../getMetricHelper.js')
+const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
 
-const { slug, from, to, currency, numberOfDays, days } = require('../setup.js')
+const { slug, from, to, currency, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_MVRV_RATIO', () => {
   const expected = { date: 'string', ratio: 'number' }

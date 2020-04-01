@@ -1,15 +1,15 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
 const {
   slug,
   from,
   to,
   ethAddress
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_HISTORICAL_BALANCE_DEDUP', () => {
   const expected = { date: 'string', balance: 'number' }

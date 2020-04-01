@@ -1,4 +1,4 @@
-require('../helper.js')
+require('../../support/helper.js')
 
 const slug = 'santiment'
 const from = new Date(2019, 7, 21, 0, 0, 0)
