@@ -106,8 +106,7 @@ Currently only ETH is supported.</p>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
 </dd>
 <dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the number of new addresses being created on the project network
-for a given slug and time interval.</p>
+<dd><p>Returns the token&#39;s network growth</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
@@ -277,7 +276,7 @@ Returns the daily closing marketcap.
 Returns the closing price for a given day.
 
 **Kind**: global function  
-**Returns**: <code>number</code> - closing price.
+**Returns**: <code>number</code> - closing price.  
 **Customfunction**:   
 
 | Param | Type | Description |
@@ -636,11 +635,10 @@ Returns MVRV(Market-Value-to-Realized-Value).
 <a name="SAN_NETWORK_GROWTH"></a>
 
 ## SAN\_NETWORK\_GROWTH(projectSlug, from, to) ⇒ <code>Array</code>
-Returns the number of new addresses being created on the project network
-for a given slug and time interval.
+Returns the token's network growth
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of number of new addresses.  
+**Returns**: <code>Array</code> - of network growth.  
 **Customfunction**:   
 
 | Param | Type | Description |
