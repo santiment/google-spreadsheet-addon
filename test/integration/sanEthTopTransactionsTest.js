@@ -1,12 +1,9 @@
-const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHandlesNullData
-} = require('../integration_helper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
 
 const {
   slug
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 const from = new Date(2019, 6, 19, 0, 0, 0)
 const to = new Date(2019, 6, 30, 0, 0, 0)

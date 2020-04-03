@@ -1,4 +1,4 @@
-require('../helper.js')
+require('../../support/helper.js')
 
 const slug = 'santiment'
 

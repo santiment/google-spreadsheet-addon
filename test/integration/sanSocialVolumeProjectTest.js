@@ -1,5 +1,5 @@
-require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
+require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
 
 describe('SAN_SOCIAL_VOLUME_PROJECTS', () => {
   testHandlesNullData('fetchSocialVolumeProjects', san.SAN_SOCIAL_VOLUME_PROJECTS)

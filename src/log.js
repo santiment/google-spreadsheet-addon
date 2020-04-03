@@ -1,6 +1,8 @@
 // Console logs to Stackdriver
 // https://developers.google.com/apps-script/reference/base/console
 
+/* eslint-disable no-console */
+
 const errorsWithWarnLevel = ['HistoricDataForbiddenError']
 
 function logWarning_ (message) {

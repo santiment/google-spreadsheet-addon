@@ -1,5 +1,5 @@
-const { testHandlesNullData } = require('../integration_helper.js')
-const { slug, from, to } = require('../setup.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { slug, from, to } = require('../support/setup.js')
 
 describe('SAN_SOCIAL_VOLUME', () => {
   const socialVolumeType = 'TELEGRAM_CHATS_OVERVIEW'

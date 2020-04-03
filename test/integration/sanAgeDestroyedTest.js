@@ -1,8 +1,11 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const {
+  testHandlesNullData,
+  assertNumberOfRecords,
+  assertDaysMatch
+} = require('../support/integrationHelper.js')
 
-const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../integration_helper.js')
-
-const { slug, from, to, numberOfDays, days } = require('../setup.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_AGE_DESTROYED', () => {
   const expected = {

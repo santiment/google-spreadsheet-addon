@@ -26,13 +26,25 @@ $ npm install
 ```
 
 ### Testing
-You can run the tests with:
+You can run the whole tests suite with:
 
 ```bash
 $ npm test
 ```
 
-Or you can also run them in a docker container. Build the image:
+Unit tests only:
+
+```bash
+$ npm run test:unit
+```
+
+Integration tests only:
+
+```bash
+$ npm run test:integration
+```
+
+Run the test suite in a docker container. Build the image:
 
 ```bash
 $ docker build -f Dockerfile-test -t google-spreadsheet-addon-tests .

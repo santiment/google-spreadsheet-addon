@@ -1,9 +1,5 @@
-const { testFieldTypes } = require('../helper.js')
-
-const {
-  testHandlesNullData,
-  assertNumberOfRecords
-} = require('../integration_helper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData, assertNumberOfRecords } = require('../support/integrationHelper.js')
 
 const {
   slug,
@@ -13,7 +9,7 @@ const {
   numberOfDays,
   formatDate,
   ethAddress
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_HISTORICAL_BALANCE', () => {
   const expected = { date: 'string', balance: 'number' }

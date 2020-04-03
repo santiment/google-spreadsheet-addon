@@ -1,8 +1,8 @@
-const { testFieldTypes } = require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { testGetMetricTimeBound } = require('../getMetricHelper.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
 
-const { slug, from, to } = require('../setup.js')
+const { slug, from, to } = require('../support/setup.js')
 
 describe('SAN_TOKEN_CIRCULATION', () => {
   const expected = { date: 'string', tokenCirculation: 'number' }

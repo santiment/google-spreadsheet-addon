@@ -1,14 +1,14 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
 const {
   slug,
   from,
   to
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_TOKEN_TOP_TRANSACTIONS', () => {
   const expected = {

@@ -1,10 +1,10 @@
-const { testFieldTypes } = require('../helper.js')
+const { testFieldTypes } = require('../support/helper.js')
 
 const {
   testHandlesNullData,
   assertNumberOfRecords,
   assertDaysMatch
-} = require('../integration_helper.js')
+} = require('../support/integrationHelper.js')
 
 const {
   slug,
@@ -13,7 +13,7 @@ const {
   currency,
   numberOfDays,
   days
-} = require('../setup.js')
+} = require('../support/setup.js')
 
 describe('SAN_DAILY_CLOSING_MARKETCAP', () => {
   const expected = {

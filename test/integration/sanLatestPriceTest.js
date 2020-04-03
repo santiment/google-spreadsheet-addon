@@ -1,6 +1,6 @@
-require('../helper.js')
-const { testHandlesNullData } = require('../integration_helper.js')
-const { slug, fiatCurrency } = require('../setup.js')
+require('../support/helper.js')
+const { testHandlesNullData } = require('../support/integrationHelper.js')
+const { slug, fiatCurrency } = require('../support/setup.js')
 
 describe('SAN_LATEST_PRICE', () => {
   testHandlesNullData(

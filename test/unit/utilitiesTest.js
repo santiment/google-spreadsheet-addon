@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
-require('./helper.js')
+require('../support/helper.js')
 
 describe('toUTC_', () => {
   it('returns date in ISO8601 format', () => {

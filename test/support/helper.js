@@ -7,7 +7,7 @@ chai.use(sinonChai)
 chai.use(require('chai-datetime'))
 
 const gas = require('gas-local')
-const mock = require('../index.js')
+const mock = require('../../index.js')
 const san = gas.require('./src', mock.globalMockDefault)
 
 const testFieldTypes = (resources, expected) => {

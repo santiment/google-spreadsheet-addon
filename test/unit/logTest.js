@@ -1,4 +1,4 @@
-require('./helper.js')
+require('../support/helper.js')
 
 it('logs HistoricDataForbiddenError as warning', () => {
   const logWarning = sandbox.stub(san, 'logWarning_').returns(null)

@@ -1,5 +1,5 @@
-require('../helper.js')
-const { ethereumSlug, from } = require('../setup.js')
+require('../support/helper.js')
+const { ethereumSlug, from } = require('../support/setup.js')
 
 describe('SAN_DAILY_CLOSING_PRICE', () => {
   it('returns the latest price in USD', () => {
