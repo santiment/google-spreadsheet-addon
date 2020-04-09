@@ -19,14 +19,14 @@ describe('SAN_ACTIVE_DEPOSITS', () => {
 
   testFieldTypes(results, expected)
   testHandlesNullData(
-    'fetchActiveDeposits',
+    'fetchGetMetric',
     san.SAN_ACTIVE_DEPOSITS,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Active Deposits']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

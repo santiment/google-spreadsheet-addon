@@ -163,22 +163,6 @@ function SAN_DEV_ACTIVITY (projectSlug, from, to) {
 }
 
 /**
- * Returns the number of new addresses being created on the project network
- * for a given slug and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of number of new addresses.
- * @customfunction
- */
-function SAN_NETWORK_GROWTH (projectSlug, from, to) {
-  return handleErrors_(networkGrowth_)(projectSlug, from, to)
-}
-
-/**
  * Returns the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
  *
@@ -249,20 +233,6 @@ function SAN_PROJECT_SOCIAL_DATA (projectSlug) {
  */
 function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
   return handleErrors_(tokenAgeConsumed_)(projectSlug, from, to)
-}
-
-/**
- * Returns number of unique deposit addresses that have been active for a project.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of deposit address numbers.
- * @customfunction
- */
-function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
-  return handleErrors_(activeDeposits_)(projectSlug, from, to)
 }
 
 /**
