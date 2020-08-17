@@ -44,6 +44,11 @@ UnsupportedError_.prototype = Object.create(Error.prototype)
 UnsupportedError_.prototype.constructor = UnsupportedError_
 
 function handleErrors_ (func) {
+  const key = apiKeyProperty_()
+  const userPermissions = fetchUserPermissions_(key)
+
+  checkApiKeyStillValid_(key, userPermissions)
+
   return function () {
     try {
       return func.apply(this, arguments)
