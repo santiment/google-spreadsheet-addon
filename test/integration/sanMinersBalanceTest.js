@@ -16,6 +16,7 @@ const {
 
 describe('SAN_MINERS_BALANCE', () => {
   const expected = { date: 'string', balance: 'number' }
+  sandbox.stub(san.ApiClient_.prototype, 'fetchCurrentUserPermissions').returns({ 'data': { 'currentUser': { 'permissions': { 'spreadsheet': true } } } })
 
   const response = san.SAN_MINERS_BALANCE(ethereumSlug, from, to)
   const headers = response[0]

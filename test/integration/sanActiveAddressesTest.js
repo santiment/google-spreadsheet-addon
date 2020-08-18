@@ -7,6 +7,7 @@ describe('SAN_ACTIVE_ADDRESSES', () => {
     date: 'string',
     activeAddresses: 'number'
   }
+  // sandbox.stub(san.ApiClient_.prototype, 'fetchCurrentUserPermissions').returns({ 'data': { 'currentUser': { 'permissions': { 'spreadsheet': true } } } })
 
   const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)
   const headers = response[0]

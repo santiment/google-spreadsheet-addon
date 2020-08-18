@@ -46,8 +46,10 @@ UnsupportedError_.prototype.constructor = UnsupportedError_
 function handleErrors_ (func) {
   const key = apiKeyProperty_()
   const userPermissions = fetchUserPermissions_(key)
-
-  checkApiKeyStillValid_(key, userPermissions)
+  const rights = checkApiKeyStillValid_(key, userPermissions)
+  if (rights === 'API key is not valid!' || rights !== 'API key is valid.') {
+    return function () { return ['API plan not Pro'] }
+  }
 
   return function () {
     try {
