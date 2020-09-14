@@ -315,6 +315,21 @@ function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
   return handleErrors_(getMetric_)('active_deposits', projectSlug, from, to, {  })
 }
 
+
+/**
+* Returns active addresses for the last 24 hours.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @returns {Array} of active addresses for the last 24 hours.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_24H (projectSlug, from, to) {
+  return handleErrors_(getMetric_)('active_addresses_24h', projectSlug, from, to, {  })
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -323,6 +338,7 @@ function SAN_ACTIVE_DEPOSITS (projectSlug, from, to) {
 function SAN_FUNCTIONS () {
   return [
     'SAN_ACTIVE_ADDRESSES',
+    'SAN_ACTIVE_ADDRESSES_24H',
     'SAN_ACTIVE_DEPOSITS',
     'SAN_AGE_DESTROYED',
     'SAN_ALL_PROJECTS',
