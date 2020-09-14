@@ -1,5 +1,8 @@
+require('../support/helper.js')
+
 const listOfFunctions = [
   'SAN_ACTIVE_ADDRESSES',
+  'SAN_ACTIVE_ADDRESSES_24H',
   'SAN_ACTIVE_DEPOSITS',
   'SAN_AGE_DESTROYED',
   'SAN_ALL_PROJECTS',
