@@ -127,6 +127,11 @@ const metricsList = [
     metric: 'active_deposits',
     description: ['Returns number of unique deposit addresses that have been active for a project.'],
     returns: 'deposit address numbers.'
+  },
+  {
+    metric: 'active_addresses_24h',
+    description: ['Returns active addresses for the last 24 hours.'],
+    returns: 'active addresses for the last 24 hours.'
   }
 ]
 
