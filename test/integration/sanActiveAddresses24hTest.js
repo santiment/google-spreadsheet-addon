@@ -27,4 +27,11 @@ describe('SAN_ACTIVE_ADDRESSES_24H', () => {
 
     assertDaysMatch(addresses, days)
   })
+
+  it('returns a record per hour', () => {
+    const addresses = san.SAN_ACTIVE_ADDRESSES_24H(slug, from, to, '1h')
+
+    console.log(addresses)
+    assertNumberOfRecords(addresses, 72)
+  })
 })

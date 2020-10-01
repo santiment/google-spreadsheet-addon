@@ -7,6 +7,7 @@ const DEFAULT_CURRENCY = 'USD'
 function prepareOptions_ (options) {
   if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
   if ('timeBound' in options) { options.timeBound = options.timeBound || '' }
+  if ('interval' in options) { options.interval = options.interval || '1d' }
 }
 
 function supportedCurrencies_ () {
@@ -39,7 +40,7 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, options)
   const query = {
     'query': `{
        getMetric(metric: "${metricName}") {
-          timeseriesData(${commonParams(slug, from, to)}){
+          timeseriesData(${commonParams(slug, from, to, options.interval)}){
                            datetime
                            value
           }
