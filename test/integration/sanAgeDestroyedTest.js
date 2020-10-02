@@ -5,7 +5,7 @@ const {
   assertDaysMatch
 } = require('../support/integrationHelper.js')
 
-const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
+const { slug, from, to, numberOfDays, numberOfHours, days } = require('../support/setup.js')
 
 describe('SAN_AGE_DESTROYED', () => {
   const expected = {
@@ -36,5 +36,11 @@ describe('SAN_AGE_DESTROYED', () => {
     assertNumberOfRecords(results, numberOfDays)
 
     assertDaysMatch(results, days)
+  })
+
+  it('returns a record per hour', () => {
+    const addresses = san.SAN_AGE_DESTROYED(slug, from, to, '1h')
+
+    assertNumberOfRecords(addresses, numberOfHours)
   })
 })

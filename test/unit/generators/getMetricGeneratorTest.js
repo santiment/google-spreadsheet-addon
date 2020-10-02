@@ -30,8 +30,14 @@ describe('getMetric', () => {
 * @returns {Array} of test returns.
 * @customfunction
 */
-function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency: currency, timeBound: timeBound })
+function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'test_metric',
+    projectSlug,
+    from,
+    to,
+    { currency: currency, timeBound: timeBound, interval: interval }
+  )
 }
 
 `
@@ -60,8 +66,14 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound)
 * @returns {Array} of test returns.
 * @customfunction
 */
-function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, {  })
+function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'test_metric',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
 }
 
 `
@@ -93,8 +105,14 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to) {
 * @returns {Array} of test returns.
 * @customfunction
 */
-function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { currency: currency })
+function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'test_metric',
+    projectSlug,
+    from,
+    to,
+    { currency: currency, interval: interval }
+  )
 }
 
 `
@@ -125,8 +143,14 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency) {
 * @returns {Array} of test returns.
 * @customfunction
 */
-function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, timeBound) {
-  return handleErrors_(getMetric_)('test_metric', projectSlug, from, to, { timeBound: timeBound })
+function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, timeBound, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'test_metric',
+    projectSlug,
+    from,
+    to,
+    { timeBound: timeBound, interval: interval }
+  )
 }
 
 `

@@ -6,19 +6,17 @@ const {
   assertDaysMatch
 } = require('../support/integrationHelper.js')
 
-const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
-
-const { slug, from, to, currency, numberOfDays, days } = require('../support/setup.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_NVT_RATIO', () => {
   const expected = { date: 'string', ratio: 'number' }
 
-  const response = san.SAN_NVT_RATIO(slug, from, to, currency)
+  const response = san.SAN_NVT_RATIO(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_NVT_RATIO, slug, from, to, currency)
+  testHandlesNullData('fetchGetMetric', san.SAN_NVT_RATIO, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -26,7 +24,7 @@ describe('SAN_NVT_RATIO', () => {
   })
 
   it('returns a record per every day', () => {
-    const response = san.SAN_NVT_RATIO(slug, from, to, currency)
+    const response = san.SAN_NVT_RATIO(slug, from, to)
 
     assertNumberOfRecords(response, numberOfDays)
     assertDaysMatch(response, days)
@@ -38,6 +36,4 @@ describe('SAN_NVT_RATIO', () => {
     assertNumberOfRecords(response, numberOfDays)
     assertDaysMatch(response, days)
   })
-
-  testGetMetricTimeBound(san.SAN_NVT_RATIO, slug, from, to, currency)
 })
