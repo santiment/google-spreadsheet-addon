@@ -33,11 +33,11 @@ describe('beginningOfDaytoEndOfDay_', () => {
 })
 
 describe('formatDatetimeField_', () => {
-  it('returns date when the \'field\' argument is date', () => {
+  it('returns date when the "field" argument is date', () => {
     expect(san.formatDatetimeField_('2020-02-02T00:00:00.000Z', 'date')).to.equal('2020-02-02')
   })
 
-  it('returns datetime when the \'field\' argument is datetime', () => {
+  it('returns datetime when the "field" argument is datetime', () => {
     expect(san.formatDatetimeField_('2020-02-02T23:01:00.000Z', 'datetime')).to.equal('2020-02-02 23:01:00')
   })
 })

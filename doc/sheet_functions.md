@@ -6,9 +6,6 @@
 Active Addresses&quot; refers to the number of unique addresses that
 participated in transactions on a blockchain.</p>
 </dd>
-<dt><a href="#SAN_ACTIVE_ADDRESSES_24H">SAN_ACTIVE_ADDRESSES_24H(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns active addresses for the last 24 hours.</p>
-</dd>
 <dt><a href="#SAN_ACTIVE_DEPOSITS">SAN_ACTIVE_DEPOSITS(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
 </dd>
@@ -189,21 +186,6 @@ transfers that have occurred on a blockchain.</p>
 Returns the active addresses for the specified asset, during a given time interval.
 Active Addresses" refers to the number of unique addresses that
 participated in transactions on a blockchain.
-
-**Kind**: global function  
-**Returns**: <code>Array</code> - of daily active addresses numbers.  
-**Customfunction**:   
-
-| Param | Type | Description |
-| --- | --- | --- |
-| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
-| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
-| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-
-<a name="SAN_ACTIVE_ADDRESSES_24H"></a>
-
-## SAN\_ACTIVE\_ADDRESSES\_24H(projectSlug, from, to) ⇒ <code>Array</code>
-Returns active addresses for the last 24 hours.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of active addresses for the last 24 hours.  
