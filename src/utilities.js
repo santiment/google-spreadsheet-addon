@@ -14,8 +14,13 @@ function assertHasData_ (data) {
   if (data === null || data === []) throw new NoDataError_()
 }
 
-function formatDatetimeField_ (field) {
-  return new Date(field).toISOString().slice(0, 10)
+function formatDatetimeField_ (field, datetimeField) {
+  if (datetimeField === 'datetime') {
+    sliceLength = 19
+  } else {
+    sliceLength = 10
+  }
+  return new Date(field).toISOString().slice(0, sliceLength).replace('T', ' ')
 }
 
 function formatNumber_ (field) {

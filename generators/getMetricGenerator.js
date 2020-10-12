@@ -51,7 +51,13 @@ ${description}
 * @customfunction
 */
 function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
-  return handleErrors_(getMetric_)('${metric}', projectSlug, from, to, { ${options} })
+  return handleErrors_(getMetric_)(
+    '${metric}',
+    projectSlug,
+    from,
+    to,
+    { ${options} }
+  )
 }
 
 `
@@ -76,6 +82,9 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
     returnedValues.arguments.push('timeBound')
     returnedValues.options.push('timeBound: timeBound')
   }
+
+  returnedValues.arguments.push('interval = \'1d\'')
+  returnedValues.options.push('interval: interval')
 
   return [
     returnedValues.options.join(', '),

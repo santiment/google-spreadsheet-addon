@@ -1,11 +1,11 @@
-const testGetMetricTimeBound = (metric, slug, from, to, currency) => {
+const testGetMetricTimeBound = (metric, slug, from, to, currency, interval = '1d') => {
   for (const timeBoundSuffix of san.TIME_BOUNDS) {
     it(`works with ${timeBoundSuffix} as timeBound argument`, () => {
       let response = ''
-      if (currency !== '') {
-        response = metric(slug, from, to, currency, timeBoundSuffix)
+      if (currency !== '' && typeof currency !== 'undefined') {
+        response = metric(slug, from, to, currency, timeBoundSuffix, interval)
       } else {
-        response = metric(slug, from, to, timeBoundSuffix)
+        response = metric(slug, from, to, timeBoundSuffix, interval)
       }
 
       const results = response[1]

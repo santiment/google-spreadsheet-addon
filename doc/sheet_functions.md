@@ -188,7 +188,7 @@ Active Addresses" refers to the number of unique addresses that
 participated in transactions on a blockchain.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of daily active addresses numbers.  
+**Returns**: <code>Array</code> - of active addresses for the last 24 hours.  
 **Customfunction**:   
 
 | Param | Type | Description |

@@ -8,6 +8,7 @@ const startOfDay = require('date-fns/start_of_day')
 const endOfYesterday = require('date-fns/end_of_yesterday')
 
 const numberOfDays = 3
+const numberOfHours = (numberOfDays + 1) * 24 // every intraday metric should return this number of results
 
 const slug = 'santiment'
 const ethereumSlug = 'ethereum'
@@ -29,6 +30,7 @@ module.exports = {
   from: from,
   days: days,
   numberOfDays: numberOfDays,
+  numberOfHours: numberOfHours,
   formatDate: formatDate,
   ethAddress: ethAddress,
   currency: currency

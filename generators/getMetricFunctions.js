@@ -12,16 +12,6 @@ const metricsList = [
     supportedCurrencies: ['USD']
   },
   {
-    metric: 'daily_active_addresses',
-    sheetMetricName: 'active_addresses',
-    description: [
-      'Returns the active addresses for the specified asset, during a given time interval.',
-      'Active Addresses" refers to the number of unique addresses that',
-      'participated in transactions on a blockchain.'
-    ],
-    returns: 'daily active addresses numbers.'
-  },
-  {
     metric: 'mean_realized_price',
     description: ['Returns the mean realized price.'],
     returns: 'mean realized prices.',
@@ -130,7 +120,12 @@ const metricsList = [
   },
   {
     metric: 'active_addresses_24h',
-    description: ['Returns active addresses for the last 24 hours.'],
+    sheetMetricName: 'active_addresses',
+    description: [
+      'Returns the active addresses for the specified asset, during a given time interval.',
+      'Active Addresses" refers to the number of unique addresses that',
+      'participated in transactions on a blockchain.'
+    ],
     returns: 'active addresses for the last 24 hours.'
   }
 ]
