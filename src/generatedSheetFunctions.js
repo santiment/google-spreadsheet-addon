@@ -452,6 +452,27 @@ function SAN_ACTIVE_ADDRESSES_24H (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the price for the specified asset, during a given time interval.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @returns {Array} of price of the asset.
+* @customfunction
+*/
+function SAN_PRICES (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'price_usd',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.

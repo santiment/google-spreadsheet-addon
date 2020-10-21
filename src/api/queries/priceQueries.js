@@ -1,7 +1,7 @@
-ApiClient_.prototype.fetchPrices = function (slug, from, to) {
+ApiClient_.prototype.fetchPrices = function (slug, from, to, interval) {
   const query = {
     'query': `{
-       historyPrice(${commonParams(slug, from, to)}) {
+       historyPrice(${commonParams(slug, from, to, interval)}) {
          datetime
          priceUsd
          volume
