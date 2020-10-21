@@ -119,8 +119,18 @@ const metricsList = [
     returns: 'deposit address numbers.'
   },
   {
-    metric: 'active_addresses_24h',
+    metric: 'daily_active_addresses',
     sheetMetricName: 'active_addresses',
+    description: [
+      'Returns the active addresses for the specified asset, during a given time interval.',
+      'Active Addresses" refers to the number of unique addresses that',
+      'participated in transactions on a blockchain.'
+    ],
+    returns: 'active addresses.'
+  },
+  {
+    metric: 'active_addresses_24h',
+    sheetMetricName: 'active_addresses_24h',
     description: [
       'Returns the active addresses for the specified asset, during a given time interval.',
       'Active Addresses" refers to the number of unique addresses that',
