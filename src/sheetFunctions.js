@@ -1,4 +1,20 @@
 /**
+ * Returns the prices for the specified asset, during a given time interval.
+ *
+ * @param {string} projectSlug Name of the asset at sanbase,
+ * which can be found at the end of the URL (eg. the Santiment URL is
+ * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} of prices.
+ * @customfunction
+ */
+function SAN_PRICES (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(prices_)(projectSlug, from, to, interval)
+}
+
+/**
  * Returns the absolute price change for the specified asset, during a given time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,

@@ -28,15 +28,11 @@ function dailyClosingPrice_ (slug, day) {
   return formatNumber_(result.closePriceUsd)
 }
 
-function prices_ (slug, from, to, interval='1d') {
+function prices_ (slug, from, to, interval = '1d') {
   const results = getApiClient_().fetchPrices(slug, from, to, interval)
   assertHasData_(results)
 
-  if (interval.includes('d')) {
-    datetimeField = 'date'
-  } else {
-    datetimeField = 'datetime'
-  }
+  datetimeField = handleDatetimeField(interval)
 
   const headers = ['Date', 'USD Price', 'Volume']
   return [headers].concat(results.map(result =>
