@@ -8,6 +8,8 @@
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of daily average marketcaps.
 * @customfunction
 */
@@ -31,6 +33,8 @@ function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency, interval = '1
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of daily closing marketcaps.
 * @customfunction
 */
@@ -56,6 +60,8 @@ function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency, interval 
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of mean realized prices.
 * @customfunction
 */
@@ -79,6 +85,8 @@ function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound, in
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of MVRV differences.
 * @customfunction
 */
@@ -104,6 +112,8 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency, interval = '
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of MVRV ratios.
 * @customfunction
 */
@@ -127,6 +137,8 @@ function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound, interval = 
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of token circulation values.
 * @customfunction
 */
@@ -148,6 +160,8 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound, interval = '1d
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of mean age values.
 * @customfunction
 */
@@ -169,6 +183,8 @@ function SAN_MEAN_AGE (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of mean dollar invested age values.
 * @customfunction
 */
@@ -196,6 +212,8 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE (projectSlug, from, to, interval = '1d') {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of realized values.
 * @customfunction
 */
@@ -217,6 +235,8 @@ function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound, interva
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of token velocity values.
 * @customfunction
 */
@@ -240,6 +260,8 @@ function SAN_VELOCITY (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of transaction volumes.
 * @customfunction
 */
@@ -261,6 +283,8 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of exchange inflows.
 * @customfunction
 */
@@ -282,6 +306,8 @@ function SAN_EXCHANGE_INFLOW (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of exchange outflows.
 * @customfunction
 */
@@ -303,6 +329,8 @@ function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of exchange balances.
 * @customfunction
 */
@@ -324,6 +352,8 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of age destroyed values.
 * @customfunction
 */
@@ -351,6 +381,8 @@ function SAN_AGE_DESTROYED (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of NVT ratios
 * @customfunction
 */
@@ -372,6 +404,8 @@ function SAN_NVT_RATIO (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of network growth.
 * @customfunction
 */
@@ -393,6 +427,8 @@ function SAN_NETWORK_GROWTH (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of deposit address numbers.
 * @customfunction
 */
@@ -416,6 +452,8 @@ function SAN_ACTIVE_DEPOSITS (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of active addresses.
 * @customfunction
 */
@@ -439,33 +477,14 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+
 * @returns {Array} of active addresses for the last 24 hours.
 * @customfunction
 */
 function SAN_ACTIVE_ADDRESSES_24H (projectSlug, from, to, interval = '1d') {
   return handleErrors_(getMetric_)(
     'active_addresses_24h',
-    projectSlug,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
-
-/**
-* Returns the price for the specified asset, during a given time interval.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @returns {Array} of price of the asset.
-* @customfunction
-*/
-function SAN_PRICES (projectSlug, from, to, interval = '1d') {
-  return handleErrors_(getMetric_)(
-    'price_usd',
     projectSlug,
     from,
     to,
