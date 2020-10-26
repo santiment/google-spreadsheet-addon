@@ -9,8 +9,7 @@ const TIMEBOUND_DESCRIPTION = `
 * tokens/coins that have moved in the past number of years or days.`
 
 const INTERVAL_DESCRIPTION = `
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-`
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"`
 
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
