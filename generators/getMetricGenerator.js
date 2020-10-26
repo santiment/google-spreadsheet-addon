@@ -8,6 +8,9 @@ const TIMEBOUND_DESCRIPTION = `
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.`
 
+const INTERVAL_DESCRIPTION = `
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"`
+
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
@@ -83,6 +86,7 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
     returnedValues.options.push('timeBound: timeBound')
   }
 
+  returnedValues.description.push(INTERVAL_DESCRIPTION)
   returnedValues.arguments.push('interval = \'1d\'')
   returnedValues.options.push('interval: interval')
 

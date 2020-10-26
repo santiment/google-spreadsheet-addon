@@ -11,6 +11,7 @@ const {
   to,
   days,
   numberOfDays,
+  numberOfHours,
   formatDate
 } = require('../support/setup.js')
 
@@ -41,5 +42,11 @@ describe('SAN_PRICES', () => {
     for (let [index, day] of days.entries()) {
       expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
+  })
+
+  it('returns a record per hour', () => {
+    const prices = san.SAN_PRICES(slug, from, to, '1h')
+
+    assertNumberOfRecords(prices, numberOfHours)
   })
 })

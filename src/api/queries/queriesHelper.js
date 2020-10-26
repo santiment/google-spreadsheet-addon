@@ -17,3 +17,7 @@ function intervalParam (interval = '1d') {
 function commonParams (slug, from, to, interval = '1d') {
   return `${slugParam(slug)}, ${fromParam(from)}, ${toParam(to)}, ${intervalParam(interval)}`
 }
+
+function handleDatetimeField (interval) {
+  return (interval.includes('d') ? 'date' : 'datetime')
+}

@@ -6,11 +6,12 @@
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
  * @returns {Array} of prices.
  * @customfunction
  */
-function SAN_PRICES (projectSlug, from, to) {
-  return handleErrors_(prices_)(projectSlug, from, to)
+function SAN_PRICES (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(prices_)(projectSlug, from, to, interval)
 }
 
 /**

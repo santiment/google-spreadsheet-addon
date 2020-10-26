@@ -27,6 +27,7 @@ describe('getMetric', () => {
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of test returns.
 * @customfunction
 */
@@ -63,6 +64,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound,
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of test returns.
 * @customfunction
 */
@@ -102,6 +104,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, interval = '1d') {
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of test returns.
 * @customfunction
 */
@@ -140,6 +143,7 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, interval =
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of test returns.
 * @customfunction
 */
