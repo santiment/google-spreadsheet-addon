@@ -32,7 +32,10 @@ global.san = san
 global.sinon = sinon
 global.sandbox = sandbox
 
-beforeEach(() => san.PropertiesService.init())
+beforeEach(() => {
+  san.PropertiesService.init()
+  san.CacheService.init()
+})
 afterEach(() => { sandbox.restore() })
 
 module.exports = {

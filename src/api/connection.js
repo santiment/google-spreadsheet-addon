@@ -1,4 +1,6 @@
 /* eslint-disable no-var */
+/* eslint-disable no-bitwise */
+/* eslint-disable no-mixed-operators */
 
 var SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
 
@@ -9,6 +11,24 @@ function Connection_ (apiKey, url) {
     this.apiKey = apiKey
   }
   this.url = url || SANTIMENT_GRAPHQL_URL
+}
+
+Connection_.prototype.hash = function (key) {
+  let a = 1
+  let c = 0
+  let h = 0
+  let o = 0
+  if (key) {
+    a = 0
+    for (h = key.length - 1; h >= 0; h--) {
+      o = key.charCodeAt(h)
+      a = (a << 6 & 268435455) + o + (o << 14)
+      c = a & 266338304
+      a = c !== 0 ? a ^ c >> 21 : a
+    }
+  }
+
+  return String(a)
 }
 
 Connection_.prototype.buildRequestOptions = function (query) {
@@ -27,7 +47,21 @@ Connection_.prototype.buildRequestOptions = function (query) {
 }
 
 Connection_.prototype.fetchQuery = function (query) {
-  return UrlFetchApp.fetch(this.url, this.buildRequestOptions(query))
+  const cache = CacheService.getScriptCache()
+  const reformedQuery = this.buildRequestOptions(query)
+  const key = this.hash(JSON.stringify(reformedQuery))
+  const cachedResponse = cache.get(key)
+  if (cachedResponse !== null) {
+    return JSON.parse(cachedResponse)
+  }
+  const response = UrlFetchApp.fetch(this.url, reformedQuery)
+  const returnedResponse = {
+    code: response.getResponseCode(),
+    body: JSON.parse(response.getContentText())
+  }
+  cache.put(key, JSON.stringify(returnedResponse), 21600)
+
+  return returnedResponse
 }
 
 Connection_.prototype.buildErrorMessage = function (errors) {
@@ -66,8 +100,8 @@ Connection_.prototype.handleResponse = function (responseCode, responseBody, que
 Connection_.prototype.graphQLQuery = function (query, queryName) {
   const response = this.fetchQuery(query)
   try {
-    const responseCode = response.getResponseCode()
-    const responseBody = JSON.parse(response.getContentText())
+    const responseCode = response.code
+    const responseBody = response.body
 
     const logMessage = {
       type: 'RequestLog',
@@ -84,8 +118,8 @@ Connection_.prototype.graphQLQuery = function (query, queryName) {
       message: e.message,
       query: query,
       queryName: queryName,
-      responseCode: response.getResponseCode(),
-      responseBody: response.getContentText()
+      responseCode: response.code,
+      responseBody: JSON.stringify(response.body)
     }
 
     logError_(error)
