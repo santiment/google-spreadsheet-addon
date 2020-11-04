@@ -21,58 +21,38 @@ describe('api key', () => {
 })
 
 describe('hash', () => {
-  const query1 = `
-  {
-    projectBySlug(slug: "santiment"){
-    ethTopTransactions(from: "2020-02-02T00:00:00Z",
-      to: "2020-02-15T00:00:00Z",
-      limit: 155,
-      transactionType: ALL) {
-        datetime
-        fromAddress{
-          address
-          isExchange
+  function buildQuery (to) {
+    return `
+      {
+        projectBySlug(slug: "santiment"){
+        ethTopTransactions(from: "2020-02-02T00:00:00Z",
+          to: ${to},
+          limit: 155,
+          transactionType: ALL) {
+            datetime
+            fromAddress{
+              address
+              isExchange
+            }
+            toAddress{
+              address
+              isExchange
+            }
+            trxHash
+            trxValue
+          }
         }
-        toAddress{
-          address
-          isExchange
-        }
-        trxHash
-        trxValue
-      }
-    }
-  }`
-
-  const query2 = `
-  {
-    projectBySlug(slug: "santiment"){
-    ethTopTransactions(from: "2020-02-02T00:00:00Z",
-      to: "2020-02-10T05:00:00Z",
-      limit: 155,
-      transactionType: ALL) {
-        datetime
-        fromAddress{
-          address
-          isExchange
-        }
-        toAddress{
-          address
-          isExchange
-        }
-        trxHash
-        trxValue
-      }
-    }
-  }`
+      }`
+  }
 
   it('hash function returns different hashes', () => {
     const conn = new san.Connection_()
-    expect(conn.hash(query1).length).to.be.below(250)
+    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z')).length).to.be.below(250)
   })
 
   it('hash function returns different hashes (minimal collision)', () => {
     const conn = new san.Connection_()
-    expect(conn.hash(query1)).to.not.equal(conn.hash(query2))
+    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z'))).to.not.equal(conn.hash(buildQuery('2020-02-15T05:00:00Z')))
   })
 })
 

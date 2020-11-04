@@ -53,7 +53,7 @@ Connection_.prototype.fetchQuery = function (query) {
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
     cache.put(key, cachedResponse, 21600)
-    return JSON.parse(cachedResponse)
+    return [JSON.parse(cachedResponse), 'CacheHitLog']
   }
   const response = UrlFetchApp.fetch(this.url, reformedQuery)
   const returnedResponse = {
@@ -62,7 +62,7 @@ Connection_.prototype.fetchQuery = function (query) {
   }
   cache.put(key, JSON.stringify(returnedResponse), 21600)
 
-  return returnedResponse
+  return [returnedResponse, 'RequestLog']
 }
 
 Connection_.prototype.buildErrorMessage = function (errors) {
@@ -99,13 +99,13 @@ Connection_.prototype.handleResponse = function (responseCode, responseBody, que
 }
 
 Connection_.prototype.graphQLQuery = function (query, queryName) {
-  const response = this.fetchQuery(query)
+  const [response, logType] = this.fetchQuery(query)
   try {
     const responseCode = response.code
     const responseBody = response.body
 
     const logMessage = {
-      type: 'RequestLog',
+      type: logType,
       query: query,
       queryName: queryName
     }
