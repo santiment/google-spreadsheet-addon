@@ -3,16 +3,10 @@ function slugParam (slug) {
 }
 
 function fromParam (from) {
-  if (from.startsWith('utc_now')) {
-    return `from: "${from}"`
-  }
   return `from: "${toUTC_(from)}"`
 }
 
 function toParam (to) {
-  if (to.startsWith('utc_now')) {
-    return `to: "${to}"`
-  }
   return `to: "${toUTC_(to)}"`
 }
 

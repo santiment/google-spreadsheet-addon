@@ -29,6 +29,14 @@ function formatNumber_ (field) {
 
 function toUTC_ (date) {
   const timezone = SpreadsheetApp.getActive().getSpreadsheetTimeZone()
+  if (date.startsWith('utc_now')) {
+    const dt = new Date()
+    const [firstPart, secondPart] = date.split('-')
+    if ((typeof secondPart) !== 'undefined') {
+      dt.setDate(dt.getDate() - Number(secondPart.substring(0, secondPart.length - 1)))
+    }
+    return Utilities.formatDate(dt, timezone, "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  }
   return Utilities.formatDate(new Date(date), timezone, "yyyy-MM-dd'T'HH:mm:ss'Z'")
 }
 
