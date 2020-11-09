@@ -6,6 +6,14 @@ describe('toUTC_', () => {
   it('returns date in ISO8601 format', () => {
     expect(san.toUTC_('2019, 01, 01')).to.equal('2019-01-01T00:00:00Z')
   })
+
+  it('returns rounded down to 5 minutes date', () => {
+    expect(san.toUTC_('2020-02-02T00:02:01Z')).to.equal('2020-02-02T00:00:00Z')
+  })
+
+  it('returns rounded up to 5 minutes date', () => {
+    expect(san.toUTC_('2020-02-02T00:03:32Z')).to.equal('2020-02-02T00:05:00Z')
+  })
 })
 
 describe('userProperties', () => {
