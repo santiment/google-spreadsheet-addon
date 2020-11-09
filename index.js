@@ -7,6 +7,7 @@ const HTTPResponse = require('./gas_mock/HTTPResponse')
 const PropertiesService = require('./gas_mock/PropertiesService')
 const spreadsheetApp = require('./gas_mock/spreadsheetApp')
 const utilities = require('./gas_mock/utilities')
+const CacheService = require('./gas_mock/CacheService')
 
 function gasMock () {
   const defaultMock = gas.globalMockDefault
@@ -16,7 +17,8 @@ function gasMock () {
     HTTPResponse: HTTPResponse.getMock(),
     SpreadsheetApp: spreadsheetApp.getMock(),
     PropertiesService: PropertiesService.getMock(),
-    __proto__: defaultMock
+    __proto__: defaultMock,
+    CacheService: CacheService.getMock()
   }
 
   const addMock = {

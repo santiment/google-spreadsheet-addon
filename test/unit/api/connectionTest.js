@@ -20,6 +20,42 @@ describe('api key', () => {
   })
 })
 
+describe('hash', () => {
+  function buildQuery (to) {
+    return `
+      {
+        projectBySlug(slug: "santiment"){
+        ethTopTransactions(from: "2020-02-02T00:00:00Z",
+          to: ${to},
+          limit: 155,
+          transactionType: ALL) {
+            datetime
+            fromAddress{
+              address
+              isExchange
+            }
+            toAddress{
+              address
+              isExchange
+            }
+            trxHash
+            trxValue
+          }
+        }
+      }`
+  }
+
+  it('hash function returns different hashes', () => {
+    const conn = new san.Connection_()
+    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z')).length).to.be.below(250)
+  })
+
+  it('hash function returns different hashes (minimal collision)', () => {
+    const conn = new san.Connection_()
+    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z'))).to.not.equal(conn.hash(buildQuery('2020-02-15T05:00:00Z')))
+  })
+})
+
 describe('headers', () => {
   it('sets an API key from user property in headers', () => {
     san.setUserProperty_('API_KEY', 'test-api-key')
@@ -152,22 +188,13 @@ describe('error handling', () => {
 
   it('can handle JSON parsing error', () => {
     const stub = sandbox.stub(san.UrlFetchApp, '_request')
-    const logStub = sandbox.stub(san, 'logError_').returns(null)
-
     const body = 'json'
 
     stub.returns({ body: body, statusCode: 200 })
 
     const conn = new san.Connection_()
     const expectedError = 'Unexpected token j in JSON at position 0'
-    const expectedLogMessage = {
-      message: expectedError,
-      query: '',
-      queryName: '',
-      responseCode: 200,
-      responseBody: body }
 
-    expect(() => conn.graphQLQuery('', '')).to.throw(expectedError)
-    expect(logStub).to.have.been.calledWith(sinon.match(expectedLogMessage))
+    expect(() => conn.fetchQuery('')).to.throw(expectedError)
   })
 })

@@ -12,7 +12,7 @@ describe('SAN_MEAN_DOLLAR_INVESTED_AGE', () => {
     value: 'number'
   }
 
-  const response = san.SAN_MEAN_AGE(slug, from, to)
+  const response = san.SAN_MEAN_DOLLAR_INVESTED_AGE(slug, from, to)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
@@ -29,7 +29,7 @@ describe('SAN_MEAN_DOLLAR_INVESTED_AGE', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_MEAN_AGE(slug, from, to)
+    const results = san.SAN_MEAN_DOLLAR_INVESTED_AGE(slug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 

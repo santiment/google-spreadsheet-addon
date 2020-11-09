@@ -6,17 +6,17 @@
 const errorsWithWarnLevel = ['HistoricDataForbiddenError']
 
 function logWarning_ (message) {
-  console.warn(message)
+  console.warn(JSON.stringify(message))
 }
 
 function logInfo_ (message) {
-  console.info(message)
+  console.info(JSON.stringify(message))
 }
 
 function logError_ (message) {
   if (errorsWithWarnLevel.indexOf(message.name) > -1) {
-    logWarning_(message)
+    logWarning_(JSON.stringify(message))
   } else {
-    console.error(message)
+    console.error(JSON.stringify(message))
   }
 }
