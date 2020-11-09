@@ -7,12 +7,12 @@ describe('toUTC_', () => {
     expect(san.toUTC_('2019, 01, 01')).to.equal('2019-01-01T00:00:00Z')
   })
 
-  it('returns rounded down to 5 minutes date', () => {
+  it('returns floored date, when the date is neared to the lower 5 minutes', () => {
     expect(san.toUTC_('2020-02-02T00:02:01Z')).to.equal('2020-02-02T00:00:00Z')
   })
 
-  it('returns rounded up to 5 minutes date', () => {
-    expect(san.toUTC_('2020-02-02T00:03:32Z')).to.equal('2020-02-02T00:05:00Z')
+  it('returns floored date, when the date is neared to the higher 5 minutes', () => {
+    expect(san.toUTC_('2020-02-02T00:04:01Z')).to.equal('2020-02-02T00:00:00Z')
   })
 })
 
