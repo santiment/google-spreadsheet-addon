@@ -38,7 +38,7 @@ class Cache {
     return this
   }
 
-  deleteCacheKey (key) {
+  remove (key) {
     delete this._data[key]
     return this
   }

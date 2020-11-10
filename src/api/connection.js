@@ -52,8 +52,13 @@ Connection_.prototype.fetchQuery = function (query) {
   const key = this.hash(JSON.stringify(reformedQuery))
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
-    cache.put(key, cachedResponse, 21600)
-    return [JSON.parse(cachedResponse), 'CacheHitLog']
+    const response = JSON.parse(cachedResponse)
+    if (response.code === 200 && !('errors' in response.body)) {
+      cache.put(key, cachedResponse, 21600)
+
+      return [response, 'CacheHitLog']
+    }
+    cache.remove(key)
   }
   const response = UrlFetchApp.fetch(this.url, reformedQuery)
   const returnedResponse = {
