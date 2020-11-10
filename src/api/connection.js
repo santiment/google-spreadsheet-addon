@@ -60,7 +60,9 @@ Connection_.prototype.fetchQuery = function (query) {
     code: response.getResponseCode(),
     body: JSON.parse(response.getContentText())
   }
-  cache.put(key, JSON.stringify(returnedResponse), 21600)
+  if (response.getResponseCode() === 200) {
+    cache.put(key, JSON.stringify(returnedResponse), 21600)
+  }
 
   return [returnedResponse, 'RequestLog']
 }
