@@ -52,11 +52,11 @@ Connection_.prototype.fetchQuery = function (query) {
   const key = this.hash(JSON.stringify(reformedQuery))
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
-    const response = JSON.parse(cachedResponse)
-    if (response.code === 200 && !('errors' in response.body)) {
+    const parsedResponse = JSON.parse(cachedResponse)
+    if (parsedResponse.code === 200 && !('errors' in parsedResponse.body)) {
       cache.put(key, cachedResponse, 21600)
 
-      return [response, 'CacheHitLog']
+      return [parsedResponse, 'CacheHitLog']
     }
     cache.remove(key)
   }
