@@ -46,14 +46,14 @@ Connection_.prototype.buildRequestOptions = function (query) {
   return requestOptions
 }
 
-Connection_.prototype.fetchQuery = function (query) {
+Connection_.prototype.fetchQuery = function (query, queryName) {
   const cache = CacheService.getScriptCache()
   const reformedQuery = this.buildRequestOptions(query)
   const key = this.hash(JSON.stringify(reformedQuery))
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
     const parsedResponse = JSON.parse(cachedResponse)
-    if (parsedResponse.code === 200 && !('errors' in parsedResponse.body)) {
+    if (parsedResponse.code === 200 && !('errors' in parsedResponse.body) && queryName in parsedResponse.body.data) {
       cache.put(key, cachedResponse, 21600)
       return [parsedResponse, 'CacheHitLog']
     }
@@ -93,20 +93,18 @@ Connection_.prototype.buildErrorMessage = function (errors) {
 }
 
 Connection_.prototype.handleResponse = function (responseCode, responseBody, queryName) {
-  const errors = responseBody.errors
-
   switch (responseCode) {
   case 200:
-    if (errors != null) {
-      throw new ServerError_(this.buildErrorMessage(errors))
+    if ('errors' in responseBody) {
+      throw new ServerError_(this.buildErrorMessage(responseBody.errors))
     } else {
       return responseBody.data[queryName]
     }
   case 500:
     throw new InternalServerError_()
   default:
-    if (errors != null) {
-      throw new ServerError_(this.buildErrorMessage(errors))
+    if ('errors' in responseBody) {
+      throw new ServerError_(this.buildErrorMessage(responseBody.errors))
     } else {
       throw new ServerError_()
     }
@@ -114,7 +112,7 @@ Connection_.prototype.handleResponse = function (responseCode, responseBody, que
 }
 
 Connection_.prototype.graphQLQuery = function (query, queryName) {
-  const [response, logType] = this.fetchQuery(query)
+  const [response, logType] = this.fetchQuery(query, queryName)
   try {
     const responseCode = response.code
     const responseBody = response.body
