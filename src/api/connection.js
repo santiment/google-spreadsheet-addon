@@ -52,11 +52,10 @@ Connection_.prototype.fetchQuery = function (query) {
   const key = this.hash(JSON.stringify(reformedQuery))
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
-    const response = JSON.parse(cachedResponse)
-    if (response.code === 200 && !('errors' in response.body)) {
+    const parsedResponse = JSON.parse(cachedResponse)
+    if (parsedResponse.code === 200 && !('errors' in parsedResponse.body)) {
       cache.put(key, cachedResponse, 21600)
-
-      return [response, 'CacheHitLog']
+      return [parsedResponse, 'CacheHitLog']
     }
     cache.remove(key)
   }
@@ -66,7 +65,16 @@ Connection_.prototype.fetchQuery = function (query) {
     body: JSON.parse(response.getContentText())
   }
   if (returnedResponse.code === 200 && !('errors' in returnedResponse.body)) {
-    cache.put(key, JSON.stringify(returnedResponse), 21600)
+    try {
+      cache.put(key, JSON.stringify(returnedResponse), 21600)
+    } catch (e) {
+      const error = {
+        type: e.name,
+        message: e.message,
+        query: query
+      }
+      logWarning_(error)
+    }
   }
 
   return [returnedResponse, 'RequestLog']
