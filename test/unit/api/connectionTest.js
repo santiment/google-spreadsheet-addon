@@ -195,6 +195,6 @@ describe('error handling', () => {
     const conn = new san.Connection_()
     const expectedError = 'Unexpected token j in JSON at position 0'
 
-    expect(() => conn.fetchQuery('')).to.throw(expectedError)
+    expect(() => conn.fetchQuery('', '')).to.throw(expectedError)
   })
 })
