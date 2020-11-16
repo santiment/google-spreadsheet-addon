@@ -137,6 +137,22 @@ const metricsList = [
       'participated in transactions on a blockchain.'
     ],
     returns: 'active addresses for the last 24 hours.'
+  },
+  {
+    metric: 'amount_in_top_holders',
+    sheetMetricName: 'top_holders_held',
+    description: [
+      'Returns the amount of coins/tokens help by the top holders.'
+    ],
+    returns: 'amount of coins/tokens help by the top holders.'
+  },
+  {
+    metric: 'percent_of_total_supply_on_exchanges',
+    sheetMetricName: 'exchange_percent_of_supply',
+    description: [
+      'Returns exchange percent of total supply.'
+    ],
+    returns: 'exchange percent of total supply.'
   }
 ]
 
