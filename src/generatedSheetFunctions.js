@@ -472,6 +472,50 @@ function SAN_ACTIVE_ADDRESSES_24H (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the amount of coins/tokens help by the top holders.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of amount of coins/tokens help by the top holders.
+* @customfunction
+*/
+function SAN_TOP_HOLDERS_HELD (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'amount_in_top_holders',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns exchange percent of total supply.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of exchange percent of total supply.
+* @customfunction
+*/
+function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'percent_of_total_supply_on_exchanges',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -496,6 +540,7 @@ function SAN_FUNCTIONS () {
     'SAN_EXCHANGE_FUNDS_FLOW',
     'SAN_EXCHANGE_INFLOW',
     'SAN_EXCHANGE_OUTFLOW',
+    'SAN_EXCHANGE_PERCENT_OF_SUPPLY',
     'SAN_FUNCTIONS',
     'SAN_GAS_USED',
     'SAN_GITHUB_ACTIVITY',
@@ -526,6 +571,7 @@ function SAN_FUNCTIONS () {
     'SAN_TOKEN_AGE_CONSUMED',
     'SAN_TOKEN_CIRCULATION',
     'SAN_TOKEN_TOP_TRANSACTIONS',
+    'SAN_TOP_HOLDERS_HELD',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
     'SAN_TRANSACTION_VOLUME',
     'SAN_VELOCITY'
