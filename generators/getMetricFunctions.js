@@ -140,11 +140,27 @@ const metricsList = [
   },
   {
     metric: 'amount_in_top_holders',
-    sheetMetricName: 'top_holders_held',
+    sheetMetricName: 'top_holders_held_overall',
     description: [
-      'Returns the amount of coins/tokens help by the top holders.'
+      'Returns the amount of coins/tokens held by the top holders.'
     ],
-    returns: 'amount of coins/tokens help by the top holders.'
+    returns: 'amount of coins/tokens held by the top holders.'
+  },
+  {
+    metric: 'amount_in_exchange_top_holders',
+    sheetMetricName: 'top_holders_held_on_exchange',
+    description: [
+      'Returns the amount of coins/tokens held only by the exchange top holders.'
+    ],
+    returns: 'amount of coins/tokens held only by the top holders.'
+  },
+  {
+    metric: 'amount_in_non_exchange_top_holders',
+    sheetMetricName: 'top_holders_held_off_exchange',
+    description: [
+      'Returns the amount of coins/tokens held only by the non exchange top holders.'
+    ],
+    returns: 'amount of coins/tokens held only by the top holders.'
   },
   {
     metric: 'percent_of_total_supply_on_exchanges',
