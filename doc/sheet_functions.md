@@ -175,8 +175,14 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns top token transactions for a given slug</p>
 </dd>
-<dt><a href="#SAN_TOP_HOLDERS_HELD">SAN_TOP_HOLDERS_HELD(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the amount of coins/tokens help by the top holders.</p>
+<dt><a href="#SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE">SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the amount of coins/tokens held only by the non exchange top holders.</p>
+</dd>
+<dt><a href="#SAN_TOP_HOLDERS_HELD_ON_EXCHANGE">SAN_TOP_HOLDERS_HELD_ON_EXCHANGE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the amount of coins/tokens held only by the exchange top holders.</p>
+</dd>
+<dt><a href="#SAN_TOP_HOLDERS_HELD_OVERALL">SAN_TOP_HOLDERS_HELD_OVERALL(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the amount of coins/tokens held by the top holders.</p>
 </dd>
 <dt><a href="#SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY">SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(projectSlug, from, to, numberOfHolders)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the top holders&#39; percent of total supply - in exchanges, outside exchanges and combined.</p>
@@ -946,13 +952,45 @@ Returns top token transactions for a given slug
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | limit | <code>number</code> | The limit of transactions to be shown. |
 
-<a name="SAN_TOP_HOLDERS_HELD"></a>
+<a name="SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE"></a>
 
-## SAN\_TOP\_HOLDERS\_HELD(projectSlug, from, to, interval) ⇒ <code>Array</code>
-Returns the amount of coins/tokens help by the top holders.
+## SAN\_TOP\_HOLDERS\_HELD\_OFF\_EXCHANGE(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the amount of coins/tokens held only by the non exchange top holders.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of amount of coins/tokens help by the top holders.  
+**Returns**: <code>Array</code> - of amount of coins/tokens held only by the top holders.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TOP_HOLDERS_HELD_ON_EXCHANGE"></a>
+
+## SAN\_TOP\_HOLDERS\_HELD\_ON\_EXCHANGE(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the amount of coins/tokens held only by the exchange top holders.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of amount of coins/tokens held only by the top holders.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TOP_HOLDERS_HELD_OVERALL"></a>
+
+## SAN\_TOP\_HOLDERS\_HELD\_OVERALL(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the amount of coins/tokens held by the top holders.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of amount of coins/tokens held by the top holders.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
