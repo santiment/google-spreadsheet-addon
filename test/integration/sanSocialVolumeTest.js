@@ -1,3 +1,5 @@
+require('../support/helper.js')
+
 const { testHandlesNullData } = require('../support/integrationHelper.js')
 const { slug, from, to } = require('../support/setup.js')
 

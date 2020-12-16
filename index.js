@@ -6,14 +6,14 @@ const UrlFetchApp = require('./gas_mock/UrlFetchApp')
 const HTTPResponse = require('./gas_mock/HTTPResponse')
 const PropertiesService = require('./gas_mock/PropertiesService')
 const spreadsheetApp = require('./gas_mock/spreadsheetApp')
-const utilities = require('./gas_mock/utilities')
+const Utilities = require('./gas_mock/utilities')
 const CacheService = require('./gas_mock/CacheService')
 
 function gasMock () {
   const defaultMock = gas.globalMockDefault
 
   const customMock = {
-    Utilities: utilities.getMock(),
+    Utilities: Utilities.getMock(),
     HTTPResponse: HTTPResponse.getMock(),
     SpreadsheetApp: spreadsheetApp.getMock(),
     PropertiesService: PropertiesService.getMock(),

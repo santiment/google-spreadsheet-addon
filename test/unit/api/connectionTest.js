@@ -20,42 +20,6 @@ describe('api key', () => {
   })
 })
 
-describe('hash', () => {
-  function buildQuery (to) {
-    return `
-      {
-        projectBySlug(slug: "santiment"){
-        ethTopTransactions(from: "2020-02-02T00:00:00Z",
-          to: ${to},
-          limit: 155,
-          transactionType: ALL) {
-            datetime
-            fromAddress{
-              address
-              isExchange
-            }
-            toAddress{
-              address
-              isExchange
-            }
-            trxHash
-            trxValue
-          }
-        }
-      }`
-  }
-
-  it('hash function returns different hashes', () => {
-    const conn = new san.Connection_()
-    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z')).length).to.be.below(250)
-  })
-
-  it('hash function returns different hashes (minimal collision)', () => {
-    const conn = new san.Connection_()
-    expect(conn.hash(buildQuery('2020-02-15T00:00:00Z'))).to.not.equal(conn.hash(buildQuery('2020-02-15T05:00:00Z')))
-  })
-})
-
 describe('headers', () => {
   it('sets an API key from user property in headers', () => {
     san.setUserProperty_('API_KEY', 'test-api-key')
