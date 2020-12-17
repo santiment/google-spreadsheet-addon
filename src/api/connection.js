@@ -13,24 +13,6 @@ function Connection_ (apiKey, url) {
   this.url = url || SANTIMENT_GRAPHQL_URL
 }
 
-Connection_.prototype.hash = function (key) {
-  let a = 1
-  let c = 0
-  let h = 0
-  let o = 0
-  if (key) {
-    a = 0
-    for (h = key.length - 1; h >= 0; h--) {
-      o = key.charCodeAt(h)
-      a = (a << 6 & 268435455) + o + (o << 14)
-      c = a & 266338304
-      a = c !== 0 ? a ^ c >> 21 : a
-    }
-  }
-
-  return String(a)
-}
-
 Connection_.prototype.buildRequestOptions = function (query) {
   const requestOptions = {
     'muteHttpExceptions': true,
@@ -49,7 +31,7 @@ Connection_.prototype.buildRequestOptions = function (query) {
 Connection_.prototype.fetchQuery = function (query, queryName) {
   const cache = CacheService.getScriptCache()
   const reformedQuery = this.buildRequestOptions(query)
-  const key = this.hash(JSON.stringify(reformedQuery))
+  const key = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify(reformedQuery))
   const cachedResponse = cache.get(key)
   if (cachedResponse !== null) {
     const parsedResponse = JSON.parse(cachedResponse)
