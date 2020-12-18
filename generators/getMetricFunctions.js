@@ -169,6 +169,14 @@ const metricsList = [
       'Returns exchange percent of total supply.'
     ],
     returns: 'exchange percent of total supply.'
+  },
+  {
+    metric: 'holders_distribution_total',
+    sheetMetricName: 'holders_distribution_total',
+    description: [
+      'Represents the total number of addresses holding the amount of tokens.'
+    ],
+    returns: 'total number of addresses holding the amount of tokens.'
   }
 ]
 

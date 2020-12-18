@@ -86,6 +86,9 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_HISTORY_TWITTER_DATA">SAN_HISTORY_TWITTER_DATA(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the historical count of twitter followers.</p>
 </dd>
+<dt><a href="#SAN_HOLDERS_DISTRIBUTION_TOTAL">SAN_HOLDERS_DISTRIBUTION_TOTAL(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Represents the total number of addresses holding the amount of tokens.</p>
+</dd>
 <dt><a href="#SAN_LATEST_PRICE">SAN_LATEST_PRICE(projectSlug, currency)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the latest price for a given asset in a desired currency.</p>
 </dd>
@@ -563,6 +566,22 @@ Returns the historical count of twitter followers.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_HOLDERS_DISTRIBUTION_TOTAL"></a>
+
+## SAN\_HOLDERS\_DISTRIBUTION\_TOTAL(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Represents the total number of addresses holding the amount of tokens.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of total number of addresses holding the amount of tokens.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_LATEST_PRICE"></a>
 
