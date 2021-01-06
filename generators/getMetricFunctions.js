@@ -180,9 +180,9 @@ const metricsList = [
       '1M-10M', '10M-inf', 'total'
     ],
     description: [
-      'Represents the total number of addresses holding the amount of tokens.'
+      'Represents the total number of addresses holding the given amount of tokens.'
     ],
-    returns: 'total number of addresses holding the amount of tokens.'
+    returns: 'total number of addresses holding the given amount of tokens.'
   }
 ]
 

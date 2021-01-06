@@ -562,7 +562,7 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 
 
 /**
-* Represents the total number of addresses holding the amount of tokens.
+* Represents the total number of addresses holding the given amount of tokens.
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -570,7 +570,7 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Example: "0-0.001"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of total number of addresses holding the amount of tokens.
+* @returns {Array} of total number of addresses holding the given amount of tokens.
 * @customfunction
 */
 function SAN_HOLDERS_DISTRIBUTION (projectSlug, from, to, balance = 'total', interval = '1d') {
