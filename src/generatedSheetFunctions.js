@@ -568,17 +568,18 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} balance Interval of amount of tokens. Example: "0-0.001"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of total number of addresses holding the amount of tokens.
 * @customfunction
 */
-function SAN_HOLDERS_DISTRIBUTION_TOTAL (projectSlug, from, to, interval = '1d') {
+function SAN_HOLDERS_DISTRIBUTION (projectSlug, from, to, balance = 'total', interval = '1d') {
   return handleErrors_(getMetric_)(
-    'holders_distribution_total',
+    'holders_distribution',
     projectSlug,
     from,
     to,
-    { interval: interval }
+    { balance: balance, interval: interval }
   )
 }
 
@@ -613,7 +614,7 @@ function SAN_FUNCTIONS () {
     'SAN_HISTORICAL_BALANCE',
     'SAN_HISTORICAL_BALANCE_DEDUP',
     'SAN_HISTORY_TWITTER_DATA',
-    'SAN_HOLDERS_DISTRIBUTION_TOTAL',
+    'SAN_HOLDERS_DISTRIBUTION',
     'SAN_LATEST_PRICE',
     'SAN_MEAN_AGE',
     'SAN_MEAN_DOLLAR_INVESTED_AGE',

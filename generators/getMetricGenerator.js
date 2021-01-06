@@ -8,6 +8,9 @@ const TIMEBOUND_DESCRIPTION = `
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years or days.`
 
+const BALANCES_DESCRIPTION = `
+* @param {string} balance Interval of amount of tokens. Example: "0-0.001"`
+
 const INTERVAL_DESCRIPTION = `
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"`
 
@@ -24,6 +27,7 @@ function generateFunctionString_ (metric) {
   metric.supportedCurrencies = metric.supportedCurrencies || []
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
+  metric.supportedBalances = metric.supportedBalances || []
 
   let generatedString =
     fillTemplate(
@@ -32,14 +36,15 @@ function generateFunctionString_ (metric) {
       metric.description,
       metric.returns,
       metric.supportedCurrencies,
-      metric.hasTimeBound
+      metric.hasTimeBound,
+      metric.supportedBalances
     )
 
   return generatedString
 }
 
-function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound) {
-  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound)
+function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance) {
+  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance)
   description = prepareDescription_(description)
 
   return `
@@ -66,7 +71,7 @@ function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
 `
 }
 
-function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
+function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
@@ -84,6 +89,12 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound) {
     returnedValues.description.push(TIMEBOUND_DESCRIPTION)
     returnedValues.arguments.push('timeBound')
     returnedValues.options.push('timeBound: timeBound')
+  }
+
+  if (supportedBalances.length > 0) {
+    returnedValues.description.push(BALANCES_DESCRIPTION)
+    returnedValues.arguments.push('balance = \'total\'')
+    returnedValues.options.push('balance: balance')
   }
 
   returnedValues.description.push(INTERVAL_DESCRIPTION)
