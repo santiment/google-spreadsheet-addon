@@ -2,6 +2,12 @@
 
 var TIME_BOUNDS = ['1d', '7d', '30d', '60d', '90d', '180d', '365d', '2y', '3y', '5y', '10y']
 const SUPPORTED_CURRENCIES = ['USD']
+const SUPPORTED_BALANCES = [
+  '0-0.001', '0.001-0.01', '0.01-0.1', '0.1-1',
+  '1-10', '10-100', '100-1k',
+  '1k-10k', '10k-100k', '100k-1M',
+  '1M-10M', '10M-inf', 'total'
+]
 const DEFAULT_CURRENCY = 'USD'
 
 function prepareOptions_ (options) {
@@ -14,6 +20,10 @@ function supportedCurrencies_ () {
   return SUPPORTED_CURRENCIES.map(currency => currency.toLowerCase())
 }
 
+function supportedBalances_ () {
+  return SUPPORTED_BALANCES
+}
+
 /*
 The metric name will be changed,
 depending on the options 'options.currency' and 'options.timeBound', which will respectively
@@ -22,9 +32,14 @@ append '_<currency>' and/or _<number><[d|y]> at the end of the name.
 function metricNameGenerator_ (metric, options) {
   let metricName = metric
   const requestedCurrency = (options.currency || '').toLowerCase()
+  const requestedBalance = (options.balance || '')
 
   if ((supportedCurrencies_()).indexOf(requestedCurrency) >= 0) {
     metricName += `_${requestedCurrency}`
+  }
+
+  if ((supportedBalances_()).indexOf(requestedBalance) >= 0) {
+    metricName += `_${requestedBalance.replace('-', '_to_')}`
   }
 
   if (options.timeBound !== '' && TIME_BOUNDS.indexOf(options.timeBound) >= 0) {

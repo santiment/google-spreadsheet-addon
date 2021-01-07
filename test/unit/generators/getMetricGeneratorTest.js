@@ -11,7 +11,8 @@ describe('getMetric', () => {
         ['Returns test description.'],
         'test returns.',
         ['USD'],
-        true
+        true,
+        []
       )
 
     let expectedResult =
@@ -52,7 +53,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound,
         ['Returns test description.'],
         'test returns.',
         [],
-        false
+        false,
+        []
       )
 
     let expectedResult =
@@ -90,7 +92,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, interval = '1d') {
         ['Returns test description.'],
         'test returns.',
         ['USD'],
-        false
+        false,
+        []
       )
 
     let expectedResult =
@@ -129,7 +132,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, interval =
         ['Returns test description.'],
         'test returns.',
         [],
-        true
+        true,
+        []
       )
 
     let expectedResult =
