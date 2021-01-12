@@ -24,7 +24,7 @@ volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day.</p>
 </dd>
 <dt><a href="#SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE">SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the funding rate that is paid by one side of the perpetual contract to the other.</p>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other</p>
 </dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
@@ -123,7 +123,7 @@ Currently only ETH is supported.</p>
 <dd><p>Returns the token&#39;s network growth</p>
 </dd>
 <dt><a href="#SAN_NETWORK_PROFIT_LOSS">SAN_NETWORK_PROFIT_LOSS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the newtork&#39;s profit loss.</p>
+<dd><p>Returns the network&#39;s profit/loss.</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
@@ -288,10 +288,10 @@ ETH spent in the last 7 days, ETH spent in the last day.
 <a name="SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE"></a>
 
 ## SAN\_BITMEX\_PERPETUAL\_CONTRACT\_FUNDING\_RATE(projectSlug, from, to, interval) ⇒ <code>Array</code>
-Returns the funding rate that is paid by one side of the perpetual contract to the other.
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of the funding rate that is paid by one side of the perpetual contract to the other.  
+**Returns**: <code>Array</code> - of the funding rates that are paid by one of the sides of the perpetual contract to the other  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
@@ -757,10 +757,10 @@ Returns the token's network growth
 <a name="SAN_NETWORK_PROFIT_LOSS"></a>
 
 ## SAN\_NETWORK\_PROFIT\_LOSS(projectSlug, from, to, interval) ⇒ <code>Array</code>
-Returns the newtork's profit loss.
+Returns the network's profit/loss.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of the newtork's profit loss.  
+**Returns**: <code>Array</code> - of the network's profit/loss.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |

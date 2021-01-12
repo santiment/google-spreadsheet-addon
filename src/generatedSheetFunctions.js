@@ -585,14 +585,14 @@ function SAN_HOLDERS_DISTRIBUTION (projectSlug, from, to, balance = 'total', int
 
 
 /**
-* Returns the funding rate that is paid by one side of the perpetual contract to the other.
+* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of the funding rate that is paid by one side of the perpetual contract to the other.
+* @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other
 * @customfunction
 */
 function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE (projectSlug, from, to, interval = '1d') {
@@ -607,14 +607,14 @@ function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE (projectSlug, from, to, inte
 
 
 /**
-* Returns the newtork's profit loss.
+* Returns the network's profit/loss.
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of the newtork's profit loss.
+* @returns {Array} of the network's profit/loss.
 * @customfunction
 */
 function SAN_NETWORK_PROFIT_LOSS (projectSlug, from, to, interval = '1d') {

@@ -188,17 +188,17 @@ const metricsList = [
     metric: 'bitmex_perpetual_funding_rate',
     sheetMetricName: 'bitmex_perpetual_contract_funding_rate',
     description: [
-      'Returns the funding rate that is paid by one side of the perpetual contract to the other.'
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other'
     ],
-    returns: 'the funding rate that is paid by one side of the perpetual contract to the other.'
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other'
   },
   {
     metric: 'network_profit_loss',
     sheetMetricName: 'network_profit_loss',
     description: [
-      'Returns the newtork\'s profit loss.'
+      'Returns the network\'s profit/loss.'
     ],
-    returns: 'the newtork\'s profit loss.'
+    returns: 'the network\'s profit/loss.'
   }
 ]
 

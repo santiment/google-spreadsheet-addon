@@ -11,7 +11,6 @@ describe('SAN_TRANSACTION_VOLUME', () => {
   }
 
   const response = san.SAN_TRANSACTION_VOLUME(slug, from, to)
-  console.log(response)
   const headers = response[0]
   const results = response[1]
   testFieldTypes(results, expected)
