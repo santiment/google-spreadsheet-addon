@@ -183,6 +183,22 @@ const metricsList = [
       'Represents the total number of addresses holding the given amount of tokens.'
     ],
     returns: 'total number of addresses holding the given amount of tokens.'
+  },
+  {
+    metric: 'bitmex_perpetual_funding_rate',
+    sheetMetricName: 'bitmex_perpetual_contract_funding_rate',
+    description: [
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other'
+    ],
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other'
+  },
+  {
+    metric: 'network_profit_loss',
+    sheetMetricName: 'network_profit_loss',
+    description: [
+      'Returns the network\'s profit/loss.'
+    ],
+    returns: 'the network\'s profit/loss.'
   }
 ]
 

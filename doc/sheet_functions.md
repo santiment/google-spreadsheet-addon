@@ -23,6 +23,9 @@ Each asset record includes: ticker, name, slug, price in USD, market cap in USD,
 volume in USD, USD balance, ETH balance, ETH spent in the last 30 days,
 ETH spent in the last 7 days, ETH spent in the last day.</p>
 </dd>
+<dt><a href="#SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE">SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other</p>
+</dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
 </dd>
@@ -118,6 +121,9 @@ Currently only ETH is supported.</p>
 </dd>
 <dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s network growth</p>
+</dd>
+<dt><a href="#SAN_NETWORK_PROFIT_LOSS">SAN_NETWORK_PROFIT_LOSS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the network&#39;s profit/loss.</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
@@ -279,6 +285,22 @@ ETH spent in the last 7 days, ETH spent in the last day.
 **Kind**: global function  
 **Returns**: <code>Array</code> - of all projects.  
 **Customfunction**:   
+<a name="SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE"></a>
+
+## SAN\_BITMEX\_PERPETUAL\_CONTRACT\_FUNDING\_RATE(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the funding rates that are paid by one of the sides of the perpetual contract to the other  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_DAILY_AVG_MARKETCAP"></a>
 
 ## SAN\_DAILY\_AVG\_MARKETCAP(projectSlug, from, to, currency, interval) ⇒ <code>Array</code>
@@ -723,6 +745,22 @@ Returns the token's network growth
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of network growth.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_NETWORK_PROFIT_LOSS"></a>
+
+## SAN\_NETWORK\_PROFIT\_LOSS(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the network's profit/loss.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the network's profit/loss.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
