@@ -27,28 +27,44 @@ Connection_.prototype.buildRequestOptions = function (query) {
 
   return requestOptions
 }
-
 Connection_.prototype.fetchQuery = function (query, queryName) {
   const cache = CacheService.getScriptCache()
   const reformedQuery = this.buildRequestOptions(query)
-  const key = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, JSON.stringify(reformedQuery))
+
+  const key = Utilities.computeDigest(
+    Utilities.DigestAlgorithm.SHA_256,
+    JSON.stringify(reformedQuery)
+  )
+
   const cachedResponse = cache.get(key)
+
   if (cachedResponse !== null) {
     const parsedResponse = JSON.parse(cachedResponse)
-    if (parsedResponse.code === 200 && !('errors' in parsedResponse.body) && queryName in parsedResponse.body.data) {
-      cache.put(key, cachedResponse, 21600)
+    if (
+      parsedResponse.code === 200 &&
+      !('errors' in parsedResponse.body) &&
+      queryName in parsedResponse.body.data
+    ) {
       return [parsedResponse, 'CacheHitLog']
     }
+    // TODO: Figure out why we cached a wrong result in the first place
     cache.remove(key)
   }
+
   const response = UrlFetchApp.fetch(this.url, reformedQuery)
+
   const returnedResponse = {
     code: response.getResponseCode(),
     body: JSON.parse(response.getContentText())
   }
+
   if (returnedResponse.code === 200 && !('errors' in returnedResponse.body)) {
     try {
-      cache.put(key, JSON.stringify(returnedResponse), 21600)
+      // The expiry is a random value in seconds between 60 and 90 minutes.
+      // The random value helps avoiding the issue where all cache keys expire
+      // at the same time
+      const expiry = 3600 + parseInt(Math.random(1800), 10)
+      cache.put(key, JSON.stringify(returnedResponse), expiry)
     } catch (e) {
       const error = {
         type: e.name,
