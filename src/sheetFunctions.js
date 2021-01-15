@@ -428,3 +428,16 @@ function SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY (projectSlug, from, to, numberO
 function SAN_HISTORICAL_BALANCE_DEDUP (projectSlug, from, to, address) {
   return handleErrors_(historicalBalanceDedup_)(projectSlug, from, to, address)
 }
+
+/**
+ * Returns the reversed array of the results
+ * @param {Array} array The array of results
+ * @returns {Array} of reversed results
+ * @customfunction
+ */
+function SAN_REVERSE (array) {
+  [headers, ...rest] = array
+  array.shift()
+
+  return [headers].concat(array.reverse())
+}
