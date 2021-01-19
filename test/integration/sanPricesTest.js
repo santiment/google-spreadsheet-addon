@@ -24,7 +24,9 @@ describe('SAN_PRICES', () => {
 
   const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
-  const prices = response[1]
+  const notice = response[1]
+  console.log(notice)
+  const prices = response[2]
 
   testFieldTypes(prices, expected)
   testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
@@ -37,16 +39,16 @@ describe('SAN_PRICES', () => {
   it('returns a record per every day', () => {
     const prices = san.SAN_PRICES(slug, from, to)
 
-    assertNumberOfRecords(prices, numberOfDays)
+    assertNumberOfRecords(prices, (numberOfDays + 1)) // Temporary: Added a notice
 
     for (let [index, day] of days.entries()) {
-      expect(prices[index + 1][0]).to.equal(formatDate(day))
+      expect(prices[index + 2][0]).to.equal(formatDate(day)) // Temporary: Added a notice
     }
   })
 
   it('returns a record per hour', () => {
     const prices = san.SAN_PRICES(slug, from, to, '1h')
 
-    assertNumberOfRecords(prices, numberOfHours)
+    assertNumberOfRecords(prices, (numberOfHours + 1)) // Temporary: Added a notice
   })
 })
