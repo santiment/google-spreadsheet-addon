@@ -627,6 +627,52 @@ function SAN_NETWORK_PROFIT_LOSS (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the prices for the slug in the given time period.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} currency The metric is calculated using a currency of choice.
+* Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the prices for the slug in the given time period.
+* @customfunction
+*/
+function SAN_PRICE (projectSlug, from, to, currency, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'price',
+    projectSlug,
+    from,
+    to,
+    { currency: currency, interval: interval }
+  )
+}
+
+
+/**
+* Returns the slug's trading volume.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's trading volume.
+* @customfunction
+*/
+function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'transaction_volume',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -672,6 +718,7 @@ function SAN_FUNCTIONS () {
     'SAN_NETWORK_PROFIT_LOSS',
     'SAN_NVT_RATIO',
     'SAN_OHLC',
+    'SAN_PRICE',
     'SAN_PRICE_ABSOLUTE_CHANGE',
     'SAN_PRICE_PERCENT_CHANGE',
     'SAN_PRICE_VOLUME_DIFF',
@@ -690,6 +737,7 @@ function SAN_FUNCTIONS () {
     'SAN_TOP_HOLDERS_HELD_OVERALL',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
     'SAN_TRANSACTION_VOLUME',
-    'SAN_VELOCITY'
+    'SAN_VELOCITY',
+    'SAN_VOLUME'
   ]
 }

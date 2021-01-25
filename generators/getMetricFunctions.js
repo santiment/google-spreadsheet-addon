@@ -199,6 +199,23 @@ const metricsList = [
       'Returns the network\'s profit/loss.'
     ],
     returns: 'the network\'s profit/loss.'
+  },
+  {
+    metric: 'price',
+    supportedCurrencies: ['USD'],
+    sheetMetricName: 'price',
+    description: [
+      'Returns the prices for the slug in the given time period.'
+    ],
+    returns: 'the prices for the slug in the given time period.'
+  },
+  {
+    metric: 'transaction_volume',
+    sheetMetricName: 'volume',
+    description: [
+      'Returns the slug\'s trading volume.'
+    ],
+    returns: 'the slug\'s trading volume.'
   }
 ]
 

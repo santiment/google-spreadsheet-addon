@@ -34,8 +34,8 @@ function prices_ (slug, from, to, interval = '1d') {
 
   datetimeField = handleDatetimeField(interval)
 
-  const headers = ['Date', 'USD Price', 'Volume']
-  return [headers].concat(results.map(result =>
+  const headers = [['Date', 'USD Price', 'Volume'], ['**Notice** Metric will be renamed to SAN_PRICE_VOLUME']]
+  return headers.concat(results.map(result =>
     [
       formatDatetimeField_(result.datetime, datetimeField),
       formatNumber_(result.priceUsd),
