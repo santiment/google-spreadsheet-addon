@@ -24,8 +24,6 @@ describe('SAN_PRICES', () => {
 
   const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
-  const notice = response[1]
-  console.log(notice)
   const prices = response[2]
 
   testFieldTypes(prices, expected)
