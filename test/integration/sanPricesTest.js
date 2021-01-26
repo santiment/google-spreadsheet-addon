@@ -24,7 +24,7 @@ describe('SAN_PRICES', () => {
 
   const response = san.SAN_PRICES(slug, from, to)
   const headers = response[0]
-  const prices = response[2]
+  const prices = response[1]
 
   testFieldTypes(prices, expected)
   testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
@@ -40,7 +40,7 @@ describe('SAN_PRICES', () => {
     assertNumberOfRecords(prices, (numberOfDays + 1)) // Temporary: Added a notice
 
     for (let [index, day] of days.entries()) {
-      expect(prices[index + 2][0]).to.equal(formatDate(day)) // Temporary: Added a notice
+      expect(prices[index + 1][0]).to.equal(formatDate(day)) // Temporary: Added a notice
     }
   })
 
