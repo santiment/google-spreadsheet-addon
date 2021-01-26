@@ -436,8 +436,10 @@ function SAN_HISTORICAL_BALANCE_DEDUP (projectSlug, from, to, address) {
  * @customfunction
  */
 function SAN_REVERSE (array) {
-  [headers, ...rest] = array
+  if (!Array.isArray(array) || array.length === 0) {
+    return null
+  }
+  headers = array[0]
   array.shift()
-
   return [headers].concat(array.reverse())
 }
