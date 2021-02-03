@@ -15,19 +15,19 @@ const {
   formatDate
 } = require('../support/setup.js')
 
-describe('SAN_PRICES', () => {
+describe('SAN_PRICE_VOLUME', () => {
   const expected = {
     date: 'string',
     priceUsd: 'number',
     volume: 'number'
   }
 
-  const response = san.SAN_PRICES(slug, from, to)
+  const response = san.SAN_PRICE_VOLUME(slug, from, to)
   const headers = response[0]
   const prices = response[1]
 
   testFieldTypes(prices, expected)
-  testHandlesNullData('fetchPrices', san.SAN_PRICES, slug, from, to)
+  testHandlesNullData('fetchPrices', san.SAN_PRICE_VOLUME, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'USD Price', 'Volume']
@@ -35,18 +35,17 @@ describe('SAN_PRICES', () => {
   })
 
   it('returns a record per every day', () => {
-    const prices = san.SAN_PRICES(slug, from, to)
+    const prices = san.SAN_PRICE_VOLUME(slug, from, to)
 
-    assertNumberOfRecords(prices, (numberOfDays + 1)) // Temporary: Added a notice
+    assertNumberOfRecords(prices, numberOfDays)
 
     for (let [index, day] of days.entries()) {
-      expect(prices[index + 1][0]).to.equal(formatDate(day)) // Temporary: Added a notice
+      expect(prices[index + 1][0]).to.equal(formatDate(day))
     }
   })
 
   it('returns a record per hour', () => {
-    const prices = san.SAN_PRICES(slug, from, to, '1h')
-
-    assertNumberOfRecords(prices, (numberOfHours + 1)) // Temporary: Added a notice
+    const prices = san.SAN_PRICE_VOLUME(slug, from, to, '1h')
+    assertNumberOfRecords(prices, numberOfHours)
   })
 })

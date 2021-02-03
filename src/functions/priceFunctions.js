@@ -41,7 +41,7 @@ function prices_ (slug, from, to, interval = '1d') {
       formatNumber_(result.priceUsd),
       formatNumber_(result.volume)
     ]
-  )).concat([['**Notice** Metric will be renamed to SAN_PRICE_VOLUME']])
+  ))
 }
 
 function priceOpenClose_ (slug, from, to) {

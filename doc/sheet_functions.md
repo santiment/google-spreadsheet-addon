@@ -138,19 +138,22 @@ daily transaction throughput.</p>
 <dd><p>Returns the open, high, low, and close price values for the specified asset,
 during a given time interval.</p>
 </dd>
+<dt><a href="#SAN_PRICE">SAN_PRICE(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the prices for the slug in the given time period.</p>
+</dd>
 <dt><a href="#SAN_PRICE_ABSOLUTE_CHANGE">SAN_PRICE_ABSOLUTE_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the absolute price change for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PRICE_PERCENT_CHANGE">SAN_PRICE_PERCENT_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the percent price change for the specified asset, during a given time interval.</p>
 </dd>
+<dt><a href="#SAN_PRICE_VOLUME">SAN_PRICE_VOLUME(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the prices for the specified asset, during a given time interval.</p>
+</dd>
 <dt><a href="#SAN_PRICE_VOLUME_DIFF">SAN_PRICE_VOLUME_DIFF(currency, projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the price-volume difference technical indicator for a given asset,
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.</p>
-</dd>
-<dt><a href="#SAN_PRICES">SAN_PRICES(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the prices for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetch fundamentals for a specified project.</p>
@@ -162,6 +165,9 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 <dd><p>Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
 The realized value across the whole network is computed by summing the realized values
 of all wallets holding tokens at the moment.</p>
+</dd>
+<dt><a href="#SAN_REVERSE">SAN_REVERSE(array)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the reversed array of the results</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, from, to, source)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the % of the social dominance a given project has over time in a given social channel.</p>
@@ -203,6 +209,9 @@ transfers that have occurred on a blockchain.</p>
 </dd>
 <dt><a href="#SAN_VELOCITY">SAN_VELOCITY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s velocity.</p>
+</dd>
+<dt><a href="#SAN_VOLUME">SAN_VOLUME(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the slug&#39;s trading volume.</p>
 </dd>
 </dl>
 
@@ -808,6 +817,23 @@ during a given time interval.
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
+<a name="SAN_PRICE"></a>
+
+## SAN\_PRICE(projectSlug, from, to, currency, interval) ⇒ <code>Array</code>
+Returns the prices for the slug in the given time period.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the prices for the slug in the given time period.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_PRICE_ABSOLUTE_CHANGE"></a>
 
 ## SAN\_PRICE\_ABSOLUTE\_CHANGE(projectSlug, from, to) ⇒ <code>number</code>
@@ -838,6 +864,22 @@ Returns the percent price change for the specified asset, during a given time in
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 
+<a name="SAN_PRICE_VOLUME"></a>
+
+## SAN\_PRICE\_VOLUME(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the prices for the specified asset, during a given time interval.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of prices.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_PRICE_VOLUME_DIFF"></a>
 
 ## SAN\_PRICE\_VOLUME\_DIFF(currency, projectSlug, from, to) ⇒ <code>Array</code>
@@ -855,22 +897,6 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-
-<a name="SAN_PRICES"></a>
-
-## SAN\_PRICES(projectSlug, from, to, interval) ⇒ <code>Array</code>
-Returns the prices for the specified asset, during a given time interval.
-
-**Kind**: global function  
-**Returns**: <code>Array</code> - of prices.  
-**Customfunction**:   
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
-| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
-| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_PROJECT_FUNDAMENTALS"></a>
 
@@ -917,6 +943,19 @@ of all wallets holding tokens at the moment.
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years or days. |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_REVERSE"></a>
+
+## SAN\_REVERSE(array) ⇒ <code>Array</code>
+Returns the reversed array of the results
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of reversed results  
+**Customfunction**:   
+
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>Array</code> | The array of results |
 
 <a name="SAN_SOCIAL_DOMINANCE"></a>
 
@@ -1099,6 +1138,22 @@ Returns the token's velocity.
 
 **Kind**: global function  
 **Returns**: <code>Array</code> - of token velocity values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_VOLUME"></a>
+
+## SAN\_VOLUME(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the slug's trading volume.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the slug's trading volume.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |

@@ -10,7 +10,7 @@
  * @returns {Array} of prices.
  * @customfunction
  */
-function SAN_PRICES (projectSlug, from, to, interval = '1d') {
+function SAN_PRICE_VOLUME (projectSlug, from, to, interval = '1d') {
   return handleErrors_(prices_)(projectSlug, from, to, interval)
 }
 
