@@ -155,6 +155,9 @@ during a given time interval.</p>
 currency and time interval. This indicator measures the difference in trend between price and volume,
 specifically when price goes up as volume goes down. Currency can be displayed in either USD or BTC.</p>
 </dd>
+<dt><a href="#SAN_PRICES">SAN_PRICES(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the prices for the specified asset, during a given time interval.</p>
+</dd>
 <dt><a href="#SAN_PROJECT_FUNDAMENTALS">SAN_PROJECT_FUNDAMENTALS(projectSlug)</a> ⇒ <code>Array</code></dt>
 <dd><p>Fetch fundamentals for a specified project.</p>
 </dd>
@@ -897,6 +900,22 @@ specifically when price goes up as volume goes down. Currency can be displayed i
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_PRICES"></a>
+
+## SAN\_PRICES(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the prices for the specified asset, during a given time interval.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of prices.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_PROJECT_FUNDAMENTALS"></a>
 

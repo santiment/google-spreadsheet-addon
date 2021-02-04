@@ -44,6 +44,11 @@ describe('SAN_PRICE_VOLUME', () => {
     }
   })
 
+  it('old function works', () => {
+    const prices = san.SAN_PRICES(slug, from, to, '1h')
+    assertNumberOfRecords(prices, numberOfHours)
+  })
+
   it('returns a record per hour', () => {
     const prices = san.SAN_PRICE_VOLUME(slug, from, to, '1h')
     assertNumberOfRecords(prices, numberOfHours)
