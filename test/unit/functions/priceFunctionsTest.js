@@ -275,8 +275,7 @@ describe('prices_', () => {
         ['2019-05-23', 1.204115, 104644],
         ['2019-05-24', 0.854728, 129090],
         ['2019-05-25', 0.952423, 159908],
-        ['2019-05-26', 1.020678, 179749],
-        ['**Notice** Metric will be renamed to SAN_PRICE_VOLUME'] // Temporary
+        ['2019-05-26', 1.020678, 179749]
       ]
     )
   })
@@ -285,7 +284,7 @@ describe('prices_', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchPrices').returns([])
     const response = san.prices_(slug, from, to)
 
-    expect(response).to.deep.eq([['Date', 'USD Price', 'Volume'], ['**Notice** Metric will be renamed to SAN_PRICE_VOLUME']]) // Temporary
+    expect(response).to.deep.eq([['Date', 'USD Price', 'Volume']])
   })
 
   it('throws "No data" on null response', () => {
