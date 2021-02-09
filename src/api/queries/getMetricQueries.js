@@ -9,11 +9,17 @@ const SUPPORTED_BALANCES = [
   '1M-10M', '10M-inf', 'total'
 ]
 const DEFAULT_CURRENCY = 'USD'
+const DEFAULT_AGGREGATION = 'null'
 
 function prepareOptions_ (options) {
   if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
   if ('timeBound' in options) { options.timeBound = options.timeBound || '' }
   if ('interval' in options) { options.interval = options.interval || '1d' }
+  if ('aggregation' in options) {
+    options.aggregation = (
+      options.aggregation === 'null' ? options.aggregation : options.aggregation.toUpperCase()
+    ) || DEFAULT_AGGREGATION
+  }
 }
 
 function supportedCurrencies_ () {
@@ -60,6 +66,20 @@ ApiClient_.prototype.fetchGetMetric = function (metric, slug, from, to, options)
                            value
           }
       }
+    }`
+  }
+
+  return this.conn.graphQLQuery(query, 'getMetric')
+}
+
+ApiClient_.prototype.fetchAggregatedGetMetric = function (metric, slug, from, to, options) {
+  prepareOptions_(options)
+  const metricName = metricNameGenerator_(metric, options)
+  const query = {
+    'query': `{
+       getMetric(metric: "${metricName}") {
+          aggregatedTimeseriesData(${commonParamsAggregated(slug, from, to, options.aggregation)})
+        }
     }`
   }
 

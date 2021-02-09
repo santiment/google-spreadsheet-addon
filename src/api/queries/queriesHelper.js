@@ -14,8 +14,16 @@ function intervalParam (interval = '1d') {
   return `interval: "${interval}"`
 }
 
+function aggregationParam (aggregation = 'null') {
+  return `aggregation: ${aggregation}`
+}
+
 function commonParams (slug, from, to, interval = '1d') {
   return `${slugParam(slug)}, ${fromParam(from)}, ${toParam(to)}, ${intervalParam(interval)}`
+}
+
+function commonParamsAggregated (slug, from, to, aggregated = 'null') {
+  return `${slugParam(slug)}, ${fromParam(from)}, ${toParam(to)}, ${aggregationParam(aggregated)}`
 }
 
 function handleDatetimeField (interval) {
