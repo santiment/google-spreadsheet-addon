@@ -1,8 +1,7 @@
+
 const { testFieldTypes } = require('../support/helper.js')
-
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
-
-const { slug, from, to, currency, numberOfDays, days } = require('../support/setup.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
   const expected = {
@@ -10,17 +9,12 @@ describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
     value: 'number'
   }
 
-  const response = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to, currency)
+  const response = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
   const headers = response[0]
-  const results = response[1]
-  testFieldTypes(results, expected)
-  testHandlesNullData(
-    'fetchGetMetric',
-    san.SAN_MVRV_LONG_SHORT_DIFF,
-    slug,
-    from,
-    to,
-    currency)
+  const addresses = response[1]
+
+  testFieldTypes(addresses, expected)
+  testHandlesNullData('fetchGetMetric', san.SAN_MVRV_LONG_SHORT_DIFF, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -28,9 +22,10 @@ describe('SAN_MVRV_LONG_SHORT_DIFF', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to, currency)
-    assertNumberOfRecords(results, numberOfDays)
+    const addresses = san.SAN_MVRV_LONG_SHORT_DIFF(slug, from, to)
 
-    assertDaysMatch(results, days)
+    assertNumberOfRecords(addresses, numberOfDays)
+
+    assertDaysMatch(addresses, days)
   })
 })

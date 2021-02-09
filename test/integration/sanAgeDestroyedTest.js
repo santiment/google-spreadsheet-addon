@@ -1,11 +1,7 @@
-const { testFieldTypes } = require('../support/helper.js')
-const {
-  testHandlesNullData,
-  assertNumberOfRecords,
-  assertDaysMatch
-} = require('../support/integrationHelper.js')
 
-const { slug, from, to, numberOfDays, numberOfHours, days } = require('../support/setup.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_AGE_DESTROYED', () => {
   const expected = {
@@ -15,15 +11,10 @@ describe('SAN_AGE_DESTROYED', () => {
 
   const response = san.SAN_AGE_DESTROYED(slug, from, to)
   const headers = response[0]
-  const results = response[1]
+  const addresses = response[1]
 
-  testFieldTypes(results, expected)
-  testHandlesNullData(
-    'fetchGetMetric',
-    san.SAN_AGE_DESTROYED,
-    slug,
-    from,
-    to)
+  testFieldTypes(addresses, expected)
+  testHandlesNullData('fetchGetMetric', san.SAN_AGE_DESTROYED, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -31,16 +22,10 @@ describe('SAN_AGE_DESTROYED', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_AGE_DESTROYED(slug, from, to)
+    const addresses = san.SAN_AGE_DESTROYED(slug, from, to)
 
-    assertNumberOfRecords(results, numberOfDays)
+    assertNumberOfRecords(addresses, numberOfDays)
 
-    assertDaysMatch(results, days)
-  })
-
-  it('returns a record per hour', () => {
-    const addresses = san.SAN_AGE_DESTROYED(slug, from, to, '1h')
-
-    assertNumberOfRecords(addresses, numberOfHours)
+    assertDaysMatch(addresses, days)
   })
 })

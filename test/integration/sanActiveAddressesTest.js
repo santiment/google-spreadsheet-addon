@@ -1,3 +1,4 @@
+
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
@@ -5,7 +6,7 @@ const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 describe('SAN_ACTIVE_ADDRESSES', () => {
   const expected = {
     date: 'string',
-    activeAddresses: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_ACTIVE_ADDRESSES(slug, from, to)

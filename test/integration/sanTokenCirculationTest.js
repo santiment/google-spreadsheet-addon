@@ -1,17 +1,19 @@
-const { testFieldTypes } = require('../support/helper.js')
-const { testHandlesNullData } = require('../support/integrationHelper.js')
-const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
 
-const { slug, from, to } = require('../support/setup.js')
+const { testFieldTypes } = require('../support/helper.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_TOKEN_CIRCULATION', () => {
-  const expected = { date: 'string', tokenCirculation: 'number' }
+  const expected = {
+    date: 'string',
+    value: 'number'
+  }
 
   const response = san.SAN_TOKEN_CIRCULATION(slug, from, to)
   const headers = response[0]
-  const results = response[1]
+  const addresses = response[1]
 
-  testFieldTypes(results, expected)
+  testFieldTypes(addresses, expected)
   testHandlesNullData('fetchGetMetric', san.SAN_TOKEN_CIRCULATION, slug, from, to)
 
   it('has proper headers', () => {
@@ -19,5 +21,11 @@ describe('SAN_TOKEN_CIRCULATION', () => {
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
-  testGetMetricTimeBound(san.SAN_TOKEN_CIRCULATION, slug, from, to)
+  it('returns a record per every day', () => {
+    const addresses = san.SAN_TOKEN_CIRCULATION(slug, from, to)
+
+    assertNumberOfRecords(addresses, numberOfDays)
+
+    assertDaysMatch(addresses, days)
+  })
 })

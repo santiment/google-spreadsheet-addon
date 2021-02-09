@@ -10,7 +10,8 @@
     "test": "mocha",
     "test:unit": "npm run pretest && mocha test/unit",
     "test:integration": "npm run pretest && mocha test/integration",
-    "generate": "node ./generators/mainGenerator.js"
+    "generate": "node ./generators/mainGenerator.js",
+    "test:generate": "node ./generators/getMetricTestGenerator.js"
   },
   "repository": {
     "type": "git",

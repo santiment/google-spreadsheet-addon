@@ -3,18 +3,18 @@ const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
-describe('SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE', () => {
+describe('SAN_NETWORK_GROWTH', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE(slug, from, to)
+  const response = san.SAN_NETWORK_GROWTH(slug, from, to)
   const headers = response[0]
   const addresses = response[1]
 
   testFieldTypes(addresses, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE, slug, from, to)
+  testHandlesNullData('fetchGetMetric', san.SAN_NETWORK_GROWTH, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -22,7 +22,7 @@ describe('SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE(slug, from, to)
+    const addresses = san.SAN_NETWORK_GROWTH(slug, from, to)
 
     assertNumberOfRecords(addresses, numberOfDays)
 

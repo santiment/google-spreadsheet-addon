@@ -1,11 +1,12 @@
+
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
-const { slug, from, to, numberOfDays, numberOfHours, days } = require('../support/setup.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_ACTIVE_ADDRESSES_24H', () => {
   const expected = {
     date: 'string',
-    activeAddresses: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_ACTIVE_ADDRESSES_24H(slug, from, to)
@@ -26,11 +27,5 @@ describe('SAN_ACTIVE_ADDRESSES_24H', () => {
     assertNumberOfRecords(addresses, numberOfDays)
 
     assertDaysMatch(addresses, days)
-  })
-
-  it('returns a record per hour', () => {
-    const addresses = san.SAN_ACTIVE_ADDRESSES_24H(slug, from, to, '1h')
-
-    assertNumberOfRecords(addresses, numberOfHours)
   })
 })

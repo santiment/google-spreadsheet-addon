@@ -1,3 +1,4 @@
+
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
@@ -5,14 +6,14 @@ const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 describe('SAN_PRICE', () => {
   const expected = {
     date: 'string',
-    prices: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_PRICE(slug, from, to)
   const headers = response[0]
-  const prices = response[1]
+  const addresses = response[1]
 
-  testFieldTypes(prices, expected)
+  testFieldTypes(addresses, expected)
   testHandlesNullData('fetchGetMetric', san.SAN_PRICE, slug, from, to)
 
   it('has proper headers', () => {
@@ -21,10 +22,10 @@ describe('SAN_PRICE', () => {
   })
 
   it('returns a record per every day', () => {
-    const prices = san.SAN_PRICE(slug, from, to)
+    const addresses = san.SAN_PRICE(slug, from, to)
 
-    assertNumberOfRecords(prices, numberOfDays)
+    assertNumberOfRecords(addresses, numberOfDays)
 
-    assertDaysMatch(prices, days)
+    assertDaysMatch(addresses, days)
   })
 })
