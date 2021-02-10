@@ -32,9 +32,9 @@ describe('${functionName.name}', () => {
 
   const response = san.${functionName.name}(slug, from, to)
   const headers = response[0]
-  const addresses = response[1]
+  const results = response[1]
 
-  testFieldTypes(addresses, expected)
+  testFieldTypes(results, expected)
   testHandlesNullData('fetchGetMetric', san.${functionName.name}, slug, from, to)
 
   it('has proper headers', () => {
@@ -43,11 +43,11 @@ describe('${functionName.name}', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.${functionName.name}(slug, from, to)
+    const results = san.${functionName.name}(slug, from, to)
 
-    assertNumberOfRecords(addresses, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(addresses, days)
+    assertDaysMatch(results, days)
   })
 })
 `
@@ -66,10 +66,18 @@ function generateFileName (functionName) {
   return newName.join('')
 }
 
+const FORBIDDEN_FUNCTIONS = [
+  'SAN_FUNCTIONS',
+  'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE'
+]
+
 function generate () {
   const functions = functionsList.fetchOnlyGenerated()
   functions.forEach(
     function (fn) {
+      if (FORBIDDEN_FUNCTIONS.includes(fn.name)) {
+        return
+      }
       const template = buildGetMetricTestTemplate(fn)
       const fileName = generateFileName(fn)
       const OUTPUT_FILE = path.join(`${__dirname}`, `../test/integration/san${fileName}Test.js`)

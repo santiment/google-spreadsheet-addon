@@ -11,9 +11,9 @@ describe('SAN_NETWORK_PROFIT_LOSS', () => {
 
   const response = san.SAN_NETWORK_PROFIT_LOSS(slug, from, to)
   const headers = response[0]
-  const addresses = response[1]
+  const results = response[1]
 
-  testFieldTypes(addresses, expected)
+  testFieldTypes(results, expected)
   testHandlesNullData('fetchGetMetric', san.SAN_NETWORK_PROFIT_LOSS, slug, from, to)
 
   it('has proper headers', () => {
@@ -22,10 +22,10 @@ describe('SAN_NETWORK_PROFIT_LOSS', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_NETWORK_PROFIT_LOSS(slug, from, to)
+    const results = san.SAN_NETWORK_PROFIT_LOSS(slug, from, to)
 
-    assertNumberOfRecords(addresses, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(addresses, days)
+    assertDaysMatch(results, days)
   })
 })

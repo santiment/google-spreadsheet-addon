@@ -11,9 +11,9 @@ describe('SAN_MEAN_DOLLAR_INVESTED_AGE', () => {
 
   const response = san.SAN_MEAN_DOLLAR_INVESTED_AGE(slug, from, to)
   const headers = response[0]
-  const addresses = response[1]
+  const results = response[1]
 
-  testFieldTypes(addresses, expected)
+  testFieldTypes(results, expected)
   testHandlesNullData('fetchGetMetric', san.SAN_MEAN_DOLLAR_INVESTED_AGE, slug, from, to)
 
   it('has proper headers', () => {
@@ -22,10 +22,10 @@ describe('SAN_MEAN_DOLLAR_INVESTED_AGE', () => {
   })
 
   it('returns a record per every day', () => {
-    const addresses = san.SAN_MEAN_DOLLAR_INVESTED_AGE(slug, from, to)
+    const results = san.SAN_MEAN_DOLLAR_INVESTED_AGE(slug, from, to)
 
-    assertNumberOfRecords(addresses, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(addresses, days)
+    assertDaysMatch(results, days)
   })
 })

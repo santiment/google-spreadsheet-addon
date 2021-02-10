@@ -758,11 +758,8 @@ function SAN_FUNCTIONS () {
     'SAN_TOKEN_CIRCULATION_AGGREGATED',
     'SAN_TOKEN_TOP_TRANSACTIONS',
     'SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE',
-    'SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE_AGGREGATED',
     'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE',
-    'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE_AGGREGATED',
     'SAN_TOP_HOLDERS_HELD_OVERALL',
-    'SAN_TOP_HOLDERS_HELD_OVERALL_AGGREGATED',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
     'SAN_TRANSACTION_VOLUME',
     'SAN_TRANSACTION_VOLUME_AGGREGATED',
@@ -1259,75 +1256,6 @@ function SAN_ACTIVE_ADDRESSES_AGGREGATED (projectSlug, from, to, aggregation = '
 function SAN_ACTIVE_ADDRESSES_24H_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'active_addresses_24h',
-    projectSlug,
-    from,
-    to,
-    { aggregation: aggregation }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held by the top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {Array} of amount of coins/tokens held by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_OVERALL_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
-  return handleErrors_(aggregatedGetMetric_)(
-    'amount_in_top_holders',
-    projectSlug,
-    from,
-    to,
-    { aggregation: aggregation }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held only by the exchange top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {Array} of amount of coins/tokens held only by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_ON_EXCHANGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
-  return handleErrors_(aggregatedGetMetric_)(
-    'amount_in_exchange_top_holders',
-    projectSlug,
-    from,
-    to,
-    { aggregation: aggregation }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held only by the non exchange top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {Array} of amount of coins/tokens held only by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
-  return handleErrors_(aggregatedGetMetric_)(
-    'amount_in_non_exchange_top_holders',
     projectSlug,
     from,
     to,

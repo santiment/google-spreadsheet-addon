@@ -15,9 +15,18 @@ const AGGREGATION_DESCRIPTION = `
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 `
 
+const FORBIDDEN_METRICS = [ // Aggregated not implemented for these metrics
+  'amount_in_non_exchange_top_holders',
+  'amount_in_exchange_top_holders',
+  'amount_in_top_holders'
+]
+
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
+    if (FORBIDDEN_METRICS.includes(metric.metric)) {
+      continue
+    }
     generatedDoc += generateFunctionString_(metric)
   }
 
