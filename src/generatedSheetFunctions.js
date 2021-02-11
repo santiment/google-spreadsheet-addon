@@ -673,6 +673,36 @@ function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the social volume for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "TOTAL"
+
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's social volume.
+* @customfunction
+*/
+function SAN_SOCIAL_VOLUME (projectSlug, from, to, source, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'social_volume',
+    projectSlug,
+    from,
+    to,
+    { source: source, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -830,7 +860,7 @@ function SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED (projectSlug, from, to, currency
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens/coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 
 * @returns {Array} of mean realized prices.
@@ -882,7 +912,7 @@ function SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED (projectSlug, from, to, currency, a
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens/coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 
 * @returns {Array} of MVRV ratios.
@@ -907,7 +937,7 @@ function SAN_MVRV_RATIO_AGGREGATED (projectSlug, from, to, currency, timeBound, 
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens/coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 
 * @returns {Array} of token circulation values.
@@ -982,7 +1012,7 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED (projectSlug, from, to, aggrega
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens/coins that have moved in the past number of years or days.
+* tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 
 * @returns {Array} of realized values.
@@ -1294,7 +1324,7 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggre
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} balance Interval of amount of tokens. Example: "0-0.001"
+* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 
 * @returns {Array} of total number of addresses holding the given amount of tokens.
@@ -1397,6 +1427,29 @@ function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'n
 function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'transaction_volume',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the social volume for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+
+* @returns {Array} of the slug's social volume.
+* @customfunction
+*/
+function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'social_volume',
     projectSlug,
     from,
     to,

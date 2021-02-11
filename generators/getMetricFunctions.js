@@ -216,6 +216,14 @@ const metricsList = [
       'Returns the slug\'s trading volume.'
     ],
     returns: 'the slug\'s trading volume.'
+  },
+  {
+    metric: 'social_volume',
+    description: [
+      'Returns the social volume for a slug.'
+    ],
+    hasSource: true,
+    returns: 'the slug\'s social volume.'
   }
 ]
 

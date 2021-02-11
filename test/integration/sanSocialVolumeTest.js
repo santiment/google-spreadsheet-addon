@@ -18,6 +18,6 @@ describe('SAN_SOCIAL_VOLUME', () => {
     const response = san.SAN_SOCIAL_VOLUME(slug, from, to, socialVolumeType)
     const headers = response[0]
 
-    expect(headers).to.deep.equal(['Date', 'Mentions Count'])
+    expect(headers).to.deep.equal(['Date', 'Value'])
   })
 })

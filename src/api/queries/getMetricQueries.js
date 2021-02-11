@@ -8,6 +8,17 @@ const SUPPORTED_BALANCES = [
   '1k-10k', '10k-100k', '100k-1M',
   '1M-10M', '10M-inf', 'total'
 ]
+
+const SOURCE_MAPPING = {
+  'TELEGRAM_DISCUSSION_OVERVIEW': 'TELEGRAM',
+  'TELEGRAM_CHATS_OVERVIEW': 'TELEGRAM',
+  'PROFESSIONAL_TRADERS_CHAT_OVERVIEW': 'PROFESSIONAL_TRADERS_CHAT',
+  'DISCORD_DISCUSSION_OVERVIEW': 'DISCORD',
+  'REDDIT_COMMENTS_OVERVIEW': 'REDDIT',
+  'TWITTER_CHATS_OVERVIEW': 'TWITTER',
+  'TOTAL': 'TOTAL'
+}
+
 const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
 
@@ -20,6 +31,7 @@ function prepareOptions_ (options) {
       options.aggregation === 'null' ? options.aggregation : options.aggregation.toUpperCase()
     ) || DEFAULT_AGGREGATION
   }
+  if ('source' in options) { options.source = options.source || 'TOTAL' }
 }
 
 function supportedCurrencies_ () {
@@ -50,6 +62,13 @@ function metricNameGenerator_ (metric, options) {
 
   if (options.timeBound !== '' && TIME_BOUNDS.indexOf(options.timeBound) >= 0) {
     metricName += `_${options.timeBound}`
+  }
+
+  if (Object.keys(SOURCE_MAPPING).indexOf(options.source) >= 0) {
+    if (options.source === 'TELEGRAM_DISCUSSION_OVERVIEW') {
+      return 'community_messages_count_telegram' // The metric for telegram discussion overview is not social volume
+    }
+    metricName += `_${(SOURCE_MAPPING[options.source]).toLowerCase()}`
   }
 
   return metricName
