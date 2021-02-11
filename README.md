@@ -44,6 +44,12 @@ Integration tests only:
 $ npm run test:integration
 ```
 
+For creating the test files for standart-template metrics:
+
+```bash
+$ npm run test:generate
+```
+
 Run the test suite in a docker container. Build the image:
 
 ```bash

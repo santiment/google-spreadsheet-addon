@@ -6,16 +6,16 @@ const CURRENCY_DESCRIPTION = `
 
 const TIMEBOUND_DESCRIPTION = `
 * @param {string} timeBound The metric is calculated only by taking into account the
-* tokens/coins that have moved in the past number of years or days.`
+* tokens/coins that have moved in the past number of years/days.`
 
 const BALANCES_DESCRIPTION = `
-* @param {string} balance Interval of amount of tokens. Example: "0-0.001"`
+* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"`
 
 const AGGREGATION_DESCRIPTION = `
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 `
 
-const FORBIDDEN_METRICS = [ // Aggregated not implemented for these metrics
+const IGNORED_METRICS = [ // Aggregated not implemented for these metrics
   'amount_in_non_exchange_top_holders',
   'amount_in_exchange_top_holders',
   'amount_in_top_holders'
@@ -24,7 +24,7 @@ const FORBIDDEN_METRICS = [ // Aggregated not implemented for these metrics
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
-    if (FORBIDDEN_METRICS.includes(metric.metric)) {
+    if (IGNORED_METRICS.includes(metric.metric)) {
       continue
     }
     generatedDoc += generateFunctionString_(metric)

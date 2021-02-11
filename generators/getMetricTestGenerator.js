@@ -66,7 +66,7 @@ function generateFileName (functionName) {
   return newName.join('')
 }
 
-const FORBIDDEN_FUNCTIONS = [
+const IGNORED_METRICS = [
   'SAN_FUNCTIONS',
   'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE'
 ]
@@ -75,7 +75,7 @@ function generate () {
   const functions = functionsList.fetchOnlyGenerated()
   functions.forEach(
     function (fn) {
-      if (FORBIDDEN_FUNCTIONS.includes(fn.name)) {
+      if (IGNORED_METRICS.includes(fn.name)) {
         return
       }
       const template = buildGetMetricTestTemplate(fn)
