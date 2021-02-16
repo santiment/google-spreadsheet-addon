@@ -1,3 +1,4 @@
+
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
@@ -5,14 +6,14 @@ const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 describe('SAN_VOLUME', () => {
   const expected = {
     date: 'string',
-    volumes: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_VOLUME(slug, from, to)
   const headers = response[0]
-  const volumes = response[1]
+  const results = response[1]
 
-  testFieldTypes(volumes, expected)
+  testFieldTypes(results, expected)
   testHandlesNullData('fetchGetMetric', san.SAN_VOLUME, slug, from, to)
 
   it('has proper headers', () => {
@@ -21,10 +22,10 @@ describe('SAN_VOLUME', () => {
   })
 
   it('returns a record per every day', () => {
-    const volumes = san.SAN_VOLUME(slug, from, to)
+    const results = san.SAN_VOLUME(slug, from, to)
 
-    assertNumberOfRecords(volumes, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays)
 
-    assertDaysMatch(volumes, days)
+    assertDaysMatch(results, days)
   })
 })

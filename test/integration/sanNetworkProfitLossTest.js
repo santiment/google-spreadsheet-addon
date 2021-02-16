@@ -1,3 +1,4 @@
+
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
@@ -5,7 +6,7 @@ const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 describe('SAN_NETWORK_PROFIT_LOSS', () => {
   const expected = {
     date: 'string',
-    results: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_NETWORK_PROFIT_LOSS(slug, from, to)

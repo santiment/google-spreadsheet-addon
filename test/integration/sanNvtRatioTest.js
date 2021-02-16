@@ -1,15 +1,13 @@
+
 const { testFieldTypes } = require('../support/helper.js')
-
-const {
-  testHandlesNullData,
-  assertNumberOfRecords,
-  assertDaysMatch
-} = require('../support/integrationHelper.js')
-
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_NVT_RATIO', () => {
-  const expected = { date: 'string', ratio: 'number' }
+  const expected = {
+    date: 'string',
+    value: 'number'
+  }
 
   const response = san.SAN_NVT_RATIO(slug, from, to)
   const headers = response[0]
@@ -24,16 +22,10 @@ describe('SAN_NVT_RATIO', () => {
   })
 
   it('returns a record per every day', () => {
-    const response = san.SAN_NVT_RATIO(slug, from, to)
+    const results = san.SAN_NVT_RATIO(slug, from, to)
 
-    assertNumberOfRecords(response, numberOfDays)
-    assertDaysMatch(response, days)
-  })
+    assertNumberOfRecords(results, numberOfDays)
 
-  it('old implementation(w/o currency and timeBound) works', () => {
-    const response = san.SAN_NVT_RATIO(slug, from, to)
-
-    assertNumberOfRecords(response, numberOfDays)
-    assertDaysMatch(response, days)
+    assertDaysMatch(results, days)
   })
 })

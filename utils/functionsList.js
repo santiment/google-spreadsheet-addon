@@ -7,6 +7,12 @@ function fetch () {
   return doc.sort(function (a, b) { return a.name.localeCompare(b.name) })
 }
 
+function fetchOnlyGenerated () {
+  const doc = jsdoc2md.getTemplateDataSync({ files: inputFiles[1] })
+  return doc.sort(function (a, b) { return a.name.localeCompare(b.name) })
+}
+
 module.exports = {
-  fetch: fetch
+  fetch: fetch,
+  fetchOnlyGenerated: fetchOnlyGenerated
 }

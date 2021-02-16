@@ -1,10 +1,7 @@
+
 const { testFieldTypes } = require('../support/helper.js')
-
-const {
-  testHandlesNullData, assertNumberOfRecords, assertDaysMatch
-} = require('../support/integrationHelper.js')
-
-const { slug, from, to, numberOfDays, numberOfHours, days } = require('../support/setup.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_EXCHANGE_INFLOW', () => {
   const expected = {
@@ -15,13 +12,9 @@ describe('SAN_EXCHANGE_INFLOW', () => {
   const response = san.SAN_EXCHANGE_INFLOW(slug, from, to)
   const headers = response[0]
   const results = response[1]
+
   testFieldTypes(results, expected)
-  testHandlesNullData(
-    'fetchGetMetric',
-    san.SAN_EXCHANGE_INFLOW,
-    slug,
-    from,
-    to)
+  testHandlesNullData('fetchGetMetric', san.SAN_EXCHANGE_INFLOW, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -34,11 +27,5 @@ describe('SAN_EXCHANGE_INFLOW', () => {
     assertNumberOfRecords(results, numberOfDays)
 
     assertDaysMatch(results, days)
-  })
-
-  it('returns a record per hour', () => {
-    const addresses = san.SAN_EXCHANGE_INFLOW(slug, from, to, '1h')
-
-    assertNumberOfRecords(addresses, numberOfHours)
   })
 })

@@ -1,24 +1,20 @@
+
 const { testFieldTypes } = require('../support/helper.js')
-
-const {
-  testHandlesNullData,
-  assertNumberOfRecords,
-  assertDaysMatch
-} = require('../support/integrationHelper.js')
-
-const { testGetMetricTimeBound } = require('../support/getMetricHelper.js')
-
-const { slug, from, to, currency, numberOfDays, days } = require('../support/setup.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_MVRV_RATIO', () => {
-  const expected = { date: 'string', ratio: 'number' }
+  const expected = {
+    date: 'string',
+    value: 'number'
+  }
 
-  const response = san.SAN_MVRV_RATIO(slug, from, to, currency)
+  const response = san.SAN_MVRV_RATIO(slug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_MVRV_RATIO, slug, from, to, currency)
+  testHandlesNullData('fetchGetMetric', san.SAN_MVRV_RATIO, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -26,18 +22,10 @@ describe('SAN_MVRV_RATIO', () => {
   })
 
   it('returns a record per every day', () => {
-    const response = san.SAN_MVRV_RATIO(slug, from, to, currency)
+    const results = san.SAN_MVRV_RATIO(slug, from, to)
 
-    assertNumberOfRecords(response, numberOfDays)
-    assertDaysMatch(response, days)
+    assertNumberOfRecords(results, numberOfDays)
+
+    assertDaysMatch(results, days)
   })
-
-  it('old implementation(w/o currency and timeBound) works', () => {
-    const response = san.SAN_MVRV_RATIO(slug, from, to)
-
-    assertNumberOfRecords(response, numberOfDays)
-    assertDaysMatch(response, days)
-  })
-
-  testGetMetricTimeBound(san.SAN_MVRV_RATIO, slug, from, to, currency)
 })

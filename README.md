@@ -44,6 +44,15 @@ Integration tests only:
 $ npm run test:integration
 ```
 
+For creating the test files for standart-template metrics:
+
+```bash
+$ npm run test:generate
+```
+
+If you want to exclude a function from being automatically generated (the template doesn't apply to that function),
+then you should add it in the ``getMetricTestGenerator.js`` file, in the ``IGNORED_FUNCTIONS`` array
+
 Run the test suite in a docker container. Build the image:
 
 ```bash

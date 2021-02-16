@@ -1,19 +1,7 @@
+
 const { testFieldTypes } = require('../support/helper.js')
-
-const {
-  testHandlesNullData,
-  assertNumberOfRecords,
-  assertDaysMatch
-} = require('../support/integrationHelper.js')
-
-const {
-  slug,
-  from,
-  to,
-  currency,
-  numberOfDays,
-  days
-} = require('../support/setup.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_DAILY_CLOSING_MARKETCAP', () => {
   const expected = {
@@ -24,13 +12,9 @@ describe('SAN_DAILY_CLOSING_MARKETCAP', () => {
   const response = san.SAN_DAILY_CLOSING_MARKETCAP(slug, from, to)
   const headers = response[0]
   const results = response[1]
+
   testFieldTypes(results, expected)
-  testHandlesNullData(
-    'fetchGetMetric',
-    san.SAN_DAILY_CLOSING_MARKETCAP,
-    slug,
-    from,
-    to)
+  testHandlesNullData('fetchGetMetric', san.SAN_DAILY_CLOSING_MARKETCAP, slug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -39,14 +23,6 @@ describe('SAN_DAILY_CLOSING_MARKETCAP', () => {
 
   it('returns a record per every day', () => {
     const results = san.SAN_DAILY_CLOSING_MARKETCAP(slug, from, to)
-
-    assertNumberOfRecords(results, numberOfDays)
-
-    assertDaysMatch(results, days)
-  })
-
-  it('returns a record per every day with currency argument', () => {
-    const results = san.SAN_DAILY_CLOSING_MARKETCAP(slug, from, to, currency)
 
     assertNumberOfRecords(results, numberOfDays)
 

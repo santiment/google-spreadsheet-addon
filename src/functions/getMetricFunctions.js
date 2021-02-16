@@ -11,3 +11,15 @@ function getMetric_ (metric, slug, from, to, options) {
     ]
   ))
 }
+
+function aggregatedGetMetric_ (metric, slug, from, to, options) {
+  const results = getApiClient_().fetchAggregatedGetMetric(metric, slug, from, to, options)
+  assertHasData_(results)
+
+  if (results === null || !Object.prototype.hasOwnProperty.call(results, 'aggregatedTimeseriesData')) {
+    throw new NoDataError_()
+  }
+
+
+  return formatNumber_(results.aggregatedTimeseriesData)
+}
