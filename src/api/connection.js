@@ -1,6 +1,4 @@
 /* eslint-disable no-var */
-/* eslint-disable no-bitwise */
-/* eslint-disable no-mixed-operators */
 
 var SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
 

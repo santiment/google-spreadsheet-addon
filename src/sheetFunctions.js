@@ -129,27 +129,6 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
 }
 
 /**
- * Returns a list of mentions count for a given project and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @param {string} socialVolumeType The source of mention counts, one of the following:
- * "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
- * "TELEGRAM_CHATS_OVERVIEW",
- * "TELEGRAM_DISCUSSION_OVERVIEW",
- * "DISCORD_DISCUSSION_OVERVIEW"
- *
- * @returns {Array} of mention counts.
- * @customfunction
- */
-function SAN_SOCIAL_VOLUME (projectSlug, from, to, socialVolumeType) {
-  return handleErrors_(socialVolume_)(projectSlug, from, to, socialVolumeType)
-}
-
-/**
  * Returns a list of github activity for a given slug and time interval.
  *
  * @param {string} projectSlug Name of the asset at sanbase,

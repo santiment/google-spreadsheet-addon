@@ -14,6 +14,16 @@ const BALANCES_DESCRIPTION = `
 const INTERVAL_DESCRIPTION = `
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"`
 
+const SOURCE_DESCRIPTION = `
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "TOTAL"
+`
+
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
@@ -28,6 +38,7 @@ function generateFunctionString_ (metric) {
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
   metric.supportedBalances = metric.supportedBalances || []
+  metric.hasSource = metric.hasSource || false
 
   let generatedString =
     fillTemplate(
@@ -37,14 +48,15 @@ function generateFunctionString_ (metric) {
       metric.returns,
       metric.supportedCurrencies,
       metric.hasTimeBound,
-      metric.supportedBalances
+      metric.supportedBalances,
+      metric.hasSource
     )
 
   return generatedString
 }
 
-function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance) {
-  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance)
+function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance, source) {
+  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance, source)
   description = prepareDescription_(description)
 
   return `
@@ -71,7 +83,7 @@ function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
 `
 }
 
-function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances) {
+function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances, hasSource) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
@@ -95,6 +107,12 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances
     returnedValues.description.push(BALANCES_DESCRIPTION)
     returnedValues.arguments.push('balance = \'total\'')
     returnedValues.options.push('balance: balance')
+  }
+
+  if (hasSource === true) {
+    returnedValues.description.push(SOURCE_DESCRIPTION)
+    returnedValues.arguments.push('source')
+    returnedValues.options.push('source: source')
   }
 
   returnedValues.description.push(INTERVAL_DESCRIPTION)
