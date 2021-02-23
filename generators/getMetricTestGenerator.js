@@ -68,7 +68,8 @@ function generateFileName (functionName) {
 
 const IGNORED_METRICS = [
   'SAN_FUNCTIONS',
-  'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE'
+  'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE',
+  'SAN_SOCIAL_VOLUME'
 ]
 
 function generate () {

@@ -687,6 +687,7 @@ function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
 * "TELEGRAM_DISCUSSION_OVERVIEW",
 * "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
 
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -782,6 +783,7 @@ function SAN_FUNCTIONS () {
     'SAN_REVERSE',
     'SAN_SOCIAL_DOMINANCE',
     'SAN_SOCIAL_VOLUME',
+    'SAN_SOCIAL_VOLUME_AGGREGATED',
     'SAN_SOCIAL_VOLUME_PROJECTS',
     'SAN_TOKEN_AGE_CONSUMED',
     'SAN_TOKEN_CIRCULATION',
