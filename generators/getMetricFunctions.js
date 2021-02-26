@@ -224,6 +224,14 @@ const metricsList = [
     ],
     hasSource: true,
     returns: 'the slug\'s social volume.'
+  },
+  {
+    metric: 'marketcap',
+    description: [
+      'Returns the marketcap for a slug.'
+    ],
+    supportedCurrencies: ['USD'],
+    returns: 'the slug\'s marketcap.'
   }
 ]
 

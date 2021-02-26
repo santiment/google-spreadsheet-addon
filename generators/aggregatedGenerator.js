@@ -65,7 +65,8 @@ ${description}
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
-* @returns {Array} of ${returns}
+* @returns {number} of ${returns}
+* This number represents an aggregation of the timeseries data for the same metric.
 * @customfunction
 */
 function SAN_${sheetMetricName.toUpperCase()}_AGGREGATED (${functionArguments}) {
