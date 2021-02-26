@@ -838,9 +838,7 @@ function SAN_FUNCTIONS () {
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of daily average marketcaps.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated daily average marketcaps.
 * @customfunction
 */
 function SAN_DAILY_AVG_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {
@@ -864,9 +862,7 @@ function SAN_DAILY_AVG_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, ag
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of daily closing marketcaps.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated daily closing marketcaps.
 * @customfunction
 */
 function SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {
@@ -892,9 +888,7 @@ function SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED (projectSlug, from, to, currency
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of mean realized prices.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated mean realized prices.
 * @customfunction
 */
 function SAN_MEAN_REALIZED_PRICE_AGGREGATED (projectSlug, from, to, currency, timeBound, aggregation = 'null') {
@@ -918,9 +912,7 @@ function SAN_MEAN_REALIZED_PRICE_AGGREGATED (projectSlug, from, to, currency, ti
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of MVRV differences.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated MVRV differences.
 * @customfunction
 */
 function SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {
@@ -946,9 +938,7 @@ function SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED (projectSlug, from, to, currency, a
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of MVRV ratios.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated MVRV ratios.
 * @customfunction
 */
 function SAN_MVRV_RATIO_AGGREGATED (projectSlug, from, to, currency, timeBound, aggregation = 'null') {
@@ -972,9 +962,7 @@ function SAN_MVRV_RATIO_AGGREGATED (projectSlug, from, to, currency, timeBound, 
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of token circulation values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated token circulation values.
 * @customfunction
 */
 function SAN_TOKEN_CIRCULATION_AGGREGATED (projectSlug, from, to, timeBound, aggregation = 'null') {
@@ -996,9 +984,7 @@ function SAN_TOKEN_CIRCULATION_AGGREGATED (projectSlug, from, to, timeBound, agg
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of mean age values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated mean age values.
 * @customfunction
 */
 function SAN_MEAN_AGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1020,9 +1006,7 @@ function SAN_MEAN_AGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of mean dollar invested age values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated mean dollar invested age values.
 * @customfunction
 */
 function SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1050,9 +1034,7 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED (projectSlug, from, to, aggrega
 * @param {string} timeBound The metric is calculated only by taking into account the
 * tokens/coins that have moved in the past number of years/days.
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of realized values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated realized values.
 * @customfunction
 */
 function SAN_REALIZED_VALUE_AGGREGATED (projectSlug, from, to, currency, timeBound, aggregation = 'null') {
@@ -1074,9 +1056,7 @@ function SAN_REALIZED_VALUE_AGGREGATED (projectSlug, from, to, currency, timeBou
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of token velocity values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated token velocity values.
 * @customfunction
 */
 function SAN_VELOCITY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1100,9 +1080,7 @@ function SAN_VELOCITY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of transaction volumes.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated transaction volumes.
 * @customfunction
 */
 function SAN_TRANSACTION_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1124,9 +1102,7 @@ function SAN_TRANSACTION_VOLUME_AGGREGATED (projectSlug, from, to, aggregation =
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of exchange inflows.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated exchange inflows.
 * @customfunction
 */
 function SAN_EXCHANGE_INFLOW_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1148,9 +1124,7 @@ function SAN_EXCHANGE_INFLOW_AGGREGATED (projectSlug, from, to, aggregation = 'n
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of exchange outflows.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated exchange outflows.
 * @customfunction
 */
 function SAN_EXCHANGE_OUTFLOW_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1172,9 +1146,7 @@ function SAN_EXCHANGE_OUTFLOW_AGGREGATED (projectSlug, from, to, aggregation = '
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of exchange balances.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated exchange balances.
 * @customfunction
 */
 function SAN_EXCHANGE_BALANCE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1196,9 +1168,7 @@ function SAN_EXCHANGE_BALANCE_AGGREGATED (projectSlug, from, to, aggregation = '
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of age destroyed values.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated age destroyed values.
 * @customfunction
 */
 function SAN_AGE_DESTROYED_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1226,9 +1196,7 @@ function SAN_AGE_DESTROYED_AGGREGATED (projectSlug, from, to, aggregation = 'nul
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of NVT ratios
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated NVT ratios
 * @customfunction
 */
 function SAN_NVT_RATIO_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1250,9 +1218,7 @@ function SAN_NVT_RATIO_AGGREGATED (projectSlug, from, to, aggregation = 'null') 
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of network growth.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated network growth.
 * @customfunction
 */
 function SAN_NETWORK_GROWTH_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1274,9 +1240,7 @@ function SAN_NETWORK_GROWTH_AGGREGATED (projectSlug, from, to, aggregation = 'nu
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of deposit address numbers.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated deposit address numbers.
 * @customfunction
 */
 function SAN_ACTIVE_DEPOSITS_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1300,9 +1264,7 @@ function SAN_ACTIVE_DEPOSITS_AGGREGATED (projectSlug, from, to, aggregation = 'n
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of active addresses.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated active addresses.
 * @customfunction
 */
 function SAN_ACTIVE_ADDRESSES_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1326,9 +1288,7 @@ function SAN_ACTIVE_ADDRESSES_AGGREGATED (projectSlug, from, to, aggregation = '
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of active addresses for the last 24 hours.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated active addresses for the last 24 hours.
 * @customfunction
 */
 function SAN_ACTIVE_ADDRESSES_24H_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1350,9 +1310,7 @@ function SAN_ACTIVE_ADDRESSES_24H_AGGREGATED (projectSlug, from, to, aggregation
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of exchange percent of total supply.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated exchange percent of total supply.
 * @customfunction
 */
 function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1375,9 +1333,7 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggre
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of total number of addresses holding the given amount of tokens.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated total number of addresses holding the given amount of tokens.
 * @customfunction
 */
 function SAN_HOLDERS_DISTRIBUTION_AGGREGATED (projectSlug, from, to, balance = 'total', aggregation = 'null') {
@@ -1399,9 +1355,7 @@ function SAN_HOLDERS_DISTRIBUTION_AGGREGATED (projectSlug, from, to, balance = '
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the funding rates that are paid by one of the sides of the perpetual contract to the other
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other
 * @customfunction
 */
 function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1423,9 +1377,7 @@ function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED (projectSlug, fro
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the network's profit/loss.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the network's profit/loss.
 * @customfunction
 */
 function SAN_NETWORK_PROFIT_LOSS_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1449,9 +1401,7 @@ function SAN_NETWORK_PROFIT_LOSS_AGGREGATED (projectSlug, from, to, aggregation 
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the prices for the slug in the given time period.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the prices for the slug in the given time period.
 * @customfunction
 */
 function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {
@@ -1473,9 +1423,7 @@ function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'n
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the slug's trading volume.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the slug's trading volume.
 * @customfunction
 */
 function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1497,9 +1445,7 @@ function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the slug's social volume.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the slug's social volume.
 * @customfunction
 */
 function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1523,9 +1469,7 @@ function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'nul
 * @param {string} currency The metric is calculated using a currency of choice.
 * Available currencies: USD
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-
-* @returns {number} of the slug's marketcap.
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated the slug's marketcap.
 * @customfunction
 */
 function SAN_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {

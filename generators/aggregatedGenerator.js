@@ -12,8 +12,7 @@ const BALANCES_DESCRIPTION = `
 * @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"`
 
 const AGGREGATION_DESCRIPTION = `
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-`
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"`
 
 const IGNORED_METRICS = [ // Aggregated not implemented for these metrics
   'amount_in_non_exchange_top_holders',
@@ -65,8 +64,7 @@ ${description}
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
-* @returns {number} of ${returns}
-* This number represents an aggregation of the timeseries data for the same metric.
+* @returns {number} of aggregated ${returns}
 * @customfunction
 */
 function SAN_${sheetMetricName.toUpperCase()}_AGGREGATED (${functionArguments}) {
