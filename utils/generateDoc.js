@@ -59,7 +59,7 @@ function makeFunctionTemplate (fnInfo) {
   const paramInfos = fnInfo.params.map(
     paramObject => {
       const typeLength = 19
-      const descriptionLength = 182
+      const descriptionLength = 241
 
       const wsParamName = ' '.repeat(maxParamLength - paramObject.name.length)
       const wsParamType = ' '.repeat(typeLength - typeMap[paramObject.name].length)
