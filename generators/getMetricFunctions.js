@@ -232,6 +232,13 @@ const metricsList = [
     ],
     supportedCurrencies: ['USD'],
     returns: 'the slug\'s marketcap.'
+  },
+  {
+    metric: 'whale_transaction_count',
+    description: [
+      'Returns the number of transactions transferring more than 100k USD.'
+    ],
+    returns: 'the number of transactions transferring more than 100k USD.'
   }
 ]
 
