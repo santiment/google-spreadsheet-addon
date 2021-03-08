@@ -43,7 +43,7 @@ function makeFunctionTemplate (fnInfo) {
   if (fnInfo.name.includes('AGGREGATED') || numberFunctions.includes(fnInfo.name)) {
     returnsType = 'number'
   } else {
-    returnsType = 'array'
+    returnsType = 'Array'
   }
 
   // Get the maximum parameter length, so that the whitespaces in the 'Param' column can be adjusted
@@ -73,7 +73,7 @@ function makeFunctionTemplate (fnInfo) {
     return `
 ## ${fnInfo.name}
 
-##### ${fnInfo.name}() ⇒ ${returnsType}
+##### ${fnInfo.name}() ⇒ <code>${returnsType}</code>
 
 ${fnInfo.description}
 
@@ -93,7 +93,7 @@ ${fnInfo.description}
   return `
 ## ${fnInfo.name}
 
-##### ${fnInfo.name}(${params.join(', ')}) ⇒ ${returnsType}
+##### ${fnInfo.name}(${params.join(', ')}) ⇒ <code>${returnsType}</code>
 
 ${fnInfo.description}
 
@@ -103,15 +103,14 @@ ${fnInfo.description}
 
 | Param${paramSpaces}| Type                | Description                                                                                                                                                                            |
 | ${paramDashes} | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-${paramInfos}
-`
+${paramInfos}`
 }
 
 const today = new Date()
 const allFnInfos = `---
 title: Functions we offer
 author: Santiment Team
-date: ${today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate()}
+date: ${today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()}
 ---
 ` + functions.map(fn => makeFunctionTemplate(fn)).reduce(
   (acc, x) => acc + x
