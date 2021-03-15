@@ -109,10 +109,13 @@ ${paramInfos}`
 const today = new Date()
 const year = today.getFullYear()
 let month = today.getMonth()
-const day = today.getDate()
+let day = today.getDate()
 
 if (month >= 0 && month <= 8) {
   month = '0' + (month + 1)
+}
+if (day >= 1 && day <= 9) {
+  day = '0' + day
 }
 const allFnInfos = `---
 title: Functions we offer
