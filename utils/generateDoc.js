@@ -107,10 +107,20 @@ ${paramInfos}`
 }
 
 const today = new Date()
+const year = today.getFullYear()
+let month = today.getMonth()
+let day = today.getDate()
+
+if (month >= 0 && month <= 8) {
+  month = '0' + (month + 1)
+}
+if (day >= 1 && day <= 9) {
+  day = '0' + day
+}
 const allFnInfos = `---
 title: Functions we offer
 author: Santiment Team
-date: ${today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()}
+date: ${year + '-' + month + '-' + day}
 ---
 ` + functions.map(fn => makeFunctionTemplate(fn)).reduce(
   (acc, x) => acc + x

@@ -1,7 +1,7 @@
 ---
 title: Functions we offer
 author: Santiment Team
-date: 2021-3-8
+date: 2021-03-15
 ---
 
 ## SAN_ACTIVE_ADDRESSES
@@ -1546,6 +1546,40 @@ Returns the slug's trading volume.
 
 - **Kind**: global function
 - **Returns**: <code>number</code> - of aggregated the slug's trading volume.
+- **Customfunction**:
+
+| Param       | Type                | Description                                                                                                                                                                            |
+| ----------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
+| from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
+| to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
+| aggregation | <code>string</code> | Aggregation for the timeseries metrics. Example: "LAST"                                                                                                                                                                                           |
+
+## SAN_WHALE_TRANSACTION_COUNT
+
+##### SAN_WHALE_TRANSACTION_COUNT(projectSlug, from, to, interval) ⇒ <code>Array</code>
+
+Returns the number of transactions transferring more than 100k USD.
+
+- **Kind**: global function
+- **Returns**: <code>Array</code> - of the number of transactions transferring more than 100k USD.
+- **Customfunction**:
+
+| Param       | Type                | Description                                                                                                                                                                            |
+| ----------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
+| from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
+| to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
+| interval    | <code>string</code> | The resolution with which the data is fetched. Example: "5m"                                                                                                                                                                                      |
+
+## SAN_WHALE_TRANSACTION_COUNT_AGGREGATED
+
+##### SAN_WHALE_TRANSACTION_COUNT_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+
+Returns the number of transactions transferring more than 100k USD.
+
+- **Kind**: global function
+- **Returns**: <code>number</code> - of aggregated the number of transactions transferring more than 100k USD.
 - **Customfunction**:
 
 | Param       | Type                | Description                                                                                                                                                                            |
