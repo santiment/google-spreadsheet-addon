@@ -750,6 +750,29 @@ function SAN_WHALE_TRANSACTION_COUNT (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the number of tokens in a specific bucket.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} balance Interval of amount of tokens. Example: "0-0.001"
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the number of tokens in a specific bucket.
+* @customfunction
+*/
+function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE (projectSlug, from, to, balance = 'total', interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'holders_distribution_combined_balance',
+    projectSlug,
+    from,
+    to,
+    { balance: balance, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -795,6 +818,8 @@ function SAN_FUNCTIONS () {
     'SAN_HISTORY_TWITTER_DATA',
     'SAN_HOLDERS_DISTRIBUTION',
     'SAN_HOLDERS_DISTRIBUTION_AGGREGATED',
+    'SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE',
+    'SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED',
     'SAN_LATEST_PRICE',
     'SAN_MARKETCAP',
     'SAN_MARKETCAP_AGGREGATED',
@@ -1525,6 +1550,29 @@ function SAN_WHALE_TRANSACTION_COUNT_AGGREGATED (projectSlug, from, to, aggregat
     from,
     to,
     { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the number of tokens in a specific bucket.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the number of tokens in a specific bucket.
+* @customfunction
+*/
+function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED (projectSlug, from, to, balance = 'total', aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'holders_distribution_combined_balance',
+    projectSlug,
+    from,
+    to,
+    { balance: balance, aggregation: aggregation }
   )
 }
 

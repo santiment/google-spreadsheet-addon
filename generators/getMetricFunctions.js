@@ -239,6 +239,19 @@ const metricsList = [
       'Returns the number of transactions transferring more than 100k USD.'
     ],
     returns: 'the number of transactions transferring more than 100k USD.'
+  },
+  {
+    metric: 'holders_distribution_combined_balance',
+    supportedBalances: [
+      '0-0.001', '0.001-0.01', '0.01-0.1', '0.1-1',
+      '1-10', '10-100', '100-1k',
+      '1k-10k', '10k-100k', '100k-1M',
+      '1M-10M', '10M-inf', 'total'
+    ],
+    description: [
+      'Returns the number of tokens in a specific bucket.'
+    ],
+    returns: 'the number of tokens in a specific bucket.'
   }
 ]
 

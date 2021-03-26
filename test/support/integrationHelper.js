@@ -14,6 +14,21 @@ const assertDaysMatch = (records, days) => {
   }
 }
 
+const assertBalanceIntervalsWork = (number, func, ...args) => {
+  const intervals = [
+    '0-0.001', '0.001-0.01', '0.01-0.1', '0.1-1',
+    '1-10', '10-100', '100-1k',
+    '1k-10k', '10k-100k', '100k-1M',
+    '1M-10M', '10M-inf', 'total'
+  ]
+  for (let interval of intervals) {
+    it(`returns data with interval ${interval}`, () => {
+      const results = func(...args, interval)
+      assertNumberOfRecords(results, number)
+    })
+  }
+}
+
 const testHandlesNullData = (stubName, func, ...args) => {
   it('returns a message when there is no data', () => {
     sandbox.stub(san.ApiClient_.prototype, stubName).returns(null)
@@ -26,5 +41,6 @@ const testHandlesNullData = (stubName, func, ...args) => {
 module.exports = {
   assertNumberOfRecords: assertNumberOfRecords,
   assertDaysMatch: assertDaysMatch,
+  assertBalanceIntervalsWork: assertBalanceIntervalsWork,
   testHandlesNullData: testHandlesNullData
 }
