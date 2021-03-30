@@ -234,7 +234,8 @@ const metricsList = [
     returns: 'the slug\'s marketcap.'
   },
   {
-    metric: 'whale_transaction_count',
+    metric: 'whale_transaction_count_100k_usd_to_inf',
+    sheetMetricName: 'whale_transaction_count',
     description: [
       'Returns the number of transactions transferring more than 100k USD.'
     ],
