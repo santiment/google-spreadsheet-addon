@@ -742,7 +742,7 @@ function SAN_MARKETCAP (projectSlug, from, to, currency, interval = '1d') {
 */
 function SAN_WHALE_TRANSACTION_COUNT (projectSlug, from, to, interval = '1d') {
   return handleErrors_(getMetric_)(
-    'whale_transaction_count',
+    'whale_transaction_count_100k_usd_to_inf',
     projectSlug,
     from,
     to,
@@ -1520,7 +1520,7 @@ function SAN_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, aggregation 
 */
 function SAN_WHALE_TRANSACTION_COUNT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
-    'whale_transaction_count',
+    'whale_transaction_count_100k_usd_to_inf',
     projectSlug,
     from,
     to,
