@@ -773,6 +773,37 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE (projectSlug, from, to, balan
   )
 }
 
+
+/**
+* Returns the weighted social sentiment for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"
+
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's weighted social sentiment.
+* @customfunction
+*/
+function SAN_WEIGHTED_SOCIAL_SENTIMENT (projectSlug, from, to, source, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'sentiment_volume_consumed',
+    projectSlug,
+    from,
+    to,
+    { source: source, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -872,6 +903,8 @@ function SAN_FUNCTIONS () {
     'SAN_VELOCITY_AGGREGATED',
     'SAN_VOLUME',
     'SAN_VOLUME_AGGREGATED',
+    'SAN_WEIGHTED_SOCIAL_SENTIMENT',
+    'SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED',
     'SAN_WHALE_TRANSACTION_COUNT',
     'SAN_WHALE_TRANSACTION_COUNT_AGGREGATED'
   ]
@@ -1573,6 +1606,28 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED (projectSlug, from
     from,
     to,
     { balance: balance, aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the weighted social sentiment for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the slug's weighted social sentiment.
+* @customfunction
+*/
+function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'sentiment_volume_consumed',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
   )
 }
 

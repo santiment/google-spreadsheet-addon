@@ -253,6 +253,15 @@ const metricsList = [
       'Returns the number of tokens in a specific bucket.'
     ],
     returns: 'the number of tokens in a specific bucket.'
+  },
+  {
+    metric: 'sentiment_volume_consumed',
+    sheetMetricName: 'weighted_social_sentiment',
+    description: [
+      'Returns the weighted social sentiment for a slug.'
+    ],
+    hasSource: true,
+    returns: 'the slug\'s weighted social sentiment.'
   }
 ]
 
