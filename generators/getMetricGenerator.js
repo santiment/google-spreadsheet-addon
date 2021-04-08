@@ -22,8 +22,7 @@ const SOURCE_DESCRIPTION = `
 * "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
-* "TOTAL"
-`
+* "TOTAL"`
 
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'

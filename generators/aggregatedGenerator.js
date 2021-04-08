@@ -14,6 +14,16 @@ const BALANCES_DESCRIPTION = `
 const AGGREGATION_DESCRIPTION = `
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"`
 
+const SOURCE_DESCRIPTION = `
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"`
+
 const IGNORED_METRICS = [ // Aggregated not implemented for these metrics
   'amount_in_non_exchange_top_holders',
   'amount_in_exchange_top_holders',
@@ -37,6 +47,7 @@ function generateFunctionString_ (metric) {
   metric.sheetMetricName = metric.sheetMetricName || metric.metric
   metric.hasTimeBound = metric.hasTimeBound || false
   metric.supportedBalances = metric.supportedBalances || []
+  metric.hasSource = metric.hasSource || false
 
   let generatedString =
     fillTemplate(
@@ -46,14 +57,15 @@ function generateFunctionString_ (metric) {
       metric.returns,
       metric.supportedCurrencies,
       metric.hasTimeBound,
-      metric.supportedBalances
+      metric.supportedBalances,
+      metric.hasSource
     )
 
   return generatedString
 }
 
-function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance) {
-  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance)
+function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance, source) {
+  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance, source)
   description = prepareDescription_(description)
 
   return `
@@ -80,7 +92,7 @@ function SAN_${sheetMetricName.toUpperCase()}_AGGREGATED (${functionArguments}) 
 `
 }
 
-function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances) {
+function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances, hasSource) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
@@ -104,6 +116,12 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances
     returnedValues.description.push(BALANCES_DESCRIPTION)
     returnedValues.arguments.push('balance = \'total\'')
     returnedValues.options.push('balance: balance')
+  }
+
+  if (hasSource === true) {
+    returnedValues.description.push(SOURCE_DESCRIPTION)
+    returnedValues.arguments.push('source')
+    returnedValues.options.push('source: source')
   }
 
   returnedValues.description.push(AGGREGATION_DESCRIPTION)

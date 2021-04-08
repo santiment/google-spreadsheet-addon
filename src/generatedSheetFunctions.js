@@ -689,7 +689,6 @@ function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
-
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the slug's social volume.
 * @customfunction
@@ -789,7 +788,6 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE (projectSlug, from, to, balan
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
-
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the slug's weighted social sentiment.
 * @customfunction
@@ -1526,17 +1524,25 @@ function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the slug's social volume.
 * @customfunction
 */
-function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, source, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'social_volume',
     projectSlug,
     from,
     to,
-    { aggregation: aggregation }
+    { source: source, aggregation: aggregation }
   )
 }
 
@@ -1617,17 +1623,25 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED (projectSlug, from
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "DISCORD_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the slug's weighted social sentiment.
 * @customfunction
 */
-function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, source, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'sentiment_volume_consumed',
     projectSlug,
     from,
     to,
-    { aggregation: aggregation }
+    { source: source, aggregation: aggregation }
   )
 }
 
