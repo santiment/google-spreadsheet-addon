@@ -9,7 +9,20 @@ const TIMEBOUND_DESCRIPTION = `
 * tokens/coins that have moved in the past number of years/days.`
 
 const BALANCES_DESCRIPTION = `
-* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"`
+* @param {string} balance Interval of amount of tokens. Available balance intervals are:
+* "0-0.001",
+* "0.001-0.01",
+* "0.01-0.1",
+* "0.1-1",
+* "1-10",
+* "10-100",
+* "100-1k",
+* "1k-10k",
+* "10k-100k",
+* "100k-1M",
+* "1M-10M",
+* "10M-inf",
+* "total"`
 
 const AGGREGATION_DESCRIPTION = `
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"`
