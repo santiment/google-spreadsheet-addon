@@ -568,7 +568,20 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} balance Interval of amount of tokens. Example: "0-0.001"
+* @param {string} balance Interval of amount of tokens. Available balance intervals are:
+* "0-0.001",
+* "0.001-0.01",
+* "0.01-0.1",
+* "0.1-1",
+* "1-10",
+* "10-100",
+* "100-1k",
+* "1k-10k",
+* "10k-100k",
+* "100k-1M",
+* "1M-10M",
+* "10M-inf",
+* "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of total number of addresses holding the given amount of tokens.
 * @customfunction
@@ -757,7 +770,20 @@ function SAN_WHALE_TRANSACTION_COUNT (projectSlug, from, to, interval = '1d') {
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} balance Interval of amount of tokens. Example: "0-0.001"
+* @param {string} balance Interval of amount of tokens. Available balance intervals are:
+* "0-0.001",
+* "0.001-0.01",
+* "0.01-0.1",
+* "0.1-1",
+* "1-10",
+* "10-100",
+* "100-1k",
+* "1k-10k",
+* "10k-100k",
+* "100k-1M",
+* "1M-10M",
+* "10M-inf",
+* "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the number of tokens in a specific bucket.
 * @customfunction
@@ -1411,7 +1437,20 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggre
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"
+* @param {string} balance Interval of amount of tokens. Available balance intervals are:
+* "0-0.001",
+* "0.001-0.01",
+* "0.01-0.1",
+* "0.1-1",
+* "1-10",
+* "10-100",
+* "100-1k",
+* "1k-10k",
+* "10k-100k",
+* "100k-1M",
+* "1M-10M",
+* "10M-inf",
+* "total"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated total number of addresses holding the given amount of tokens.
 * @customfunction
@@ -1600,7 +1639,20 @@ function SAN_WHALE_TRANSACTION_COUNT_AGGREGATED (projectSlug, from, to, aggregat
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} balance An interval of amount of tokens, which the holders behold. Example: "0-0.001"
+* @param {string} balance Interval of amount of tokens. Available balance intervals are:
+* "0-0.001",
+* "0.001-0.01",
+* "0.01-0.1",
+* "0.1-1",
+* "1-10",
+* "10-100",
+* "100-1k",
+* "1k-10k",
+* "10k-100k",
+* "100k-1M",
+* "1M-10M",
+* "10M-inf",
+* "total"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the number of tokens in a specific bucket.
 * @customfunction

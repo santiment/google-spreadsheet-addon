@@ -132,6 +132,12 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_HOLDERS_DISTRIBUTION_AGGREGATED">SAN_HOLDERS_DISTRIBUTION_AGGREGATED(projectSlug, from, to, balance, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Represents the total number of addresses holding the given amount of tokens.</p>
 </dd>
+<dt><a href="#SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE">SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE(projectSlug, from, to, balance, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the number of tokens in a specific bucket.</p>
+</dd>
+<dt><a href="#SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED">SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED(projectSlug, from, to, balance, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the number of tokens in a specific bucket.</p>
+</dd>
 <dt><a href="#SAN_LATEST_PRICE">SAN_LATEST_PRICE(projectSlug, currency)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the latest price for a given asset in a desired currency.</p>
 </dd>
@@ -262,7 +268,7 @@ of all wallets holding tokens at the moment.</p>
 <dt><a href="#SAN_SOCIAL_VOLUME">SAN_SOCIAL_VOLUME(projectSlug, from, to, source, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the social volume for a slug.</p>
 </dd>
-<dt><a href="#SAN_SOCIAL_VOLUME_AGGREGATED">SAN_SOCIAL_VOLUME_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dt><a href="#SAN_SOCIAL_VOLUME_AGGREGATED">SAN_SOCIAL_VOLUME_AGGREGATED(projectSlug, from, to, source, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the social volume for a slug.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_VOLUME_PROJECTS">SAN_SOCIAL_VOLUME_PROJECTS()</a> ⇒ <code>Array</code></dt>
@@ -316,6 +322,12 @@ transfers that have occurred on a blockchain.</p>
 </dd>
 <dt><a href="#SAN_VOLUME_AGGREGATED">SAN_VOLUME_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the slug&#39;s trading volume.</p>
+</dd>
+<dt><a href="#SAN_WEIGHTED_SOCIAL_SENTIMENT">SAN_WEIGHTED_SOCIAL_SENTIMENT(projectSlug, from, to, source, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the weighted social sentiment for a slug.</p>
+</dd>
+<dt><a href="#SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED">SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED(projectSlug, from, to, source, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the weighted social sentiment for a slug.</p>
 </dd>
 <dt><a href="#SAN_WHALE_TRANSACTION_COUNT">SAN_WHALE_TRANSACTION_COUNT(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the number of transactions transferring more than 100k USD.</p>
@@ -904,7 +916,7 @@ Represents the total number of addresses holding the given amount of tokens.
 | projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Example: "0-0.001" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_AGGREGATED"></a>
@@ -921,7 +933,41 @@ Represents the total number of addresses holding the given amount of tokens.
 | projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | An interval of amount of tokens, which the holders behold. Example: "0-0.001" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE"></a>
+
+## SAN\_HOLDERS\_DISTRIBUTION\_COMBINED\_BALANCE(projectSlug, from, to, balance, interval) ⇒ <code>Array</code>
+Returns the number of tokens in a specific bucket.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the number of tokens in a specific bucket.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED"></a>
+
+## SAN\_HOLDERS\_DISTRIBUTION\_COMBINED\_BALANCE\_AGGREGATED(projectSlug, from, to, balance, aggregation) ⇒ <code>number</code>
+Returns the number of tokens in a specific bucket.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the number of tokens in a specific bucket.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
 <a name="SAN_LATEST_PRICE"></a>
@@ -1527,7 +1573,7 @@ Returns the social volume for a slug.
 
 <a name="SAN_SOCIAL_VOLUME_AGGREGATED"></a>
 
-## SAN\_SOCIAL\_VOLUME\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+## SAN\_SOCIAL\_VOLUME\_AGGREGATED(projectSlug, from, to, source, aggregation) ⇒ <code>number</code>
 Returns the social volume for a slug.
 
 **Kind**: global function  
@@ -1539,6 +1585,7 @@ Returns the social volume for a slug.
 | projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
 <a name="SAN_SOCIAL_VOLUME_PROJECTS"></a>
@@ -1780,6 +1827,40 @@ Returns the slug's trading volume.
 | projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_WEIGHTED_SOCIAL_SENTIMENT"></a>
+
+## SAN\_WEIGHTED\_SOCIAL\_SENTIMENT(projectSlug, from, to, source, interval) ⇒ <code>Array</code>
+Returns the weighted social sentiment for a slug.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the slug's weighted social sentiment.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED"></a>
+
+## SAN\_WEIGHTED\_SOCIAL\_SENTIMENT\_AGGREGATED(projectSlug, from, to, source, aggregation) ⇒ <code>number</code>
+Returns the weighted social sentiment for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the slug's weighted social sentiment.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
 <a name="SAN_WHALE_TRANSACTION_COUNT"></a>
