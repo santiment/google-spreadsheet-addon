@@ -15,7 +15,11 @@ function apiKeyProperty_ () { return getUserProperty_(API_KEY) }
 function hasApiKeyProperty_ () { return !!apiKeyProperty_() }
 
 function validateApiKey_ (response) {
-  return response != null && Object.prototype.hasOwnProperty.call(response, 'permissions')
+  return response != null
+}
+
+function validateApiKeyPermissions_ (response) {
+  return Object.prototype.hasOwnProperty.call(response, 'permissions')
 }
 
 function validateCanAccessHistoricData_ (response) {
@@ -44,6 +48,15 @@ function addApiKey_ (key, userPermissions) {
       message: 'An attempt to add invalid API key has been made.'
     })
     return 'API key is not valid and has not been saved!'
+  }
+
+  if (validateApiKeyPermissions_(userPermissions) === false) {
+    logWarning_({
+      type: API_KEY_LOG_TYPE,
+      action: ADD_API_KEY_ACTION,
+      message: 'An attempt to add a valid API key with no SanSheets permissions was made.'
+    })
+    return 'API key is valid but has no permissions to access SanSheets and has not been saved.'
   }
 
   let userMessage

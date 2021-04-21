@@ -41,6 +41,17 @@ describe('validateApiKey_', () => {
   })
 })
 
+describe('validateApiKeyPermissions_', () => {
+  it('returns true when the user is recognised from the API key', () => {
+    const response = { permissions: { spreadsheet: false } }
+    expect(san.validateApiKeyPermissions_(response)).to.be.true
+  })
+
+  it("returns false when the user can't be recognised from the API key", () => {
+    expect(san.validateApiKeyPermissions_({})).to.be.false
+  })
+})
+
 describe('validateCanAccessHistoricData_', () => {
   it('returns true when the user can access spreadsheets historic data', () => {
     const response = { permissions: { spreadsheet: true } }
