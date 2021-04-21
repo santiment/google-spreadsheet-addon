@@ -52,19 +52,19 @@ describe('validateApiKeyPermissions_', () => {
   })
 })
 
-describe('validateCanAccessHistoricData_', () => {
+describe('validateSanSheetsAccess_', () => {
   it('returns true when the user can access spreadsheets historic data', () => {
     const response = { permissions: { spreadsheet: true } }
-    expect(san.validateCanAccessHistoricData_(response)).to.be.true
+    expect(san.validateSanSheetsAccess_(response)).to.be.true
   })
 
   it("returns false when the user can't access spreadsheets historic data", () => {
     const response = { permissions: { spreadsheet: false } }
-    expect(san.validateCanAccessHistoricData_(response)).to.be.false
+    expect(san.validateSanSheetsAccess_(response)).to.be.false
   })
 
   it('returns false when the supplied response is null', () => {
-    expect(san.validateCanAccessHistoricData_(null)).to.be.false
+    expect(san.validateSanSheetsAccess_(null)).to.be.false
   })
 })
 

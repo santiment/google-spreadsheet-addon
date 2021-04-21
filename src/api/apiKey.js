@@ -22,7 +22,7 @@ function validateApiKeyPermissions_ (response) {
   return Object.prototype.hasOwnProperty.call(response, 'permissions')
 }
 
-function validateCanAccessHistoricData_ (response) {
+function validateSanSheetsAccess_ (response) {
   return (validateApiKey_(response) && response.permissions.spreadsheet) === true
 }
 
@@ -62,7 +62,7 @@ function addApiKey_ (key, userPermissions) {
   let userMessage
   setApiKeyProperty_(key)
 
-  if (validateCanAccessHistoricData_(userPermissions) === true) {
+  if (validateSanSheetsAccess_(userPermissions) === true) {
     logInfo_({
       type: API_KEY_LOG_TYPE,
       action: ADD_API_KEY_ACTION,
@@ -107,7 +107,7 @@ function checkApiKeyStillValid_ (key, userPermissions) {
 
   let userMessage
 
-  if (validateCanAccessHistoricData_(userPermissions) === true) {
+  if (validateSanSheetsAccess_(userPermissions) === true) {
     userMessage = 'API key is valid.'
   } else {
     logWarning_({
