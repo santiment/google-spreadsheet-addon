@@ -1,7 +1,7 @@
 
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
-const { slug, from, to, numberOfDays, days } = require('../support/setup.js')
+const { slug, from, to, numberOfDays, days, numberOfHours } = require('../support/setup.js')
 
 describe('SAN_NETWORK_PROFIT_LOSS', () => {
   const expected = {
@@ -27,5 +27,10 @@ describe('SAN_NETWORK_PROFIT_LOSS', () => {
     assertNumberOfRecords(results, numberOfDays)
 
     assertDaysMatch(results, days)
+  })
+
+  it('returns a record per hour', () => {
+    const addresses = san.SAN_NETWORK_PROFIT_LOSS(slug, from, to, '1h')
+    assertNumberOfRecords(addresses, numberOfHours)
   })
 })
