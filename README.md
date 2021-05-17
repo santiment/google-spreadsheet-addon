@@ -16,7 +16,8 @@ google spreadsheet add-on.
     - [Sheet Functions](#sheet-functions)
     - [Generators](#generators)
   - [Running tests](#running-tests)
-  - [Running integration tests](#running-integration-tests)
+    - [Running tests in docker container](#running-tests-in-docker-container)
+    - [Running integration tests](#running-integration-tests)
   - [Standart template tests](#standart-template-tests)
   - [Docker tests](#docker-tests)
   - [Generate documentation](#generate-documentation)
@@ -50,7 +51,7 @@ The structure of the project consists of the following files:
 
 ### Queries
 
-They can be found in the ``src/api/queries`` folder. All the queries, sent to the API can be seen here. A quick note here, the getMetric query is more dynamic.
+They can be found in the ``src/api/queries`` folder. All the queries, sent to the API can be seen here.
 
 ### Functions
 
@@ -62,23 +63,7 @@ Found in the ``src/`` folder. There are 2 files, one under the name of ``sheetFu
 
 ### Generators
 
-All of the generators are found in the ``src/generators`` folder.
-
-File Template Generators:
-* getMetricGenerator.js
-* aggregatedGenerator.js
-* getMetricTestGenerator.js
-* functionFetcherGenerator.js
-
-Helper Files:
-* getMetricFunctions.js
-
-File Generator:
-* mainGenerator.js
-
-The ``mainGenerator.js`` creates a file, uses the ``File Template Generators`` to generate the
-file contents and put them into those files. ``getMetricFunctions.js`` has the functions, which will be generated.
-
+All of the generators are found in the ``src/generators`` folder. By generator, we mean two things actually - one is the scripts, that generate the file contents, the other - the script generating the ``generatedSheetFunctions.js`` file, using the file content generators.
 
 ## Running tests
 You can run the whole tests suite with:
@@ -114,7 +99,7 @@ then you should add it in the ``getMetricTestGenerator.js`` file, in the ``IGNOR
 
 Also, if the metric is a daily one, it should be added to the ``LIST_OF_DAILY_METRICS`` array in the same file.
 
-## Docker tests
+## Running tests in docker container
 
 Run the test suite in a docker container. Build the image:
 
