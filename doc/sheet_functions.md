@@ -45,6 +45,16 @@ ETH spent in the last 7 days, ETH spent in the last day.</p>
 <dt><a href="#SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED">SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other</p>
 </dd>
+<dt><a href="#SAN_BITMEX_PERPETUAL_OPEN_INTEREST">SAN_BITMEX_PERPETUAL_OPEN_INTEREST(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the amount of open perpetual contracts currently on Bitmex&#39;s
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.</p>
+</dd>
+<dt><a href="#SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED">SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the amount of open perpetual contracts currently on Bitmex&#39;s
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.</p>
+</dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
 </dd>
@@ -507,6 +517,42 @@ Returns the funding rates that are paid by one of the sides of the perpetual con
 
 **Kind**: global function  
 **Returns**: <code>number</code> - of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_BITMEX_PERPETUAL_OPEN_INTEREST"></a>
+
+## SAN\_BITMEX\_PERPETUAL\_OPEN\_INTEREST(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the amount of open perpetual contracts currently on Bitmex's
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the amount of open perpetual contracts.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED"></a>
+
+## SAN\_BITMEX\_PERPETUAL\_OPEN\_INTEREST\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the amount of open perpetual contracts currently on Bitmex's
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the amount of open perpetual contracts.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |

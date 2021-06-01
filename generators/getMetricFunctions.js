@@ -262,6 +262,15 @@ const metricsList = [
     ],
     hasSource: true,
     returns: 'the slug\'s weighted social sentiment.'
+  },
+  {
+    metric: 'bitmex_perpetual_open_interest',
+    description: [
+      'Returns the amount of open perpetual contracts currently on Bitmex\'s',
+      'Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,',
+      'it can precede increased volatility in the coin’s price.'
+    ],
+    returns: 'the amount of open perpetual contracts.'
   }
 ]
 

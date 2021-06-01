@@ -828,6 +828,30 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT (projectSlug, from, to, source, interval 
   )
 }
 
+
+/**
+* Returns the amount of open perpetual contracts currently on Bitmex's
+* Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+* it can precede increased volatility in the coin’s price.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the amount of open perpetual contracts.
+* @customfunction
+*/
+function SAN_BITMEX_PERPETUAL_OPEN_INTEREST (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'bitmex_perpetual_open_interest',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -846,6 +870,8 @@ function SAN_FUNCTIONS () {
     'SAN_ALL_PROJECTS',
     'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE',
     'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED',
+    'SAN_BITMEX_PERPETUAL_OPEN_INTEREST',
+    'SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED',
     'SAN_DAILY_AVG_MARKETCAP',
     'SAN_DAILY_AVG_MARKETCAP_AGGREGATED',
     'SAN_DAILY_CLOSING_MARKETCAP',
@@ -1694,6 +1720,30 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, source
     from,
     to,
     { source: source, aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the amount of open perpetual contracts currently on Bitmex's
+* Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+* it can precede increased volatility in the coin’s price.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the amount of open perpetual contracts.
+* @customfunction
+*/
+function SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'bitmex_perpetual_open_interest',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
   )
 }
 
