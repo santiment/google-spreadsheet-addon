@@ -695,10 +695,8 @@ function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
-* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
 * "TELEGRAM_CHATS_OVERVIEW",
 * "TELEGRAM_DISCUSSION_OVERVIEW",
-* "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
@@ -807,10 +805,8 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE (projectSlug, from, to, balan
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
-* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
 * "TELEGRAM_CHATS_OVERVIEW",
 * "TELEGRAM_DISCUSSION_OVERVIEW",
-* "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
@@ -1590,10 +1586,8 @@ function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
-* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
 * "TELEGRAM_CHATS_OVERVIEW",
 * "TELEGRAM_DISCUSSION_OVERVIEW",
-* "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
@@ -1702,10 +1696,8 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED (projectSlug, from
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
-* "PROFESSIONAL_TRADERS_CHAT_OVERVIEW",
 * "TELEGRAM_CHATS_OVERVIEW",
 * "TELEGRAM_DISCUSSION_OVERVIEW",
-* "DISCORD_DISCUSSION_OVERVIEW",
 * "TWITTER_CHATS_OVERVIEW",
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"
