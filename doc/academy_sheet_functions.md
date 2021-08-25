@@ -1,7 +1,7 @@
 ---
 title: Functions we offer
 author: Santiment Team
-date: 2021-05-31
+date: 2021-08-25
 ---
 
 ## SAN_ACTIVE_ADDRESSES
@@ -1335,7 +1335,7 @@ Returns the % of the social dominance a given project has over time in a given s
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
 | from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
 | to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
-| source      | <code>string</code> | The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT, DISCORD, PROFESSIONAL_TRADERS_CHAT                                                                                                                        |
+| source      | <code>string</code> | The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT                                                                                                                                                            |
 
 ## SAN_SOCIAL_VOLUME
 
@@ -1352,7 +1352,7 @@ Returns the social volume for a slug.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
 | from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
 | to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
-| source      | <code>string</code> | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| source      | <code>string</code> | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL"                                                                      |
 | interval    | <code>string</code> | The resolution with which the data is fetched. Example: "5m"                                                                                                                                                                                      |
 
 ## SAN_SOCIAL_VOLUME_AGGREGATED
@@ -1370,7 +1370,7 @@ Returns the social volume for a slug.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
 | from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
 | to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
-| source      | <code>string</code> | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| source      | <code>string</code> | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL"                                                                      |
 | aggregation | <code>string</code> | Aggregation for the timeseries metrics. Example: "LAST"                                                                                                                                                                                           |
 
 ## SAN_SOCIAL_VOLUME_PROJECTS
@@ -1645,7 +1645,7 @@ Returns the weighted social sentiment for a slug.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
 | from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
 | to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
-| source      | <code>string</code> | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| source      | <code>string</code> | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL"                                                                      |
 | interval    | <code>string</code> | The resolution with which the data is fetched. Example: "5m"                                                                                                                                                                                      |
 
 ## SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED
@@ -1663,7 +1663,7 @@ Returns the weighted social sentiment for a slug.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).                                                            |
 | from        | <code>date</code>   | The starting date to fetch the data. Example: DATE(2018, 9, 20)                                                                                                                                                                                   |
 | to          | <code>date</code>   | The ending date to fetch the data. Example: DATE(2018, 9, 21)                                                                                                                                                                                     |
-| source      | <code>string</code> | The source of mention counts, one of the following: "PROFESSIONAL_TRADERS_CHAT_OVERVIEW", "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "DISCORD_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| source      | <code>string</code> | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL"                                                                      |
 | aggregation | <code>string</code> | Aggregation for the timeseries metrics. Example: "LAST"                                                                                                                                                                                           |
 
 ## SAN_WHALE_TRANSACTION_COUNT
