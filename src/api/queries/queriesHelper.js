@@ -1,5 +1,5 @@
 function slugParam (slug) {
-  return `slug: "${slug}"`
+  return `slug: "${slug.toLowerCase()}"`
 }
 
 function fromParam (from) {
