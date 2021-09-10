@@ -271,6 +271,14 @@ const metricsList = [
       'it can precede increased volatility in the coin’s price.'
     ],
     returns: 'the amount of open perpetual contracts.'
+  },
+  {
+    metric: 'social_dominance',
+    description: [
+      'Returns the social dominance for a slug.'
+    ],
+    hasSource: true,
+    returns: 'the slug\'s social dominance.'
   }
 ]
 

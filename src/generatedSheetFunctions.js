@@ -848,6 +848,34 @@ function SAN_BITMEX_PERPETUAL_OPEN_INTEREST (projectSlug, from, to, interval = '
   )
 }
 
+
+/**
+* Returns the social dominance for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's social dominance.
+* @customfunction
+*/
+function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'social_dominance',
+    projectSlug,
+    from,
+    to,
+    { source: source, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -932,6 +960,7 @@ function SAN_FUNCTIONS () {
     'SAN_REALIZED_VALUE_AGGREGATED',
     'SAN_REVERSE',
     'SAN_SOCIAL_DOMINANCE',
+    'SAN_SOCIAL_DOMINANCE_AGGREGATED',
     'SAN_SOCIAL_VOLUME',
     'SAN_SOCIAL_VOLUME_AGGREGATED',
     'SAN_SOCIAL_VOLUME_PROJECTS',
@@ -1736,6 +1765,34 @@ function SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED (projectSlug, from, to, a
     from,
     to,
     { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the social dominance for a slug.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} source The source of mention counts, one of the following:
+* "TELEGRAM_CHATS_OVERVIEW",
+* "TELEGRAM_DISCUSSION_OVERVIEW",
+* "TWITTER_CHATS_OVERVIEW",
+* "REDDIT_COMMENTS_OVERVIEW",
+* "TOTAL"
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the slug's social dominance.
+* @customfunction
+*/
+function SAN_SOCIAL_DOMINANCE_AGGREGATED (projectSlug, from, to, source, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'social_dominance',
+    projectSlug,
+    from,
+    to,
+    { source: source, aggregation: aggregation }
   )
 }
 
