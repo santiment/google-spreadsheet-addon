@@ -20,6 +20,15 @@ const SOURCE_MAPPING = {
 const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
 
+const EXCHANGE_TYPE_DEPENDENT_METRICS = ['BINANCE']
+const SUPPORTED_EXCHANGES_MAPPING = {
+  'BINANCE': 'binance',
+  'BITMEX': 'bitmex_perpetual'
+}
+const SUPPORTED_EXCHANGE_TYPES = ['BUSD', 'USDT']
+const DEFAULT_FUNDING_RATE_EXCHANGE = 'BITMEX'
+const DEFAULT_EXCHANGE_TYPE = 'USDT'
+
 function prepareOptions_ (options) {
   if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
   if ('timeBound' in options) { options.timeBound = options.timeBound || '' }
@@ -30,6 +39,10 @@ function prepareOptions_ (options) {
     ) || DEFAULT_AGGREGATION
   }
   if ('source' in options) { options.source = options.source || 'TOTAL' }
+  if ('exchangeType' in options) { options.exchangeType = options.exchangeType || DEFAULT_EXCHANGE_TYPE }
+  if ('fundingRateExchange' in options) {
+    options.fundingRateExchange = options.fundingRateExchange || DEFAULT_FUNDING_RATE_EXCHANGE
+  }
 }
 
 function supportedCurrencies_ () {
@@ -38,6 +51,14 @@ function supportedCurrencies_ () {
 
 function supportedBalances_ () {
   return SUPPORTED_BALANCES
+}
+
+function exchangeDependentMetrics_ () {
+  return EXCHANGE_TYPE_DEPENDENT_METRICS
+}
+
+function supportedExchangeTypes_ () {
+  return SUPPORTED_EXCHANGE_TYPES
 }
 
 /*
@@ -67,6 +88,14 @@ function metricNameGenerator_ (metric, options) {
       return 'community_messages_count_telegram' // The metric for telegram discussion overview is not social volume
     }
     metricName += `_${(SOURCE_MAPPING[options.source]).toLowerCase()}`
+  }
+
+  if (Object.keys(SUPPORTED_EXCHANGES_MAPPING).indexOf(options.fundingRateExchange) >= 0) {
+    metricName = `${SUPPORTED_EXCHANGES_MAPPING[options.fundingRateExchange]}_${metricName}`
+    if ((exchangeDependentMetrics_()).indexOf(options.fundingRateExchange) >= 0 &&
+        (supportedExchangeTypes_()).indexOf(options.exchangeType) >= 0) {
+      metricName = `${(options.exchangeType).toLowerCase()}_${metricName}`
+    }
   }
 
   return metricName

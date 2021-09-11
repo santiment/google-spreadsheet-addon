@@ -279,6 +279,14 @@ const metricsList = [
     ],
     hasSource: true,
     returns: 'the slug\'s social dominance.'
+  },
+  {
+    metric: 'funding_rate',
+    description: [
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other'
+    ],
+    hasFundingRatesExchange: true,
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other'
   }
 ]
 

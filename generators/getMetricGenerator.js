@@ -35,6 +35,16 @@ const SOURCE_DESCRIPTION = `
 * "REDDIT_COMMENTS_OVERVIEW",
 * "TOTAL"`
 
+const FUNDING_RATE_EXCHANGE_DESCRIPTION = `
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"`
+
+const EXCHANGE_TYPE_DESCRIPTION = `
+* @param {string} exchangeType The exchange type of the funding rates, USDT by default:
+* "USDT"
+* "BUSD"`
+
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
@@ -50,6 +60,7 @@ function generateFunctionString_ (metric) {
   metric.hasTimeBound = metric.hasTimeBound || false
   metric.supportedBalances = metric.supportedBalances || []
   metric.hasSource = metric.hasSource || false
+  metric.hasFundingRatesExchange = metric.hasFundingRatesExchange || false
 
   let generatedString =
     fillTemplate(
@@ -60,14 +71,24 @@ function generateFunctionString_ (metric) {
       metric.supportedCurrencies,
       metric.hasTimeBound,
       metric.supportedBalances,
-      metric.hasSource
+      metric.hasSource,
+      metric.hasFundingRatesExchange
     )
 
   return generatedString
 }
 
-function fillTemplate (metric, sheetMetricName, description, returns, currency, timeBound, balance, source) {
-  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance, source)
+function fillTemplate (
+  metric,
+  sheetMetricName,
+  description,
+  returns,
+  currency,
+  timeBound,
+  balance,
+  source,
+  hasFundingRatesExchange) {
+  let [options, bonusDescription, functionArguments] = optionsGenerator_(currency, timeBound, balance, source, hasFundingRatesExchange)
   description = prepareDescription_(description)
 
   return `
@@ -94,7 +115,7 @@ function SAN_${sheetMetricName.toUpperCase()} (${functionArguments}) {
 `
 }
 
-function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances, hasSource) {
+function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances, hasSource, hasFundingRatesExchange) {
   let returnedValues = {
     description: [],
     arguments: ['projectSlug', 'from', 'to'],
@@ -124,6 +145,16 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances
     returnedValues.description.push(SOURCE_DESCRIPTION)
     returnedValues.arguments.push('source')
     returnedValues.options.push('source: source')
+  }
+
+  if (hasFundingRatesExchange === true) {
+    returnedValues.description.push(FUNDING_RATE_EXCHANGE_DESCRIPTION)
+    returnedValues.arguments.push('fundingRateExchange')
+    returnedValues.options.push('fundingRateExchange: fundingRateExchange')
+
+    returnedValues.description.push(EXCHANGE_TYPE_DESCRIPTION)
+    returnedValues.arguments.push('exchangeType')
+    returnedValues.options.push('exchangeType: exchangeType')
   }
 
   returnedValues.description.push(INTERVAL_DESCRIPTION)
