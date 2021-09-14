@@ -271,6 +271,22 @@ const metricsList = [
       'it can precede increased volatility in the coin’s price.'
     ],
     returns: 'the amount of open perpetual contracts.'
+  },
+  {
+    metric: 'social_dominance',
+    description: [
+      'Returns the social dominance for a slug.'
+    ],
+    hasSource: true,
+    returns: 'the slug\'s social dominance.'
+  },
+  {
+    metric: 'funding_rate',
+    description: [
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other'
+    ],
+    hasFundingRatesExchange: true,
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other'
   }
 ]
 

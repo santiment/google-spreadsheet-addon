@@ -28,7 +28,7 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
   testFieldTypes(results, expected)
 
   testHandlesNullData(
-    'fetchSocialDominance',
+    'fetchGetMetric',
     san.SAN_SOCIAL_DOMINANCE,
     slug,
     from,
@@ -36,7 +36,7 @@ describe('SAN_SOCIAL_DOMINANCE', () => {
     source)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Dominance']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

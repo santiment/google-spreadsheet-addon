@@ -1,9 +1,7 @@
 
 require('../support/helper.js')
 const { testHandlesNullData } = require('../support/integrationHelper.js')
-const { from, to } = require('../support/setup.js')
-
-const slug = 'bitcoin'
+const { slug, from, to } = require('../support/setup.js')
 
 describe('SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED', () => {
   it('returns a number', () => {
