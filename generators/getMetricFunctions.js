@@ -282,6 +282,7 @@ const metricsList = [
   },
   {
     metric: 'usdt_funding_rate',
+    sheetMetricName: 'funding_rate_usdt',
     description: [
       'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).'
     ],
@@ -290,6 +291,7 @@ const metricsList = [
   },
   {
     metric: 'busd_funding_rate',
+    sheetMetricName: 'funding_rate_busd',
     description: [
       'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).'
     ],

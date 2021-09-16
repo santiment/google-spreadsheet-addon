@@ -21,6 +21,7 @@ const days = eachDay(from, subDays(to, 1)) // last day should not be included (h
 const currency = 'usd'
 
 const ethAddress = '0x1f3df0b8390bb8e9e322972c5e75583e87608ec2'
+const fundingRateExchange = 'BINANCE'
 
 module.exports = {
   slug: slug,
@@ -33,5 +34,6 @@ module.exports = {
   numberOfHours: numberOfHours,
   formatDate: formatDate,
   ethAddress: ethAddress,
-  currency: currency
+  currency: currency,
+  fundingRateExchange: fundingRateExchange
 }

@@ -94,11 +94,11 @@ function metricNameGenerator_ (metric, options) {
 
   if (Object.keys(SUPPORTED_EXCHANGES_MAPPING).indexOf(options.fundingRateExchange) >= 0) {
     metricName = `${SUPPORTED_EXCHANGES_MAPPING[options.fundingRateExchange]}_${metricName.slice(5)}`
+    const exchangeType = metric.split('_')[0]
+    if ((EXCHANGE_MAPPING[exchangeType.toUpperCase()]).indexOf(options.fundingRateExchange) < 0) {
+      throw new UnsupportedError_(`${exchangeType.toUpperCase()} is not supported for ${options.fundingRateExchange}!`)
+    }
     if ((exchangeDependentMetrics_()).indexOf(options.fundingRateExchange) >= 0) {
-      const exchangeType = metric.split('_')[0]
-      if ((EXCHANGE_MAPPING[exchangeType.toUpperCase()]).indexOf(options.fundingRateExchange) < 0) {
-        throw new UnsupportedError_(`${exchangeType} is not supported for ${options.fundingRateExchange}!`)
-      }
       metricName = `${exchangeType}_${metricName}`
     }
   }

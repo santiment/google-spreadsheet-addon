@@ -891,7 +891,7 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
 * @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_USDT_FUNDING_RATE (projectSlug, from, to, fundingRateExchange, interval = '1d') {
+function SAN_FUNDING_RATE_USDT (projectSlug, from, to, fundingRateExchange, interval = '1d') {
   return handleErrors_(getMetric_)(
     'usdt_funding_rate',
     projectSlug,
@@ -916,7 +916,7 @@ function SAN_USDT_FUNDING_RATE (projectSlug, from, to, fundingRateExchange, inte
 * @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
 * @customfunction
 */
-function SAN_BUSD_FUNDING_RATE (projectSlug, from, to, fundingRateExchange, interval = '1d') {
+function SAN_FUNDING_RATE_BUSD (projectSlug, from, to, fundingRateExchange, interval = '1d') {
   return handleErrors_(getMetric_)(
     'busd_funding_rate',
     projectSlug,
@@ -946,8 +946,6 @@ function SAN_FUNCTIONS () {
     'SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED',
     'SAN_BITMEX_PERPETUAL_OPEN_INTEREST',
     'SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED',
-    'SAN_BUSD_FUNDING_RATE',
-    'SAN_BUSD_FUNDING_RATE_AGGREGATED',
     'SAN_DAILY_AVG_MARKETCAP',
     'SAN_DAILY_AVG_MARKETCAP_AGGREGATED',
     'SAN_DAILY_CLOSING_MARKETCAP',
@@ -968,6 +966,10 @@ function SAN_FUNCTIONS () {
     'SAN_EXCHANGE_PERCENT_OF_SUPPLY',
     'SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED',
     'SAN_FUNCTIONS',
+    'SAN_FUNDING_RATE_BUSD',
+    'SAN_FUNDING_RATE_BUSD_AGGREGATED',
+    'SAN_FUNDING_RATE_USDT',
+    'SAN_FUNDING_RATE_USDT_AGGREGATED',
     'SAN_GAS_USED',
     'SAN_GITHUB_ACTIVITY',
     'SAN_HISTORICAL_BALANCE',
@@ -1026,8 +1028,6 @@ function SAN_FUNCTIONS () {
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
     'SAN_TRANSACTION_VOLUME',
     'SAN_TRANSACTION_VOLUME_AGGREGATED',
-    'SAN_USDT_FUNDING_RATE',
-    'SAN_USDT_FUNDING_RATE_AGGREGATED',
     'SAN_VELOCITY',
     'SAN_VELOCITY_AGGREGATED',
     'SAN_VOLUME',
@@ -1862,7 +1862,7 @@ function SAN_SOCIAL_DOMINANCE_AGGREGATED (projectSlug, from, to, source, aggrega
 * @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_USDT_FUNDING_RATE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'usdt_funding_rate',
     projectSlug,
@@ -1884,7 +1884,7 @@ function SAN_USDT_FUNDING_RATE_AGGREGATED (projectSlug, from, to, aggregation = 
 * @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
 * @customfunction
 */
-function SAN_BUSD_FUNDING_RATE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'busd_funding_rate',
     projectSlug,
