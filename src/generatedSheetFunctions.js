@@ -878,7 +878,7 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
 
 
 /**
-* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
+* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
@@ -887,20 +887,42 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
 * "BITMEX"
 * "BINANCE"
-* @param {string} exchangeType The exchange type of the funding rates, USDT by default:
-* "USDT"
-* "BUSD"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other
+* @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_FUNDING_RATE (projectSlug, from, to, fundingRateExchange, exchangeType, interval = '1d') {
+function SAN_FUNDING_RATE_USDT (projectSlug, from, to, fundingRateExchange, interval = '1d') {
   return handleErrors_(getMetric_)(
-    'funding_rate',
+    'usdt_funding_rate',
     projectSlug,
     from,
     to,
-    { fundingRateExchange: fundingRateExchange, exchangeType: exchangeType, interval: interval }
+    { fundingRateExchange: fundingRateExchange, interval: interval }
+  )
+}
+
+
+/**
+* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+* @customfunction
+*/
+function SAN_FUNDING_RATE_BUSD (projectSlug, from, to, fundingRateExchange, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'busd_funding_rate',
+    projectSlug,
+    from,
+    to,
+    { fundingRateExchange: fundingRateExchange, interval: interval }
   )
 }
 
@@ -944,8 +966,10 @@ function SAN_FUNCTIONS () {
     'SAN_EXCHANGE_PERCENT_OF_SUPPLY',
     'SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED',
     'SAN_FUNCTIONS',
-    'SAN_FUNDING_RATE',
-    'SAN_FUNDING_RATE_AGGREGATED',
+    'SAN_FUNDING_RATE_BUSD',
+    'SAN_FUNDING_RATE_BUSD_AGGREGATED',
+    'SAN_FUNDING_RATE_USDT',
+    'SAN_FUNDING_RATE_USDT_AGGREGATED',
     'SAN_GAS_USED',
     'SAN_GITHUB_ACTIVITY',
     'SAN_HISTORICAL_BALANCE',
@@ -1828,19 +1852,41 @@ function SAN_SOCIAL_DOMINANCE_AGGREGATED (projectSlug, from, to, source, aggrega
 
 
 /**
-* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
+* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-* @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other
+* @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_FUNDING_RATE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
-    'funding_rate',
+    'usdt_funding_rate',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+* @customfunction
+*/
+function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'busd_funding_rate',
     projectSlug,
     from,
     to,

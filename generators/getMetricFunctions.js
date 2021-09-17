@@ -281,12 +281,22 @@ const metricsList = [
     returns: 'the slug\'s social dominance.'
   },
   {
-    metric: 'funding_rate',
+    metric: 'usdt_funding_rate',
+    sheetMetricName: 'funding_rate_usdt',
     description: [
-      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other'
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).'
     ],
     hasFundingRatesExchange: true,
-    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other'
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).'
+  },
+  {
+    metric: 'busd_funding_rate',
+    sheetMetricName: 'funding_rate_busd',
+    description: [
+      'Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).'
+    ],
+    hasFundingRatesExchange: true,
+    returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).'
   }
 ]
 

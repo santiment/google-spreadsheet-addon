@@ -40,11 +40,6 @@ const FUNDING_RATE_EXCHANGE_DESCRIPTION = `
 * "BITMEX"
 * "BINANCE"`
 
-const EXCHANGE_TYPE_DESCRIPTION = `
-* @param {string} exchangeType The exchange type of the funding rates, USDT by default:
-* "USDT"
-* "BUSD"`
-
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'
   for (const metric of metricsList) {
@@ -151,10 +146,6 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances
     returnedValues.description.push(FUNDING_RATE_EXCHANGE_DESCRIPTION)
     returnedValues.arguments.push('fundingRateExchange')
     returnedValues.options.push('fundingRateExchange: fundingRateExchange')
-
-    returnedValues.description.push(EXCHANGE_TYPE_DESCRIPTION)
-    returnedValues.arguments.push('exchangeType')
-    returnedValues.options.push('exchangeType: exchangeType')
   }
 
   returnedValues.description.push(INTERVAL_DESCRIPTION)

@@ -1,3 +1,4 @@
+const { expect } = require('chai')
 const { formatDate } = require('./setup.js')
 
 const assertNumberOfRecords = (records, number) => {
@@ -38,9 +39,14 @@ const testHandlesNullData = (stubName, func, ...args) => {
   })
 }
 
+const testRaisesError = (result, message) => {
+  expect(result).to.deep.eq([message])
+}
+
 module.exports = {
   assertNumberOfRecords: assertNumberOfRecords,
   assertDaysMatch: assertDaysMatch,
   assertBalanceIntervalsWork: assertBalanceIntervalsWork,
-  testHandlesNullData: testHandlesNullData
+  testHandlesNullData: testHandlesNullData,
+  testRaisesError: testRaisesError
 }

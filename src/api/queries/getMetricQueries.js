@@ -21,14 +21,15 @@ const SOURCE_MAPPING = {
 const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
 
+const EXCHANGE_MAPPING = {
+  'USDT': ['BINANCE', 'BITMEX'],
+  'BUSD': ['BINANCE']
+}
 const EXCHANGE_TYPE_DEPENDENT_METRICS = ['BINANCE']
 const SUPPORTED_EXCHANGES_MAPPING = {
   'BINANCE': 'binance',
   'BITMEX': 'bitmex_perpetual'
 }
-const SUPPORTED_EXCHANGE_TYPES = ['BUSD', 'USDT']
-const DEFAULT_FUNDING_RATE_EXCHANGE = 'BITMEX'
-const DEFAULT_EXCHANGE_TYPE = 'USDT'
 
 function prepareOptions_ (options) {
   if ('currency' in options) { options.currency = options.currency || DEFAULT_CURRENCY }
@@ -92,10 +93,13 @@ function metricNameGenerator_ (metric, options) {
   }
 
   if (Object.keys(SUPPORTED_EXCHANGES_MAPPING).indexOf(options.fundingRateExchange) >= 0) {
-    metricName = `${SUPPORTED_EXCHANGES_MAPPING[options.fundingRateExchange]}_${metricName}`
-    if ((exchangeDependentMetrics_()).indexOf(options.fundingRateExchange) >= 0 &&
-        (supportedExchangeTypes_()).indexOf(options.exchangeType) >= 0) {
-      metricName = `${(options.exchangeType).toLowerCase()}_${metricName}`
+    metricName = `${SUPPORTED_EXCHANGES_MAPPING[options.fundingRateExchange]}_${metricName.slice(5)}`
+    const exchangeType = metric.split('_')[0]
+    if ((EXCHANGE_MAPPING[exchangeType.toUpperCase()]).indexOf(options.fundingRateExchange) < 0) {
+      throw new UnsupportedError_(`${exchangeType.toUpperCase()} is not supported for ${options.fundingRateExchange}!`)
+    }
+    if ((exchangeDependentMetrics_()).indexOf(options.fundingRateExchange) >= 0) {
+      metricName = `${exchangeType}_${metricName}`
     }
   }
 
