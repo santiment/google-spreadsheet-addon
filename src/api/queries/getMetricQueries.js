@@ -43,7 +43,7 @@ function prepareOptions_ (options) {
   if ('source' in options) { options.source = options.source || 'TOTAL' }
   if ('exchangeType' in options) { options.exchangeType = options.exchangeType || DEFAULT_EXCHANGE_TYPE }
   if ('fundingRateExchange' in options) {
-    options.fundingRateExchange = options.fundingRateExchange || DEFAULT_FUNDING_RATE_EXCHANGE
+    options.fundingRateExchange = (options.fundingRateExchange).toUpperCase() || DEFAULT_FUNDING_RATE_EXCHANGE
   }
 }
 

@@ -21,7 +21,7 @@ describe('SAN_FUNDING_RATE_BUSD', () => {
   })
 
   it('returns a record per day', () => {
-    const supportedBusdExchanges = ['BINANCE']
+    const supportedBusdExchanges = ['BINANCE', 'binance']
     supportedBusdExchanges.forEach(
       exchange => {
         const results = san.SAN_FUNDING_RATE_BUSD(ethereumSlug, from, to, exchange)
@@ -32,11 +32,11 @@ describe('SAN_FUNDING_RATE_BUSD', () => {
   })
 
   it('raises error for non-supported exchange types', () => {
-    const nonSupportedBusdExchanges = ['BITMEX']
+    const nonSupportedBusdExchanges = ['BITMEX', 'bitmex']
     nonSupportedBusdExchanges.forEach(
       exchange => {
         const results = san.SAN_FUNDING_RATE_BUSD(ethereumSlug, from, to, exchange)
-        testRaisesError(results, `BUSD is not supported for ${exchange}!`)
+        testRaisesError(results, `BUSD is not supported for ${exchange.toUpperCase()}!`)
       }
     )
   })
