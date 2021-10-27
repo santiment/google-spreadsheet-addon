@@ -21,7 +21,7 @@ describe('SAN_FUNDING_RATE_USDT', () => {
   })
 
   it('returns a record per day', () => {
-    const supportedUsdtExchanges = ['BINANCE', 'BITMEX', 'binance', 'bitmex']
+    const supportedUsdtExchanges = ['BINANCE', 'BITMEX', 'FTX', 'binance', 'bitmex', 'ftx']
     supportedUsdtExchanges.forEach(
       exchange => {
         const results = san.SAN_FUNDING_RATE_USDT(ethereumSlug, from, to, exchange)
