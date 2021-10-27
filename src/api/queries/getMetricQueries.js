@@ -22,13 +22,14 @@ const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
 
 const EXCHANGE_MAPPING = {
-  'USDT': ['BINANCE', 'BITMEX'],
+  'USDT': ['BINANCE', 'BITMEX', 'FTX'],
   'BUSD': ['BINANCE']
 }
 const EXCHANGE_TYPE_DEPENDENT_METRICS = ['BINANCE']
 const SUPPORTED_EXCHANGES_MAPPING = {
   'BINANCE': 'binance',
-  'BITMEX': 'bitmex_perpetual'
+  'BITMEX': 'bitmex_perpetual',
+  'FTX': 'ftx_perpetual'
 }
 
 function prepareOptions_ (options) {
