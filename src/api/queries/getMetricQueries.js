@@ -137,3 +137,26 @@ ApiClient_.prototype.fetchAggregatedGetMetric = function (metric, slug, from, to
 
   return this.conn.graphQLQuery(query, 'getMetric')
 }
+
+ApiClient_.prototype.fetchGetMetricMultipleSlugs = function (metric, slugsList, from, to, options) {
+  prepareOptions_(options)
+  if (Object.keys(options).indexOf('source') >= 0 && options.source === 'TELEGRAM_DISCUSSION_OVERVIEW') {
+    throw new UnsupportedError_('TELEGRAM_DISCUSSION_OVERVIEW is not supported for multiple slugs social metrics...')
+  }
+  const metricName = metricNameGenerator_(metric, options)
+  const query = {
+    'query': `{
+      getMetric(metric: "${metricName}") {
+          timeseriesDataPerSlug(${commonParams(slugsList, from, to, options.interval)}) {
+            datetime,
+            data{
+              slug
+              value
+            }
+          }
+        }
+    }`
+  }
+
+  return this.conn.graphQLQuery(query, 'getMetric')
+}

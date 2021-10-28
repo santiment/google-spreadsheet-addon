@@ -7,8 +7,12 @@ const OUTPUT_FILE = path.join(`${__dirname}`, '../src/generatedSheetFunctions.js
 const getMetricGenerator = require('./getMetricGenerator')
 const functionFetcherGenerator = require('./functionFetcherGenerator')
 const aggregatedGetMetricGenerator = require('./aggregatedGenerator')
+const getMetricMultipleSlugsGenerator = require('./getMetricMultipleSlugsGenerator')
 const generators = [
-  getMetricGenerator.generate() + functionFetcherGenerator.generate() + aggregatedGetMetricGenerator.generate()
+  getMetricGenerator.generate() +
+  functionFetcherGenerator.generate() +
+  aggregatedGetMetricGenerator.generate() +
+  getMetricMultipleSlugsGenerator.generate()
 ]
 
 function generate () {
