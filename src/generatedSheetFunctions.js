@@ -1950,17 +1950,20 @@ function SAN_SOCIAL_DOMINANCE_AGGREGATED (projectSlug, from, to, source, aggrega
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, fundingRateExchange, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'usdt_funding_rate',
     projectSlug,
     from,
     to,
-    { aggregation: aggregation }
+    { fundingRateExchange: fundingRateExchange, aggregation: aggregation }
   )
 }
 
@@ -1972,17 +1975,20 @@ function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, aggregation = 
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
 * @customfunction
 */
-function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, fundingRateExchange, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'busd_funding_rate',
     projectSlug,
     from,
     to,
-    { aggregation: aggregation }
+    { fundingRateExchange: fundingRateExchange, aggregation: aggregation }
   )
 }
 
@@ -2956,18 +2962,21 @@ function SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS (projectSlugsList, from, to, source
 * https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {number} of results for multiple slugs
 * the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
 */
-function SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+function SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS (projectSlugsList, from, to, fundingRateExchange, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'usdt_funding_rate',
     projectSlugsList,
     from,
     to,
-    { interval: interval }
+    { fundingRateExchange: fundingRateExchange, interval: interval }
   )
 }
 
@@ -2979,18 +2988,21 @@ function SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS (projectSlugsList, from, to, inter
 * https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
+* "BITMEX"
+* "BINANCE"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {number} of results for multiple slugs
 * the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
 * @customfunction
 */
-function SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+function SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS (projectSlugsList, from, to, fundingRateExchange, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'busd_funding_rate',
     projectSlugsList,
     from,
     to,
-    { interval: interval }
+    { fundingRateExchange: fundingRateExchange, interval: interval }
   )
 }
 
