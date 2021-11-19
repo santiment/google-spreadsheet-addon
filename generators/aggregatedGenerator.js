@@ -82,7 +82,7 @@ function generateFunctionString_ (metric) {
   return generatedString
 }
 
-function fillTemplate(
+function fillTemplate (
   metric,
   sheetMetricName,
   description,

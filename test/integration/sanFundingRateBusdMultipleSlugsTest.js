@@ -1,5 +1,5 @@
 const { testFieldTypes } = require('../support/helper.js')
-const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
+const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch, testRaisesError } = require('../support/integrationHelper.js')
 const { slugsList, from, to, numberOfDays, days } = require('../support/setup.js')
 
 describe('SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS', () => {
@@ -22,10 +22,23 @@ describe('SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS(slugsList, from, to)
+    const supportedBusdExchanges = ['BINANCE', 'binance']
+    supportedBusdExchanges.forEach(
+      exchange => {
+        const results = san.SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS(slugsList, from, to, exchange)
+        assertNumberOfRecords(results, numberOfDays)
+        assertDaysMatch(results, days)
+      }
+    )
+  })
 
-    assertNumberOfRecords(results, numberOfDays)
-
-    assertDaysMatch(results, days)
+  it('raises error for non-supported exchange types', () => {
+    const nonSupportedBusdExchanges = ['BITMEX', 'bitmex']
+    nonSupportedBusdExchanges.forEach(
+      exchange => {
+        const results = san.SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS(slugsList, from, to, exchange)
+        testRaisesError(results, `BUSD is not supported for ${exchange.toUpperCase()}!`)
+      }
+    )
   })
 })

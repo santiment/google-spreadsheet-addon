@@ -1104,11 +1104,8 @@ function SAN_FUNCTIONS () {
     'SAN_TOKEN_CIRCULATION_MULTIPLE_SLUGS',
     'SAN_TOKEN_TOP_TRANSACTIONS',
     'SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE',
-    'SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE_MULTIPLE_SLUGS',
     'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE',
-    'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE_MULTIPLE_SLUGS',
     'SAN_TOP_HOLDERS_HELD_OVERALL',
-    'SAN_TOP_HOLDERS_HELD_OVERALL_MULTIPLE_SLUGS',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
     'SAN_TRADING_VOLUME',
     'SAN_TRADING_VOLUME_AGGREGATED',
@@ -2527,75 +2524,6 @@ function SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS (projectSlugsList, from, to, interv
 function SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'active_addresses_24h',
-    projectSlugsList,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held by the top holders.
-* @param {Array} projectSlugsList Names of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {number} of results for multiple slugs
-* amount of coins/tokens held by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_OVERALL_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
-  return handleErrors_(getMetricMultipleSlugs_)(
-    'amount_in_top_holders',
-    projectSlugsList,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held only by the exchange top holders.
-* @param {Array} projectSlugsList Names of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {number} of results for multiple slugs
-* amount of coins/tokens held only by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_ON_EXCHANGE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
-  return handleErrors_(getMetricMultipleSlugs_)(
-    'amount_in_exchange_top_holders',
-    projectSlugsList,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
-
-/**
-* Returns the amount of coins/tokens held only by the non exchange top holders.
-* @param {Array} projectSlugsList Names of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {number} of results for multiple slugs
-* amount of coins/tokens held only by the top holders.
-* @customfunction
-*/
-function SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
-  return handleErrors_(getMetricMultipleSlugs_)(
-    'amount_in_non_exchange_top_holders',
     projectSlugsList,
     from,
     to,

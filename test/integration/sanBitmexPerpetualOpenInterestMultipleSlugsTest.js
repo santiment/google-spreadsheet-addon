@@ -1,6 +1,8 @@
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
-const { slugsList, from, to, numberOfDays, days } = require('../support/setup.js')
+const { from, to, numberOfDays, days } = require('../support/setup.js')
+
+const slugsList = ['santiment', 'bitcoin']
 
 describe('SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS', () => {
   const expected = {
@@ -17,7 +19,7 @@ describe('SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS', () => {
   testHandlesNullData('fetchGetMetricMultipleSlugs', san.SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS, slugsList, from, to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Ethereum', 'Santiment']
+    const expectedHeaders = ['Date', 'Bitcoin', 'Santiment']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

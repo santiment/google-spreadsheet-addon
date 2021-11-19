@@ -41,6 +41,9 @@ const FUNDING_RATE_EXCHANGE_DESCRIPTION = `
 * "BINANCE"`
 
 const IGNORED_METRICS = [ // Multiple slugs timeseries not implemented for these metrics
+  'amount_in_top_holders',
+  'amount_in_exchange_top_holders',
+  'amount_in_non_exchange_top_holders'
 ]
 
 function generate () {

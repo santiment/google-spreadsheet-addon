@@ -20,6 +20,7 @@ const SOURCE_MAPPING = {
 
 const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
+const DEFAULT_FUNDING_RATE_EXCHANGE = 'BINANCE'
 
 const EXCHANGE_MAPPING = {
   'USDT': ['BINANCE', 'BITMEX', 'FTX'],
@@ -44,7 +45,11 @@ function prepareOptions_ (options) {
   if ('source' in options) { options.source = options.source || 'TOTAL' }
   if ('exchangeType' in options) { options.exchangeType = options.exchangeType || DEFAULT_EXCHANGE_TYPE }
   if ('fundingRateExchange' in options) {
-    options.fundingRateExchange = (options.fundingRateExchange).toUpperCase() || DEFAULT_FUNDING_RATE_EXCHANGE
+    if (options.fundingRateExchange) {
+      options.fundingRateExchange = (options.fundingRateExchange).toUpperCase()
+    } else {
+      options.fundingRateExchange = DEFAULT_FUNDING_RATE_EXCHANGE
+    }
   }
 }
 

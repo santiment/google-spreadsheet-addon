@@ -22,10 +22,13 @@ describe('SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS(slugsList, from, to)
-
-    assertNumberOfRecords(results, numberOfDays)
-
-    assertDaysMatch(results, days)
+    const supportedUsdtExchanges = ['BINANCE', 'binance', 'BITMEX', 'bitmex']
+    supportedUsdtExchanges.forEach(
+      exchange => {
+        const results = san.SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS(slugsList, from, to, exchange)
+        assertNumberOfRecords(results, numberOfDays)
+        assertDaysMatch(results, days)
+      }
+    )
   })
 })
