@@ -964,7 +964,7 @@ function SAN_TRADING_VOLUME (projectSlug, from, to, currency, interval = '1d') {
 * @returns {Array} of MVRV ratios with the option of smaller intervals.
 * @customfunction
 */
-function SAN_MVRV_INTRADAY (projectSlug, from, to, timeBound, interval = '1d') {
+function SAN_MVRV_RATIO_INTRADAY (projectSlug, from, to, timeBound, interval = '1d') {
   return handleErrors_(getMetric_)(
     'mvrv_usd_intraday',
     projectSlug,
@@ -1038,12 +1038,12 @@ function SAN_FUNCTIONS () {
     'SAN_MEAN_REALIZED_PRICE_AGGREGATED',
     'SAN_MINERS_BALANCE',
     'SAN_MINING_POOLS_DISTRIBUTION',
-    'SAN_MVRV_INTRADAY',
-    'SAN_MVRV_INTRADAY_AGGREGATED',
     'SAN_MVRV_LONG_SHORT_DIFF',
     'SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED',
     'SAN_MVRV_RATIO',
     'SAN_MVRV_RATIO_AGGREGATED',
+    'SAN_MVRV_RATIO_INTRADAY',
+    'SAN_MVRV_RATIO_INTRADAY_AGGREGATED',
     'SAN_NETWORK_GROWTH',
     'SAN_NETWORK_GROWTH_AGGREGATED',
     'SAN_NETWORK_PROFIT_LOSS',
@@ -1984,7 +1984,7 @@ function SAN_TRADING_VOLUME_AGGREGATED (projectSlug, from, to, currency, aggrega
 * @returns {number} of aggregated MVRV ratios with the option of smaller intervals.
 * @customfunction
 */
-function SAN_MVRV_INTRADAY_AGGREGATED (projectSlug, from, to, timeBound, aggregation = 'null') {
+function SAN_MVRV_RATIO_INTRADAY_AGGREGATED (projectSlug, from, to, timeBound, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'mvrv_usd_intraday',
     projectSlug,

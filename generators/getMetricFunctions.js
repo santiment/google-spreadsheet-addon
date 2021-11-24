@@ -309,7 +309,7 @@ const metricsList = [
   },
   {
     metric: 'mvrv_usd_intraday',
-    sheetMetricName: 'mvrv_intraday',
+    sheetMetricName: 'mvrv_ratio_intraday',
     hasTimeBound: true,
     description: ['Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.'],
     returns: 'MVRV ratios with the option of smaller intervals.'
