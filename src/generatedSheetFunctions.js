@@ -950,6 +950,30 @@ function SAN_TRADING_VOLUME (projectSlug, from, to, currency, interval = '1d') {
   )
 }
 
+
+/**
+* Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} timeBound The metric is calculated only by taking into account the
+* tokens/coins that have moved in the past number of years or days.
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of MVRV ratios with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_MVRV_INTRADAY (projectSlug, from, to, timeBound, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'mvrv_usd_intraday',
+    projectSlug,
+    from,
+    to,
+    { timeBound: timeBound, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1014,6 +1038,8 @@ function SAN_FUNCTIONS () {
     'SAN_MEAN_REALIZED_PRICE_AGGREGATED',
     'SAN_MINERS_BALANCE',
     'SAN_MINING_POOLS_DISTRIBUTION',
+    'SAN_MVRV_INTRADAY',
+    'SAN_MVRV_INTRADAY_AGGREGATED',
     'SAN_MVRV_LONG_SHORT_DIFF',
     'SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED',
     'SAN_MVRV_RATIO',
@@ -1941,6 +1967,30 @@ function SAN_TRADING_VOLUME_AGGREGATED (projectSlug, from, to, currency, aggrega
     from,
     to,
     { currency: currency, aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} timeBound The metric is calculated only by taking into account the
+* tokens/coins that have moved in the past number of years/days.
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated MVRV ratios with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_MVRV_INTRADAY_AGGREGATED (projectSlug, from, to, timeBound, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'mvrv_usd_intraday',
+    projectSlug,
+    from,
+    to,
+    { timeBound: timeBound, aggregation: aggregation }
   )
 }
 
