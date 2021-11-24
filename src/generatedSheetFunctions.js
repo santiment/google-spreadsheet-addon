@@ -666,14 +666,14 @@ function SAN_PRICE (projectSlug, from, to, currency, interval = '1d') {
 
 
 /**
-* Returns the slug's trading volume.
+* Returns the slug's transaction volume.
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of the slug's trading volume.
+* @returns {Array} of the slug's transaction volume.
 * @customfunction
 */
 function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
@@ -926,6 +926,30 @@ function SAN_FUNDING_RATE_BUSD (projectSlug, from, to, fundingRateExchange, inte
   )
 }
 
+
+/**
+* Returns the slug's trading volume.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} currency The metric is calculated using a currency of choice.
+* Available currencies: USD
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slugs's trading volume.
+* @customfunction
+*/
+function SAN_TRADING_VOLUME (projectSlug, from, to, currency, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'volume',
+    projectSlug,
+    from,
+    to,
+    { currency: currency, interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1026,6 +1050,8 @@ function SAN_FUNCTIONS () {
     'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE',
     'SAN_TOP_HOLDERS_HELD_OVERALL',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
+    'SAN_TRADING_VOLUME',
+    'SAN_TRADING_VOLUME_AGGREGATED',
     'SAN_TRANSACTION_VOLUME',
     'SAN_TRANSACTION_VOLUME_AGGREGATED',
     'SAN_VELOCITY',
@@ -1640,14 +1666,14 @@ function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'n
 
 
 /**
-* Returns the slug's trading volume.
+* Returns the slug's transaction volume.
 * @param {string} projectSlug Name of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
 * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-* @returns {number} of aggregated the slug's trading volume.
+* @returns {number} of aggregated the slug's transaction volume.
 * @customfunction
 */
 function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
@@ -1891,6 +1917,30 @@ function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, aggregation = 
     from,
     to,
     { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the slug's trading volume.
+* @param {string} projectSlug Name of the asset at sanbase,
+* which can be found at the end of the URL (eg. the Santiment URL is
+* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} currency The metric is calculated using a currency of choice.
+* Available currencies: USD
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the slugs's trading volume.
+* @customfunction
+*/
+function SAN_TRADING_VOLUME_AGGREGATED (projectSlug, from, to, currency, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'volume',
+    projectSlug,
+    from,
+    to,
+    { currency: currency, aggregation: aggregation }
   )
 }
 

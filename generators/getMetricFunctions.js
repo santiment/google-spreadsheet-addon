@@ -213,9 +213,9 @@ const metricsList = [
     metric: 'transaction_volume',
     sheetMetricName: 'volume',
     description: [
-      'Returns the slug\'s trading volume.'
+      'Returns the slug\'s transaction volume.'
     ],
-    returns: 'the slug\'s trading volume.'
+    returns: 'the slug\'s transaction volume.'
   },
   {
     metric: 'social_volume',
@@ -297,6 +297,15 @@ const metricsList = [
     ],
     hasFundingRatesExchange: true,
     returns: 'the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).'
+  },
+  {
+    metric: 'volume',
+    sheetMetricName: 'trading_volume',
+    supportedCurrencies: ['USD'],
+    description: [
+      'Returns the slug\'s trading volume.'
+    ],
+    returns: 'the slugs\'s trading volume.'
   }
 ]
 
