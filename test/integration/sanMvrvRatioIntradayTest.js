@@ -1,20 +1,20 @@
 
 const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
-const { slug, from, to, numberOfDays, numberOfHours, currency, days } = require('../support/setup.js')
+const { ethereumSlug, from, to, numberOfDays, days, numberOfHours } = require('../support/setup.js')
 
-describe('SAN_PRICE', () => {
+describe('SAN_MVRV_RATIO_INTRADAY', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_PRICE(slug, from, to)
+  const response = san.SAN_MVRV_RATIO_INTRADAY(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_PRICE, slug, from, to)
+  testHandlesNullData('fetchGetMetric', san.SAN_MVRV_RATIO_INTRADAY, ethereumSlug, from, to)
 
   it('has proper headers', () => {
     const expectedHeaders = ['Date', 'Value']
@@ -22,7 +22,7 @@ describe('SAN_PRICE', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_PRICE(slug, from, to)
+    const results = san.SAN_MVRV_RATIO_INTRADAY(ethereumSlug, from, to)
 
     assertNumberOfRecords(results, numberOfDays)
 
@@ -30,7 +30,7 @@ describe('SAN_PRICE', () => {
   })
 
   it('returns a record per hour', () => {
-    const addresses = san.SAN_PRICE(slug, from, to, currency, '1h')
+    const addresses = san.SAN_MVRV_RATIO_INTRADAY(ethereumSlug, from, to, '1d', '1h')
     assertNumberOfRecords(addresses, numberOfHours)
   })
 })

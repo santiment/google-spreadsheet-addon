@@ -3,7 +3,7 @@ const fs = require('fs')
 const fsExtra = require('fs-extra')
 const functionsList = require('../utils/functionsList')
 
-const LIST_OF_DAILY_METRICS = [
+const LIST_OF_IGNORED_METRICS = [
   'SAN_ACTIVE_ADDRESSES',
   'SAN_ACTIVE_DEPOSITS',
   'SAN_DAILY_AVG_MARKETCAP',
@@ -46,7 +46,7 @@ describe('${functionName.name}', () => {
   }
   let hourTest = ``
   let numberOfHours = ``
-  if (!LIST_OF_DAILY_METRICS.includes(functionName.name)) {
+  if (!LIST_OF_IGNORED_METRICS.includes(functionName.name)) {
     numberOfHours = `, numberOfHours`
     hourTest = `
 
