@@ -2,7 +2,7 @@ const { testFieldTypes } = require('../support/helper.js')
 const { testHandlesNullData, assertNumberOfRecords, assertDaysMatch } = require('../support/integrationHelper.js')
 const { from, to, numberOfDays, days } = require('../support/setup.js')
 
-const slugsList = ['santiment', 'bitcoin']
+const slugsList = 'santiment,bitcoin'
 
 describe('SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS', () => {
   const expected = {

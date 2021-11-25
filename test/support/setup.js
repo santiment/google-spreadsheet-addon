@@ -12,7 +12,7 @@ const numberOfHours = (numberOfDays + 1) * 24 // every intraday metric should re
 
 const slug = 'santiment'
 const ethereumSlug = 'ethereum'
-const slugsList = [slug, ethereumSlug]
+const slugsList = [slug, ethereumSlug].join(',')
 const fiatCurrency = 'USD'
 
 const to = endOfYesterday()
