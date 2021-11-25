@@ -20,6 +20,7 @@ const SOURCE_MAPPING = {
 
 const DEFAULT_CURRENCY = 'USD'
 const DEFAULT_AGGREGATION = 'null'
+const DEFAULT_FUNDING_RATE_EXCHANGE = 'BINANCE'
 
 const EXCHANGE_MAPPING = {
   'USDT': ['BINANCE', 'BITMEX', 'FTX'],
@@ -44,7 +45,11 @@ function prepareOptions_ (options) {
   if ('source' in options) { options.source = options.source || 'TOTAL' }
   if ('exchangeType' in options) { options.exchangeType = options.exchangeType || DEFAULT_EXCHANGE_TYPE }
   if ('fundingRateExchange' in options) {
-    options.fundingRateExchange = (options.fundingRateExchange).toUpperCase() || DEFAULT_FUNDING_RATE_EXCHANGE
+    if (options.fundingRateExchange) {
+      options.fundingRateExchange = (options.fundingRateExchange).toUpperCase()
+    } else {
+      options.fundingRateExchange = DEFAULT_FUNDING_RATE_EXCHANGE
+    }
   }
 }
 
@@ -131,6 +136,29 @@ ApiClient_.prototype.fetchAggregatedGetMetric = function (metric, slug, from, to
     'query': `{
        getMetric(metric: "${metricName}") {
           aggregatedTimeseriesData(${commonParamsAggregated(slug, from, to, options.aggregation)})
+        }
+    }`
+  }
+
+  return this.conn.graphQLQuery(query, 'getMetric')
+}
+
+ApiClient_.prototype.fetchGetMetricMultipleSlugs = function (metric, slugsList, from, to, options) {
+  prepareOptions_(options)
+  if (Object.keys(options).indexOf('source') >= 0 && options.source === 'TELEGRAM_DISCUSSION_OVERVIEW') {
+    throw new UnsupportedError_('TELEGRAM_DISCUSSION_OVERVIEW is not supported for multiple slugs social metrics...')
+  }
+  const metricName = metricNameGenerator_(metric, options)
+  const query = {
+    'query': `{
+      getMetric(metric: "${metricName}") {
+          timeseriesDataPerSlug(${commonParams(slugsList, from, to, options.interval)}) {
+            datetime,
+            data{
+              slug
+              value
+            }
+          }
         }
     }`
   }

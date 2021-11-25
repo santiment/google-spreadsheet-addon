@@ -1,5 +1,10 @@
 function slugParam (slug) {
-  return `slug: "${slug.toLowerCase()}"`
+  if (typeof slug === 'string') {
+    return `slug: "${slug.toLowerCase()}"`
+  }
+
+  const slugs = slug.map(element => `"${element}"`).join(',')
+  return `selector: {slugs: [${slugs}]}`
 }
 
 function fromParam (from) {

@@ -24,8 +24,8 @@ const BALANCES_DESCRIPTION = `
 * "10M-inf",
 * "total"`
 
-const AGGREGATION_DESCRIPTION = `
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"`
+const INTERVAL_DESCRIPTION = `
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"`
 
 const SOURCE_DESCRIPTION = `
 * @param {string} source The source of mention counts, one of the following:
@@ -40,10 +40,10 @@ const FUNDING_RATE_EXCHANGE_DESCRIPTION = `
 * "BITMEX"
 * "BINANCE"`
 
-const IGNORED_METRICS = [ // Aggregated not implemented for these metrics
-  'amount_in_non_exchange_top_holders',
+const IGNORED_METRICS = [ // Multiple slugs timeseries not implemented for these metrics
+  'amount_in_top_holders',
   'amount_in_exchange_top_holders',
-  'amount_in_top_holders'
+  'amount_in_non_exchange_top_holders'
 ]
 
 function generate () {
@@ -98,18 +98,19 @@ function fillTemplate (
   return `
 /**
 ${description}
-* @param {string} projectSlug Name of the asset at sanbase,
+* @param {Array} projectSlugsList Names of the asset at sanbase,
 * which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* https://app.santiment.net/projects/santiment, so the projectSlugList would be [santiment]).
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
-* @returns {number} of aggregated ${returns}
+* @returns {number} of results for multiple slugs
+* ${returns}
 * @customfunction
 */
-function SAN_${sheetMetricName.toUpperCase()}_AGGREGATED (${functionArguments}) {
-  return handleErrors_(aggregatedGetMetric_)(
+function SAN_${sheetMetricName.toUpperCase()}_MULTIPLE_SLUGS (${functionArguments}) {
+  return handleErrors_(getMetricMultipleSlugs_)(
     '${metric}',
-    projectSlug,
+    projectSlugsList,
     from,
     to,
     { ${options} }
@@ -122,7 +123,7 @@ function SAN_${sheetMetricName.toUpperCase()}_AGGREGATED (${functionArguments}) 
 function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances, hasSource, hasFundingRatesExchange) {
   let returnedValues = {
     description: [],
-    arguments: ['projectSlug', 'from', 'to'],
+    arguments: ['projectSlugsList', 'from', 'to'],
     options: []
   }
   if (supportedCurrencies.length > 0) {
@@ -157,9 +158,9 @@ function optionsGenerator_ (supportedCurrencies, hasTimeBound, supportedBalances
     returnedValues.options.push('fundingRateExchange: fundingRateExchange')
   }
 
-  returnedValues.description.push(AGGREGATION_DESCRIPTION)
-  returnedValues.arguments.push('aggregation = \'null\'')
-  returnedValues.options.push('aggregation: aggregation')
+  returnedValues.description.push(INTERVAL_DESCRIPTION)
+  returnedValues.arguments.push('interval = \'1d\'')
+  returnedValues.options.push('interval: interval')
 
   return [
     returnedValues.options.join(', '),
