@@ -33,7 +33,8 @@ function lowercase_ (slugsList) {
   return slugsList.map(slug => slug.toLowerCase()).sort()
 }
 
-function getMetricMultipleSlugs_ (metric, slugsList, from, to, options) {
+function getMetricMultipleSlugs_ (metric, slugsString, from, to, options) {
+  const slugsList = slugsString.split(',')
   const results = getApiClient_().fetchGetMetricMultipleSlugs(metric, slugsList, from, to, options)
   assertHasData_(results)
 
