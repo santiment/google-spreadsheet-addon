@@ -98,10 +98,8 @@ function fillTemplate (
   return `
 /**
 ${description}
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
 * @returns {number} of results for multiple slugs

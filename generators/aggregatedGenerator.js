@@ -98,9 +98,8 @@ function fillTemplate (
   return `
 /**
 ${description}
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)${bonusDescription}
 * @returns {number} of aggregated ${returns}

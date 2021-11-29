@@ -25,7 +25,9 @@ const typeMap = {
   'array': '<code>array</code>',
   'source': '<code>string</code>',
   'socialVolumeType': '<code>string</code>',
-  'numberOfHolders': '<code>number</code>'
+  'numberOfHolders': '<code>number</code>',
+  'projectSlugsList': '<code>string</code>',
+  'fundingRateExchange': '<code>string</code>'
 }
 
 const numberFunctions = [
@@ -59,8 +61,7 @@ function makeFunctionTemplate (fnInfo) {
   const paramInfos = fnInfo.params.map(
     paramObject => {
       const typeLength = 19
-      const descriptionLength = 241
-
+      const descriptionLength = 275
       const wsParamName = ' '.repeat(maxParamLength - paramObject.name.length)
       const wsParamType = ' '.repeat(typeLength - typeMap[paramObject.name].length)
       const wsParamDescription = ' '.repeat(descriptionLength - paramObject.description.length)
