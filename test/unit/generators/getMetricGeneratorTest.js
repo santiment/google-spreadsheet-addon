@@ -19,9 +19,8 @@ describe('getMetric', () => {
 `
 /**
 * Returns test description.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -61,9 +60,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, timeBound,
 `
 /**
 * Returns test description.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -100,9 +98,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, interval = '1d') {
 `
 /**
 * Returns test description.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -140,9 +137,8 @@ function SAN_TEST_METRIC_SHEET_NAME (projectSlug, from, to, currency, interval =
 `
 /**
 * Returns test description.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the

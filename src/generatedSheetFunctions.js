@@ -1,9 +1,8 @@
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -25,9 +24,8 @@ function SAN_DAILY_AVG_MARKETCAP (projectSlug, from, to, currency, interval = '1
 
 /**
 * Returns the daily closing marketcap.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -49,9 +47,8 @@ function SAN_DAILY_CLOSING_MARKETCAP (projectSlug, from, to, currency, interval 
 
 /**
 * Returns the mean realized price.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -75,9 +72,8 @@ function SAN_MEAN_REALIZED_PRICE (projectSlug, from, to, currency, timeBound, in
 
 /**
 * Returns the difference between MVRV.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -99,9 +95,8 @@ function SAN_MVRV_LONG_SHORT_DIFF (projectSlug, from, to, currency, interval = '
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -125,9 +120,8 @@ function SAN_MVRV_RATIO (projectSlug, from, to, currency, timeBound, interval = 
 
 /**
 * Returns token circulation for a given slug and time interval.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -149,9 +143,8 @@ function SAN_TOKEN_CIRCULATION (projectSlug, from, to, timeBound, interval = '1d
 
 /**
 * Returns the token's mean age.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -171,9 +164,8 @@ function SAN_MEAN_AGE (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the token's mean dollar invested age.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -195,9 +187,8 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE (projectSlug, from, to, interval = '1d') {
 * Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
 * The realized value across the whole network is computed by summing the realized values
 * of all wallets holding tokens at the moment.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -221,9 +212,8 @@ function SAN_REALIZED_VALUE (projectSlug, from, to, currency, timeBound, interva
 
 /**
 * Returns the token's velocity.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -245,9 +235,8 @@ function SAN_VELOCITY (projectSlug, from, to, interval = '1d') {
 * Gets the transaction volume for the specified asset, during a given time interval.
 * Transaction Volume" refers to the total number of tokens within all
 * transfers that have occurred on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -267,9 +256,8 @@ function SAN_TRANSACTION_VOLUME (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the exchange inflow.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -289,9 +277,8 @@ function SAN_EXCHANGE_INFLOW (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the exchange outflow.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -311,9 +298,8 @@ function SAN_EXCHANGE_OUTFLOW (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the exchange balance.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -333,9 +319,8 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the token's age destroyed
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -361,9 +346,8 @@ function SAN_AGE_DESTROYED (projectSlug, from, to, interval = '1d') {
 * offer another way to calculate NVT by using Daily Token Circulation.
 * This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 * daily transaction throughput.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -383,9 +367,8 @@ function SAN_NVT_RATIO (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the token's network growth
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -405,9 +388,8 @@ function SAN_NETWORK_GROWTH (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns number of unique deposit addresses that have been active for a project.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -429,9 +411,8 @@ function SAN_ACTIVE_DEPOSITS (projectSlug, from, to, interval = '1d') {
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -453,9 +434,8 @@ function SAN_ACTIVE_ADDRESSES (projectSlug, from, to, interval = '1d') {
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -475,9 +455,8 @@ function SAN_ACTIVE_ADDRESSES_24H (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the amount of coins/tokens held by the top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -497,9 +476,8 @@ function SAN_TOP_HOLDERS_HELD_OVERALL (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the amount of coins/tokens held only by the exchange top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -519,9 +497,8 @@ function SAN_TOP_HOLDERS_HELD_ON_EXCHANGE (projectSlug, from, to, interval = '1d
 
 /**
 * Returns the amount of coins/tokens held only by the non exchange top holders.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -541,9 +518,8 @@ function SAN_TOP_HOLDERS_HELD_OFF_EXCHANGE (projectSlug, from, to, interval = '1
 
 /**
 * Returns exchange percent of total supply.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -563,9 +539,8 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 
 /**
 * Represents the total number of addresses holding the given amount of tokens.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -599,9 +574,8 @@ function SAN_HOLDERS_DISTRIBUTION (projectSlug, from, to, balance = 'total', int
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -621,9 +595,8 @@ function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE (projectSlug, from, to, inte
 
 /**
 * Returns the network's profit/loss.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -643,9 +616,8 @@ function SAN_NETWORK_PROFIT_LOSS (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the prices for the slug in the given time period.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -667,9 +639,8 @@ function SAN_PRICE (projectSlug, from, to, currency, interval = '1d') {
 
 /**
 * Returns the slug's transaction volume.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -689,9 +660,8 @@ function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the social volume for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -717,9 +687,8 @@ function SAN_SOCIAL_VOLUME (projectSlug, from, to, source, interval = '1d') {
 
 /**
 * Returns the marketcap for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -741,9 +710,8 @@ function SAN_MARKETCAP (projectSlug, from, to, currency, interval = '1d') {
 
 /**
 * Returns the number of transactions transferring more than 100k USD.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -763,9 +731,8 @@ function SAN_WHALE_TRANSACTION_COUNT (projectSlug, from, to, interval = '1d') {
 
 /**
 * Returns the number of tokens in a specific bucket.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -799,9 +766,8 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE (projectSlug, from, to, balan
 
 /**
 * Returns the weighted social sentiment for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -829,9 +795,8 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT (projectSlug, from, to, source, interval 
 * Returns the amount of open perpetual contracts currently on Bitmex's
 * Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 * it can precede increased volatility in the coin’s price.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -851,9 +816,8 @@ function SAN_BITMEX_PERPETUAL_OPEN_INTEREST (projectSlug, from, to, interval = '
 
 /**
 * Returns the social dominance for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -879,9 +843,8 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -904,9 +867,8 @@ function SAN_FUNDING_RATE_USDT (projectSlug, from, to, fundingRateExchange, inte
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -929,9 +891,8 @@ function SAN_FUNDING_RATE_BUSD (projectSlug, from, to, fundingRateExchange, inte
 
 /**
 * Returns the slug's trading volume.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -953,9 +914,8 @@ function SAN_TRADING_VOLUME (projectSlug, from, to, currency, interval = '1d') {
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -1130,9 +1090,8 @@ function SAN_FUNCTIONS () {
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1154,9 +1113,8 @@ function SAN_DAILY_AVG_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, ag
 
 /**
 * Returns the daily closing marketcap.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1178,9 +1136,8 @@ function SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED (projectSlug, from, to, currency
 
 /**
 * Returns the mean realized price.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1204,9 +1161,8 @@ function SAN_MEAN_REALIZED_PRICE_AGGREGATED (projectSlug, from, to, currency, ti
 
 /**
 * Returns the difference between MVRV.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1228,9 +1184,8 @@ function SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED (projectSlug, from, to, currency, a
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1254,9 +1209,8 @@ function SAN_MVRV_RATIO_AGGREGATED (projectSlug, from, to, currency, timeBound, 
 
 /**
 * Returns token circulation for a given slug and time interval.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -1278,9 +1232,8 @@ function SAN_TOKEN_CIRCULATION_AGGREGATED (projectSlug, from, to, timeBound, agg
 
 /**
 * Returns the token's mean age.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1300,9 +1253,8 @@ function SAN_MEAN_AGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 
 /**
 * Returns the token's mean dollar invested age.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1324,9 +1276,8 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED (projectSlug, from, to, aggrega
 * Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
 * The realized value across the whole network is computed by summing the realized values
 * of all wallets holding tokens at the moment.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1350,9 +1301,8 @@ function SAN_REALIZED_VALUE_AGGREGATED (projectSlug, from, to, currency, timeBou
 
 /**
 * Returns the token's velocity.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1374,9 +1324,8 @@ function SAN_VELOCITY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 * Gets the transaction volume for the specified asset, during a given time interval.
 * Transaction Volume" refers to the total number of tokens within all
 * transfers that have occurred on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1396,9 +1345,8 @@ function SAN_TRANSACTION_VOLUME_AGGREGATED (projectSlug, from, to, aggregation =
 
 /**
 * Returns the exchange inflow.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1418,9 +1366,8 @@ function SAN_EXCHANGE_INFLOW_AGGREGATED (projectSlug, from, to, aggregation = 'n
 
 /**
 * Returns the exchange outflow.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1440,9 +1387,8 @@ function SAN_EXCHANGE_OUTFLOW_AGGREGATED (projectSlug, from, to, aggregation = '
 
 /**
 * Returns the exchange balance.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1462,9 +1408,8 @@ function SAN_EXCHANGE_BALANCE_AGGREGATED (projectSlug, from, to, aggregation = '
 
 /**
 * Returns the token's age destroyed
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1490,9 +1435,8 @@ function SAN_AGE_DESTROYED_AGGREGATED (projectSlug, from, to, aggregation = 'nul
 * offer another way to calculate NVT by using Daily Token Circulation.
 * This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 * daily transaction throughput.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1512,9 +1456,8 @@ function SAN_NVT_RATIO_AGGREGATED (projectSlug, from, to, aggregation = 'null') 
 
 /**
 * Returns the token's network growth
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1534,9 +1477,8 @@ function SAN_NETWORK_GROWTH_AGGREGATED (projectSlug, from, to, aggregation = 'nu
 
 /**
 * Returns number of unique deposit addresses that have been active for a project.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1558,9 +1500,8 @@ function SAN_ACTIVE_DEPOSITS_AGGREGATED (projectSlug, from, to, aggregation = 'n
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1582,9 +1523,8 @@ function SAN_ACTIVE_ADDRESSES_AGGREGATED (projectSlug, from, to, aggregation = '
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1604,9 +1544,8 @@ function SAN_ACTIVE_ADDRESSES_24H_AGGREGATED (projectSlug, from, to, aggregation
 
 /**
 * Returns exchange percent of total supply.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1626,9 +1565,8 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggre
 
 /**
 * Represents the total number of addresses holding the given amount of tokens.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -1662,9 +1600,8 @@ function SAN_HOLDERS_DISTRIBUTION_AGGREGATED (projectSlug, from, to, balance = '
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1684,9 +1621,8 @@ function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED (projectSlug, fro
 
 /**
 * Returns the network's profit/loss.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1706,9 +1642,8 @@ function SAN_NETWORK_PROFIT_LOSS_AGGREGATED (projectSlug, from, to, aggregation 
 
 /**
 * Returns the prices for the slug in the given time period.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1730,9 +1665,8 @@ function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'n
 
 /**
 * Returns the slug's transaction volume.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1752,9 +1686,8 @@ function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
 
 /**
 * Returns the social volume for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -1780,9 +1713,8 @@ function SAN_SOCIAL_VOLUME_AGGREGATED (projectSlug, from, to, source, aggregatio
 
 /**
 * Returns the marketcap for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -1804,9 +1736,8 @@ function SAN_MARKETCAP_AGGREGATED (projectSlug, from, to, currency, aggregation 
 
 /**
 * Returns the number of transactions transferring more than 100k USD.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1826,9 +1757,8 @@ function SAN_WHALE_TRANSACTION_COUNT_AGGREGATED (projectSlug, from, to, aggregat
 
 /**
 * Returns the number of tokens in a specific bucket.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -1862,9 +1792,8 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED (projectSlug, from
 
 /**
 * Returns the weighted social sentiment for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -1892,9 +1821,8 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, source
 * Returns the amount of open perpetual contracts currently on Bitmex's
 * Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 * it can precede increased volatility in the coin’s price.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
@@ -1914,9 +1842,8 @@ function SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED (projectSlug, from, to, a
 
 /**
 * Returns the social dominance for a slug.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -1942,9 +1869,8 @@ function SAN_SOCIAL_DOMINANCE_AGGREGATED (projectSlug, from, to, source, aggrega
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -1967,9 +1893,8 @@ function SAN_FUNDING_RATE_USDT_AGGREGATED (projectSlug, from, to, fundingRateExc
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -1992,9 +1917,8 @@ function SAN_FUNDING_RATE_BUSD_AGGREGATED (projectSlug, from, to, fundingRateExc
 
 /**
 * Returns the slug's trading volume.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2016,9 +1940,8 @@ function SAN_TRADING_VOLUME_AGGREGATED (projectSlug, from, to, currency, aggrega
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
-* @param {string} projectSlug Name of the asset at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -2040,10 +1963,8 @@ function SAN_MVRV_RATIO_INTRADAY_AGGREGATED (projectSlug, from, to, timeBound, a
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2066,10 +1987,8 @@ function SAN_DAILY_AVG_MARKETCAP_MULTIPLE_SLUGS (projectSlugsList, from, to, cur
 
 /**
 * Returns the daily closing marketcap.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2092,10 +2011,8 @@ function SAN_DAILY_CLOSING_MARKETCAP_MULTIPLE_SLUGS (projectSlugsList, from, to,
 
 /**
 * Returns the mean realized price.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2120,10 +2037,8 @@ function SAN_MEAN_REALIZED_PRICE_MULTIPLE_SLUGS (projectSlugsList, from, to, cur
 
 /**
 * Returns the difference between MVRV.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2146,10 +2061,8 @@ function SAN_MVRV_LONG_SHORT_DIFF_MULTIPLE_SLUGS (projectSlugsList, from, to, cu
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value).
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2174,10 +2087,8 @@ function SAN_MVRV_RATIO_MULTIPLE_SLUGS (projectSlugsList, from, to, currency, ti
 
 /**
 * Returns token circulation for a given slug and time interval.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the
@@ -2200,10 +2111,8 @@ function SAN_TOKEN_CIRCULATION_MULTIPLE_SLUGS (projectSlugsList, from, to, timeB
 
 /**
 * Returns the token's mean age.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2224,10 +2133,8 @@ function SAN_MEAN_AGE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d
 
 /**
 * Returns the token's mean dollar invested age.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2250,10 +2157,8 @@ function SAN_MEAN_DOLLAR_INVESTED_AGE_MULTIPLE_SLUGS (projectSlugsList, from, to
 * Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
 * The realized value across the whole network is computed by summing the realized values
 * of all wallets holding tokens at the moment.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2278,10 +2183,8 @@ function SAN_REALIZED_VALUE_MULTIPLE_SLUGS (projectSlugsList, from, to, currency
 
 /**
 * Returns the token's velocity.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2304,10 +2207,8 @@ function SAN_VELOCITY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d
 * Gets the transaction volume for the specified asset, during a given time interval.
 * Transaction Volume" refers to the total number of tokens within all
 * transfers that have occurred on a blockchain.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2328,10 +2229,8 @@ function SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS (projectSlugsList, from, to, inte
 
 /**
 * Returns the exchange inflow.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2352,10 +2251,8 @@ function SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS (projectSlugsList, from, to, interva
 
 /**
 * Returns the exchange outflow.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2376,10 +2273,8 @@ function SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS (projectSlugsList, from, to, interv
 
 /**
 * Returns the exchange balance.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2400,10 +2295,8 @@ function SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS (projectSlugsList, from, to, interv
 
 /**
 * Returns the token's age destroyed
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2430,10 +2323,8 @@ function SAN_AGE_DESTROYED_MULTIPLE_SLUGS (projectSlugsList, from, to, interval 
 * offer another way to calculate NVT by using Daily Token Circulation.
 * This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 * daily transaction throughput.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2454,10 +2345,8 @@ function SAN_NVT_RATIO_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1
 
 /**
 * Returns the token's network growth
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2478,10 +2367,8 @@ function SAN_NETWORK_GROWTH_MULTIPLE_SLUGS (projectSlugsList, from, to, interval
 
 /**
 * Returns number of unique deposit addresses that have been active for a project.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2504,10 +2391,8 @@ function SAN_ACTIVE_DEPOSITS_MULTIPLE_SLUGS (projectSlugsList, from, to, interva
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2530,10 +2415,8 @@ function SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS (projectSlugsList, from, to, interv
 * Returns the active addresses for the specified asset, during a given time interval.
 * Active Addresses" refers to the number of unique addresses that
 * participated in transactions on a blockchain.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2554,10 +2437,8 @@ function SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS (projectSlugsList, from, to, in
 
 /**
 * Returns exchange percent of total supply.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2578,10 +2459,8 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_MULTIPLE_SLUGS (projectSlugsList, from, 
 
 /**
 * Represents the total number of addresses holding the given amount of tokens.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -2616,10 +2495,8 @@ function SAN_HOLDERS_DISTRIBUTION_MULTIPLE_SLUGS (projectSlugsList, from, to, ba
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2640,10 +2517,8 @@ function SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_MULTIPLE_SLUGS (projectSlugs
 
 /**
 * Returns the network's profit/loss.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2664,10 +2539,8 @@ function SAN_NETWORK_PROFIT_LOSS_MULTIPLE_SLUGS (projectSlugsList, from, to, int
 
 /**
 * Returns the prices for the slug in the given time period.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2690,10 +2563,8 @@ function SAN_PRICE_MULTIPLE_SLUGS (projectSlugsList, from, to, currency, interva
 
 /**
 * Returns the slug's transaction volume.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2714,10 +2585,8 @@ function SAN_VOLUME_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d')
 
 /**
 * Returns the social volume for a slug.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -2744,10 +2613,8 @@ function SAN_SOCIAL_VOLUME_MULTIPLE_SLUGS (projectSlugsList, from, to, source, i
 
 /**
 * Returns the marketcap for a slug.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2770,10 +2637,8 @@ function SAN_MARKETCAP_MULTIPLE_SLUGS (projectSlugsList, from, to, currency, int
 
 /**
 * Returns the number of transactions transferring more than 100k USD.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2794,10 +2659,8 @@ function SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to,
 
 /**
 * Returns the number of tokens in a specific bucket.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} balance Interval of amount of tokens. Available balance intervals are:
@@ -2832,10 +2695,8 @@ function SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_MULTIPLE_SLUGS (projectSlugsL
 
 /**
 * Returns the weighted social sentiment for a slug.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -2864,10 +2725,8 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS (projectSlugsList, from, t
 * Returns the amount of open perpetual contracts currently on Bitmex's
 * Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 * it can precede increased volatility in the coin’s price.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
@@ -2888,10 +2747,8 @@ function SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS (projectSlugsList, fr
 
 /**
 * Returns the social dominance for a slug.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} source The source of mention counts, one of the following:
@@ -2918,10 +2775,8 @@ function SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS (projectSlugsList, from, to, source
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -2945,10 +2800,8 @@ function SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS (projectSlugsList, from, to, fundi
 
 /**
 * Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
@@ -2972,10 +2825,8 @@ function SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS (projectSlugsList, from, to, fundi
 
 /**
 * Returns the slug's trading volume.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} currency The metric is calculated using a currency of choice.
@@ -2998,10 +2849,8 @@ function SAN_TRADING_VOLUME_MULTIPLE_SLUGS (projectSlugsList, from, to, currency
 
 /**
 * Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
-* @param {string} projectSlugsList Comma-separated names of the assets at sanbase,
-* which can be found at the end of the URL (eg. the Santiment URL is
-* https://app.santiment.net/projects/santiment, https://app.santiment.net/projects/bitcoin is Bitcoin's URL,
-* so the projectSlugList would be "santiment,bitcoin").
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
 * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
 * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
 * @param {string} timeBound The metric is calculated only by taking into account the

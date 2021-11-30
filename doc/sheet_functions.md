@@ -16,7 +16,17 @@ participated in transactions on a blockchain.</p>
 Active Addresses&quot; refers to the number of unique addresses that
 participated in transactions on a blockchain.</p>
 </dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS">SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses&quot; refers to the number of unique addresses that
+participated in transactions on a blockchain.</p>
+</dd>
 <dt><a href="#SAN_ACTIVE_ADDRESSES_AGGREGATED">SAN_ACTIVE_ADDRESSES_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses&quot; refers to the number of unique addresses that
+participated in transactions on a blockchain.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS">SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the active addresses for the specified asset, during a given time interval.
 Active Addresses&quot; refers to the number of unique addresses that
 participated in transactions on a blockchain.</p>
@@ -27,10 +37,16 @@ participated in transactions on a blockchain.</p>
 <dt><a href="#SAN_ACTIVE_DEPOSITS_AGGREGATED">SAN_ACTIVE_DEPOSITS_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
 </dd>
+<dt><a href="#SAN_ACTIVE_DEPOSITS_MULTIPLE_SLUGS">SAN_ACTIVE_DEPOSITS_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of unique deposit addresses that have been active for a project.</p>
+</dd>
 <dt><a href="#SAN_AGE_DESTROYED">SAN_AGE_DESTROYED(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s age destroyed</p>
 </dd>
 <dt><a href="#SAN_AGE_DESTROYED_AGGREGATED">SAN_AGE_DESTROYED_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the token&#39;s age destroyed</p>
+</dd>
+<dt><a href="#SAN_AGE_DESTROYED_MULTIPLE_SLUGS">SAN_AGE_DESTROYED_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the token&#39;s age destroyed</p>
 </dd>
 <dt><a href="#SAN_ALL_PROJECTS">SAN_ALL_PROJECTS()</a> ⇒ <code>Array</code></dt>
@@ -45,6 +61,9 @@ ETH spent in the last 7 days, ETH spent in the last day.</p>
 <dt><a href="#SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED">SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other</p>
 </dd>
+<dt><a href="#SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_MULTIPLE_SLUGS">SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other</p>
+</dd>
 <dt><a href="#SAN_BITMEX_PERPETUAL_OPEN_INTEREST">SAN_BITMEX_PERPETUAL_OPEN_INTEREST(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the amount of open perpetual contracts currently on Bitmex&#39;s
 Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
@@ -55,16 +74,27 @@ it can precede increased volatility in the coin’s price.</p>
 Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 it can precede increased volatility in the coin’s price.</p>
 </dd>
+<dt><a href="#SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS">SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the amount of open perpetual contracts currently on Bitmex&#39;s
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.</p>
+</dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
 </dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP_AGGREGATED">SAN_DAILY_AVG_MARKETCAP_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
 </dd>
+<dt><a href="#SAN_DAILY_AVG_MARKETCAP_MULTIPLE_SLUGS">SAN_DAILY_AVG_MARKETCAP_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily average marketcap.</p>
+</dd>
 <dt><a href="#SAN_DAILY_CLOSING_MARKETCAP">SAN_DAILY_CLOSING_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily closing marketcap.</p>
 </dd>
 <dt><a href="#SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED">SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily closing marketcap.</p>
+</dd>
+<dt><a href="#SAN_DAILY_CLOSING_MARKETCAP_MULTIPLE_SLUGS">SAN_DAILY_CLOSING_MARKETCAP_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the daily closing marketcap.</p>
 </dd>
 <dt><a href="#SAN_DAILY_CLOSING_PRICE">SAN_DAILY_CLOSING_PRICE(projectSlug, day)</a> ⇒ <code>number</code></dt>
@@ -94,6 +124,9 @@ ETH spent in the last 7 days, ETH spent in the last day and main contract addres
 <dt><a href="#SAN_EXCHANGE_BALANCE_AGGREGATED">SAN_EXCHANGE_BALANCE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange balance.</p>
 </dd>
+<dt><a href="#SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS">SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the exchange balance.</p>
+</dd>
 <dt><a href="#SAN_EXCHANGE_FUNDS_FLOW">SAN_EXCHANGE_FUNDS_FLOW(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the difference between the tokens that were deposited minus
 the tokens that were withdrawn from an exchange for a given slug and time interval.</p>
@@ -104,10 +137,16 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <dt><a href="#SAN_EXCHANGE_INFLOW_AGGREGATED">SAN_EXCHANGE_INFLOW_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange inflow.</p>
 </dd>
+<dt><a href="#SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS">SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the exchange inflow.</p>
+</dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW">SAN_EXCHANGE_OUTFLOW(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the exchange outflow.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW_AGGREGATED">SAN_EXCHANGE_OUTFLOW_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the exchange outflow.</p>
+</dd>
+<dt><a href="#SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS">SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange outflow.</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_PERCENT_OF_SUPPLY">SAN_EXCHANGE_PERCENT_OF_SUPPLY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
@@ -116,8 +155,29 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <dt><a href="#SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED">SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns exchange percent of total supply.</p>
 </dd>
+<dt><a href="#SAN_EXCHANGE_PERCENT_OF_SUPPLY_MULTIPLE_SLUGS">SAN_EXCHANGE_PERCENT_OF_SUPPLY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns exchange percent of total supply.</p>
+</dd>
 <dt><a href="#SAN_FUNCTIONS">SAN_FUNCTIONS()</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns all available functions.</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_BUSD">SAN_FUNDING_RATE_BUSD(projectSlug, from, to, fundingRateExchange, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_BUSD_AGGREGATED">SAN_FUNDING_RATE_BUSD_AGGREGATED(projectSlug, from, to, fundingRateExchange, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS">SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS(projectSlugsList, from, to, fundingRateExchange, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_USDT">SAN_FUNDING_RATE_USDT(projectSlug, from, to, fundingRateExchange, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_USDT_AGGREGATED">SAN_FUNDING_RATE_USDT_AGGREGATED(projectSlug, from, to, fundingRateExchange, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).</p>
+</dd>
+<dt><a href="#SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS">SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS(projectSlugsList, from, to, fundingRateExchange, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).</p>
 </dd>
 <dt><a href="#SAN_GAS_USED">SAN_GAS_USED(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns used Gas by a blockchain.
@@ -148,6 +208,12 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED">SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED(projectSlug, from, to, balance, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the number of tokens in a specific bucket.</p>
 </dd>
+<dt><a href="#SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_MULTIPLE_SLUGS">SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_MULTIPLE_SLUGS(projectSlugsList, from, to, balance, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the number of tokens in a specific bucket.</p>
+</dd>
+<dt><a href="#SAN_HOLDERS_DISTRIBUTION_MULTIPLE_SLUGS">SAN_HOLDERS_DISTRIBUTION_MULTIPLE_SLUGS(projectSlugsList, from, to, balance, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Represents the total number of addresses holding the given amount of tokens.</p>
+</dd>
 <dt><a href="#SAN_LATEST_PRICE">SAN_LATEST_PRICE(projectSlug, currency)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the latest price for a given asset in a desired currency.</p>
 </dd>
@@ -157,10 +223,16 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_MARKETCAP_AGGREGATED">SAN_MARKETCAP_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the marketcap for a slug.</p>
 </dd>
+<dt><a href="#SAN_MARKETCAP_MULTIPLE_SLUGS">SAN_MARKETCAP_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the marketcap for a slug.</p>
+</dd>
 <dt><a href="#SAN_MEAN_AGE">SAN_MEAN_AGE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s mean age.</p>
 </dd>
 <dt><a href="#SAN_MEAN_AGE_AGGREGATED">SAN_MEAN_AGE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the token&#39;s mean age.</p>
+</dd>
+<dt><a href="#SAN_MEAN_AGE_MULTIPLE_SLUGS">SAN_MEAN_AGE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the token&#39;s mean age.</p>
 </dd>
 <dt><a href="#SAN_MEAN_DOLLAR_INVESTED_AGE">SAN_MEAN_DOLLAR_INVESTED_AGE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
@@ -169,10 +241,16 @@ you must pay for that computation. That payment is calculated in Gas.</p>
 <dt><a href="#SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED">SAN_MEAN_DOLLAR_INVESTED_AGE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the token&#39;s mean dollar invested age.</p>
 </dd>
+<dt><a href="#SAN_MEAN_DOLLAR_INVESTED_AGE_MULTIPLE_SLUGS">SAN_MEAN_DOLLAR_INVESTED_AGE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the token&#39;s mean dollar invested age.</p>
+</dd>
 <dt><a href="#SAN_MEAN_REALIZED_PRICE">SAN_MEAN_REALIZED_PRICE(projectSlug, from, to, currency, timeBound, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the mean realized price.</p>
 </dd>
 <dt><a href="#SAN_MEAN_REALIZED_PRICE_AGGREGATED">SAN_MEAN_REALIZED_PRICE_AGGREGATED(projectSlug, from, to, currency, timeBound, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the mean realized price.</p>
+</dd>
+<dt><a href="#SAN_MEAN_REALIZED_PRICE_MULTIPLE_SLUGS">SAN_MEAN_REALIZED_PRICE_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, timeBound, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the mean realized price.</p>
 </dd>
 <dt><a href="#SAN_MINERS_BALANCE">SAN_MINERS_BALANCE(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
@@ -190,10 +268,25 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED">SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the difference between MVRV.</p>
 </dd>
+<dt><a href="#SAN_MVRV_LONG_SHORT_DIFF_MULTIPLE_SLUGS">SAN_MVRV_LONG_SHORT_DIFF_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the difference between MVRV.</p>
+</dd>
 <dt><a href="#SAN_MVRV_RATIO">SAN_MVRV_RATIO(projectSlug, from, to, currency, timeBound, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
 </dd>
 <dt><a href="#SAN_MVRV_RATIO_AGGREGATED">SAN_MVRV_RATIO_AGGREGATED(projectSlug, from, to, currency, timeBound, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
+</dd>
+<dt><a href="#SAN_MVRV_RATIO_INTRADAY">SAN_MVRV_RATIO_INTRADAY(projectSlug, from, to, timeBound, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_MVRV_RATIO_INTRADAY_AGGREGATED">SAN_MVRV_RATIO_INTRADAY_AGGREGATED(projectSlug, from, to, timeBound, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_MVRV_RATIO_INTRADAY_MULTIPLE_SLUGS">SAN_MVRV_RATIO_INTRADAY_MULTIPLE_SLUGS(projectSlugsList, from, to, timeBound, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_MVRV_RATIO_MULTIPLE_SLUGS">SAN_MVRV_RATIO_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, timeBound, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
 </dd>
 <dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
@@ -202,10 +295,16 @@ Currently only ETH is supported.</p>
 <dt><a href="#SAN_NETWORK_GROWTH_AGGREGATED">SAN_NETWORK_GROWTH_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the token&#39;s network growth</p>
 </dd>
+<dt><a href="#SAN_NETWORK_GROWTH_MULTIPLE_SLUGS">SAN_NETWORK_GROWTH_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the token&#39;s network growth</p>
+</dd>
 <dt><a href="#SAN_NETWORK_PROFIT_LOSS">SAN_NETWORK_PROFIT_LOSS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the network&#39;s profit/loss.</p>
 </dd>
 <dt><a href="#SAN_NETWORK_PROFIT_LOSS_AGGREGATED">SAN_NETWORK_PROFIT_LOSS_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the network&#39;s profit/loss.</p>
+</dd>
+<dt><a href="#SAN_NETWORK_PROFIT_LOSS_MULTIPLE_SLUGS">SAN_NETWORK_PROFIT_LOSS_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the network&#39;s profit/loss.</p>
 </dd>
 <dt><a href="#SAN_NVT_RATIO">SAN_NVT_RATIO(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
@@ -226,6 +325,15 @@ offer another way to calculate NVT by using Daily Token Circulation.
 This method filters out excess transactions and provides a cleaner overview of a blockchain’s
 daily transaction throughput.</p>
 </dd>
+<dt><a href="#SAN_NVT_RATIO_MULTIPLE_SLUGS">SAN_NVT_RATIO_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
+Since Daily Transaction Volume gets rather noisy and easy to manipulate
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
+daily transaction throughput.</p>
+</dd>
 <dt><a href="#SAN_OHLC">SAN_OHLC(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the open, high, low, and close price values for the specified asset,
 during a given time interval.</p>
@@ -237,6 +345,9 @@ during a given time interval.</p>
 <dd><p>Returns the absolute price change for the specified asset, during a given time interval.</p>
 </dd>
 <dt><a href="#SAN_PRICE_AGGREGATED">SAN_PRICE_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the prices for the slug in the given time period.</p>
+</dd>
+<dt><a href="#SAN_PRICE_MULTIPLE_SLUGS">SAN_PRICE_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the prices for the slug in the given time period.</p>
 </dd>
 <dt><a href="#SAN_PRICE_PERCENT_CHANGE">SAN_PRICE_PERCENT_CHANGE(projectSlug, from, to)</a> ⇒ <code>number</code></dt>
@@ -269,16 +380,30 @@ of all wallets holding tokens at the moment.</p>
 The realized value across the whole network is computed by summing the realized values
 of all wallets holding tokens at the moment.</p>
 </dd>
+<dt><a href="#SAN_REALIZED_VALUE_MULTIPLE_SLUGS">SAN_REALIZED_VALUE_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, timeBound, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.</p>
+</dd>
 <dt><a href="#SAN_REVERSE">SAN_REVERSE(array)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the reversed array of the results</p>
 </dd>
-<dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, from, to, source)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the % of the social dominance a given project has over time in a given social channel.</p>
+<dt><a href="#SAN_SOCIAL_DOMINANCE">SAN_SOCIAL_DOMINANCE(projectSlug, from, to, source, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the social dominance for a slug.</p>
+</dd>
+<dt><a href="#SAN_SOCIAL_DOMINANCE_AGGREGATED">SAN_SOCIAL_DOMINANCE_AGGREGATED(projectSlug, from, to, source, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the social dominance for a slug.</p>
+</dd>
+<dt><a href="#SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS">SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS(projectSlugsList, from, to, source, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the social dominance for a slug.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_VOLUME">SAN_SOCIAL_VOLUME(projectSlug, from, to, source, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the social volume for a slug.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_VOLUME_AGGREGATED">SAN_SOCIAL_VOLUME_AGGREGATED(projectSlug, from, to, source, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the social volume for a slug.</p>
+</dd>
+<dt><a href="#SAN_SOCIAL_VOLUME_MULTIPLE_SLUGS">SAN_SOCIAL_VOLUME_MULTIPLE_SLUGS(projectSlugsList, from, to, source, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the social volume for a slug.</p>
 </dd>
 <dt><a href="#SAN_SOCIAL_VOLUME_PROJECTS">SAN_SOCIAL_VOLUME_PROJECTS()</a> ⇒ <code>Array</code></dt>
@@ -296,6 +421,9 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_TOKEN_CIRCULATION_AGGREGATED">SAN_TOKEN_CIRCULATION_AGGREGATED(projectSlug, from, to, timeBound, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns token circulation for a given slug and time interval.</p>
 </dd>
+<dt><a href="#SAN_TOKEN_CIRCULATION_MULTIPLE_SLUGS">SAN_TOKEN_CIRCULATION_MULTIPLE_SLUGS(projectSlugsList, from, to, timeBound, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns token circulation for a given slug and time interval.</p>
+</dd>
 <dt><a href="#SAN_TOKEN_TOP_TRANSACTIONS">SAN_TOKEN_TOP_TRANSACTIONS(projectSlug, from, to, limit)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns top token transactions for a given slug</p>
 </dd>
@@ -311,6 +439,15 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY">SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(projectSlug, from, to, numberOfHolders)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the top holders&#39; percent of total supply - in exchanges, outside exchanges and combined.</p>
 </dd>
+<dt><a href="#SAN_TRADING_VOLUME">SAN_TRADING_VOLUME(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the slug&#39;s trading volume.</p>
+</dd>
+<dt><a href="#SAN_TRADING_VOLUME_AGGREGATED">SAN_TRADING_VOLUME_AGGREGATED(projectSlug, from, to, currency, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the slug&#39;s trading volume.</p>
+</dd>
+<dt><a href="#SAN_TRADING_VOLUME_MULTIPLE_SLUGS">SAN_TRADING_VOLUME_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the slug&#39;s trading volume.</p>
+</dd>
 <dt><a href="#SAN_TRANSACTION_VOLUME">SAN_TRANSACTION_VOLUME(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Gets the transaction volume for the specified asset, during a given time interval.
 Transaction Volume&quot; refers to the total number of tokens within all
@@ -321,17 +458,28 @@ transfers that have occurred on a blockchain.</p>
 Transaction Volume&quot; refers to the total number of tokens within all
 transfers that have occurred on a blockchain.</p>
 </dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS">SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Gets the transaction volume for the specified asset, during a given time interval.
+Transaction Volume&quot; refers to the total number of tokens within all
+transfers that have occurred on a blockchain.</p>
+</dd>
 <dt><a href="#SAN_VELOCITY">SAN_VELOCITY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s velocity.</p>
 </dd>
 <dt><a href="#SAN_VELOCITY_AGGREGATED">SAN_VELOCITY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the token&#39;s velocity.</p>
 </dd>
+<dt><a href="#SAN_VELOCITY_MULTIPLE_SLUGS">SAN_VELOCITY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the token&#39;s velocity.</p>
+</dd>
 <dt><a href="#SAN_VOLUME">SAN_VOLUME(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
-<dd><p>Returns the slug&#39;s trading volume.</p>
+<dd><p>Returns the slug&#39;s transaction volume.</p>
 </dd>
 <dt><a href="#SAN_VOLUME_AGGREGATED">SAN_VOLUME_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
-<dd><p>Returns the slug&#39;s trading volume.</p>
+<dd><p>Returns the slug&#39;s transaction volume.</p>
+</dd>
+<dt><a href="#SAN_VOLUME_MULTIPLE_SLUGS">SAN_VOLUME_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the slug&#39;s transaction volume.</p>
 </dd>
 <dt><a href="#SAN_WEIGHTED_SOCIAL_SENTIMENT">SAN_WEIGHTED_SOCIAL_SENTIMENT(projectSlug, from, to, source, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the weighted social sentiment for a slug.</p>
@@ -339,10 +487,16 @@ transfers that have occurred on a blockchain.</p>
 <dt><a href="#SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED">SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED(projectSlug, from, to, source, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the weighted social sentiment for a slug.</p>
 </dd>
+<dt><a href="#SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS">SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS(projectSlugsList, from, to, source, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the weighted social sentiment for a slug.</p>
+</dd>
 <dt><a href="#SAN_WHALE_TRANSACTION_COUNT">SAN_WHALE_TRANSACTION_COUNT(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the number of transactions transferring more than 100k USD.</p>
 </dd>
 <dt><a href="#SAN_WHALE_TRANSACTION_COUNT_AGGREGATED">SAN_WHALE_TRANSACTION_COUNT_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the number of transactions transferring more than 100k USD.</p>
+</dd>
+<dt><a href="#SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS">SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the number of transactions transferring more than 100k USD.</p>
 </dd>
 </dl>
@@ -360,7 +514,7 @@ participated in transactions on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -378,7 +532,7 @@ participated in transactions on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -396,10 +550,29 @@ participated in transactions on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_24H\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses" refers to the number of unique addresses that
+participated in transactions on a blockchain.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+active addresses for the last 24 hours.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_ACTIVE_ADDRESSES_AGGREGATED"></a>
 
@@ -414,10 +587,29 @@ participated in transactions on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the active addresses for the specified asset, during a given time interval.
+Active Addresses" refers to the number of unique addresses that
+participated in transactions on a blockchain.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+active addresses.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_ACTIVE_DEPOSITS"></a>
 
@@ -430,7 +622,7 @@ Returns number of unique deposit addresses that have been active for a project.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -446,10 +638,27 @@ Returns number of unique deposit addresses that have been active for a project.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_ACTIVE_DEPOSITS_MULTIPLE_SLUGS"></a>
+
+## SAN\_ACTIVE\_DEPOSITS\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns number of unique deposit addresses that have been active for a project.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+deposit address numbers.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_AGE_DESTROYED"></a>
 
@@ -462,7 +671,7 @@ Returns the token's age destroyed
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -478,10 +687,27 @@ Returns the token's age destroyed
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_AGE_DESTROYED_MULTIPLE_SLUGS"></a>
+
+## SAN\_AGE\_DESTROYED\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the token's age destroyed
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+age destroyed values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_ALL_PROJECTS"></a>
 
@@ -505,7 +731,7 @@ Returns the funding rates that are paid by one of the sides of the perpetual con
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -521,10 +747,27 @@ Returns the funding rates that are paid by one of the sides of the perpetual con
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_BITMEX_PERPETUAL_CONTRACT_FUNDING_RATE_MULTIPLE_SLUGS"></a>
+
+## SAN\_BITMEX\_PERPETUAL\_CONTRACT\_FUNDING\_RATE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the funding rates that are paid by one of the sides of the perpetual contract to the other  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_BITMEX_PERPETUAL_OPEN_INTEREST"></a>
 
@@ -539,7 +782,7 @@ it can precede increased volatility in the coin’s price.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -557,10 +800,29 @@ it can precede increased volatility in the coin’s price.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS"></a>
+
+## SAN\_BITMEX\_PERPETUAL\_OPEN\_INTEREST\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the amount of open perpetual contracts currently on Bitmex's
+Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
+it can precede increased volatility in the coin’s price.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the amount of open perpetual contracts.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_DAILY_AVG_MARKETCAP"></a>
 
@@ -573,7 +835,7 @@ Returns the daily average marketcap.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -590,11 +852,29 @@ Returns the daily average marketcap.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_AVG_MARKETCAP_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_AVG\_MARKETCAP\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the daily average marketcap.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+daily average marketcaps.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_DAILY_CLOSING_MARKETCAP"></a>
 
@@ -607,7 +887,7 @@ Returns the daily closing marketcap.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -624,11 +904,29 @@ Returns the daily closing marketcap.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_CLOSING_MARKETCAP_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_CLOSING\_MARKETCAP\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the daily closing marketcap.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+daily closing marketcaps.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_DAILY_CLOSING_PRICE"></a>
 
@@ -728,7 +1026,7 @@ Returns the exchange balance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -744,10 +1042,27 @@ Returns the exchange balance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS"></a>
+
+## SAN\_EXCHANGE\_BALANCE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the exchange balance.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+exchange balances.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_EXCHANGE_FUNDS_FLOW"></a>
 
@@ -776,7 +1091,7 @@ Returns the exchange inflow.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -792,10 +1107,27 @@ Returns the exchange inflow.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS"></a>
+
+## SAN\_EXCHANGE\_INFLOW\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the exchange inflow.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+exchange inflows.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_EXCHANGE_OUTFLOW"></a>
 
@@ -808,7 +1140,7 @@ Returns the exchange outflow.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -824,10 +1156,27 @@ Returns the exchange outflow.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS"></a>
+
+## SAN\_EXCHANGE\_OUTFLOW\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the exchange outflow.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+exchange outflows.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_EXCHANGE_PERCENT_OF_SUPPLY"></a>
 
@@ -840,7 +1189,7 @@ Returns exchange percent of total supply.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -856,10 +1205,27 @@ Returns exchange percent of total supply.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_EXCHANGE_PERCENT_OF_SUPPLY_MULTIPLE_SLUGS"></a>
+
+## SAN\_EXCHANGE\_PERCENT\_OF\_SUPPLY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns exchange percent of total supply.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+exchange percent of total supply.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_FUNCTIONS"></a>
 
@@ -869,6 +1235,110 @@ Returns all available functions.
 **Kind**: global function  
 **Returns**: <code>Array</code> - of function names.  
 **Customfunction**:   
+<a name="SAN_FUNDING_RATE_BUSD"></a>
+
+## SAN\_FUNDING\_RATE\_BUSD(projectSlug, from, to, fundingRateExchange, interval) ⇒ <code>Array</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_FUNDING_RATE_BUSD_AGGREGATED"></a>
+
+## SAN\_FUNDING\_RATE\_BUSD\_AGGREGATED(projectSlug, from, to, fundingRateExchange, aggregation) ⇒ <code>number</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_FUNDING_RATE_BUSD_MULTIPLE_SLUGS"></a>
+
+## SAN\_FUNDING\_RATE\_BUSD\_MULTIPLE\_SLUGS(projectSlugsList, from, to, fundingRateExchange, interval) ⇒ <code>number</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_FUNDING_RATE_USDT"></a>
+
+## SAN\_FUNDING\_RATE\_USDT(projectSlug, from, to, fundingRateExchange, interval) ⇒ <code>Array</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_FUNDING_RATE_USDT_AGGREGATED"></a>
+
+## SAN\_FUNDING\_RATE\_USDT\_AGGREGATED(projectSlug, from, to, fundingRateExchange, aggregation) ⇒ <code>number</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS"></a>
+
+## SAN\_FUNDING\_RATE\_USDT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, fundingRateExchange, interval) ⇒ <code>number</code>
+Returns the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_GAS_USED"></a>
 
 ## SAN\_GAS\_USED(projectSlug, from, to) ⇒ <code>Array</code>
@@ -959,7 +1429,7 @@ Represents the total number of addresses holding the given amount of tokens.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
@@ -976,7 +1446,7 @@ Represents the total number of addresses holding the given amount of tokens.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
@@ -993,7 +1463,7 @@ Returns the number of tokens in a specific bucket.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
@@ -1010,11 +1480,47 @@ Returns the number of tokens in a specific bucket.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_MULTIPLE_SLUGS"></a>
+
+## SAN\_HOLDERS\_DISTRIBUTION\_COMBINED\_BALANCE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, balance, interval) ⇒ <code>number</code>
+Returns the number of tokens in a specific bucket.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the number of tokens in a specific bucket.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_HOLDERS_DISTRIBUTION_MULTIPLE_SLUGS"></a>
+
+## SAN\_HOLDERS\_DISTRIBUTION\_MULTIPLE\_SLUGS(projectSlugsList, from, to, balance, interval) ⇒ <code>number</code>
+Represents the total number of addresses holding the given amount of tokens.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+total number of addresses holding the given amount of tokens.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_LATEST_PRICE"></a>
 
@@ -1041,7 +1547,7 @@ Returns the marketcap for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1058,11 +1564,29 @@ Returns the marketcap for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MARKETCAP_MULTIPLE_SLUGS"></a>
+
+## SAN\_MARKETCAP\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the marketcap for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slug's marketcap.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_MEAN_AGE"></a>
 
@@ -1075,7 +1599,7 @@ Returns the token's mean age.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1091,10 +1615,27 @@ Returns the token's mean age.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MEAN_AGE_MULTIPLE_SLUGS"></a>
+
+## SAN\_MEAN\_AGE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the token's mean age.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+mean age values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_MEAN_DOLLAR_INVESTED_AGE"></a>
 
@@ -1107,7 +1648,7 @@ Returns the token's mean dollar invested age.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1123,10 +1664,27 @@ Returns the token's mean dollar invested age.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MEAN_DOLLAR_INVESTED_AGE_MULTIPLE_SLUGS"></a>
+
+## SAN\_MEAN\_DOLLAR\_INVESTED\_AGE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the token's mean dollar invested age.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+mean dollar invested age values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_MEAN_REALIZED_PRICE"></a>
 
@@ -1139,7 +1697,7 @@ Returns the mean realized price.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1157,12 +1715,31 @@ Returns the mean realized price.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MEAN_REALIZED_PRICE_MULTIPLE_SLUGS"></a>
+
+## SAN\_MEAN\_REALIZED\_PRICE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, timeBound, interval) ⇒ <code>number</code>
+Returns the mean realized price.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+mean realized prices.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_MINERS_BALANCE"></a>
 
@@ -1208,7 +1785,7 @@ Returns the difference between MVRV.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1225,11 +1802,29 @@ Returns the difference between MVRV.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MVRV_LONG_SHORT_DIFF_MULTIPLE_SLUGS"></a>
+
+## SAN\_MVRV\_LONG\_SHORT\_DIFF\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the difference between MVRV.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+MVRV differences.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_MVRV_RATIO"></a>
 
@@ -1242,7 +1837,7 @@ Returns MVRV(Market-Value-to-Realized-Value).
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1260,12 +1855,83 @@ Returns MVRV(Market-Value-to-Realized-Value).
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MVRV_RATIO_INTRADAY"></a>
+
+## SAN\_MVRV\_RATIO\_INTRADAY(projectSlug, from, to, timeBound, interval) ⇒ <code>Array</code>
+Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of MVRV ratios with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years or days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_MVRV_RATIO_INTRADAY_AGGREGATED"></a>
+
+## SAN\_MVRV\_RATIO\_INTRADAY\_AGGREGATED(projectSlug, from, to, timeBound, aggregation) ⇒ <code>number</code>
+Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated MVRV ratios with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MVRV_RATIO_INTRADAY_MULTIPLE_SLUGS"></a>
+
+## SAN\_MVRV\_RATIO\_INTRADAY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, timeBound, interval) ⇒ <code>number</code>
+Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+MVRV ratios with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_MVRV_RATIO_MULTIPLE_SLUGS"></a>
+
+## SAN\_MVRV\_RATIO\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, timeBound, interval) ⇒ <code>number</code>
+Returns MVRV(Market-Value-to-Realized-Value).
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+MVRV ratios.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_NETWORK_GROWTH"></a>
 
@@ -1278,7 +1944,7 @@ Returns the token's network growth
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1294,10 +1960,27 @@ Returns the token's network growth
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_NETWORK_GROWTH_MULTIPLE_SLUGS"></a>
+
+## SAN\_NETWORK\_GROWTH\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the token's network growth
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+network growth.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_NETWORK_PROFIT_LOSS"></a>
 
@@ -1310,7 +1993,7 @@ Returns the network's profit/loss.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1326,10 +2009,27 @@ Returns the network's profit/loss.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_NETWORK_PROFIT_LOSS_MULTIPLE_SLUGS"></a>
+
+## SAN\_NETWORK\_PROFIT\_LOSS\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the network's profit/loss.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the network's profit/loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_NVT_RATIO"></a>
 
@@ -1348,7 +2048,7 @@ daily transaction throughput.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1370,10 +2070,33 @@ daily transaction throughput.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_NVT_RATIO_MULTIPLE_SLUGS"></a>
+
+## SAN\_NVT\_RATIO\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns NVT (Network-Value-to-Transactions-Ratio Daily Market Cap / Daily Token Circulation)
+Since Daily Transaction Volume gets rather noisy and easy to manipulate
+by transferring the same tokens through a couple of addresses repeatedly,
+it’s not an ideal measure of a network’s economic activity. That’s why we also
+offer another way to calculate NVT by using Daily Token Circulation.
+This method filters out excess transactions and provides a cleaner overview of a blockchain’s
+daily transaction throughput.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+NVT ratios  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_OHLC"></a>
 
@@ -1402,7 +2125,7 @@ Returns the prices for the slug in the given time period.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1434,11 +2157,29 @@ Returns the prices for the slug in the given time period.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_PRICE_MULTIPLE_SLUGS"></a>
+
+## SAN\_PRICE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the prices for the slug in the given time period.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the prices for the slug in the given time period.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_PRICE_PERCENT_CHANGE"></a>
 
@@ -1544,7 +2285,7 @@ of all wallets holding tokens at the moment.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
@@ -1564,12 +2305,33 @@ of all wallets holding tokens at the moment.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_REALIZED_VALUE_MULTIPLE_SLUGS"></a>
+
+## SAN\_REALIZED\_VALUE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, timeBound, interval) ⇒ <code>number</code>
+Returns Realized value - sum of the acquisition costs of an asset located in a wallet.
+The realized value across the whole network is computed by summing the realized values
+of all wallets holding tokens at the moment.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+realized values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_REVERSE"></a>
 
@@ -1586,19 +2348,55 @@ Returns the reversed array of the results
 
 <a name="SAN_SOCIAL_DOMINANCE"></a>
 
-## SAN\_SOCIAL\_DOMINANCE(projectSlug, from, to, source) ⇒ <code>Array</code>
-Returns the % of the social dominance a given project has over time in a given social channel.
+## SAN\_SOCIAL\_DOMINANCE(projectSlug, from, to, source, interval) ⇒ <code>Array</code>
+Returns the social dominance for a slug.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of dominance.  
+**Returns**: <code>Array</code> - of the slug's social dominance.  
 **Customfunction**:   
 
-| Param | Type | Description |
-| --- | --- | --- |
-| projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
-| from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
-| to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| source | <code>string</code> | The source, which the dominance is calculated from. Sources are: ALL, TELEGRAM, REDDIT |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_SOCIAL_DOMINANCE_AGGREGATED"></a>
+
+## SAN\_SOCIAL\_DOMINANCE\_AGGREGATED(projectSlug, from, to, source, aggregation) ⇒ <code>number</code>
+Returns the social dominance for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the slug's social dominance.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS"></a>
+
+## SAN\_SOCIAL\_DOMINANCE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, source, interval) ⇒ <code>number</code>
+Returns the social dominance for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slug's social dominance.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_SOCIAL_VOLUME"></a>
 
@@ -1611,7 +2409,7 @@ Returns the social volume for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
@@ -1628,11 +2426,29 @@ Returns the social volume for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_SOCIAL_VOLUME_MULTIPLE_SLUGS"></a>
+
+## SAN\_SOCIAL\_VOLUME\_MULTIPLE\_SLUGS(projectSlugsList, from, to, source, interval) ⇒ <code>number</code>
+Returns the social volume for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slug's social volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_SOCIAL_VOLUME_PROJECTS"></a>
 
@@ -1672,7 +2488,7 @@ Returns token circulation for a given slug and time interval.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years or days. |
@@ -1689,11 +2505,29 @@ Returns token circulation for a given slug and time interval.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TOKEN_CIRCULATION_MULTIPLE_SLUGS"></a>
+
+## SAN\_TOKEN\_CIRCULATION\_MULTIPLE\_SLUGS(projectSlugsList, from, to, timeBound, interval) ⇒ <code>number</code>
+Returns token circulation for a given slug and time interval.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+token circulation values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_TOKEN_TOP_TRANSACTIONS"></a>
 
@@ -1722,7 +2556,7 @@ Returns the amount of coins/tokens held only by the non exchange top holders.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1738,7 +2572,7 @@ Returns the amount of coins/tokens held only by the exchange top holders.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1754,7 +2588,7 @@ Returns the amount of coins/tokens held by the top holders.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1775,6 +2609,58 @@ Returns the top holders' percent of total supply - in exchanges, outside exchang
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | numberOfHolders | <code>number</code> | Take top number of holders into account when calculating. |
 
+<a name="SAN_TRADING_VOLUME"></a>
+
+## SAN\_TRADING\_VOLUME(projectSlug, from, to, currency, interval) ⇒ <code>Array</code>
+Returns the slug's trading volume.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the slugs's trading volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRADING_VOLUME_AGGREGATED"></a>
+
+## SAN\_TRADING\_VOLUME\_AGGREGATED(projectSlug, from, to, currency, aggregation) ⇒ <code>number</code>
+Returns the slug's trading volume.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the slugs's trading volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRADING_VOLUME_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRADING\_VOLUME\_MULTIPLE\_SLUGS(projectSlugsList, from, to, currency, interval) ⇒ <code>number</code>
+Returns the slug's trading volume.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slugs's trading volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_TRANSACTION_VOLUME"></a>
 
 ## SAN\_TRANSACTION\_VOLUME(projectSlug, from, to, interval) ⇒ <code>Array</code>
@@ -1788,7 +2674,7 @@ transfers that have occurred on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1806,10 +2692,29 @@ transfers that have occurred on a blockchain.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Gets the transaction volume for the specified asset, during a given time interval.
+Transaction Volume" refers to the total number of tokens within all
+transfers that have occurred on a blockchain.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+transaction volumes.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_VELOCITY"></a>
 
@@ -1822,7 +2727,7 @@ Returns the token's velocity.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1838,23 +2743,40 @@ Returns the token's velocity.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
-<a name="SAN_VOLUME"></a>
+<a name="SAN_VELOCITY_MULTIPLE_SLUGS"></a>
 
-## SAN\_VOLUME(projectSlug, from, to, interval) ⇒ <code>Array</code>
-Returns the slug's trading volume.
+## SAN\_VELOCITY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the token's velocity.
 
 **Kind**: global function  
-**Returns**: <code>Array</code> - of the slug's trading volume.  
+**Returns**: <code>number</code> - of results for multiple slugs
+token velocity values.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_VOLUME"></a>
+
+## SAN\_VOLUME(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the slug's transaction volume.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the slug's transaction volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1862,18 +2784,35 @@ Returns the slug's trading volume.
 <a name="SAN_VOLUME_AGGREGATED"></a>
 
 ## SAN\_VOLUME\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
-Returns the slug's trading volume.
+Returns the slug's transaction volume.
 
 **Kind**: global function  
-**Returns**: <code>number</code> - of aggregated the slug's trading volume.  
+**Returns**: <code>number</code> - of aggregated the slug's transaction volume.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_VOLUME_MULTIPLE_SLUGS"></a>
+
+## SAN\_VOLUME\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the slug's transaction volume.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slug's transaction volume.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_WEIGHTED_SOCIAL_SENTIMENT"></a>
 
@@ -1886,7 +2825,7 @@ Returns the weighted social sentiment for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
@@ -1903,11 +2842,29 @@ Returns the weighted social sentiment for a slug.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS"></a>
+
+## SAN\_WEIGHTED\_SOCIAL\_SENTIMENT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, source, interval) ⇒ <code>number</code>
+Returns the weighted social sentiment for a slug.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the slug's weighted social sentiment.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| source | <code>string</code> |  | The source of mention counts, one of the following: "TELEGRAM_CHATS_OVERVIEW", "TELEGRAM_DISCUSSION_OVERVIEW", "TWITTER_CHATS_OVERVIEW", "REDDIT_COMMENTS_OVERVIEW", "TOTAL" |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_WHALE_TRANSACTION_COUNT"></a>
 
@@ -1920,7 +2877,7 @@ Returns the number of transactions transferring more than 100k USD.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
@@ -1936,8 +2893,25 @@ Returns the number of transactions transferring more than 100k USD.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| projectSlug | <code>string</code> |  | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS"></a>
+
+## SAN\_WHALE\_TRANSACTION\_COUNT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the number of transactions transferring more than 100k USD.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the number of transactions transferring more than 100k USD.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
