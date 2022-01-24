@@ -29,7 +29,7 @@ describe('SAN_DEPOSIT_TRANSACTIONS_INTRADAY', () => {
   })
 
   it('returns a record per hour', () => {
-    const addresses = san.SAN_DEPOSIT_TRANSACTIONS_INTRADAY(ethereumSlug, from, to, '1d', '1h')
+    const addresses = san.SAN_DEPOSIT_TRANSACTIONS_INTRADAY(ethereumSlug, from, to, '1h')
     assertNumberOfRecords(addresses, numberOfHours)
   })
 })

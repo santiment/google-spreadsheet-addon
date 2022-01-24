@@ -38,7 +38,11 @@ const SOURCE_DESCRIPTION = `
 const FUNDING_RATE_EXCHANGE_DESCRIPTION = `
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
 * "BITMEX"
-* "BINANCE"`
+* "BINANCE"
+* "FTX"
+* "DYDX"
+* "BITFINEX"
+* "DERIBIT"`
 
 function generate () {
   let generatedDoc = '/* eslint-disable no-multi-spaces*/'

@@ -850,6 +850,10 @@ function SAN_SOCIAL_DOMINANCE (projectSlug, from, to, source, interval = '1d') {
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
 * "BITMEX"
 * "BINANCE"
+* "FTX"
+* "DYDX"
+* "BITFINEX"
+* "DERIBIT"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (USDT).
 * @customfunction
@@ -874,6 +878,10 @@ function SAN_FUNDING_RATE_USDT (projectSlug, from, to, fundingRateExchange, inte
 * @param {string} fundingRateExchange The exchange platform, from which funding rates are fetched, BITMEX by default:
 * "BITMEX"
 * "BINANCE"
+* "FTX"
+* "DYDX"
+* "BITFINEX"
+* "DERIBIT"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the funding rates that are paid by one of the sides of the perpetual contract to the other (BUSD).
 * @customfunction

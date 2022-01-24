@@ -32,7 +32,7 @@ describe('SAN_FUNDING_RATE_BUSD', () => {
   })
 
   it('raises error for non-supported exchange types', () => {
-    const nonSupportedBusdExchanges = ['BITMEX', 'bitmex']
+    const nonSupportedBusdExchanges = ['BITMEX', 'BITFINEX', 'DYDX', 'DERIBIT', 'FTX']
     nonSupportedBusdExchanges.forEach(
       exchange => {
         const results = san.SAN_FUNDING_RATE_BUSD(ethereumSlug, from, to, exchange)
