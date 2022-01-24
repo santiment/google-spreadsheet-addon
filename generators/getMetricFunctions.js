@@ -313,6 +313,30 @@ const metricsList = [
     hasTimeBound: true,
     description: ['Returns MVRV(Market-Value-to-Realized-Value) with the option of smaller intervals.'],
     returns: 'MVRV ratios with the option of smaller intervals.'
+  },
+  {
+    metric: 'withdrawal_transactions',
+    sheetMetricName: 'daily_withdrawal_transactions',
+    description: ['Returns number of withdrawal transactions.'],
+    returns: 'number of withdrawal transactions.'
+  },
+  {
+    metric: 'withdrawal_transactions_5m',
+    sheetMetricName: 'withdrawal_transactions_intraday',
+    description: ['Returns number of withdrawal transactions with the option of smaller intervals.'],
+    returns: 'number of withdrawal transactions with the option of smaller intervals.'
+  },
+  {
+    metric: 'deposit_transactions',
+    sheetMetricName: 'daily_deposit_transactions',
+    description: ['Returns number of withdrawal transactions.'],
+    returns: 'number of withdrawal transactions.'
+  },
+  {
+    metric: 'deposit_transactions_5m',
+    sheetMetricName: 'deposit_transactions_intraday',
+    description: ['Returns number of withdrawal transactions with the option of smaller intervals.'],
+    returns: 'number of withdrawal transactions with the option of smaller intervals.'
   }
 ]
 

@@ -934,6 +934,90 @@ function SAN_MVRV_RATIO_INTRADAY (projectSlug, from, to, timeBound, interval = '
   )
 }
 
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_WITHDRAWAL_TRANSACTIONS (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'withdrawal_transactions',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'withdrawal_transactions_5m',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_DEPOSIT_TRANSACTIONS (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'deposit_transactions',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_DEPOSIT_TRANSACTIONS_INTRADAY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'deposit_transactions_5m',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -967,6 +1051,15 @@ function SAN_FUNCTIONS () {
     'SAN_DAILY_CLOSING_MARKETCAP_AGGREGATED',
     'SAN_DAILY_CLOSING_MARKETCAP_MULTIPLE_SLUGS',
     'SAN_DAILY_CLOSING_PRICE',
+    'SAN_DAILY_DEPOSIT_TRANSACTIONS',
+    'SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED',
+    'SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS',
+    'SAN_DAILY_WITHDRAWAL_TRANSACTIONS',
+    'SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED',
+    'SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS',
+    'SAN_DEPOSIT_TRANSACTIONS_INTRADAY',
+    'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED',
+    'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS',
     'SAN_DEV_ACTIVITY',
     'SAN_EMERGING_TRENDS',
     'SAN_ERC20_PROJECTS',
@@ -1084,7 +1177,10 @@ function SAN_FUNCTIONS () {
     'SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS',
     'SAN_WHALE_TRANSACTION_COUNT',
     'SAN_WHALE_TRANSACTION_COUNT_AGGREGATED',
-    'SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS'
+    'SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS',
+    'SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY',
+    'SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_AGGREGATED',
+    'SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS'
   ]
 }
 /* eslint-disable no-multi-spaces*/
@@ -1957,6 +2053,90 @@ function SAN_MVRV_RATIO_INTRADAY_AGGREGATED (projectSlug, from, to, timeBound, a
     from,
     to,
     { timeBound: timeBound, aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'withdrawal_transactions',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'withdrawal_transactions_5m',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'deposit_transactions',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'deposit_transactions_5m',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
   )
 }
 
@@ -2867,6 +3047,94 @@ function SAN_MVRV_RATIO_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, tim
     from,
     to,
     { timeBound: timeBound, interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'withdrawal_transactions',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'withdrawal_transactions_5m',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* number of withdrawal transactions.
+* @customfunction
+*/
+function SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'deposit_transactions',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns number of withdrawal transactions with the option of smaller intervals.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* number of withdrawal transactions with the option of smaller intervals.
+* @customfunction
+*/
+function SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'deposit_transactions_5m',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
   )
 }
 
