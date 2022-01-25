@@ -23,14 +23,17 @@ const DEFAULT_AGGREGATION = 'null'
 const DEFAULT_FUNDING_RATE_EXCHANGE = 'BINANCE'
 
 const EXCHANGE_MAPPING = {
-  'USDT': ['BINANCE', 'BITMEX', 'FTX'],
+  'USDT': ['BINANCE', 'BITMEX', 'FTX', 'BITFINEX', 'DYDX', 'DERIBIT'],
   'BUSD': ['BINANCE']
 }
 const EXCHANGE_TYPE_DEPENDENT_METRICS = ['BINANCE']
 const SUPPORTED_EXCHANGES_MAPPING = {
   'BINANCE': 'binance',
   'BITMEX': 'bitmex_perpetual',
-  'FTX': 'ftx_perpetual'
+  'FTX': 'ftx_perpetual',
+  'BITFINEX': 'bitfinex_perpetual',
+  'DYDX': 'dydx_perpetual',
+  'DERIBIT': 'deribit_perpetual'
 }
 
 function prepareOptions_ (options) {
