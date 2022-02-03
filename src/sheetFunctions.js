@@ -434,7 +434,7 @@ function SAN_REVERSE (array) {
  * @returns {Array} exchange inflow values.
  * @customfunction
  */
-function SAN_EXCHANGE_INFLOW_SPECIFIC (projectSlug, from, to, owner, interval = '1d') {
+function SAN_EXCHANGE_INFLOW_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
   return handleErrors_(exchangeSpecific_)('exchange_inflow_per_exchange', projectSlug, from, to, owner, interval)
 }
 
@@ -449,7 +449,7 @@ function SAN_EXCHANGE_INFLOW_SPECIFIC (projectSlug, from, to, owner, interval = 
  * @returns {Array} exchange inflow values.
  * @customfunction
  */
-function SAN_EXCHANGE_OUTFLOW_SPECIFIC (projectSlug, from, to, owner, interval = '1d') {
+function SAN_EXCHANGE_OUTFLOW_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
   return handleErrors_(exchangeSpecific_)('exchange_outflow_per_exchange', projectSlug, from, to, owner, interval)
 }
 
@@ -464,7 +464,7 @@ function SAN_EXCHANGE_OUTFLOW_SPECIFIC (projectSlug, from, to, owner, interval =
  * @returns {Array} exchange inflow values.
  * @customfunction
  */
-function SAN_EXCHANGE_BALANCE_SPECIFIC (projectSlug, from, to, owner, interval = '1d') {
+function SAN_EXCHANGE_BALANCE_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
   return handleErrors_(exchangeSpecific_)('exchange_balance_per_exchange', projectSlug, from, to, owner, interval)
 }
 
@@ -479,7 +479,7 @@ function SAN_EXCHANGE_BALANCE_SPECIFIC (projectSlug, from, to, owner, interval =
  * @returns {Array} exchange inflow values.
  * @customfunction
  */
-function SAN_DEPOSIT_TRANSACTIONS_EXCHANGE_SPECIFIC (projectSlug, from, to, owner, interval = '1d') {
+function SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
   return handleErrors_(exchangeSpecific_)('deposit_transactions_per_exchange', projectSlug, from, to, owner, interval)
 }
 
@@ -494,6 +494,6 @@ function SAN_DEPOSIT_TRANSACTIONS_EXCHANGE_SPECIFIC (projectSlug, from, to, owne
  * @returns {Array} exchange inflow values.
  * @customfunction
  */
-function SAN_WITHDRAWAL_TRANSACTIONS_EXCHANGE_SPECIFIC (projectSlug, from, to, owner, interval = '1d') {
+function SAN_WITHDRAWAL_TRANSACTIONS_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
   return handleErrors_(exchangeSpecific_)('withdrawal_transactions_per_exchange', projectSlug, from, to, owner, interval)
 }

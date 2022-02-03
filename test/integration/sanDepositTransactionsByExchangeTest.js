@@ -11,20 +11,20 @@ const {
   fundingRateExchange
 } = require('../support/setup.js')
 
-describe('SAN_EXCHANGE_BALANCE_SPECIFIC', () => {
+describe('SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE', () => {
   const expected = {
     date: 'string',
     value: 'number'
   }
 
-  const response = san.SAN_EXCHANGE_BALANCE_SPECIFIC(ethereumSlug, from, to, fundingRateExchange)
+  const response = san.SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE(ethereumSlug, from, to, fundingRateExchange)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
   testHandlesNullData(
     'fetchExchangeSpecific',
-    san.SAN_EXCHANGE_BALANCE_SPECIFIC,
+    san.SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE,
     ethereumSlug,
     from,
     to,
@@ -36,7 +36,7 @@ describe('SAN_EXCHANGE_BALANCE_SPECIFIC', () => {
   })
 
   it('returns a record per every day', () => {
-    const results = san.SAN_EXCHANGE_BALANCE_SPECIFIC(ethereumSlug, from, to, fundingRateExchange)
+    const results = san.SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE(ethereumSlug, from, to, fundingRateExchange)
 
     assertNumberOfRecords(results, numberOfDays)
 
