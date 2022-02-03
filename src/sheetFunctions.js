@@ -422,3 +422,78 @@ function SAN_REVERSE (array) {
   array.shift()
   return [headers].concat(array.reverse())
 }
+
+/**
+ * Returns the exchange inflow for a slug in a specific exchange
+ * @param {string} projectSlug Name of the asset,
+ * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} owner Name of the exchange
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} exchange inflow values.
+ * @customfunction
+ */
+function SAN_EXCHANGE_INFLOW_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
+  return handleErrors_(exchangeSpecific_)('exchange_inflow_per_exchange', projectSlug, from, to, owner, interval)
+}
+
+/**
+ * Returns the exchange outflow for a slug in a specific exchange
+ * @param {string} projectSlug Name of the asset,
+ * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} owner Name of the exchange
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} exchange inflow values.
+ * @customfunction
+ */
+function SAN_EXCHANGE_OUTFLOW_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
+  return handleErrors_(exchangeSpecific_)('exchange_outflow_per_exchange', projectSlug, from, to, owner, interval)
+}
+
+/**
+ * Returns the exchange balance for a slug in a specific exchange
+ * @param {string} projectSlug Name of the asset,
+ * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} owner Name of the exchange
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} exchange inflow values.
+ * @customfunction
+ */
+function SAN_EXCHANGE_BALANCE_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
+  return handleErrors_(exchangeSpecific_)('exchange_balance_per_exchange', projectSlug, from, to, owner, interval)
+}
+
+/**
+ * Returns the deposit transactions for a slug in a specific exchange
+ * @param {string} projectSlug Name of the asset,
+ * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} owner Name of the exchange
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} exchange inflow values.
+ * @customfunction
+ */
+function SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
+  return handleErrors_(exchangeSpecific_)('deposit_transactions_per_exchange', projectSlug, from, to, owner, interval)
+}
+
+/**
+ * Returns the withdrawal transactions for a slug in a specific exchange
+ * @param {string} projectSlug Name of the asset,
+ * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+ * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+ * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+ * @param {string} owner Name of the exchange
+ * @param {string} interval The resolution with which the data is fetched. Example: "5m"
+ * @returns {Array} exchange inflow values.
+ * @customfunction
+ */
+function SAN_WITHDRAWAL_TRANSACTIONS_BY_EXCHANGE (projectSlug, from, to, owner, interval = '1d') {
+  return handleErrors_(exchangeSpecific_)('withdrawal_transactions_per_exchange', projectSlug, from, to, owner, interval)
+}
