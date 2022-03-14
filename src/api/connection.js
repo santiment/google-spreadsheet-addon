@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 
 var SANTIMENT_GRAPHQL_URL = 'https://api.santiment.net/graphql'
+const NON_CACHED_QUERIES = ['currentUser']
 
 function Connection_ (apiKey, url) {
   if (apiKey == null && hasApiKeyProperty_()) {
@@ -25,6 +26,7 @@ Connection_.prototype.buildRequestOptions = function (query) {
 
   return requestOptions
 }
+
 Connection_.prototype.fetchQuery = function (query, queryName) {
   const cache = CacheService.getScriptCache()
   const reformedQuery = this.buildRequestOptions(query)
@@ -56,7 +58,7 @@ Connection_.prototype.fetchQuery = function (query, queryName) {
     body: JSON.parse(response.getContentText())
   }
 
-  if (returnedResponse.code === 200 && !('errors' in returnedResponse.body)) {
+  if (returnedResponse.code === 200 && !('errors' in returnedResponse.body) && !(queryName in NON_CACHED_QUERIES)) {
     try {
       // The expiry is a random value in seconds between 60 and 90 minutes.
       // The random value helps avoiding the issue where all cache keys expire
