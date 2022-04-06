@@ -337,6 +337,23 @@ const metricsList = [
     sheetMetricName: 'deposit_transactions_intraday',
     description: ['Returns number of withdrawal transactions with the option of smaller intervals.'],
     returns: 'number of withdrawal transactions with the option of smaller intervals.'
+  },
+  {
+    metric: 'transaction_volume_profit_loss_ratio',
+    description: ['Returns the ratio between transaction volume in profit and transaction volume in loss.'],
+    returns: 'the ratio between transaction volume in profit and transaction volume in loss.'
+  },
+  {
+    metric: 'transaction_volume_in_profit',
+    sheetMetricName: 'transaction_volume_profit',
+    description: ['Returns the transaction volume in profit.'],
+    returns: 'the transaction volume in profit.'
+  },
+  {
+    metric: 'transaction_volume_in_loss',
+    sheetMetricName: 'transaction_volume_loss',
+    description: ['Returns the transaction volume in loss.'],
+    returns: 'the transaction volume in loss.'
   }
 ]
 
