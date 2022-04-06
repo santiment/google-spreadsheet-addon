@@ -1026,6 +1026,69 @@ function SAN_DEPOSIT_TRANSACTIONS_INTRADAY (projectSlug, from, to, interval = '1
   )
 }
 
+
+/**
+* Returns the ratio between transaction volume in profit and transaction volume in loss.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the ratio between transaction volume in profit and transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'transaction_volume_profit_loss_ratio',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transaction volume in profit.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the transaction volume in profit.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'transaction_volume_in_profit',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transaction volume in loss.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_LOSS (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'transaction_volume_in_loss',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1177,7 +1240,16 @@ function SAN_FUNCTIONS () {
     'SAN_TRADING_VOLUME_MULTIPLE_SLUGS',
     'SAN_TRANSACTION_VOLUME',
     'SAN_TRANSACTION_VOLUME_AGGREGATED',
+    'SAN_TRANSACTION_VOLUME_LOSS',
+    'SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED',
+    'SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS',
     'SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS',
+    'SAN_TRANSACTION_VOLUME_PROFIT',
+    'SAN_TRANSACTION_VOLUME_PROFIT_AGGREGATED',
+    'SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO',
+    'SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED',
+    'SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS',
+    'SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS',
     'SAN_VELOCITY',
     'SAN_VELOCITY_AGGREGATED',
     'SAN_VELOCITY_MULTIPLE_SLUGS',
@@ -2146,6 +2218,69 @@ function SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED (projectSlug, from, to, aggre
 function SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'deposit_transactions_5m',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the ratio between transaction volume in profit and transaction volume in loss.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the ratio between transaction volume in profit and transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'transaction_volume_profit_loss_ratio',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the transaction volume in profit.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the transaction volume in profit.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'transaction_volume_in_profit',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the transaction volume in loss.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'transaction_volume_in_loss',
     projectSlug,
     from,
     to,
@@ -3144,6 +3279,72 @@ function SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS (projectSlugsList, from, 
 function SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'deposit_transactions_5m',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the ratio between transaction volume in profit and transaction volume in loss.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the ratio between transaction volume in profit and transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'transaction_volume_profit_loss_ratio',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transaction volume in profit.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the transaction volume in profit.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'transaction_volume_in_profit',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transaction volume in loss.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the transaction volume in loss.
+* @customfunction
+*/
+function SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'transaction_volume_in_loss',
     projectSlugsList,
     from,
     to,
