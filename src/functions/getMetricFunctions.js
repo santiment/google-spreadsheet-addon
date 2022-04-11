@@ -4,12 +4,23 @@ function getMetric_ (metric, slug, from, to, options) {
 
   const datetimeField = handleDatetimeField(options.interval)
   const headers = ['Date', 'Value']
-  return [headers].concat(results.timeseriesData.map(result =>
+  const handledResults = [headers].concat(results.timeseriesData.map(result =>
     [
       formatDatetimeField_(result.datetime, datetimeField),
       formatNumber_(result.value)
     ]
   ))
+
+  // Currently, there are two versions of this metric in SanSheets - SAN_VOLUME and SAN_TRANSACTION_VOLUME, the
+  // former will be deprecated.
+  if (metric === 'transaction_volume') {
+    const warning = [
+      'WARNING! SAN_VOLUME will get deprecated, make sure you\'re using SAN_TRANSACTION_VOLUME instead.'
+    ]
+    return handledResults.concat([warning])
+  }
+
+  return handledResults
 }
 
 function aggregatedGetMetric_ (metric, slug, from, to, options) {
