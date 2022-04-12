@@ -1,4 +1,11 @@
 function getMetric_ (metric, slug, from, to, options) {
+  let warning
+  if (metric === 'old_transaction_volume') {
+    warning = [
+      'WARNING! SAN_VOLUME will get deprecated, make sure you\'re using SAN_TRANSACTION_VOLUME instead.'
+    ]
+    metric = 'transaction_volume'
+  }
   const results = getApiClient_().fetchGetMetric(metric, slug, from, to, options)
   assertHasData_(results)
 
@@ -13,10 +20,7 @@ function getMetric_ (metric, slug, from, to, options) {
 
   // Currently, there are two versions of this metric in SanSheets - SAN_VOLUME and SAN_TRANSACTION_VOLUME, the
   // former will be deprecated.
-  if (metric === 'transaction_volume') {
-    const warning = [
-      'WARNING! SAN_VOLUME will get deprecated, make sure you\'re using SAN_TRANSACTION_VOLUME instead.'
-    ]
+  if (warning) {
     return handledResults.concat([warning])
   }
 
@@ -24,6 +28,13 @@ function getMetric_ (metric, slug, from, to, options) {
 }
 
 function aggregatedGetMetric_ (metric, slug, from, to, options) {
+  let warning
+  if (metric === 'old_transaction_volume') {
+    warning = [
+      'WARNING! SAN_VOLUME will get deprecated, make sure you\'re using SAN_TRANSACTION_VOLUME instead.'
+    ]
+    metric = 'transaction_volume'
+  }
   const results = getApiClient_().fetchAggregatedGetMetric(metric, slug, from, to, options)
   assertHasData_(results)
 
@@ -31,6 +42,9 @@ function aggregatedGetMetric_ (metric, slug, from, to, options) {
     throw new NoDataError_()
   }
 
+  if (warning) {
+    return [formatNumber_(results.aggregatedTimeseriesData), warning]
+  }
   return formatNumber_(results.aggregatedTimeseriesData)
 }
 
@@ -45,6 +59,13 @@ function lowercase_ (slugsList) {
 }
 
 function getMetricMultipleSlugs_ (metric, slugsString, from, to, options) {
+  let warning
+  if (metric === 'old_transaction_volume') {
+    warning = [
+      'WARNING! SAN_VOLUME will get deprecated, make sure you\'re using SAN_TRANSACTION_VOLUME instead.'
+    ]
+    metric = 'transaction_volume'
+  }
   const slugsList = slugsString.split(',')
   const results = getApiClient_().fetchGetMetricMultipleSlugs(metric, slugsList, from, to, options)
   assertHasData_(results)
@@ -70,5 +91,8 @@ function getMetricMultipleSlugs_ (metric, slugsString, from, to, options) {
       return dataSetResult
     }
   )
+  if (warning) {
+    return ([headers].concat(reworkedResults)).concat(warning)
+  }
   return [headers].concat(reworkedResults)
 }

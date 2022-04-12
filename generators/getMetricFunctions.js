@@ -210,7 +210,7 @@ const metricsList = [
     returns: 'the prices for the slug in the given time period.'
   },
   {
-    metric: 'transaction_volume',
+    metric: 'old_transaction_volume',
     sheetMetricName: 'volume',
     description: [
       'Returns the slug\'s transaction volume.'
