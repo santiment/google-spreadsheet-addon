@@ -43,7 +43,8 @@ Connection_.prototype.fetchQuery = function (query, queryName) {
     if (
       parsedResponse.code === 200 &&
       !('errors' in parsedResponse.body) &&
-      queryName in parsedResponse.body.data
+      queryName in parsedResponse.body.data &&
+      NON_CACHED_QUERIES.indexOf(queryName) < 0
     ) {
       return [parsedResponse, 'CacheHitLog']
     }
@@ -58,7 +59,7 @@ Connection_.prototype.fetchQuery = function (query, queryName) {
     body: JSON.parse(response.getContentText())
   }
 
-  if (returnedResponse.code === 200 && !('errors' in returnedResponse.body) && !(queryName in NON_CACHED_QUERIES)) {
+  if (returnedResponse.code === 200 && !('errors' in returnedResponse.body) && NON_CACHED_QUERIES.indexOf(queryName) < 0) {
     try {
       // The expiry is a random value in seconds between 60 and 90 minutes.
       // The random value helps avoiding the issue where all cache keys expire
