@@ -649,7 +649,7 @@ function SAN_PRICE (projectSlug, from, to, currency, interval = '1d') {
 */
 function SAN_VOLUME (projectSlug, from, to, interval = '1d') {
   return handleErrors_(getMetric_)(
-    'transaction_volume',
+    'old_transaction_volume',
     projectSlug,
     from,
     to,
@@ -1856,7 +1856,7 @@ function SAN_PRICE_AGGREGATED (projectSlug, from, to, currency, aggregation = 'n
 */
 function SAN_VOLUME_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
-    'transaction_volume',
+    'old_transaction_volume',
     projectSlug,
     from,
     to,
@@ -2902,7 +2902,7 @@ function SAN_PRICE_MULTIPLE_SLUGS (projectSlugsList, from, to, currency, interva
 */
 function SAN_VOLUME_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
-    'transaction_volume',
+    'old_transaction_volume',
     projectSlugsList,
     from,
     to,

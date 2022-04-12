@@ -24,7 +24,7 @@ describe('SAN_VOLUME_MULTIPLE_SLUGS', () => {
   it('returns a record per every day', () => {
     const results = san.SAN_VOLUME_MULTIPLE_SLUGS(slugsList, from, to)
 
-    assertNumberOfRecords(results, numberOfDays)
+    assertNumberOfRecords(results, numberOfDays + 1)
 
     assertDaysMatch(results, days)
   })
