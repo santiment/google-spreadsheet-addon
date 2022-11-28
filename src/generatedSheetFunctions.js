@@ -1089,6 +1089,27 @@ function SAN_TRANSACTION_VOLUME_LOSS (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the MVRV Z score.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the MVRV Z score.
+* @customfunction
+*/
+function SAN_MVRV_Z_SCORE (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'mvrv_usd_z_score',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1195,6 +1216,9 @@ function SAN_FUNCTIONS () {
     'SAN_MVRV_RATIO_INTRADAY_AGGREGATED',
     'SAN_MVRV_RATIO_INTRADAY_MULTIPLE_SLUGS',
     'SAN_MVRV_RATIO_MULTIPLE_SLUGS',
+    'SAN_MVRV_Z_SCORE',
+    'SAN_MVRV_Z_SCORE_AGGREGATED',
+    'SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS',
     'SAN_NETWORK_GROWTH',
     'SAN_NETWORK_GROWTH_AGGREGATED',
     'SAN_NETWORK_GROWTH_MULTIPLE_SLUGS',
@@ -2288,6 +2312,27 @@ function SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED (projectSlug, from, to, aggregat
   )
 }
 
+
+/**
+* Returns the MVRV Z score.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the MVRV Z score.
+* @customfunction
+*/
+function SAN_MVRV_Z_SCORE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'mvrv_usd_z_score',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
@@ -3345,6 +3390,28 @@ function SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS (projectSlugsList, from, t
 function SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'transaction_volume_in_loss',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the MVRV Z score.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the MVRV Z score.
+* @customfunction
+*/
+function SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'mvrv_usd_z_score',
     projectSlugsList,
     from,
     to,
