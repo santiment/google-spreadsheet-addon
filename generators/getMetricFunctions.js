@@ -354,6 +354,12 @@ const metricsList = [
     sheetMetricName: 'transaction_volume_loss',
     description: ['Returns the transaction volume in loss.'],
     returns: 'the transaction volume in loss.'
+  },
+  {
+    metric: 'mvrv_usd_z_score',
+    sheetMetricName: 'mvrv_z_score',
+    description: ['Returns the MVRV Z score.'],
+    returns: 'the MVRV Z score.'
   }
 ]
 
