@@ -555,7 +555,9 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY (projectSlug, from, to, interval = '1d')
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of total number of addresses holding the given amount of tokens.
@@ -747,7 +749,9 @@ function SAN_WHALE_TRANSACTION_COUNT (projectSlug, from, to, interval = '1d') {
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {Array} of the number of tokens in a specific bucket.
@@ -1786,7 +1790,9 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_AGGREGATED (projectSlug, from, to, aggre
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated total number of addresses holding the given amount of tokens.
@@ -1978,7 +1984,9 @@ function SAN_WHALE_TRANSACTION_COUNT_AGGREGATED (projectSlug, from, to, aggregat
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
 * @returns {number} of aggregated the number of tokens in a specific bucket.
@@ -2848,7 +2856,9 @@ function SAN_EXCHANGE_PERCENT_OF_SUPPLY_MULTIPLE_SLUGS (projectSlugsList, from, 
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {number} of results for multiple slugs
@@ -3048,7 +3058,9 @@ function SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to,
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"
 * @param {string} interval The resolution with which the data is fetched. Example: "5m"
 * @returns {number} of results for multiple slugs

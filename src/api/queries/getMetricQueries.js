@@ -6,7 +6,8 @@ const SUPPORTED_BALANCES = [
   '0-0.001', '0.001-0.01', '0.01-0.1', '0.1-1',
   '1-10', '10-100', '100-1k',
   '1k-10k', '10k-100k', '100k-1M',
-  '1M-10M', '10M-inf', 'total'
+  '1M-10M', '10M-100M', '100M-1B',
+  '1B-inf', 'total'
 ]
 
 const SOURCE_MAPPING = {
