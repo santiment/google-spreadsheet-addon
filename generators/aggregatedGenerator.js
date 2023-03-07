@@ -21,7 +21,9 @@ const BALANCES_DESCRIPTION = `
 * "10k-100k",
 * "100k-1M",
 * "1M-10M",
-* "10M-inf",
+* "10M-100M",
+* "100M-1B",
+* "1B-inf",
 * "total"`
 
 const AGGREGATION_DESCRIPTION = `
