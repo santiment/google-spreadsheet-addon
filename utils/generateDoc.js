@@ -27,7 +27,8 @@ const typeMap = {
   'socialVolumeType': '<code>string</code>',
   'numberOfHolders': '<code>number</code>',
   'projectSlugsList': '<code>string</code>',
-  'fundingRateExchange': '<code>string</code>'
+  'fundingRateExchange': '<code>string</code>',
+  'owner': '<code>string</code>'
 }
 
 const numberFunctions = [
