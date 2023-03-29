@@ -1114,6 +1114,195 @@ function SAN_MVRV_Z_SCORE (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the DEX volume in XRP.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the DEX volume in XRP.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_XRP_INTRADAY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'dex_volume_in_xrp_5m',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the DEX volume in USD.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the DEX volume in USD.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_USD_INTRADAY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'dex_volume_in_usd_5m',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the daily issued assets.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the daily issued assets.
+* @customfunction
+*/
+function SAN_DAILY_ASSETS_ISSUED (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'daily_assets_issued',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the total issued assets.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the total issued assets.
+* @customfunction
+*/
+function SAN_TOTAL_ASSETS_ISSUED (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'total_assets_issued',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the daily trustlines count change.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the daily trustlines count change.
+* @customfunction
+*/
+function SAN_DAILY_TRUSTLINES_COUNT_CHANGE (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'daily_trustlines_count_change',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the total trustlines count.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the total trustlines count.
+* @customfunction
+*/
+function SAN_TOTAL_TRUSTLINES_COUNT (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'total_trustlines_count',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 60 days.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the active addresses in the last 60 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_60D (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'active_addresses_60d',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 90 days.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the active addresses in the last 90 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_90D (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'active_addresses_90d',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transactions count.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the transactions count.
+* @customfunction
+*/
+function SAN_TRANSACTIONS_COUNT (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'transactions_count',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1125,6 +1314,12 @@ function SAN_FUNCTIONS () {
     'SAN_ACTIVE_ADDRESSES_24H',
     'SAN_ACTIVE_ADDRESSES_24H_AGGREGATED',
     'SAN_ACTIVE_ADDRESSES_24H_MULTIPLE_SLUGS',
+    'SAN_ACTIVE_ADDRESSES_60D',
+    'SAN_ACTIVE_ADDRESSES_60D_AGGREGATED',
+    'SAN_ACTIVE_ADDRESSES_60D_MULTIPLE_SLUGS',
+    'SAN_ACTIVE_ADDRESSES_90D',
+    'SAN_ACTIVE_ADDRESSES_90D_AGGREGATED',
+    'SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS',
     'SAN_ACTIVE_ADDRESSES_AGGREGATED',
     'SAN_ACTIVE_ADDRESSES_MULTIPLE_SLUGS',
     'SAN_ACTIVE_DEPOSITS',
@@ -1140,6 +1335,9 @@ function SAN_FUNCTIONS () {
     'SAN_BITMEX_PERPETUAL_OPEN_INTEREST',
     'SAN_BITMEX_PERPETUAL_OPEN_INTEREST_AGGREGATED',
     'SAN_BITMEX_PERPETUAL_OPEN_INTEREST_MULTIPLE_SLUGS',
+    'SAN_DAILY_ASSETS_ISSUED',
+    'SAN_DAILY_ASSETS_ISSUED_AGGREGATED',
+    'SAN_DAILY_ASSETS_ISSUED_MULTIPLE_SLUGS',
     'SAN_DAILY_AVG_MARKETCAP',
     'SAN_DAILY_AVG_MARKETCAP_AGGREGATED',
     'SAN_DAILY_AVG_MARKETCAP_MULTIPLE_SLUGS',
@@ -1150,6 +1348,9 @@ function SAN_FUNCTIONS () {
     'SAN_DAILY_DEPOSIT_TRANSACTIONS',
     'SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED',
     'SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS',
+    'SAN_DAILY_TRUSTLINES_COUNT_CHANGE',
+    'SAN_DAILY_TRUSTLINES_COUNT_CHANGE_AGGREGATED',
+    'SAN_DAILY_TRUSTLINES_COUNT_CHANGE_MULTIPLE_SLUGS',
     'SAN_DAILY_WITHDRAWAL_TRANSACTIONS',
     'SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED',
     'SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS',
@@ -1158,6 +1359,12 @@ function SAN_FUNCTIONS () {
     'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED',
     'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS',
     'SAN_DEV_ACTIVITY',
+    'SAN_DEX_VOLUME_IN_USD_INTRADAY',
+    'SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED',
+    'SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS',
+    'SAN_DEX_VOLUME_IN_XRP_INTRADAY',
+    'SAN_DEX_VOLUME_IN_XRP_INTRADAY_AGGREGATED',
+    'SAN_DEX_VOLUME_IN_XRP_INTRADAY_MULTIPLE_SLUGS',
     'SAN_EMERGING_TRENDS',
     'SAN_ERC20_PROJECTS',
     'SAN_ETH_SPENT_OVER_TIME',
@@ -1263,6 +1470,12 @@ function SAN_FUNCTIONS () {
     'SAN_TOP_HOLDERS_HELD_ON_EXCHANGE',
     'SAN_TOP_HOLDERS_HELD_OVERALL',
     'SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY',
+    'SAN_TOTAL_ASSETS_ISSUED',
+    'SAN_TOTAL_ASSETS_ISSUED_AGGREGATED',
+    'SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS',
+    'SAN_TOTAL_TRUSTLINES_COUNT',
+    'SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED',
+    'SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS',
     'SAN_TRADING_VOLUME',
     'SAN_TRADING_VOLUME_AGGREGATED',
     'SAN_TRADING_VOLUME_MULTIPLE_SLUGS',
@@ -1278,6 +1491,9 @@ function SAN_FUNCTIONS () {
     'SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED',
     'SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS',
     'SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS',
+    'SAN_TRANSACTIONS_COUNT',
+    'SAN_TRANSACTIONS_COUNT_AGGREGATED',
+    'SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS',
     'SAN_VELOCITY',
     'SAN_VELOCITY_AGGREGATED',
     'SAN_VELOCITY_MULTIPLE_SLUGS',
@@ -2334,6 +2550,195 @@ function SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED (projectSlug, from, to, aggregat
 function SAN_MVRV_Z_SCORE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'mvrv_usd_z_score',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the DEX volume in XRP.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the DEX volume in XRP.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_XRP_INTRADAY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'dex_volume_in_xrp_5m',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the DEX volume in USD.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the DEX volume in USD.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'dex_volume_in_usd_5m',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the daily issued assets.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the daily issued assets.
+* @customfunction
+*/
+function SAN_DAILY_ASSETS_ISSUED_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'daily_assets_issued',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the total issued assets.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the total issued assets.
+* @customfunction
+*/
+function SAN_TOTAL_ASSETS_ISSUED_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'total_assets_issued',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the daily trustlines count change.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the daily trustlines count change.
+* @customfunction
+*/
+function SAN_DAILY_TRUSTLINES_COUNT_CHANGE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'daily_trustlines_count_change',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the total trustlines count.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the total trustlines count.
+* @customfunction
+*/
+function SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'total_trustlines_count',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 60 days.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the active addresses in the last 60 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_60D_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'active_addresses_60d',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 90 days.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the active addresses in the last 90 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_90D_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'active_addresses_90d',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the transactions count.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the transactions count.
+* @customfunction
+*/
+function SAN_TRANSACTIONS_COUNT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'transactions_count',
     projectSlug,
     from,
     to,
@@ -3424,6 +3829,204 @@ function SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS (projectSlugsList, from, to,
 function SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'mvrv_usd_z_score',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the DEX volume in XRP.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the DEX volume in XRP.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_XRP_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'dex_volume_in_xrp_5m',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the DEX volume in USD.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the DEX volume in USD.
+* @customfunction
+*/
+function SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'dex_volume_in_usd_5m',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the daily issued assets.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the daily issued assets.
+* @customfunction
+*/
+function SAN_DAILY_ASSETS_ISSUED_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'daily_assets_issued',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the total issued assets.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the total issued assets.
+* @customfunction
+*/
+function SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'total_assets_issued',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the daily trustlines count change.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the daily trustlines count change.
+* @customfunction
+*/
+function SAN_DAILY_TRUSTLINES_COUNT_CHANGE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'daily_trustlines_count_change',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the total trustlines count.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the total trustlines count.
+* @customfunction
+*/
+function SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'total_trustlines_count',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 60 days.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the active addresses in the last 60 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_60D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'active_addresses_60d',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the active addresses in the last 90 days.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the active addresses in the last 90 days.
+* @customfunction
+*/
+function SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'active_addresses_90d',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the transactions count.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the transactions count.
+* @customfunction
+*/
+function SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'transactions_count',
     projectSlugsList,
     from,
     to,

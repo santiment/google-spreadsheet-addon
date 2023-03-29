@@ -362,6 +362,53 @@ const metricsList = [
     sheetMetricName: 'mvrv_z_score',
     description: ['Returns the MVRV Z score.'],
     returns: 'the MVRV Z score.'
+  },
+  {
+    metric: 'dex_volume_in_xrp_5m',
+    sheetMetricName: 'dex_volume_in_xrp_intraday',
+    description: ['Returns the DEX volume in XRP.'],
+    returns: 'the DEX volume in XRP.'
+  },
+  {
+    metric: 'dex_volume_in_usd_5m',
+    sheetMetricName: 'dex_volume_in_usd_intraday',
+    description: ['Returns the DEX volume in USD.'],
+    returns: 'the DEX volume in USD.'
+  },
+  {
+    metric: 'daily_assets_issued',
+    description: ['Returns the daily issued assets.'],
+    returns: 'the daily issued assets.'
+  },
+  {
+    metric: 'total_assets_issued',
+    description: ['Returns the total issued assets.'],
+    returns: 'the total issued assets.'
+  },
+  {
+    metric: 'daily_trustlines_count_change',
+    description: ['Returns the daily trustlines count change.'],
+    returns: 'the daily trustlines count change.'
+  },
+  {
+    metric: 'total_trustlines_count',
+    description: ['Returns the total trustlines count.'],
+    returns: 'the total trustlines count.'
+  },
+  {
+    metric: 'active_addresses_60d',
+    description: ['Returns the active addresses in the last 60 days.'],
+    returns: 'the active addresses in the last 60 days.'
+  },
+  {
+    metric: 'active_addresses_90d',
+    description: ['Returns the active addresses in the last 90 days.'],
+    returns: 'the active addresses in the last 90 days.'
+  },
+  {
+    metric: 'transactions_count',
+    description: ['Returns the transactions count.'],
+    returns: 'the transactions count.'
   }
 ]
 
