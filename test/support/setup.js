@@ -12,6 +12,7 @@ const numberOfHours = (numberOfDays + 1) * 24 // every intraday metric should re
 
 const slug = 'santiment'
 const ethereumSlug = 'ethereum'
+const xrpSlug = 'xrp'
 const slugsList = [slug, ethereumSlug].join(',')
 const fiatCurrency = 'USD'
 
@@ -27,6 +28,7 @@ const fundingRateExchange = 'BINANCE'
 module.exports = {
   slug: slug,
   ethereumSlug: ethereumSlug,
+  xrpSlug: xrpSlug,
   slugsList: slugsList,
   fiatCurrency: fiatCurrency,
   to: to,
