@@ -27,7 +27,8 @@ const typeMap = {
   'socialVolumeType': '<code>string</code>',
   'numberOfHolders': '<code>number</code>',
   'projectSlugsList': '<code>string</code>',
-  'fundingRateExchange': '<code>string</code>'
+  'fundingRateExchange': '<code>string</code>',
+  'owner': '<code>string</code>'
 }
 
 const numberFunctions = [
@@ -41,6 +42,7 @@ function makeFunctionTemplate (fnInfo) {
   const params = fnInfo.params.map(
     param => param.name
   )
+
   let returnsType = ''
   if (fnInfo.name.includes('AGGREGATED') || numberFunctions.includes(fnInfo.name)) {
     returnsType = 'number'
