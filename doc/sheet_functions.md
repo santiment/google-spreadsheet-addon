@@ -21,6 +21,24 @@ participated in transactions on a blockchain.</p>
 Active Addresses&quot; refers to the number of unique addresses that
 participated in transactions on a blockchain.</p>
 </dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_60D">SAN_ACTIVE_ADDRESSES_60D(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the active addresses in the last 60 days.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_60D_AGGREGATED">SAN_ACTIVE_ADDRESSES_60D_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses in the last 60 days.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_60D_MULTIPLE_SLUGS">SAN_ACTIVE_ADDRESSES_60D_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses in the last 60 days.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_90D">SAN_ACTIVE_ADDRESSES_90D(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the active addresses in the last 90 days.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_90D_AGGREGATED">SAN_ACTIVE_ADDRESSES_90D_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses in the last 90 days.</p>
+</dd>
+<dt><a href="#SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS">SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the active addresses in the last 90 days.</p>
+</dd>
 <dt><a href="#SAN_ACTIVE_ADDRESSES_AGGREGATED">SAN_ACTIVE_ADDRESSES_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the active addresses for the specified asset, during a given time interval.
 Active Addresses&quot; refers to the number of unique addresses that
@@ -79,6 +97,15 @@ it can precede increased volatility in the coin’s price.</p>
 Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 it can precede increased volatility in the coin’s price.</p>
 </dd>
+<dt><a href="#SAN_DAILY_ASSETS_ISSUED">SAN_DAILY_ASSETS_ISSUED(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the daily issued assets.</p>
+</dd>
+<dt><a href="#SAN_DAILY_ASSETS_ISSUED_AGGREGATED">SAN_DAILY_ASSETS_ISSUED_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily issued assets.</p>
+</dd>
+<dt><a href="#SAN_DAILY_ASSETS_ISSUED_MULTIPLE_SLUGS">SAN_DAILY_ASSETS_ISSUED_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily issued assets.</p>
+</dd>
 <dt><a href="#SAN_DAILY_AVG_MARKETCAP">SAN_DAILY_AVG_MARKETCAP(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the daily average marketcap.</p>
 </dd>
@@ -100,8 +127,65 @@ it can precede increased volatility in the coin’s price.</p>
 <dt><a href="#SAN_DAILY_CLOSING_PRICE">SAN_DAILY_CLOSING_PRICE(projectSlug, day)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the closing price for a given day.</p>
 </dd>
+<dt><a href="#SAN_DAILY_DEPOSIT_TRANSACTIONS">SAN_DAILY_DEPOSIT_TRANSACTIONS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED">SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS">SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DAILY_TRUSTLINES_COUNT_CHANGE">SAN_DAILY_TRUSTLINES_COUNT_CHANGE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the daily trustlines count change.</p>
+</dd>
+<dt><a href="#SAN_DAILY_TRUSTLINES_COUNT_CHANGE_AGGREGATED">SAN_DAILY_TRUSTLINES_COUNT_CHANGE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily trustlines count change.</p>
+</dd>
+<dt><a href="#SAN_DAILY_TRUSTLINES_COUNT_CHANGE_MULTIPLE_SLUGS">SAN_DAILY_TRUSTLINES_COUNT_CHANGE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the daily trustlines count change.</p>
+</dd>
+<dt><a href="#SAN_DAILY_WITHDRAWAL_TRANSACTIONS">SAN_DAILY_WITHDRAWAL_TRANSACTIONS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED">SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS">SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions.</p>
+</dd>
+<dt><a href="#SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE">SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE(projectSlug, from, to, owner, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the deposit transactions for a slug in a specific exchange</p>
+</dd>
+<dt><a href="#SAN_DEPOSIT_TRANSACTIONS_INTRADAY">SAN_DEPOSIT_TRANSACTIONS_INTRADAY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED">SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS">SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
+</dd>
 <dt><a href="#SAN_DEV_ACTIVITY">SAN_DEV_ACTIVITY(projectSlug, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns a list of dev activity for a given slug and time interval.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_USD_INTRADAY">SAN_DEX_VOLUME_IN_USD_INTRADAY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the DEX volume in USD.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED">SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the DEX volume in USD.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS">SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the DEX volume in USD.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_XRP_INTRADAY">SAN_DEX_VOLUME_IN_XRP_INTRADAY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the DEX volume in XRP.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_XRP_INTRADAY_AGGREGATED">SAN_DEX_VOLUME_IN_XRP_INTRADAY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the DEX volume in XRP.</p>
+</dd>
+<dt><a href="#SAN_DEX_VOLUME_IN_XRP_INTRADAY_MULTIPLE_SLUGS">SAN_DEX_VOLUME_IN_XRP_INTRADAY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the DEX volume in XRP.</p>
 </dd>
 <dt><a href="#SAN_EMERGING_TRENDS">SAN_EMERGING_TRENDS(size, from, to)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns list of emerging trends and their corresponding trend score.</p>
@@ -124,6 +208,9 @@ ETH spent in the last 7 days, ETH spent in the last day and main contract addres
 <dt><a href="#SAN_EXCHANGE_BALANCE_AGGREGATED">SAN_EXCHANGE_BALANCE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange balance.</p>
 </dd>
+<dt><a href="#SAN_EXCHANGE_BALANCE_BY_EXCHANGE">SAN_EXCHANGE_BALANCE_BY_EXCHANGE(projectSlug, from, to, owner, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the exchange balance for a slug in a specific exchange</p>
+</dd>
 <dt><a href="#SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS">SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange balance.</p>
 </dd>
@@ -137,6 +224,9 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 <dt><a href="#SAN_EXCHANGE_INFLOW_AGGREGATED">SAN_EXCHANGE_INFLOW_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange inflow.</p>
 </dd>
+<dt><a href="#SAN_EXCHANGE_INFLOW_BY_EXCHANGE">SAN_EXCHANGE_INFLOW_BY_EXCHANGE(projectSlug, from, to, owner, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the exchange inflow for a slug in a specific exchange</p>
+</dd>
 <dt><a href="#SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS">SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange inflow.</p>
 </dd>
@@ -145,6 +235,9 @@ the tokens that were withdrawn from an exchange for a given slug and time interv
 </dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW_AGGREGATED">SAN_EXCHANGE_OUTFLOW_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange outflow.</p>
+</dd>
+<dt><a href="#SAN_EXCHANGE_OUTFLOW_BY_EXCHANGE">SAN_EXCHANGE_OUTFLOW_BY_EXCHANGE(projectSlug, from, to, owner, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the exchange outflow for a slug in a specific exchange</p>
 </dd>
 <dt><a href="#SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS">SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the exchange outflow.</p>
@@ -288,6 +381,15 @@ Currently only ETH is supported.</p>
 </dd>
 <dt><a href="#SAN_MVRV_RATIO_MULTIPLE_SLUGS">SAN_MVRV_RATIO_MULTIPLE_SLUGS(projectSlugsList, from, to, currency, timeBound, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns MVRV(Market-Value-to-Realized-Value).</p>
+</dd>
+<dt><a href="#SAN_MVRV_Z_SCORE">SAN_MVRV_Z_SCORE(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the MVRV Z score.</p>
+</dd>
+<dt><a href="#SAN_MVRV_Z_SCORE_AGGREGATED">SAN_MVRV_Z_SCORE_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the MVRV Z score.</p>
+</dd>
+<dt><a href="#SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS">SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the MVRV Z score.</p>
 </dd>
 <dt><a href="#SAN_NETWORK_GROWTH">SAN_NETWORK_GROWTH(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s network growth</p>
@@ -439,6 +541,24 @@ Spikes are signal of a large amount of tokens moving after being idle for an ext
 <dt><a href="#SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY">SAN_TOP_HOLDERS_PERCENT_OF_TOTAL_SUPPLY(projectSlug, from, to, numberOfHolders)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the top holders&#39; percent of total supply - in exchanges, outside exchanges and combined.</p>
 </dd>
+<dt><a href="#SAN_TOTAL_ASSETS_ISSUED">SAN_TOTAL_ASSETS_ISSUED(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the total issued assets.</p>
+</dd>
+<dt><a href="#SAN_TOTAL_ASSETS_ISSUED_AGGREGATED">SAN_TOTAL_ASSETS_ISSUED_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the total issued assets.</p>
+</dd>
+<dt><a href="#SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS">SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the total issued assets.</p>
+</dd>
+<dt><a href="#SAN_TOTAL_TRUSTLINES_COUNT">SAN_TOTAL_TRUSTLINES_COUNT(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the total trustlines count.</p>
+</dd>
+<dt><a href="#SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED">SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the total trustlines count.</p>
+</dd>
+<dt><a href="#SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS">SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the total trustlines count.</p>
+</dd>
 <dt><a href="#SAN_TRADING_VOLUME">SAN_TRADING_VOLUME(projectSlug, from, to, currency, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the slug&#39;s trading volume.</p>
 </dd>
@@ -458,10 +578,46 @@ transfers that have occurred on a blockchain.</p>
 Transaction Volume&quot; refers to the total number of tokens within all
 transfers that have occurred on a blockchain.</p>
 </dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_LOSS">SAN_TRANSACTION_VOLUME_LOSS(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the transaction volume in loss.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED">SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transaction volume in loss.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS">SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transaction volume in loss.</p>
+</dd>
 <dt><a href="#SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS">SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Gets the transaction volume for the specified asset, during a given time interval.
 Transaction Volume&quot; refers to the total number of tokens within all
 transfers that have occurred on a blockchain.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT">SAN_TRANSACTION_VOLUME_PROFIT(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the transaction volume in profit.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT_AGGREGATED">SAN_TRANSACTION_VOLUME_PROFIT_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transaction volume in profit.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO">SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the ratio between transaction volume in profit and transaction volume in loss.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED">SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the ratio between transaction volume in profit and transaction volume in loss.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS">SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the ratio between transaction volume in profit and transaction volume in loss.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS">SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transaction volume in profit.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTIONS_COUNT">SAN_TRANSACTIONS_COUNT(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the transactions count.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTIONS_COUNT_AGGREGATED">SAN_TRANSACTIONS_COUNT_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transactions count.</p>
+</dd>
+<dt><a href="#SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS">SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns the transactions count.</p>
 </dd>
 <dt><a href="#SAN_VELOCITY">SAN_VELOCITY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
 <dd><p>Returns the token&#39;s velocity.</p>
@@ -498,6 +654,18 @@ transfers that have occurred on a blockchain.</p>
 </dd>
 <dt><a href="#SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS">SAN_WHALE_TRANSACTION_COUNT_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
 <dd><p>Returns the number of transactions transferring more than 100k USD.</p>
+</dd>
+<dt><a href="#SAN_WITHDRAWAL_TRANSACTIONS_BY_EXCHANGE">SAN_WITHDRAWAL_TRANSACTIONS_BY_EXCHANGE(projectSlug, from, to, owner, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns the withdrawal transactions for a slug in a specific exchange</p>
+</dd>
+<dt><a href="#SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY">SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY(projectSlug, from, to, interval)</a> ⇒ <code>Array</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_AGGREGATED">SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_AGGREGATED(projectSlug, from, to, aggregation)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
+</dd>
+<dt><a href="#SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS">SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS(projectSlugsList, from, to, interval)</a> ⇒ <code>number</code></dt>
+<dd><p>Returns number of withdrawal transactions with the option of smaller intervals.</p>
 </dd>
 </dl>
 
@@ -565,6 +733,104 @@ participated in transactions on a blockchain.
 **Kind**: global function  
 **Returns**: <code>number</code> - of results for multiple slugs
 active addresses for the last 24 hours.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_ACTIVE_ADDRESSES_60D"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_60D(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the active addresses in the last 60 days.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the active addresses in the last 60 days.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_ACTIVE_ADDRESSES_60D_AGGREGATED"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_60D\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the active addresses in the last 60 days.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the active addresses in the last 60 days.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_ACTIVE_ADDRESSES_60D_MULTIPLE_SLUGS"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_60D\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the active addresses in the last 60 days.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the active addresses in the last 60 days.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_ACTIVE_ADDRESSES_90D"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_90D(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the active addresses in the last 90 days.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the active addresses in the last 90 days.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_ACTIVE_ADDRESSES_90D_AGGREGATED"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_90D\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the active addresses in the last 90 days.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the active addresses in the last 90 days.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS"></a>
+
+## SAN\_ACTIVE\_ADDRESSES\_90D\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the active addresses in the last 90 days.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the active addresses in the last 90 days.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
@@ -824,6 +1090,55 @@ the amount of open perpetual contracts.
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
+<a name="SAN_DAILY_ASSETS_ISSUED"></a>
+
+## SAN\_DAILY\_ASSETS\_ISSUED(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the daily issued assets.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the daily issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_ASSETS_ISSUED_AGGREGATED"></a>
+
+## SAN\_DAILY\_ASSETS\_ISSUED\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the daily issued assets.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the daily issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_ASSETS_ISSUED_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_ASSETS\_ISSUED\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the daily issued assets.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the daily issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_DAILY_AVG_MARKETCAP"></a>
 
 ## SAN\_DAILY\_AVG\_MARKETCAP(projectSlug, from, to, currency, interval) ⇒ <code>Array</code>
@@ -942,6 +1257,219 @@ Returns the closing price for a given day.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | day | <code>date</code> | The date to fetch the data. Example: DATE(2018, 9, 20) |
 
+<a name="SAN_DAILY_DEPOSIT_TRANSACTIONS"></a>
+
+## SAN\_DAILY\_DEPOSIT\_TRANSACTIONS(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_DEPOSIT_TRANSACTIONS_AGGREGATED"></a>
+
+## SAN\_DAILY\_DEPOSIT\_TRANSACTIONS\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_DEPOSIT_TRANSACTIONS_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_DEPOSIT\_TRANSACTIONS\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_TRUSTLINES_COUNT_CHANGE"></a>
+
+## SAN\_DAILY\_TRUSTLINES\_COUNT\_CHANGE(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the daily trustlines count change.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the daily trustlines count change.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_TRUSTLINES_COUNT_CHANGE_AGGREGATED"></a>
+
+## SAN\_DAILY\_TRUSTLINES\_COUNT\_CHANGE\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the daily trustlines count change.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the daily trustlines count change.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_TRUSTLINES_COUNT_CHANGE_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_TRUSTLINES\_COUNT\_CHANGE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the daily trustlines count change.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the daily trustlines count change.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_WITHDRAWAL_TRANSACTIONS"></a>
+
+## SAN\_DAILY\_WITHDRAWAL\_TRANSACTIONS(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DAILY_WITHDRAWAL_TRANSACTIONS_AGGREGATED"></a>
+
+## SAN\_DAILY\_WITHDRAWAL\_TRANSACTIONS\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DAILY_WITHDRAWAL_TRANSACTIONS_MULTIPLE_SLUGS"></a>
+
+## SAN\_DAILY\_WITHDRAWAL\_TRANSACTIONS\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns number of withdrawal transactions.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+number of withdrawal transactions.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEPOSIT_TRANSACTIONS_BY_EXCHANGE"></a>
+
+## SAN\_DEPOSIT\_TRANSACTIONS\_BY\_EXCHANGE(projectSlug, from, to, owner, interval) ⇒ <code>Array</code>
+Returns the deposit transactions for a slug in a specific exchange
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - exchange inflow values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| owner | <code>string</code> |  | Name of the exchange |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEPOSIT_TRANSACTIONS_INTRADAY"></a>
+
+## SAN\_DEPOSIT\_TRANSACTIONS\_INTRADAY(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of number of withdrawal transactions with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED"></a>
+
+## SAN\_DEPOSIT\_TRANSACTIONS\_INTRADAY\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated number of withdrawal transactions with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS"></a>
+
+## SAN\_DEPOSIT\_TRANSACTIONS\_INTRADAY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+number of withdrawal transactions with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_DEV_ACTIVITY"></a>
 
 ## SAN\_DEV\_ACTIVITY(projectSlug, from, to) ⇒ <code>Array</code>
@@ -956,6 +1484,104 @@ Returns a list of dev activity for a given slug and time interval.
 | projectSlug | <code>string</code> | Name of the asset at sanbase, which can be found at the end of the URL (eg. the Santiment URL is https://app.santiment.net/projects/santiment, so the projectSlug would be santiment). |
 | from | <code>date</code> | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+
+<a name="SAN_DEX_VOLUME_IN_USD_INTRADAY"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_USD\_INTRADAY(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the DEX volume in USD.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the DEX volume in USD.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_USD\_INTRADAY\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the DEX volume in USD.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the DEX volume in USD.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_USD\_INTRADAY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the DEX volume in USD.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the DEX volume in USD.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEX_VOLUME_IN_XRP_INTRADAY"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_XRP\_INTRADAY(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the DEX volume in XRP.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the DEX volume in XRP.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_DEX_VOLUME_IN_XRP_INTRADAY_AGGREGATED"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_XRP\_INTRADAY\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the DEX volume in XRP.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the DEX volume in XRP.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_DEX_VOLUME_IN_XRP_INTRADAY_MULTIPLE_SLUGS"></a>
+
+## SAN\_DEX\_VOLUME\_IN\_XRP\_INTRADAY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the DEX volume in XRP.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the DEX volume in XRP.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_EMERGING_TRENDS"></a>
 
@@ -1047,6 +1673,23 @@ Returns the exchange balance.
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
+<a name="SAN_EXCHANGE_BALANCE_BY_EXCHANGE"></a>
+
+## SAN\_EXCHANGE\_BALANCE\_BY\_EXCHANGE(projectSlug, from, to, owner, interval) ⇒ <code>Array</code>
+Returns the exchange balance for a slug in a specific exchange
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - exchange inflow values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| owner | <code>string</code> |  | Name of the exchange |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS"></a>
 
 ## SAN\_EXCHANGE\_BALANCE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
@@ -1112,6 +1755,23 @@ Returns the exchange inflow.
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
+<a name="SAN_EXCHANGE_INFLOW_BY_EXCHANGE"></a>
+
+## SAN\_EXCHANGE\_INFLOW\_BY\_EXCHANGE(projectSlug, from, to, owner, interval) ⇒ <code>Array</code>
+Returns the exchange inflow for a slug in a specific exchange
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - exchange inflow values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| owner | <code>string</code> |  | Name of the exchange |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_EXCHANGE_INFLOW_MULTIPLE_SLUGS"></a>
 
 ## SAN\_EXCHANGE\_INFLOW\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
@@ -1160,6 +1820,23 @@ Returns the exchange outflow.
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_EXCHANGE_OUTFLOW_BY_EXCHANGE"></a>
+
+## SAN\_EXCHANGE\_OUTFLOW\_BY\_EXCHANGE(projectSlug, from, to, owner, interval) ⇒ <code>Array</code>
+Returns the exchange outflow for a slug in a specific exchange
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - exchange inflow values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| owner | <code>string</code> |  | Name of the exchange |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS"></a>
 
@@ -1249,7 +1926,7 @@ Returns the funding rates that are paid by one of the sides of the perpetual con
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" "FTX" "DYDX" "BITFINEX" "DERIBIT" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_FUNDING_RATE_BUSD_AGGREGATED"></a>
@@ -1301,7 +1978,7 @@ Returns the funding rates that are paid by one of the sides of the perpetual con
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" |
+| fundingRateExchange | <code>string</code> |  | The exchange platform, from which funding rates are fetched, BITMEX by default: "BITMEX" "BINANCE" "FTX" "DYDX" "BITFINEX" "DERIBIT" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_FUNDING_RATE_USDT_AGGREGATED"></a>
@@ -1432,7 +2109,7 @@ Represents the total number of addresses holding the given amount of tokens.
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_AGGREGATED"></a>
@@ -1449,7 +2126,7 @@ Represents the total number of addresses holding the given amount of tokens.
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE"></a>
@@ -1466,7 +2143,7 @@ Returns the number of tokens in a specific bucket.
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_AGGREGATED"></a>
@@ -1483,7 +2160,7 @@ Returns the number of tokens in a specific bucket.
 | projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE_MULTIPLE_SLUGS"></a>
@@ -1501,7 +2178,7 @@ the number of tokens in a specific bucket.
 | projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_HOLDERS_DISTRIBUTION_MULTIPLE_SLUGS"></a>
@@ -1519,7 +2196,7 @@ total number of addresses holding the given amount of tokens.
 | projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
 | from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
-| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-inf", "total" |
+| balance | <code>string</code> | <code>&quot;total&quot;</code> | Interval of amount of tokens. Available balance intervals are: "0-0.001", "0.001-0.01", "0.01-0.1", "0.1-1", "1-10", "10-100", "100-1k", "1k-10k", "10k-100k", "100k-1M", "1M-10M", "10M-100M", "100M-1B", "1B-inf", "total" |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_LATEST_PRICE"></a>
@@ -1931,6 +2608,55 @@ MVRV ratios.
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | currency | <code>string</code> |  | The metric is calculated using a currency of choice. Available currencies: USD |
 | timeBound | <code>string</code> |  | The metric is calculated only by taking into account the tokens/coins that have moved in the past number of years/days. |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_MVRV_Z_SCORE"></a>
+
+## SAN\_MVRV\_Z\_SCORE(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the MVRV Z score.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the MVRV Z score.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_MVRV_Z_SCORE_AGGREGATED"></a>
+
+## SAN\_MVRV\_Z\_SCORE\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the MVRV Z score.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the MVRV Z score.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_MVRV_Z_SCORE_MULTIPLE_SLUGS"></a>
+
+## SAN\_MVRV\_Z\_SCORE\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the MVRV Z score.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the MVRV Z score.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
 
 <a name="SAN_NETWORK_GROWTH"></a>
@@ -2609,6 +3335,104 @@ Returns the top holders' percent of total supply - in exchanges, outside exchang
 | to | <code>date</code> | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | numberOfHolders | <code>number</code> | Take top number of holders into account when calculating. |
 
+<a name="SAN_TOTAL_ASSETS_ISSUED"></a>
+
+## SAN\_TOTAL\_ASSETS\_ISSUED(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the total issued assets.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the total issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TOTAL_ASSETS_ISSUED_AGGREGATED"></a>
+
+## SAN\_TOTAL\_ASSETS\_ISSUED\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the total issued assets.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the total issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS"></a>
+
+## SAN\_TOTAL\_ASSETS\_ISSUED\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the total issued assets.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the total issued assets.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TOTAL_TRUSTLINES_COUNT"></a>
+
+## SAN\_TOTAL\_TRUSTLINES\_COUNT(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the total trustlines count.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the total trustlines count.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED"></a>
+
+## SAN\_TOTAL\_TRUSTLINES\_COUNT\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the total trustlines count.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the total trustlines count.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS"></a>
+
+## SAN\_TOTAL\_TRUSTLINES\_COUNT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the total trustlines count.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the total trustlines count.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_TRADING_VOLUME"></a>
 
 ## SAN\_TRADING\_VOLUME(projectSlug, from, to, currency, interval) ⇒ <code>Array</code>
@@ -2697,6 +3521,55 @@ transfers that have occurred on a blockchain.
 | to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
 | aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
 
+<a name="SAN_TRANSACTION_VOLUME_LOSS"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_LOSS(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTION_VOLUME_LOSS_AGGREGATED"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_LOSS\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRANSACTION_VOLUME_LOSS_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_LOSS\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
 <a name="SAN_TRANSACTION_VOLUME_MULTIPLE_SLUGS"></a>
 
 ## SAN\_TRANSACTION\_VOLUME\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
@@ -2707,6 +3580,153 @@ transfers that have occurred on a blockchain.
 **Kind**: global function  
 **Returns**: <code>number</code> - of results for multiple slugs
 transaction volumes.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the transaction volume in profit.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the transaction volume in profit.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT_AGGREGATED"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the transaction volume in profit.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the transaction volume in profit.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT\_LOSS\_RATIO(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the ratio between transaction volume in profit and transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the ratio between transaction volume in profit and transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_AGGREGATED"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT\_LOSS\_RATIO\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the ratio between transaction volume in profit and transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the ratio between transaction volume in profit and transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT_LOSS_RATIO_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT\_LOSS\_RATIO\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the ratio between transaction volume in profit and transaction volume in loss.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the ratio between transaction volume in profit and transaction volume in loss.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTION_VOLUME_PROFIT_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRANSACTION\_VOLUME\_PROFIT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the transaction volume in profit.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the transaction volume in profit.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTIONS_COUNT"></a>
+
+## SAN\_TRANSACTIONS\_COUNT(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns the transactions count.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of the transactions count.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_TRANSACTIONS_COUNT_AGGREGATED"></a>
+
+## SAN\_TRANSACTIONS\_COUNT\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns the transactions count.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated the transactions count.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS"></a>
+
+## SAN\_TRANSACTIONS\_COUNT\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns the transactions count.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+the transactions count.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
@@ -2906,6 +3926,72 @@ Returns the number of transactions transferring more than 100k USD.
 **Kind**: global function  
 **Returns**: <code>number</code> - of results for multiple slugs
 the number of transactions transferring more than 100k USD.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlugsList | <code>string</code> |  | Comma-separated names of the assets, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_WITHDRAWAL_TRANSACTIONS_BY_EXCHANGE"></a>
+
+## SAN\_WITHDRAWAL\_TRANSACTIONS\_BY\_EXCHANGE(projectSlug, from, to, owner, interval) ⇒ <code>Array</code>
+Returns the withdrawal transactions for a slug in a specific exchange
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - exchange inflow values.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| owner | <code>string</code> |  | Name of the exchange |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY"></a>
+
+## SAN\_WITHDRAWAL\_TRANSACTIONS\_INTRADAY(projectSlug, from, to, interval) ⇒ <code>Array</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>Array</code> - of number of withdrawal transactions with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| interval | <code>string</code> | <code>&quot;1d&quot;</code> | The resolution with which the data is fetched. Example: "5m" |
+
+<a name="SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_AGGREGATED"></a>
+
+## SAN\_WITHDRAWAL\_TRANSACTIONS\_INTRADAY\_AGGREGATED(projectSlug, from, to, aggregation) ⇒ <code>number</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of aggregated number of withdrawal transactions with the option of smaller intervals.  
+**Customfunction**:   
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| projectSlug | <code>string</code> |  | Name of the asset, more info at https://academy.santiment.net/glossary/#slug. Example: "santiment". |
+| from | <code>date</code> |  | The starting date to fetch the data. Example: DATE(2018, 9, 20) |
+| to | <code>date</code> |  | The ending date to fetch the data. Example: DATE(2018, 9, 21) |
+| aggregation | <code>string</code> | <code>&quot;null&quot;</code> | Aggregation for the timeseries metrics. Example: "LAST" |
+
+<a name="SAN_WITHDRAWAL_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS"></a>
+
+## SAN\_WITHDRAWAL\_TRANSACTIONS\_INTRADAY\_MULTIPLE\_SLUGS(projectSlugsList, from, to, interval) ⇒ <code>number</code>
+Returns number of withdrawal transactions with the option of smaller intervals.
+
+**Kind**: global function  
+**Returns**: <code>number</code> - of results for multiple slugs
+number of withdrawal transactions with the option of smaller intervals.  
 **Customfunction**:   
 
 | Param | Type | Default | Description |
