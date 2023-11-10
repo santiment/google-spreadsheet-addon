@@ -409,6 +409,11 @@ const metricsList = [
     metric: 'transactions_count',
     description: ['Returns the transactions count.'],
     returns: 'the transactions count.'
+  },
+  {
+    metric: 'total_open_interest',
+    description: ['Returns the total open interest.'],
+    returns: 'the total open interest.'
   }
 ]
 
