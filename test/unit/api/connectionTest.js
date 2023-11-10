@@ -157,7 +157,7 @@ describe('error handling', () => {
     stub.returns({ body: body, statusCode: 200 })
 
     const conn = new san.Connection_()
-    const expectedError = 'Unexpected token j in JSON at position 0'
+    const expectedError = 'Unexpected token \'j\', "json" is not valid JSON'
 
     expect(() => conn.fetchQuery('', '')).to.throw(expectedError)
   })
