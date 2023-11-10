@@ -1303,6 +1303,27 @@ function SAN_TRANSACTIONS_COUNT (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the total open interest.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the total open interest.
+* @customfunction
+*/
+function SAN_TOTAL_OPEN_INTEREST (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'total_open_interest',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1473,6 +1494,9 @@ function SAN_FUNCTIONS () {
     'SAN_TOTAL_ASSETS_ISSUED',
     'SAN_TOTAL_ASSETS_ISSUED_AGGREGATED',
     'SAN_TOTAL_ASSETS_ISSUED_MULTIPLE_SLUGS',
+    'SAN_TOTAL_OPEN_INTEREST',
+    'SAN_TOTAL_OPEN_INTEREST_AGGREGATED',
+    'SAN_TOTAL_OPEN_INTEREST_MULTIPLE_SLUGS',
     'SAN_TOTAL_TRUSTLINES_COUNT',
     'SAN_TOTAL_TRUSTLINES_COUNT_AGGREGATED',
     'SAN_TOTAL_TRUSTLINES_COUNT_MULTIPLE_SLUGS',
@@ -2739,6 +2763,27 @@ function SAN_ACTIVE_ADDRESSES_90D_AGGREGATED (projectSlug, from, to, aggregation
 function SAN_TRANSACTIONS_COUNT_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'transactions_count',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the total open interest.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the total open interest.
+* @customfunction
+*/
+function SAN_TOTAL_OPEN_INTEREST_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'total_open_interest',
     projectSlug,
     from,
     to,
@@ -4027,6 +4072,28 @@ function SAN_ACTIVE_ADDRESSES_90D_MULTIPLE_SLUGS (projectSlugsList, from, to, in
 function SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'transactions_count',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the total open interest.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the total open interest.
+* @customfunction
+*/
+function SAN_TOTAL_OPEN_INTEREST_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'total_open_interest',
     projectSlugsList,
     from,
     to,
