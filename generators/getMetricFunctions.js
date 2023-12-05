@@ -414,6 +414,21 @@ const metricsList = [
     metric: 'total_open_interest',
     description: ['Returns the total open interest.'],
     returns: 'the total open interest.'
+  },
+  {
+    metric: 'rsi_4h',
+    description: ['Returns the relative strength index.'],
+    returns: 'the relative strength index for the last 4 hours.'
+  },
+  {
+    metric: 'rsi_1d',
+    description: ['Returns the relative strength index.'],
+    returns: 'the relative strength index for the last day.'
+  },
+  {
+    metric: 'rsi_7d',
+    description: ['Returns the relative strength index.'],
+    returns: 'the relative strength index for the last 7 days.'
   }
 ]
 

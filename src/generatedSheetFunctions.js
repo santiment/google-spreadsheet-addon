@@ -1324,6 +1324,69 @@ function SAN_TOTAL_OPEN_INTEREST (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the relative strength index for the last 4 hours.
+* @customfunction
+*/
+function SAN_RSI_4H (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'rsi_4h',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the relative strength index for the last day.
+* @customfunction
+*/
+function SAN_RSI_1D (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'rsi_1d',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the relative strength index for the last 7 days.
+* @customfunction
+*/
+function SAN_RSI_7D (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'rsi_7d',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1475,6 +1538,15 @@ function SAN_FUNCTIONS () {
     'SAN_REALIZED_VALUE_AGGREGATED',
     'SAN_REALIZED_VALUE_MULTIPLE_SLUGS',
     'SAN_REVERSE',
+    'SAN_RSI_1D',
+    'SAN_RSI_1D_AGGREGATED',
+    'SAN_RSI_1D_MULTIPLE_SLUGS',
+    'SAN_RSI_4H',
+    'SAN_RSI_4H_AGGREGATED',
+    'SAN_RSI_4H_MULTIPLE_SLUGS',
+    'SAN_RSI_7D',
+    'SAN_RSI_7D_AGGREGATED',
+    'SAN_RSI_7D_MULTIPLE_SLUGS',
     'SAN_SOCIAL_DOMINANCE',
     'SAN_SOCIAL_DOMINANCE_AGGREGATED',
     'SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS',
@@ -2791,6 +2863,69 @@ function SAN_TOTAL_OPEN_INTEREST_AGGREGATED (projectSlug, from, to, aggregation 
   )
 }
 
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the relative strength index for the last 4 hours.
+* @customfunction
+*/
+function SAN_RSI_4H_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'rsi_4h',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the relative strength index for the last day.
+* @customfunction
+*/
+function SAN_RSI_1D_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'rsi_1d',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the relative strength index for the last 7 days.
+* @customfunction
+*/
+function SAN_RSI_7D_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'rsi_7d',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
@@ -4094,6 +4229,72 @@ function SAN_TRANSACTIONS_COUNT_MULTIPLE_SLUGS (projectSlugsList, from, to, inte
 function SAN_TOTAL_OPEN_INTEREST_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'total_open_interest',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the relative strength index for the last 4 hours.
+* @customfunction
+*/
+function SAN_RSI_4H_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'rsi_4h',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the relative strength index for the last day.
+* @customfunction
+*/
+function SAN_RSI_1D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'rsi_1d',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the relative strength index.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the relative strength index for the last 7 days.
+* @customfunction
+*/
+function SAN_RSI_7D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'rsi_7d',
     projectSlugsList,
     from,
     to,
