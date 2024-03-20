@@ -129,36 +129,6 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
 }
 
 /**
- * Returns a list of github activity for a given slug and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of github activity.
- * @customfunction
- */
-function SAN_GITHUB_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(githubActivity_)(projectSlug, from, to)
-}
-
-/**
- * Returns a list of dev activity for a given slug and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of dev activity.
- * @customfunction
- */
-function SAN_DEV_ACTIVITY (projectSlug, from, to) {
-  return handleErrors_(devActivity_)(projectSlug, from, to)
-}
-
-/**
  * Returns the difference between the tokens that were deposited minus
  * the tokens that were withdrawn from an exchange for a given slug and time interval.
  *
@@ -232,22 +202,6 @@ function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
 }
 
 /**
- * Returns used Gas by a blockchain.
- * When you send tokens, interact with a contract or do anything else on the blockchain,
- * you must pay for that computation. That payment is calculated in Gas.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of quantities of gas used.
- * @customfunction
- */
-function SAN_GAS_USED (projectSlug, from, to) {
-  return handleErrors_(gasUsed_)(projectSlug, from, to)
-}
-
-/**
  * Returns the distribution of miners between mining pools.
  * What part of the miners are using top3, top10 and all the other pools.
  * Currently only ETH is supported.
@@ -261,21 +215,6 @@ function SAN_GAS_USED (projectSlug, from, to) {
  */
 function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
   return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
-}
-
-/**
- * Returns miners balances over time
- * Currently only ETH is supported.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of balances.
- * @customfunction
- */
-function SAN_MINERS_BALANCE (projectSlug, from, to) {
-  return handleErrors_(minersBalance_)(projectSlug, from, to)
 }
 
 /**
@@ -317,20 +256,6 @@ function SAN_DAILY_CLOSING_PRICE (projectSlug, day) {
  */
 function SAN_HISTORICAL_BALANCE (projectSlug, from, to, address) {
   return handleErrors_(historicalBalance_)(projectSlug, from, to, address)
-}
-
-/**
- * Returns the historical count of twitter followers.
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} followers count over time.
- * @customfunction
- */
-function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to) {
-  return handleErrors_(historyTwitterData_)(projectSlug, from, to)
 }
 
 /**

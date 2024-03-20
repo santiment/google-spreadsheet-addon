@@ -429,6 +429,36 @@ const metricsList = [
     metric: 'rsi_7d',
     description: ['Returns the relative strength index.'],
     returns: 'the relative strength index for the last 7 days.'
+  },
+  {
+    metric: 'twitter_followers',
+    sheetMetricName: 'history_twitter_data',
+    description: ['Returns the historical count of twitter followers.'],
+    returns: 'the historical count of twitter followers.'
+  },
+  {
+    metric: 'github_activity',
+    description: ['Returns a list of github activity for a given slug and time interval.'],
+    returns: 'the list of github activity for a given slug and time interval.'
+  },
+  {
+    metric: 'dev_activity',
+    description: ['Returns a list of dev activity for a given slug and time interval.'],
+    returns: 'the list of dev activity for a given slug and time interval.'
+  },
+  {
+    metric: 'avg_gas_used',
+    sheetMetricName: 'gas_used',
+    description: ['Returns used Gas by a blockchain.',
+      '* When you send tokens, interact with a contract or do anything else on the blockchain,',
+      '* you must pay for that computation. That payment is calculated in Gas.'],
+    returns: 'of quantities of gas used.'
+  },
+  {
+    metric: 'miners_balance',
+    description: ['Returns miners balances over time',
+      'Currently only ETH is supported.'],
+    returns: 'of balances.'
   }
 ]
 
