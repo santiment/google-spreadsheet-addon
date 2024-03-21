@@ -453,12 +453,6 @@ const metricsList = [
       '* When you send tokens, interact with a contract or do anything else on the blockchain,',
       '* you must pay for that computation. That payment is calculated in Gas.'],
     returns: 'of quantities of gas used.'
-  },
-  {
-    metric: 'miners_balance',
-    description: ['Returns miners balances over time',
-      'Currently only ETH is supported.'],
-    returns: 'of balances.'
   }
 ]
 

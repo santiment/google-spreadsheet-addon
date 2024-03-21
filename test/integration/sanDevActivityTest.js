@@ -22,14 +22,14 @@ describe('SAN_DEV_ACTIVITY', () => {
 
   testFieldTypes(activities, expected)
   testHandlesNullData(
-    'fetchDevActivity',
+    'fetchGetMetric',
     san.SAN_DEV_ACTIVITY,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Activity']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

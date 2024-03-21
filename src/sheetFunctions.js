@@ -202,19 +202,19 @@ function SAN_TOKEN_AGE_CONSUMED (projectSlug, from, to) {
 }
 
 /**
- * Returns the distribution of miners between mining pools.
- * What part of the miners are using top3, top10 and all the other pools.
+ * Returns miners balances over time
  * Currently only ETH is supported.
  * @param {string} projectSlug Name of the asset at sanbase,
  * which can be found at the end of the URL (eg. the Santiment URL is
  * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
  * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
  * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of distribution ratios.
+ * @param {string} interval The resolution with which the data is fetched. Example: "1d"
+ * @returns {Array} of balances.
  * @customfunction
  */
-function SAN_MINING_POOLS_DISTRIBUTION (projectSlug, from, to) {
-  return handleErrors_(miningPoolsDistribution_)(projectSlug, from, to)
+function SAN_MINERS_BALANCE (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(minersBalance_)(projectSlug, from, to, interval)
 }
 
 /**

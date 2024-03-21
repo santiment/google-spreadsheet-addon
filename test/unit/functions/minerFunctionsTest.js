@@ -112,30 +112,32 @@ describe('miningPoolsDistribution_', () => {
 describe('minersBalance_', () => {
   it('returns miners\' balance ', () => {
     sandbox.stub(san.ApiClient_.prototype, 'fetchMinersBalance').returns(
-      [
-        {
-          datetime: '2019-07-21',
-          balance: 1412628.735416455
-        },
-        {
-          datetime: '2019-07-22',
-          balance: 1414411.0214646028
-        },
-        {
-          datetime: '2019-07-23',
-          balance: 1414950.397734732
-        },
-        {
-          datetime: '2019-07-24',
-          balance: 1417370.2671043198
-        }
-      ]
+      {
+        timeseriesData: [
+          {
+            datetime: '2019-07-21',
+            value: 1412628.735416455
+          },
+          {
+            datetime: '2019-07-22',
+            value: 1414411.0214646028
+          },
+          {
+            datetime: '2019-07-23',
+            value: 1414950.397734732
+          },
+          {
+            datetime: '2019-07-24',
+            value: 1417370.2671043198
+          }
+        ]
+      }
     )
     const response = san.minersBalance_(slug, from, to)
 
     expect(response).to.deep.eq(
       [
-        [ 'Date', 'Balance' ],
+        [ 'Date', 'Value' ],
         [ '2019-07-21', 1412628.735416455 ],
         [ '2019-07-22', 1414411.0214646028 ],
         [ '2019-07-23', 1414950.397734732 ],
@@ -145,12 +147,12 @@ describe('minersBalance_', () => {
   })
 
   it('returns headers only on empty array response', () => {
-    sandbox.stub(san.ApiClient_.prototype, 'fetchMinersBalance').returns([])
+    sandbox.stub(san.ApiClient_.prototype, 'fetchMinersBalance').returns({ timeseriesData: [] })
     const response = san.minersBalance_(slug, from, to)
 
     expect(response).to.deep.eq(
       [
-        [ 'Date', 'Balance' ]
+        [ 'Date', 'Value' ]
       ]
     )
   })

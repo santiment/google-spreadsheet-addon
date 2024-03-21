@@ -13,7 +13,7 @@ const {
 describe('SAN_GITHUB_ACTIVITY', () => {
   const expected = {
     date: 'string',
-    activity: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_GITHUB_ACTIVITY(slug, from, to)
@@ -22,14 +22,14 @@ describe('SAN_GITHUB_ACTIVITY', () => {
 
   testFieldTypes(activities, expected)
   testHandlesNullData(
-    'fetchGithubActivity',
+    'fetchGetMetric',
     san.SAN_GITHUB_ACTIVITY,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Activity']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
