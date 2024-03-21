@@ -11,17 +11,17 @@ const {
 } = require('../support/setup.js')
 
 describe('SAN_GAS_USED', () => {
-  const expected = { date: 'string', value: 'number' }
+  const expected = { date: 'string', gasUsed: 'number' }
 
   const response = san.SAN_GAS_USED(ethereumSlug, from, to)
   const headers = response[0]
   const results = response[1]
 
   testFieldTypes(results, expected)
-  testHandlesNullData('fetchGetMetric', san.SAN_GAS_USED, ethereumSlug, from, to)
+  testHandlesNullData('fetchGasUsed', san.SAN_GAS_USED, ethereumSlug, from, to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Value']
+    const expectedHeaders = ['Date', 'Gas Used']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

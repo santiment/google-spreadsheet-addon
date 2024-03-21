@@ -445,14 +445,6 @@ const metricsList = [
     metric: 'dev_activity',
     description: ['Returns a list of dev activity for a given slug and time interval.'],
     returns: 'the list of dev activity for a given slug and time interval.'
-  },
-  {
-    metric: 'avg_gas_used',
-    sheetMetricName: 'gas_used',
-    description: ['Returns used Gas by a blockchain.',
-      '* When you send tokens, interact with a contract or do anything else on the blockchain,',
-      '* you must pay for that computation. That payment is calculated in Gas.'],
-    returns: 'of quantities of gas used.'
   }
 ]
 

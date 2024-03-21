@@ -1450,29 +1450,6 @@ function SAN_DEV_ACTIVITY (projectSlug, from, to, interval = '1d') {
   )
 }
 
-
-/**
-* Returns used Gas by a blockchain.
-* * When you send tokens, interact with a contract or do anything else on the blockchain,
-* * you must pay for that computation. That payment is calculated in Gas.
-* @param {string} projectSlug Name of the asset,
-* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {Array} of of quantities of gas used.
-* @customfunction
-*/
-function SAN_GAS_USED (projectSlug, from, to, interval = '1d') {
-  return handleErrors_(getMetric_)(
-    'avg_gas_used',
-    projectSlug,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1565,8 +1542,6 @@ function SAN_FUNCTIONS () {
     'SAN_FUNDING_RATE_USDT_AGGREGATED',
     'SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS',
     'SAN_GAS_USED',
-    'SAN_GAS_USED_AGGREGATED',
-    'SAN_GAS_USED_MULTIPLE_SLUGS',
     'SAN_GITHUB_ACTIVITY',
     'SAN_GITHUB_ACTIVITY_AGGREGATED',
     'SAN_GITHUB_ACTIVITY_MULTIPLE_SLUGS',
@@ -3082,29 +3057,6 @@ function SAN_DEV_ACTIVITY_AGGREGATED (projectSlug, from, to, aggregation = 'null
   )
 }
 
-
-/**
-* Returns used Gas by a blockchain.
-* * When you send tokens, interact with a contract or do anything else on the blockchain,
-* * you must pay for that computation. That payment is calculated in Gas.
-* @param {string} projectSlug Name of the asset,
-* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
-* @returns {number} of aggregated of quantities of gas used.
-* @customfunction
-*/
-function SAN_GAS_USED_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
-  return handleErrors_(aggregatedGetMetric_)(
-    'avg_gas_used',
-    projectSlug,
-    from,
-    to,
-    { aggregation: aggregation }
-  )
-}
-
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
@@ -4540,30 +4492,6 @@ function SAN_GITHUB_ACTIVITY_MULTIPLE_SLUGS (projectSlugsList, from, to, interva
 function SAN_DEV_ACTIVITY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'dev_activity',
-    projectSlugsList,
-    from,
-    to,
-    { interval: interval }
-  )
-}
-
-
-/**
-* Returns used Gas by a blockchain.
-* * When you send tokens, interact with a contract or do anything else on the blockchain,
-* * you must pay for that computation. That payment is calculated in Gas.
-* @param {string} projectSlugsList Comma-separated names of the assets,
-* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
-* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
-* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
-* @param {string} interval The resolution with which the data is fetched. Example: "5m"
-* @returns {number} of results for multiple slugs
-* of quantities of gas used.
-* @customfunction
-*/
-function SAN_GAS_USED_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
-  return handleErrors_(getMetricMultipleSlugs_)(
-    'avg_gas_used',
     projectSlugsList,
     from,
     to,
