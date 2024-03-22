@@ -25,16 +25,3 @@ ApiClient_.prototype.fetchMiningPoolsDistribution = function (slug, from, to) {
 
   return this.conn.graphQLQuery(query, 'miningPoolsDistribution')
 }
-
-ApiClient_.prototype.fetchMinersBalance = function (slug, from, to) {
-  const query = {
-    'query': `{
-       minersBalance(${commonParams(slug, from, to)}) {
-         datetime
-         balance
-       }
-     }`
-  }
-
-  return this.conn.graphQLQuery(query, 'minersBalance')
-}

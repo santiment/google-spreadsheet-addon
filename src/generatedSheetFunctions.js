@@ -1387,6 +1387,69 @@ function SAN_RSI_7D (projectSlug, from, to, interval = '1d') {
   )
 }
 
+
+/**
+* Returns the historical count of twitter followers.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the historical count of twitter followers.
+* @customfunction
+*/
+function SAN_HISTORY_TWITTER_DATA (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'twitter_followers',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns a list of github activity for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the list of github activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_GITHUB_ACTIVITY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'github_activity',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns a list of dev activity for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the list of dev activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_DEV_ACTIVITY (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'dev_activity',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
 /**
  * Returns all available functions.
  * @returns {Array} of function names.
@@ -1443,6 +1506,8 @@ function SAN_FUNCTIONS () {
     'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_AGGREGATED',
     'SAN_DEPOSIT_TRANSACTIONS_INTRADAY_MULTIPLE_SLUGS',
     'SAN_DEV_ACTIVITY',
+    'SAN_DEV_ACTIVITY_AGGREGATED',
+    'SAN_DEV_ACTIVITY_MULTIPLE_SLUGS',
     'SAN_DEX_VOLUME_IN_USD_INTRADAY',
     'SAN_DEX_VOLUME_IN_USD_INTRADAY_AGGREGATED',
     'SAN_DEX_VOLUME_IN_USD_INTRADAY_MULTIPLE_SLUGS',
@@ -1478,9 +1543,13 @@ function SAN_FUNCTIONS () {
     'SAN_FUNDING_RATE_USDT_MULTIPLE_SLUGS',
     'SAN_GAS_USED',
     'SAN_GITHUB_ACTIVITY',
+    'SAN_GITHUB_ACTIVITY_AGGREGATED',
+    'SAN_GITHUB_ACTIVITY_MULTIPLE_SLUGS',
     'SAN_HISTORICAL_BALANCE',
     'SAN_HISTORICAL_BALANCE_DEDUP',
     'SAN_HISTORY_TWITTER_DATA',
+    'SAN_HISTORY_TWITTER_DATA_AGGREGATED',
+    'SAN_HISTORY_TWITTER_DATA_MULTIPLE_SLUGS',
     'SAN_HOLDERS_DISTRIBUTION',
     'SAN_HOLDERS_DISTRIBUTION_AGGREGATED',
     'SAN_HOLDERS_DISTRIBUTION_COMBINED_BALANCE',
@@ -1501,7 +1570,6 @@ function SAN_FUNCTIONS () {
     'SAN_MEAN_REALIZED_PRICE_AGGREGATED',
     'SAN_MEAN_REALIZED_PRICE_MULTIPLE_SLUGS',
     'SAN_MINERS_BALANCE',
-    'SAN_MINING_POOLS_DISTRIBUTION',
     'SAN_MVRV_LONG_SHORT_DIFF',
     'SAN_MVRV_LONG_SHORT_DIFF_AGGREGATED',
     'SAN_MVRV_LONG_SHORT_DIFF_MULTIPLE_SLUGS',
@@ -2926,6 +2994,69 @@ function SAN_RSI_7D_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   )
 }
 
+
+/**
+* Returns the historical count of twitter followers.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the historical count of twitter followers.
+* @customfunction
+*/
+function SAN_HISTORY_TWITTER_DATA_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'twitter_followers',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns a list of github activity for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the list of github activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_GITHUB_ACTIVITY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'github_activity',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Returns a list of dev activity for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the list of dev activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_DEV_ACTIVITY_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'dev_activity',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
 /* eslint-disable no-multi-spaces*/
 /**
 * Returns the daily average marketcap.
@@ -4295,6 +4426,72 @@ function SAN_RSI_1D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d')
 function SAN_RSI_7D_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'rsi_7d',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns the historical count of twitter followers.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the historical count of twitter followers.
+* @customfunction
+*/
+function SAN_HISTORY_TWITTER_DATA_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'twitter_followers',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns a list of github activity for a given slug and time interval.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the list of github activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_GITHUB_ACTIVITY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'github_activity',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Returns a list of dev activity for a given slug and time interval.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the list of dev activity for a given slug and time interval.
+* @customfunction
+*/
+function SAN_DEV_ACTIVITY_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'dev_activity',
     projectSlugsList,
     from,
     to,

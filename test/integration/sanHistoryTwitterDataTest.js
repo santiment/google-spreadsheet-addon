@@ -15,7 +15,7 @@ const {
 } = require('../support/setup.js')
 
 describe('SAN_HISTORY_TWITTER_DATA', () => {
-  const expected = { date: 'string', followersCount: 'number' }
+  const expected = { date: 'string', value: 'number' }
 
   const response = san.SAN_HISTORY_TWITTER_DATA(slug, from, to)
   const headers = response[0]
@@ -23,14 +23,14 @@ describe('SAN_HISTORY_TWITTER_DATA', () => {
 
   testFieldTypes(results, expected)
   testHandlesNullData(
-    'fetchHistoryTwitterData',
+    'fetchGetMetric',
     san.SAN_HISTORY_TWITTER_DATA,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Followers Count']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

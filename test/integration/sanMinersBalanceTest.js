@@ -15,7 +15,7 @@ const {
 } = require('../support/setup.js')
 
 describe('SAN_MINERS_BALANCE', () => {
-  const expected = { date: 'string', balance: 'number' }
+  const expected = { date: 'string', value: 'number' }
 
   const response = san.SAN_MINERS_BALANCE(ethereumSlug, from, to)
   const headers = response[0]
@@ -30,7 +30,7 @@ describe('SAN_MINERS_BALANCE', () => {
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'Balance']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 

@@ -27,17 +27,3 @@ function miningPoolsDistribution_ (slug, from, to) {
     ]
   ))
 }
-
-function minersBalance_ (slug, from, to) {
-  const results = getApiClient_().fetchMinersBalance(slug, from, to)
-  assertHasData_(results)
-
-  const headers = ['Date', 'Balance']
-
-  return [headers].concat(results.map(result =>
-    [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.balance)
-    ]
-  ))
-}
