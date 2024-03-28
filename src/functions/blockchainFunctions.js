@@ -12,20 +12,6 @@ function tokenAgeConsumed_ (slug, from, to) {
   ))
 }
 
-function exchangeFundsFlow_ (slug, from, to) {
-  const results = getApiClient_().fetchExchangeFundsFlow(slug, from, to)
-  assertHasData_(results)
-
-  const headers = ['Date', 'In/Out Difference']
-
-  return [headers].concat(results.map(result =>
-    [
-      formatDatetimeField_(result.datetime),
-      formatNumber_(result.inOutDifference)
-    ]
-  ))
-}
-
 function historicalBalance_ (slug, from, to, address) {
   const results = getApiClient_().fetchHistoricalBalance(slug, from, to, address)
   assertHasData_(results)

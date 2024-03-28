@@ -129,22 +129,6 @@ function SAN_SOCIAL_VOLUME_PROJECTS () {
 }
 
 /**
- * Returns the difference between the tokens that were deposited minus
- * the tokens that were withdrawn from an exchange for a given slug and time interval.
- *
- * @param {string} projectSlug Name of the asset at sanbase,
- * which can be found at the end of the URL (eg. the Santiment URL is
- * https://app.santiment.net/projects/santiment, so the projectSlug would be santiment).
- * @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
- * @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
- * @returns {Array} of token deposit/withdraw differences.
- * @customfunction
- */
-function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to) {
-  return handleErrors_(exchangeFundsFlow_)(projectSlug, from, to)
-}
-
-/**
  * Returns list of emerging trends and their corresponding trend score.
  *
  * @param {number} size An integer showing how many words should be included in the top list (max 100).

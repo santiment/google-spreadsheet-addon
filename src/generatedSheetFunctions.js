@@ -318,6 +318,28 @@ function SAN_EXCHANGE_BALANCE (projectSlug, from, to, interval = '1d') {
 
 
 /**
+* * Returns the difference between the tokens that were deposited minus
+* * the tokens that were withdrawn from an exchange for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of token deposit/withdraw differences.
+* @customfunction
+*/
+function SAN_EXCHANGE_FUNDS_FLOW (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'exchange_balance',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
 * Returns the token's age destroyed
 * @param {string} projectSlug Name of the asset,
 * more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
@@ -1523,6 +1545,8 @@ function SAN_FUNCTIONS () {
     'SAN_EXCHANGE_BALANCE_BY_EXCHANGE',
     'SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS',
     'SAN_EXCHANGE_FUNDS_FLOW',
+    'SAN_EXCHANGE_FUNDS_FLOW_AGGREGATED',
+    'SAN_EXCHANGE_FUNDS_FLOW_MULTIPLE_SLUGS',
     'SAN_EXCHANGE_INFLOW',
     'SAN_EXCHANGE_INFLOW_AGGREGATED',
     'SAN_EXCHANGE_INFLOW_BY_EXCHANGE',
@@ -1985,6 +2009,28 @@ function SAN_EXCHANGE_OUTFLOW_AGGREGATED (projectSlug, from, to, aggregation = '
 * @customfunction
 */
 function SAN_EXCHANGE_BALANCE_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'exchange_balance',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* * Returns the difference between the tokens that were deposited minus
+* * the tokens that were withdrawn from an exchange for a given slug and time interval.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated token deposit/withdraw differences.
+* @customfunction
+*/
+function SAN_EXCHANGE_FUNDS_FLOW_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
   return handleErrors_(aggregatedGetMetric_)(
     'exchange_balance',
     projectSlug,
@@ -3380,6 +3426,29 @@ function SAN_EXCHANGE_OUTFLOW_MULTIPLE_SLUGS (projectSlugsList, from, to, interv
 * @customfunction
 */
 function SAN_EXCHANGE_BALANCE_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'exchange_balance',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* * Returns the difference between the tokens that were deposited minus
+* * the tokens that were withdrawn from an exchange for a given slug and time interval.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* token deposit/withdraw differences.
+* @customfunction
+*/
+function SAN_EXCHANGE_FUNDS_FLOW_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
   return handleErrors_(getMetricMultipleSlugs_)(
     'exchange_balance',
     projectSlugsList,

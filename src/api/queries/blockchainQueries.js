@@ -1,16 +1,3 @@
-ApiClient_.prototype.fetchExchangeFundsFlow = function (slug, from, to) {
-  const query = {
-    'query': `{
-       exchangeFundsFlow(${commonParams(slug, from, to)}) {
-         inOutDifference
-         datetime
-       }
-     }`
-  }
-
-  return this.conn.graphQLQuery(query, 'exchangeFundsFlow')
-}
-
 ApiClient_.prototype.fetchTokenAgeConsumed = function (slug, from, to) {
   const query = {
     'query': `{
