@@ -90,6 +90,14 @@ const metricsList = [
     returns: 'exchange balances.'
   },
   {
+    metric: 'exchange_balance',
+    sheetMetricName: 'exchange_funds_flow',
+    description: [
+      '* Returns the difference between the tokens that were deposited minus',
+      '* the tokens that were withdrawn from an exchange for a given slug and time interval.'],
+    returns: 'token deposit/withdraw differences.'
+  },
+  {
     metric: 'age_destroyed',
     description: ['Returns the token\'s age destroyed'],
     returns: 'age destroyed values.'

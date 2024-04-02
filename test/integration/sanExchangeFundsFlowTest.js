@@ -13,7 +13,7 @@ const {
 describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
   const expected = {
     date: 'string',
-    inOutDifference: 'number'
+    value: 'number'
   }
 
   const response = san.SAN_EXCHANGE_FUNDS_FLOW(slug, from, to)
@@ -22,14 +22,14 @@ describe('SAN_EXCHANGE_FUNDS_FLOW', () => {
 
   testFieldTypes(results, expected)
   testHandlesNullData(
-    'fetchExchangeFundsFlow',
+    'fetchGetMetric',
     san.SAN_EXCHANGE_FUNDS_FLOW,
     slug,
     from,
     to)
 
   it('has proper headers', () => {
-    const expectedHeaders = ['Date', 'In/Out Difference']
+    const expectedHeaders = ['Date', 'Value']
     expect(headers).to.deep.equal(expectedHeaders)
   })
 
