@@ -7,9 +7,9 @@
     "docs": "node ./utils/generateDoc.js",
     "push": "clasp push -f",
     "pretest": "eslint . && npm run generate",
-    "test": "mocha",
-    "test:unit": "npm run pretest && mocha test/unit",
-    "test:integration": "npm run pretest && mocha test/integration",
+    "test": "mocha --no-silent",
+    "test:unit": "npm run pretest && mocha --no-silent test/unit",
+    "test:integration": "npm run pretest && mocha --no-silent test/integration",
     "generate": "node ./generators/mainGenerator.js",
     "test:generate": "node ./generators/getMetricTestGenerator.js"
   },
