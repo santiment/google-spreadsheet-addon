@@ -1,0 +1,1 @@
+docker build -f Dockerfile-test -t google-spreadsheet-addon-tests . && docker run -t google-spreadsheet-addon-tests
