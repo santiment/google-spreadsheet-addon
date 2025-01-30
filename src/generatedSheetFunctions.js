@@ -818,6 +818,48 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT (projectSlug, from, to, source, interval 
 
 
 /**
+* Total positive social sentiment for a slug.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's total positive sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_POSITIVE_TOTAL (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'sentiment_positive_total',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Total negative social sentiment for a slug.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {Array} of the slug's total negative sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_NEGATIVE_TOTAL (projectSlug, from, to, interval = '1d') {
+  return handleErrors_(getMetric_)(
+    'sentiment_negative_total',
+    projectSlug,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
 * Returns the amount of open perpetual contracts currently on Bitmex's
 * Project Ticker / USD trading pairs. When open interest reaches unusually high numbers,
 * it can precede increased volatility in the coin’s price.
@@ -1639,6 +1681,12 @@ function SAN_FUNCTIONS () {
     'SAN_RSI_7D',
     'SAN_RSI_7D_AGGREGATED',
     'SAN_RSI_7D_MULTIPLE_SLUGS',
+    'SAN_SENTIMENT_NEGATIVE_TOTAL',
+    'SAN_SENTIMENT_NEGATIVE_TOTAL_AGGREGATED',
+    'SAN_SENTIMENT_NEGATIVE_TOTAL_MULTIPLE_SLUGS',
+    'SAN_SENTIMENT_POSITIVE_TOTAL',
+    'SAN_SENTIMENT_POSITIVE_TOTAL_AGGREGATED',
+    'SAN_SENTIMENT_POSITIVE_TOTAL_MULTIPLE_SLUGS',
     'SAN_SOCIAL_DOMINANCE',
     'SAN_SOCIAL_DOMINANCE_AGGREGATED',
     'SAN_SOCIAL_DOMINANCE_MULTIPLE_SLUGS',
@@ -2452,6 +2500,48 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT_AGGREGATED (projectSlug, from, to, source
     from,
     to,
     { source: source, aggregation: aggregation }
+  )
+}
+
+
+/**
+* Total positive social sentiment for a slug.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the slug's total positive sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_POSITIVE_TOTAL_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'sentiment_positive_total',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
+  )
+}
+
+
+/**
+* Total negative social sentiment for a slug.
+* @param {string} projectSlug Name of the asset,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} aggregation Aggregation for the timeseries metrics. Example: "LAST"
+* @returns {number} of aggregated the slug's total negative sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_NEGATIVE_TOTAL_AGGREGATED (projectSlug, from, to, aggregation = 'null') {
+  return handleErrors_(aggregatedGetMetric_)(
+    'sentiment_negative_total',
+    projectSlug,
+    from,
+    to,
+    { aggregation: aggregation }
   )
 }
 
@@ -3887,6 +3977,50 @@ function SAN_WEIGHTED_SOCIAL_SENTIMENT_MULTIPLE_SLUGS (projectSlugsList, from, t
     from,
     to,
     { source: source, interval: interval }
+  )
+}
+
+
+/**
+* Total positive social sentiment for a slug.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the slug's total positive sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_POSITIVE_TOTAL_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'sentiment_positive_total',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
+  )
+}
+
+
+/**
+* Total negative social sentiment for a slug.
+* @param {string} projectSlugsList Comma-separated names of the assets,
+* more info at https://academy.santiment.net/glossary/#slug. Example: "santiment,bitcoin".
+* @param {date} from The starting date to fetch the data. Example: DATE(2018, 9, 20)
+* @param {date} to The ending date to fetch the data. Example: DATE(2018, 9, 21)
+* @param {string} interval The resolution with which the data is fetched. Example: "5m"
+* @returns {number} of results for multiple slugs
+* the slug's total negative sentiment.
+* @customfunction
+*/
+function SAN_SENTIMENT_NEGATIVE_TOTAL_MULTIPLE_SLUGS (projectSlugsList, from, to, interval = '1d') {
+  return handleErrors_(getMetricMultipleSlugs_)(
+    'sentiment_negative_total',
+    projectSlugsList,
+    from,
+    to,
+    { interval: interval }
   )
 }
 
