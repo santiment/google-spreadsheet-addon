@@ -273,6 +273,25 @@ const metricsList = [
     hasSource: true,
     returns: 'the slug\'s weighted social sentiment.'
   },
+
+  {
+    metric: 'sentiment_positive_total',
+    sheetMetricName: 'sentiment_positive_total',
+    description: [
+      'Total positive social sentiment for a slug.'
+    ],
+    returns: 'the slug\'s total positive sentiment.'
+  },
+
+  {
+    metric: 'sentiment_negative_total',
+    sheetMetricName: 'sentiment_negative_total',
+    description: [
+      'Total negative social sentiment for a slug.'
+    ],
+    returns: 'the slug\'s total negative sentiment.'
+  },
+
   {
     metric: 'bitmex_perpetual_open_interest',
     description: [
