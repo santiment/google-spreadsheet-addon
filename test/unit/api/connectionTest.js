@@ -37,7 +37,20 @@ describe('headers', () => {
   it("doesn't include API key in headers when it is not present", () => {
     const conn = new san.Connection_()
     const requestOptions = conn.buildRequestOptions('')
-    expect(requestOptions['headers']).to.not.exist
+    expect(requestOptions['headers']['Authorization']).to.not.exist
+  })
+
+  it('always sets User-Agent header', () => {
+    const conn = new san.Connection_()
+    const requestOptions = conn.buildRequestOptions('')
+    expect(requestOptions['headers']['User-Agent']).to.equal('Sansheets/1.0 (Google-Apps-Script)')
+  })
+
+  it('sets User-Agent header along with Authorization when API key is present', () => {
+    const conn = new san.Connection_('test-api-key')
+    const requestOptions = conn.buildRequestOptions('')
+    expect(requestOptions['headers']['User-Agent']).to.equal('Sansheets/1.0 (Google-Apps-Script)')
+    expect(requestOptions['headers']['Authorization']).to.equal('Apikey test-api-key')
   })
 })
 
