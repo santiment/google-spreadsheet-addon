@@ -12,7 +12,7 @@ describe('fetchCurrentUserPermissions', () => {
 
     expect(response).to.eq(null)
     expect(stub).to.have.been.calledWith('POST', san.SANTIMENT_GRAPHQL_URL, {
-      headers: {},
+      headers: { 'User-Agent': 'Sansheets/1.0 (Google-Apps-Script)' },
       json: { query: '{currentUser {permissions {spreadsheet}}}' }
     })
   })
@@ -29,7 +29,7 @@ describe('fetchCurrentUserPermissions', () => {
 
     expect(response).to.deep.eq({ permissions: { spreadsheet: true } })
     expect(stub).to.have.been.calledWith('POST', san.SANTIMENT_GRAPHQL_URL, {
-      headers: { Authorization: `Apikey ${apiKey}` },
+      headers: { 'User-Agent': 'Sansheets/1.0 (Google-Apps-Script)', Authorization: `Apikey ${apiKey}` },
       json: { query: '{currentUser {permissions {spreadsheet}}}' }
     })
   })
