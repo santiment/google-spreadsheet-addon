@@ -17,11 +17,14 @@ Connection_.prototype.buildRequestOptions = function (query) {
     'muteHttpExceptions': true,
     'method': 'post',
     'contentType': 'application/json',
-    'payload': JSON.stringify(query)
+    'payload': JSON.stringify(query),
+    'headers': {
+      'User-Agent': 'Sansheets/1.0 (Google-Apps-Script)'
+    }
   }
 
   if (this.apiKey) {
-    requestOptions.headers = { Authorization: `Apikey ${this.apiKey}` }
+    requestOptions.headers.Authorization = `Apikey ${this.apiKey}`
   }
 
   return requestOptions
